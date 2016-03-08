@@ -39,6 +39,9 @@ def cmd_output(command):
     (exit_code, stdout, stderr).
     """
     env = os.environ.copy()
+    if not env.has_key('PKG_CONFIG_PATH'):
+        env['PKG_CONFIG_PATH'] = ''
+    env['PKG_CONFIG_PATH'] = env['PKG_CONFIG_PATH'] + ':' + os.getcwd()
     env['LANG'] = ''
     import subprocess
     proc = subprocess.Popen(command,
@@ -98,15 +101,17 @@ def lua_include(package='luajit'):
 
     def trim_i(s):
         if s.startswith('-I'):
-            return s[2:]
-        return s
+            return os.path.expanduser(s[2:])
+        return os.path.expanduser(s)
     return list(map(trim_i, cflag_out.split()))
 
 
 def lua_libs(package='luajit'):
     libs_out = cmd_output('pkg-config %s --libs' % package)
     libs_out = decode_path_output(libs_out)
-    return libs_out.split()
+    def expand_user(s):
+        return s.replace('~',os.path.expanduser('~'))
+    return list(map(expand_user, libs_out.split()))
 
 
 basedir = os.path.abspath(os.path.dirname(__file__))
