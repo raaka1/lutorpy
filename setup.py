@@ -18,7 +18,7 @@ extra_setup_args = {}
 # support 'test' target if setuptools/distribute is available
 
 if 'setuptools' in sys.modules:
-    extra_setup_args['test_suite'] = 'lupa.tests.suite'
+    extra_setup_args['test_suite'] = 'lutorpy.tests.suite'
     extra_setup_args["zip_safe"] = False
 
 
@@ -145,7 +145,7 @@ def find_lua_build(no_luajit=False):
                 return dict(extra_objects=[libfile],
                             include_dirs=[filepath],
                             libfile=os.path.basename(libfile))
-    print("No local build of LuaJIT2 found in lupa directory")
+    print("No local build of LuaJIT2 found in lutorpy directory")
 
     # try to find installed LuaJIT2 or Lua
     if no_luajit:
@@ -171,7 +171,7 @@ def find_lua_build(no_luajit=False):
 
     error = ("None of LuaJIT2, Lua 5.1 or Lua 5.2 were found. Please install "
              "Lua and its development packages, "
-             "or put a local build into the lupa main directory.")
+             "or put a local build into the lutorpy main directory.")
     print(error)
     return {}
 
@@ -199,7 +199,7 @@ ext_args['define_macros'] = macros
 # check if Cython is installed, and use it if requested or necessary
 use_cython = has_option('--with-cython')
 if not use_cython:
-    if not os.path.exists(os.path.join(os.path.dirname(__file__), 'lupa', '_lupa.c')):
+    if not os.path.exists(os.path.join(os.path.dirname(__file__), 'lutorpy', '_lupa.c')):
         print("generated sources not available, need Cython to build")
         use_cython = True
 
@@ -218,8 +218,8 @@ else:
 
 ext_modules = [
     Extension(
-        'lupa._lupa',
-        sources = ['lupa/_lupa'+source_extension],
+        'lutorpy._lupa',
+        sources = ['lutorpy/_lupa'+source_extension],
         **ext_args
     )]
 
@@ -241,25 +241,25 @@ long_description = '\n\n'.join([
     read_file(text_file)
     for text_file in ['README.rst', 'INSTALL.rst', 'CHANGES.rst']])
 
-write_file(os.path.join('lupa', 'version.py'), "__version__ = '%s'\n" % VERSION)
+write_file(os.path.join('lutorpy', 'version.py'), "__version__ = '%s'\n" % VERSION)
 
 if config.get('libfile'):
     # include lua51.dll in the lib folder if we are on windows
-    extra_setup_args['package_data'] = {'lupa': [config['libfile']]}
+    extra_setup_args['package_data'] = {'lutorpy': [config['libfile']]}
 
 
 # call distutils
 
 setup(
-    name="lupa",
+    name="lutorpy",
     version=VERSION,
-    author="Stefan Behnel",
-    author_email="stefan_ml@behnel.de",
-    maintainer="Lupa-dev mailing list",
-    maintainer_email="lupa-dev@freelists.org",
-    url="https://github.com/scoder/lupa",
+    author="Wei OUYANG",
+    author_email="wei.ouyang@cri-paris.org",
+    maintainer="Wei OUYANG",
+    maintainer_email="wei.ouyang@cri-paris.org",
+    url="https://github.com/oeway/lutorpy",
 
-    description="Python wrapper around Lua and LuaJIT",
+    description="Python wrapper for torch and Lua/LuaJIT",
 
     long_description=long_description,
     license='MIT style',
@@ -282,7 +282,7 @@ setup(
         'Topic :: Software Development',
     ],
 
-    packages=['lupa'],
+    packages=['lutorpy'],
     ext_modules=ext_modules,
     **extra_setup_args
 )

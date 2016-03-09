@@ -8,7 +8,7 @@ from __future__ import absolute_import
 
 cimport cython
 
-from lupa cimport lua
+from lutorpy cimport lua
 from .lua cimport lua_State
 
 cimport cpython.ref
@@ -565,18 +565,14 @@ cdef class _LuaObject:
         old_top = lua.lua_gettop(L)
         try:
             self.push_lua_object()
-            # lookup and call "__tostring" metatable method manually to catch any errors
-            if lua.lua_getmetatable(L, -1):
-                lua.lua_pushlstring(L, "__tostring", 10)
-                lua.lua_rawget(L, -2)
-                if not lua.lua_isnil(L, -1) and lua.lua_pcall(L, 1, 1, 0) == 0:
-                    s = lua.lua_tolstring(L, -1, &size)
-                    if s:
-                        try:
-                            py_string = s[:size].decode(encoding)
-                        except UnicodeDecodeError:
-                            # safe 'decode'
-                            py_string = s[:size].decode('ISO-8859-1')
+            if lua.luaL_callmeta(L, -1, "__tostring"):
+                s = lua.lua_tolstring(L, -1, &size)
+                if s:
+                    try:
+                        py_string = s[:size].decode(encoding)
+                    except UnicodeDecodeError:
+                        # safe 'decode'
+                        py_string = s[:size].decode('ISO-8859-1')
             if py_string is None:
                 lua.lua_settop(L, old_top + 1)
                 py_string = lua_object_repr(L, encoding)
