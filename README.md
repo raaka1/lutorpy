@@ -19,7 +19,8 @@ python setup.py install     # use sudo if needed
 ## import lutorpy and bootstrap globals
 ``` python
 import lutorpy as lua
-# set the python globals() and  __builtins__ to lua, so you can update all lua global variables into python by default
+# set the python globals() and __builtins__ to lua,
+# so all the lua global variables can be seen in python globals()
 lua.set_globals(globals(), __builtins__)
 ```
 ## hello world

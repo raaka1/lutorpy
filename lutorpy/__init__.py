@@ -62,7 +62,8 @@ def update_globals():
         globals_[ks] = lg[ks]
 
 def set_globals(g, bi):
-    global globals_,builtins_
+    global globals_,builtins_,warningList
+    warningList = []
     builtins_ = dir(bi)
     globals_ = g
     update_globals()
