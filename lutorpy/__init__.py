@@ -44,24 +44,28 @@ lua = lutorpy.LuaRuntime()
 lutorpy.lua = lua
 
 globals_ = None
-def update_globals(enable_warning=False):
+builtins_ = None
+warningList = []
+def update_globals():
     if globals_ is None:
         return
     lg = lua.globals()
     for k in lg:
         ks = str(k)
-        if globals_.has_key(ks):
-            if inspect.ismodule(globals_[ks]):
-                if enable_warning:
-                    print("WARNING: variable "+ ks + ' is already exist in python globals, use ' + ks + '_ to refer to the lua version')
+        if ks in builtins_ or globals_.has_key(ks):
+            if ks in builtins_ or inspect.ismodule(globals_[ks]):
+                if not ks in warningList:
+                    warningList.append(ks)
+                    print('WARNING: variable "'+ ks + '" is already exist in python, use "' + ks + '_" to refer to the lua version')
                 globals_[ks + '_'] = lg[ks]
                 continue
         globals_[ks] = lg[ks]
 
-def set_globals(g):
-    global globals_
+def set_globals(g, bi):
+    global globals_,builtins_
+    builtins_ = dir(bi)
     globals_ = g
-    update_globals(True)
+    update_globals()
     
 def eval(cmd):
     ret = lua.eval(cmd)
