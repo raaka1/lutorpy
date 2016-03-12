@@ -801,8 +801,13 @@ class TestLuaRuntime(SetupLuaRuntimeMixin, unittest.TestCase):
         self.assertEqual(None, lupa.lua_type([]))
         self.assertEqual(None, lupa.lua_type(lupa))
         self.assertEqual(None, lupa.lua_type(lupa.lua_type))
-        
-    def test__torch_numpy_conversion(self):
+    def test_self_prepending(self):
+        self.lua.execute('obj={}; obj.func = function(obj,val) return val end')
+        lua_globals = self.lua.globals()
+        obj = lua_globals['obj']
+        self.assertEqual(obj.func(obj, 88), obj.func_(88))
+
+    def test_torch_numpy_conversion(self):
         import numpy as np
         self.lua.require("torch")
         lua_globals = self.lua.globals()

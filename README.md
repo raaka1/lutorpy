@@ -150,9 +150,27 @@ y = mlp.forward(mlp, x)
 print(y)
 
 ```
-Or, you can use lua.bs, to bootstrap the add function.
+
+## automatic prepending 'self' as the first argument
+There are two ways to prepend 'self' to a lua function.
+
+The first way is inline prepending by add '_' to any function name, then it will try to return a prepended version of the function:
+``` python
+mlp = nn.Sequential()
+module = nn.Linear(10, 5)
+
+# lua style
+mlp.add(mlp, module)
+
+# inline prepending
+mlp.add_(module)
+```
+
+The second way is using lua.bs to bootstrap the function.
 
 ``` python
+mlp = nn.Sequential()
+module = nn.Linear(10, 5)
 # bootstrap the add function
 lua.bs(mlp,'add')
 # now we can use add without passing self as the first arugment

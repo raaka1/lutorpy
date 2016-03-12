@@ -596,10 +596,10 @@ cdef class _LuaObject:
         if ret == None and name.endswith('_'):
             newname = name[:-1]
             ret = self._getitem(newname, is_attr_access=True)
-            if not ret is None:
-                def self_func(*args):
-                    return ret(self,*args)
-                return self_func
+            if not ret is None and isinstance(ret, _LuaFunction):
+                def self_prepending_function(*args, **kwargs):
+                    return ret(self,*args, **kwargs)
+                return self_prepending_function
         return ret
 
     def __getitem__(self, index_or_name):
