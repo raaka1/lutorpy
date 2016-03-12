@@ -99,7 +99,7 @@ def boostrap_self(obj,func_name):
 bs = boostrap_self
 
 
-def array2Tensor(nparray):
+def array2tensor(nparray):
     import numpy as np
     # Byte , Char , Short , Int , Long , Float , and Double
     npType2tensorType = {'int8':'torch.ByteTensor',
