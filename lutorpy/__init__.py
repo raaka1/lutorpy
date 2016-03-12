@@ -130,9 +130,7 @@ def array2tensor(nparray):
         tensorType = npType2tensorType[dtype]
         t = luaRuntime.eval(tensorType+str(nparray.shape).replace(',)',')'))
         ts = t.storage(t)
-        d = nparray.flatten()
-        for i in xrange(d.shape[0]):
-            ts[i+1] = d[i]
+        t.copyNumpyArray(nparray)
         return t
     else:
         print('Unsupported numpy data type:'+str(nparray.dtype))

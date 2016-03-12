@@ -9,6 +9,7 @@ import time
 import sys
 import gc
 
+import lutorpy
 import lutorpy._lupa as lupa
 
 IS_PYTHON3 = sys.version_info[0] >= 3
@@ -816,6 +817,11 @@ class TestLuaRuntime(SetupLuaRuntimeMixin, unittest.TestCase):
         t.copyNumpyArray(arri)
         arro = t.asNumpyArray().flatten()
         np.testing.assert_array_equal(arri, arro)
+        
+        t2 = lutorpy.array2tensor(arri)
+        arro2 = t2.asNumpyArray().flatten()
+        np.testing.assert_array_equal(arri, arro2)
+        
 
 class TestAttributesNoAutoEncoding(SetupLuaRuntimeMixin, unittest.TestCase):
     lua_runtime_kwargs = {'encoding': None}
