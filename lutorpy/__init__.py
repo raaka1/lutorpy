@@ -46,7 +46,7 @@ lutorpy.lua = lua
 globals_ = None
 builtins_ = None
 warningList = []
-def update_globals():
+def update_globals(verbose = False):
     if globals_ is None:
         return
     lg = lua.globals()
@@ -56,17 +56,18 @@ def update_globals():
             if ks in builtins_ or inspect.ismodule(globals_[ks]):
                 if not ks in warningList:
                     warningList.append(ks)
-                    print('WARNING: variable "'+ ks + '" is already exist in python, use "' + ks + '_" to refer to the lua version')
+                    if verbose:
+                        print('WARNING: variable "'+ ks + '" is already exist in python, use "' + ks + '_" to refer to the lua version')
                 globals_[ks + '_'] = lg[ks]
                 continue
         globals_[ks] = lg[ks]
 
-def set_globals(g, bi):
+def set_globals(g, bi, verbose=True):
     global globals_,builtins_,warningList
     warningList = []
     builtins_ = dir(bi)
     globals_ = g
-    update_globals()
+    update_globals(verbose)
     
 def eval(cmd):
     ret = lua.eval(cmd)
@@ -97,8 +98,28 @@ def boostrap_self(obj,func_name):
 
 bs = boostrap_self
 
-def array2Tensor(myarray):
+
+def array2Tensor(nparray):
+    import numpy as np
+    # Byte , Char , Short , Int , Long , Float , and Double
+    npType2tensorType = {'int8':'torch.ByteTensor',
+                         'int8':'torch.CharTensor',
+                         'int16':'torch.ShortTensor',
+                         'int32':'torch.IntTensor',
+                         'int64':'torch.LongTensor',
+                         'float32':'torch.FloatTensor',
+                         'float64':'torch.DoubleTensor'
+                        }
     lua.require('torch')
-    ret = lua.eval('torch.Tensor(10)')
-    return ret
+    dtype = str(nparray.dtype)
+    if npType2tensorType.has_key(dtype):
+        tensorType = npType2tensorType[dtype]
+        t = lua.eval(tensorType+str(nparray.shape).replace(',)',')'))
+        ts = t.storage(t)
+        d = nparray.flatten()
+        for i in xrange(d.shape[0]):
+            ts[i+1] = d[i]
+        return t
+    else:
+        print('Unsupported numpy data type:'+str(nparray.dtype))
     
