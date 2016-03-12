@@ -806,7 +806,7 @@ class TestLuaRuntime(SetupLuaRuntimeMixin, unittest.TestCase):
         self.lua.execute('obj={}; obj.func = function(obj,val) return val end')
         lua_globals = self.lua.globals()
         obj = lua_globals['obj']
-        self.assertEqual(obj.func(obj, 88), obj.func_(88))
+        self.assertEqual(obj.func(obj, 88), obj._func(88))
 
     def test_torch_numpy_conversion(self):
         import numpy as np

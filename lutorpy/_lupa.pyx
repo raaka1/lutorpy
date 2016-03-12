@@ -593,8 +593,8 @@ cdef class _LuaObject:
             if (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):
                 return object.__getattr__(self, name)
         ret = self._getitem(name, is_attr_access=True)
-        if ret == None and name.endswith('_'):
-            newname = name[:-1]
+        if ret == None and name.startswith('_'):
+            newname = name[1:]
             ret = self._getitem(newname, is_attr_access=True)
             if not ret is None and isinstance(ret, _LuaFunction):
                 def self_prepending_function(*args, **kwargs):
