@@ -98,6 +98,8 @@ def lua_type(obj):
             return 'function'
         elif ltype == lua.LUA_TTHREAD:
             return 'thread'
+        elif isinstance(obj, _TorchTensor):
+            return 'tensor'
         elif ltype in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):
             return 'userdata'
         else:
@@ -690,8 +692,8 @@ cdef object lua_object_repr(lua_State* L, encoding):
 @cython.final
 @cython.internal
 @cython.no_gc_clear
-cdef class _LuaTensor(_LuaObject):
-    def asNumpyArray(_LuaTensor self):
+cdef class _TorchTensor(_LuaObject):
+    def asNumpyArray(_TorchTensor self):
         import numpy as np
         # Byte , Char , Short , Int , Long , Float , and Double
         typeDict = {'torch.ByteTensor':np.int8,
@@ -700,7 +702,8 @@ cdef class _LuaTensor(_LuaObject):
                     'torch.IntTensor':np.int32,
                     'torch.LongTensor':np.int64,
                     'torch.FloatTensor':np.float32,
-                    'torch.DoubleTensor':np.float64
+                    'torch.DoubleTensor':np.float64,
+                    'torch.CudaTensor':np.float32
                    }
         size = self.size(self)
         dims = size.size(size)
@@ -708,18 +711,23 @@ cdef class _LuaTensor(_LuaObject):
             totalSize = 1
             for d in range(1, dims+1):
                 totalSize *= size[d]
-            myarray = np.zeros(totalSize, dtype=typeDict[str(self.type(self))])
+            ttype = str(self.type(self))
+            if typeDict.has_key(ttype):
+                atype = typeDict[ttype]
+            else:
+                atype = np.float64
+            nparray = np.zeros(totalSize, dtype=atype)
             s = self.storage(self)
             for i in range(s.size(s)):
-                myarray[i] = s[i+1]
+                nparray[i] = s[i+1]
             shape = []
             for d in range(1,dims+1):
                 shape.append(size[d])
-            return myarray.reshape(shape)
+            return nparray.reshape(shape)
         else:
             raise Exception('Not implemented for dims = {dims}'.format(dims=dims))
     
-    def copyNumpyArray(_LuaTensor self, array):
+    def copyNumpyArray(_TorchTensor self, array):
         s = self.storage(self)
         sl = s.size(s)
         a = array.flatten()
@@ -728,8 +736,8 @@ cdef class _LuaTensor(_LuaObject):
         for i in xrange(sal):
             s[i+1] = a[i]
         
-cdef _LuaTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
-    cdef _LuaTensor obj = _LuaTensor.__new__(_LuaTensor)
+cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
+    cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)
     init_lua_object(obj, runtime, L, n)
     return obj
 

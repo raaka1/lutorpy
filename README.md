@@ -65,6 +65,26 @@ s = torch.LongStorage(6)
 print(torch.type(s))
 ```
 
+## convert torch tensor to numpy array
+``` python
+t = torch.randn(10,10)
+print(t)
+arr = t.asNumpyArray()
+print(arr)
+```
+                                
+## convert/copy numpy array to torch tensor
+``` python
+arr = np.random.randn(100)
+print(arr)
+t = lua.array2tensor(arr)
+print(t)
+
+t2 = torch.Tensor(10,10)
+t2.copyNumpyArray(arr)
+print(t2)
+```
+
 ## load image and use nn module
 ``` python
 lua.require("image")
