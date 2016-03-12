@@ -5,11 +5,14 @@ A fast Python wrapper around Lua and LuaJIT2.
 """
 
 from __future__ import absolute_import
+import numpy as np
 
 cimport cython
 
 from lutorpy cimport lua
 from .lua cimport lua_State
+
+from lutorpy cimport PyTorch
 
 cimport cpython.ref
 cimport cpython.tuple
@@ -590,7 +593,15 @@ cdef class _LuaObject:
         elif isinstance(name, bytes):
             if (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):
                 return object.__getattr__(self, name)
-        return self._getitem(name, is_attr_access=True)
+        ret = self._getitem(name, is_attr_access=True)
+        if ret == None and name.endswith('_'):
+            newname = name[:-1]
+            ret = self._getitem(newname, is_attr_access=True)
+            if not ret is None:
+                def self_func(*args):
+                    return ret(self,*args)
+                return self_func
+        return ret
 
     def __getitem__(self, index_or_name):
         return self._getitem(index_or_name, is_attr_access=False)
@@ -650,6 +661,32 @@ cdef object lua_object_repr(lua_State* L, encoding):
         # safe 'decode'
         return py_bytes.decode('ISO-8859-1')
 
+@cython.final
+@cython.internal
+@cython.no_gc_clear
+cdef class _LuaTensor(_LuaObject):
+    def asNumpyArray(_LuaTensor self):
+        size = self.size(self)
+        dims = size.size(size)
+        if dims >= 1:
+            totalSize = 1
+            for d in range(1, dims+1):
+                totalSize *= size[d]
+            myarray = np.zeros(totalSize, dtype=np.int64)
+            s = self.storage(self)
+            for i in range(s.size(s)):
+                myarray[i] = s[i+1]
+            shape = []
+            for d in range(1,dims+1):
+                shape.append(size[d])
+            return myarray.reshape(shape)
+        else:
+            raise Exception('Not implemented for dims = {dims}'.format(dims=dims))
+
+cdef _LuaTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
+    cdef _LuaTensor obj = _LuaTensor.__new__(_LuaTensor)
+    init_lua_object(obj, runtime, L, n)
+    return obj
 
 @cython.final
 @cython.internal
@@ -1085,6 +1122,7 @@ cdef object py_from_lua(LuaRuntime runtime, lua_State *L, int n):
         if py_obj:
             return <object>py_obj.obj
         return new_lua_function(runtime, L, n)
+    return new_lua_tensor(runtime, L, n)
     return new_lua_object(runtime, L, n)
 
 cdef py_object* unpack_userdata(lua_State *L, int n) nogil:

@@ -10,7 +10,7 @@ multilib=lib
 exec_prefix=${prefix}
 libdir=${exec_prefix}/${multilib}
 libname=luajit
-includedir=${prefix}/include
+includedir=${prefix}/include -I${prefix}/include/TH
 
 INSTALL_LMOD=${prefix}/share/lua/${abiver}
 INSTALL_CMOD=${prefix}/${multilib}/lua/${abiver}

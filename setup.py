@@ -202,7 +202,10 @@ if not use_cython:
     if not os.path.exists(os.path.join(os.path.dirname(__file__), 'lutorpy', '_lupa.c')):
         print("generated sources not available, need Cython to build")
         use_cython = True
-
+    if not os.path.exists(os.path.join(os.path.dirname(__file__), 'lutorpy', 'PyTorch.c')):
+        print("generated sources not available, need Cython to build")
+        use_cython = True
+        
 cythonize = None
 source_extension = ".c"
 if use_cython:
@@ -221,7 +224,13 @@ ext_modules = [
         'lutorpy._lupa',
         sources = ['lutorpy/_lupa'+source_extension],
         **ext_args
-    )]
+    ),
+    Extension(
+        'lutorpy.PyTorch',
+        sources = ['lutorpy/PyTorch'+source_extension],
+        **ext_args
+    )
+]
 
 if cythonize is not None:
     ext_modules = cythonize(ext_modules)
