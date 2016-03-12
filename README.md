@@ -66,14 +66,31 @@ print(torch.type(s))
 ```
 
 ## convert torch tensor to numpy array
+
+
 ``` python
+lua.require('torch')
+
 t = torch.randn(10,10)
 print(t)
 arr = t.asNumpyArray()
 print(arr)
+
+```
+
+### use cudaTensor
+``` python
+lua.require('cutorch')
+t = torch.randn(10,10)
+cudat = t.cuda(t)
+arr = cudat.asNumpyArray()
+print(arr)
 ```
                                 
 ## convert/copy numpy array to torch tensor
+
+Note: both torch tensor and cuda tensor are supported
+
 ``` python
 arr = np.random.randn(100)
 print(arr)
@@ -83,6 +100,17 @@ print(t)
 t2 = torch.Tensor(10,10)
 t2.copyNumpyArray(arr)
 print(t2)
+
+# use cudaTensor
+t3 = torch.CudaTensor(10,10)
+t3.copyNumpyArray(arr)
+print(t3)
+
+# or, convert torch tensor to cuda tensor
+lua.require('cutorch')
+cudat = t.cuda(t)
+print(cudat)
+
 ```
 
 ## load image and use nn module
