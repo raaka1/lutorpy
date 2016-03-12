@@ -65,13 +65,20 @@ def update_globals(verbose = False):
                 globals_[ks + '_'] = lg[ks]
                 continue
         globals_[ks] = lg[ks]
+        
+    global require
+    globals_['require'] = require
+        
+def require(module_name):
+    ret = luaRuntime.require(module_name)
+    update_globals()
+    return ret
 
 def set_globals(g, bi, verbose=True):
-    global globals_,builtins_,warningList,require
+    global globals_,builtins_,warningList
     warningList = []
     builtins_ = dir(bi)
     globals_ = g
-    g['require'] = require
     update_globals(verbose)
     
 def eval(cmd):
@@ -84,10 +91,7 @@ def execute(cmd):
     update_globals()
     return ret
 
-def require(module_name):
-    ret = luaRuntime.require(module_name)
-    update_globals()
-    return ret
+
 
 def table(*args, **kwargs):
     ret = luaRuntime.table(*args, **kwargs)

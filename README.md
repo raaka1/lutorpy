@@ -41,7 +41,8 @@ lg = lua.globals()
 lua.execute(' greeting = "hello world" ')
 print(lg.greeting)
 # and you need to use lua.require
-lua.require("torch")
+require("torch")
+
 ```
 
 ## execute lua code
