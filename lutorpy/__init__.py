@@ -40,14 +40,12 @@ except ImportError:
     pass
 
 import lutorpy
-__LuaRuntime__ = lutorpy.LuaRuntime
-lua = __LuaRuntime__()
-lutorpy.lua = lua
+luaRuntime = lutorpy._lupa.LuaRuntime()
 
-def LuaRuntime():
-    global lua
-    lua = __LuaRuntime__()
-    return lua
+def LuaRuntime(*args, **kwargs):
+    global luaRuntime
+    luaRuntime = lutorpy._lupa.LuaRuntime(*args, **kwargs)
+    return luaRuntime
 
 globals_ = None
 builtins_ = None
@@ -55,7 +53,7 @@ warningList = []
 def update_globals(verbose = False):
     if globals_ is None:
         return
-    lg = lua.globals()
+    lg = luaRuntime.globals()
     for k in lg:
         ks = str(k)
         if ks in builtins_ or globals_.has_key(ks):
@@ -76,27 +74,27 @@ def set_globals(g, bi, verbose=True):
     update_globals(verbose)
     
 def eval(cmd):
-    ret = lua.eval(cmd)
+    ret = luaRuntime.eval(cmd)
     update_globals()
     return ret
 
 def execute(cmd):
-    ret = lua.execute(cmd)
+    ret = luaRuntime.execute(cmd)
     update_globals()
     return ret
 
 def require(module_name):
-    ret = lua.require(module_name)
+    ret = luaRuntime.require(module_name)
     update_globals()
     return ret
 
-def table(*t):
-    ret = lua.table(*t)
+def table(*args, **kwargs):
+    ret = luaRuntime.table(*args, **kwargs)
     update_globals()
     return ret
 
-def table_from(*d):
-    ret = lua.table_from(*d)
+def table_from(*args, **kwargs):
+    ret = luaRuntime.table_from(*args, **kwargs)
     update_globals()
     return ret
 
@@ -126,11 +124,11 @@ def array2tensor(nparray):
                          'float32':'torch.FloatTensor',
                          'float64':'torch.DoubleTensor'
                         }
-    lua.require('torch')
+    luaRuntime.require('torch')
     dtype = str(nparray.dtype)
     if npType2tensorType.has_key(dtype):
         tensorType = npType2tensorType[dtype]
-        t = lua.eval(tensorType+str(nparray.shape).replace(',)',')'))
+        t = luaRuntime.eval(tensorType+str(nparray.shape).replace(',)',')'))
         ts = t.storage(t)
         d = nparray.flatten()
         for i in xrange(d.shape[0]):

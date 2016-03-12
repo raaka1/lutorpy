@@ -4,7 +4,7 @@ import unittest
 import doctest
 import os
 
-import lupa
+import lutorpy
 
 
 def suite():
@@ -13,11 +13,11 @@ def suite():
     tests = []
     for filename in os.listdir(test_dir):
         if filename.endswith('.py') and not filename.startswith('_'):
-            tests.append('lupa.tests.'  + filename[:-3])
+            tests.append('lutorpy.tests.'  + filename[:-3])
 
     suite = unittest.defaultTestLoader.loadTestsFromNames(tests)
-    suite.addTest(doctest.DocTestSuite(lupa._lupa))
-    suite.addTest(doctest.DocFileSuite('../../README.rst'))
+    suite.addTest(doctest.DocTestSuite(lutorpy._lupa))
+    suite.addTest(doctest.DocFileSuite('../../README.md'))
     return suite
 
 
