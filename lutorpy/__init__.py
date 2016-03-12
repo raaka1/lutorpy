@@ -96,3 +96,9 @@ def boostrap_self(obj,func_name):
     obj[func_name] = func_self
 
 bs = boostrap_self
+
+def array2Tensor(myarray):
+    lua.require('torch')
+    ret = lua.eval('torch.Tensor(10)')
+    return ret
+    

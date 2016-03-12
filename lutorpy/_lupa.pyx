@@ -5,14 +5,11 @@ A fast Python wrapper around Lua and LuaJIT2.
 """
 
 from __future__ import absolute_import
-import numpy as np
 
 cimport cython
 
 from lutorpy cimport lua
 from .lua cimport lua_State
-
-from lutorpy cimport PyTorch
 
 cimport cpython.ref
 cimport cpython.tuple
@@ -666,13 +663,23 @@ cdef object lua_object_repr(lua_State* L, encoding):
 @cython.no_gc_clear
 cdef class _LuaTensor(_LuaObject):
     def asNumpyArray(_LuaTensor self):
+        import numpy as np
+        # Byte , Char , Short , Int , Long , Float , and Double
+        typeDict = {'torch.ByteTensor':np.int8,
+                    'torch.CharTensor':np.int8,
+                    'torch.ShortTensor':np.int16,
+                    'torch.IntTensor':np.int32,
+                    'torch.LongTensor':np.int64,
+                    'torch.FloatTensor':np.float32,
+                    'torch.DoubleTensor':np.float64
+                   }
         size = self.size(self)
         dims = size.size(size)
         if dims >= 1:
             totalSize = 1
             for d in range(1, dims+1):
                 totalSize *= size[d]
-            myarray = np.zeros(totalSize, dtype=np.int64)
+            myarray = np.zeros(totalSize, dtype=typeDict[str(self.type(self))])
             s = self.storage(self)
             for i in range(s.size(s)):
                 myarray[i] = s[i+1]
@@ -1082,6 +1089,7 @@ def as_itemgetter(obj):
     wrap._type_flags = OBJ_AS_INDEX
     return wrap
 
+
 cdef object py_from_lua(LuaRuntime runtime, lua_State *L, int n):
     """
     Convert a Lua object to a Python object by either mapping, wrapping
@@ -1122,8 +1130,12 @@ cdef object py_from_lua(LuaRuntime runtime, lua_State *L, int n):
         if py_obj:
             return <object>py_obj.obj
         return new_lua_function(runtime, L, n)
-    return new_lua_tensor(runtime, L, n)
-    return new_lua_object(runtime, L, n)
+    ol = L
+    ret = new_lua_object(runtime, L, n)
+    if not ret.size is None and not ret.storage is None:
+        del ret
+        ret = new_lua_tensor(runtime, ol, n)
+    return ret
 
 cdef py_object* unpack_userdata(lua_State *L, int n) nogil:
     """
