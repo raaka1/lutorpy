@@ -40,8 +40,14 @@ except ImportError:
     pass
 
 import lutorpy
-lua = lutorpy.LuaRuntime()
+__LuaRuntime__ = lutorpy.LuaRuntime
+lua = __LuaRuntime__()
 lutorpy.lua = lua
+
+def LuaRuntime():
+    global lua
+    lua = __LuaRuntime__()
+    return lua
 
 globals_ = None
 builtins_ = None
@@ -81,6 +87,16 @@ def execute(cmd):
 
 def require(module_name):
     ret = lua.require(module_name)
+    update_globals()
+    return ret
+
+def table(*t):
+    ret = lua.table(*t)
+    update_globals()
+    return ret
+
+def table_from(*d):
+    ret = lua.table_from(*d)
     update_globals()
     return ret
 
