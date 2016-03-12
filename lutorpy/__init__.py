@@ -67,10 +67,11 @@ def update_globals(verbose = False):
         globals_[ks] = lg[ks]
 
 def set_globals(g, bi, verbose=True):
-    global globals_,builtins_,warningList
+    global globals_,builtins_,warningList,require
     warningList = []
     builtins_ = dir(bi)
     globals_ = g
+    g['require'] = require
     update_globals(verbose)
     
 def eval(cmd):

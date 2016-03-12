@@ -40,7 +40,8 @@ import lutorpy as lua
 lg = lua.globals()
 lua.execute(' greeting = "hello world" ')
 print(lg.greeting)
-
+# and you need to use lua.require
+lua.require("torch")
 ```
 
 ## execute lua code
@@ -57,7 +58,7 @@ print(b[1])
 
 ## use torch
 ``` python
-lua.require("torch")
+require("torch")
 z = torch.Tensor(4,5,6,2)
 print(torch.isTensor(z))
 
@@ -69,7 +70,7 @@ print(torch.type(s))
 
 
 ``` python
-lua.require('torch')
+require('torch')
 
 t = torch.randn(10,10)
 print(t)
@@ -80,7 +81,7 @@ print(arr)
 
 ### use cudaTensor
 ``` python
-lua.require('cutorch')
+require('cutorch')
 t = torch.randn(10,10)
 cudat = t.cuda(t)
 arr = cudat.asNumpyArray()
@@ -107,7 +108,7 @@ t3.copyNumpyArray(arr)
 print(t3)
 
 # or, convert torch tensor to cuda tensor
-lua.require('cutorch')
+require('cutorch')
 cudat = t.cuda(t)
 print(cudat)
 
@@ -115,14 +116,14 @@ print(cudat)
 
 ## load image and use nn module
 ``` python
-lua.require("image")
+require("image")
 img_rgb = image.lena()
 print(img_rgb.size(img_rgb))
 img = image.rgb2y(img_rgb)
 print(img.size(img))
 
 # use SpatialConvolution from nn to process the image
-lua.require("nn")
+require("nn")
 n = nn.SpatialConvolution(1,16,12,12)
 res = n.forward(n, img)
 print(res.size(res))
@@ -182,7 +183,7 @@ mlp.add(module)
 Train a model to perform XOR operation.
 
 ``` python
-lua.require("nn")
+require("nn")
 mlp = nn.Sequential()
 mlp.add(mlp, nn.Linear(2, 20)) # 2 input nodes, 20 hidden nodes
 mlp.add(mlp, nn.Tanh())
