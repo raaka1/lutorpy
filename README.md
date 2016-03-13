@@ -19,8 +19,13 @@ python setup.py install     # use sudo if needed
 # Getting Start
 
 ## import lutorpy and bootstrap globals
+
+Note: the following setup is mandatory for going through this tutorial.
+
 ``` python
 import lutorpy as lua
+# setup runtime and use zero-based index
+lua.LuaRuntime(zero_based_index=True)
 # set the python globals() and __builtins__ to lua,
 # so all the lua global variables can be seen in python globals()
 lua.set_globals(globals(), __builtins__)
@@ -45,17 +50,9 @@ print(lg.greeting)
 # without set_globals you have to use lua.require instead of require
 lua.require("torch")
 ```
-### zero-based indexing or one-based indexing
+###  you also could switch to one-based indexing
 ```python
-# by default, it's zero-based indexing
-lua.LuaRuntime(zero_based_index=True)
-b = lua.eval(' {"one", "zero"} ') 
-print(b[1])
-
-# you could switch to one-based indexing
 lua.LuaRuntime(zero_based_index=False)
-b = lua.eval(' {"one", "zero"} ') 
-print(b[1])
 ```
 
 ## execute lua code

@@ -64,7 +64,7 @@ def update_globals(verbose = False):
                 if not ks in warningList:
                     warningList.append(ks)
                     if verbose:
-                        print('WARNING: variable "'+ ks + '" is already exist in python, use "' + ks + '_" to refer to the lua version')
+                        print('WARNING: please use "' + ks + '_" to refer to the lua object "' + ks +'"')
                 globals_[ks + '_'] = lg[ks]
                 continue
         globals_[ks] = lg[ks]
