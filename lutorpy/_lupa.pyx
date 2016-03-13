@@ -187,11 +187,13 @@ cdef class LuaRuntime:
     cdef object _attribute_getter
     cdef object _attribute_setter
     cdef bint _unpack_returned_tuples
+    cdef bint _zero_based_index
 
     def __cinit__(self, encoding='UTF-8', source_encoding=None,
                   attribute_filter=None, attribute_handlers=None,
                   bint register_eval=True, bint unpack_returned_tuples=False,
-                  bint register_builtins=True):
+                  bint register_builtins=True,
+                  bint zero_based_index=False):
         cdef lua_State* L = lua.luaL_newstate()
         if L is NULL:
             raise LuaError("Failed to initialise Lua runtime")
@@ -204,6 +206,7 @@ cdef class LuaRuntime:
             raise ValueError("attribute_filter must be callable")
         self._attribute_filter = attribute_filter
         self._unpack_returned_tuples = unpack_returned_tuples
+        self._zero_based_index = zero_based_index
 
         if attribute_handlers:
             raise_error = False
@@ -607,6 +610,8 @@ cdef class _LuaObject:
 
     @cython.final
     cdef _getitem(self, name, bint is_attr_access):
+        if isinstance(name, int) and self._runtime._zero_based_index:
+            name = name + 1
         cdef lua_State* L = self._state
         lock_runtime(self._runtime)
         old_top = lua.lua_gettop(L)
@@ -641,6 +646,8 @@ cdef class _LuaObject:
         self._setitem(index_or_name, value)
 
     cdef int _setitem(self, name, value) except -1:
+        if isinstance(name, int) and self._runtime._zero_based_index:
+            name = name + 1
         cdef lua_State* L = self._state
         lock_runtime(self._runtime)
         old_top = lua.lua_gettop(L)
@@ -709,8 +716,11 @@ cdef class _TorchTensor(_LuaObject):
         dims = size.size(size)
         if dims >= 1:
             totalSize = 1
-            for d in range(1, dims+1):
-                totalSize *= size[d]
+            for d in range(dims):
+                if self._runtime._zero_based_index:
+                    totalSize *= size[d]
+                else:
+                    totalSize *= size[d+1]
             ttype = str(self.type(self))
             if typeDict.has_key(ttype):
                 atype = typeDict[ttype]
@@ -719,10 +729,16 @@ cdef class _TorchTensor(_LuaObject):
             nparray = np.zeros(totalSize, dtype=atype)
             s = self.storage(self)
             for i in range(s.size(s)):
-                nparray[i] = s[i+1]
+                if self._runtime._zero_based_index:
+                    nparray[i] = s[i]
+                else:
+                    nparray[i] = s[i+1]
             shape = []
-            for d in range(1,dims+1):
-                shape.append(size[d])
+            for d in range(dims):
+                if self._runtime._zero_based_index:
+                    shape.append(size[d])
+                else:
+                    shape.append(size[d+1])
             return nparray.reshape(shape)
         else:
             raise Exception('Not implemented for dims = {dims}'.format(dims=dims))
@@ -734,7 +750,10 @@ cdef class _TorchTensor(_LuaObject):
         al = a.shape[0]
         sal = min(sl,al)
         for i in xrange(sal):
-            s[i+1] = a[i]
+            if self._runtime._zero_based_index:
+                s[i] = a[i]
+            else:
+                s[i+1] = a[i]
         
 cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
     cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)
@@ -1199,10 +1218,10 @@ cdef py_object* unpack_userdata(lua_State *L, int n) nogil:
     return NULL
 
 cdef int py_function_result_to_lua(LuaRuntime runtime, lua_State *L, object o) except -1:
-     if runtime._unpack_returned_tuples and isinstance(o, tuple):
-         push_lua_arguments(runtime, L, <tuple>o)
-         return len(<tuple>o)
-     return py_to_lua(runtime, L, o)
+    if runtime._unpack_returned_tuples and isinstance(o, tuple):
+        push_lua_arguments(runtime, L, <tuple>o)
+        return len(<tuple>o)
+    return py_to_lua(runtime, L, o)
 
 cdef int py_to_lua(LuaRuntime runtime, lua_State *L, object o, bint wrap_none=False) except -1:
     cdef int pushed_values_count = 0

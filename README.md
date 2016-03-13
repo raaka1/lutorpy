@@ -2,6 +2,8 @@
 
 Lutorpy is a two-way bridge between Python/Numpy and Lua/Torch, allowing use using Torch packages(nn, rnn etc.) with numpy inside python.
 
+Support pythonic features such as zero-base indexing and automatic prepending self to function.
+
 This library is based on [lupa](https://github.com/scoder/lupa), please refer to [lupa](https://github.com/scoder/lupa) for more detailed usage.
 
 # Installation
@@ -30,7 +32,7 @@ lua.execute(' greeting = "hello world" ')
 print(greeting)
 ```
 
-### Note: alternative way to access lua globals
+### Note: alternative way to use lua
 if you don't want to mess the python global variables, you can skip the previous line, but you need to access lua global variables through lua.globals(). 
 
 Note that if you do this, all the following code should change acorrdingly.
@@ -40,19 +42,30 @@ import lutorpy as lua
 lg = lua.globals()
 lua.execute(' greeting = "hello world" ')
 print(lg.greeting)
-# and you need to use lua.require
-require("torch")
+# without set_globals you have to use lua.require instead of require
+lua.require("torch")
+```
+### zero-based indexing or one-based indexing
+```python
+# by default, it's zero-based indexing
+lua.LuaRuntime(zero_based_index=True)
+b = lua.eval(' {"one", "zero"} ') 
+print(b[1])
 
+# you could switch to one-based indexing
+lua.LuaRuntime(zero_based_index=False)
+b = lua.eval(' {"one", "zero"} ') 
+print(b[1])
 ```
 
 ## execute lua code
 
 ``` python
 a = lua.eval(' {11, 22} ') # define a lua table with two elements
-print(a[1])
+print(a[0])
 
 lua.execute(' b={33, 44} ') # define another lua table with two elements
-print(b[0]) # will get None, because lua used 1 as first index
+print(b[0])
 print(b[1])
 
 ```
@@ -153,7 +166,7 @@ print(y)
 
 ```
 
-## automatic prepending 'self' as the first argument
+## prepending 'self' as the first argument automatically
 In lua, there are use 'mlp:add(module)' to use function without pass self to the function. In python, it's done by default, There are two ways to prepend 'self' to a lua function.
 
 The first way is inline prepending by add '_' to before any function name, then it will try to return a prepended version of the function:
@@ -196,10 +209,10 @@ for i in range(2500):
     # random sample
     input= torch.randn(2)    # normally distributed example in 2d
     output= torch.Tensor(1)
-    if input[1]*input[2] > 0:  # calculate label for XOR function
-        output[1] = -1 # output[0] = -1
+    if input[0]*input[1] > 0:  # calculate label for XOR function
+        output[0] = -1 # output[0] = -1
     else:
-        output[1] = 1 # output[0] = 1
+        output[0] = 1 # output[0] = 1
     
     # feed it to the neural network and the criterion
     criterion._forward(mlp._forward(input), output)
@@ -218,10 +231,10 @@ for i in range(2500):
 ``` python
 
 x = torch.Tensor(2)
-x[1] =  0.5; x[2] =  0.5; print(mlp._forward(x))
-x[1] =  0.5; x[2] = -0.5; print(mlp._forward(x))
-x[1] = -0.5; x[2] =  0.5; print(mlp._forward(x))
-x[1] = -0.5; x[2] = -0.5; print(mlp._forward(x))
+x[0] =  0.5; x[1] =  0.5; print(mlp._forward(x))
+x[0] =  0.5; x[1] = -0.5; print(mlp._forward(x))
+x[0] = -0.5; x[1] =  0.5; print(mlp._forward(x))
+x[0] = -0.5; x[1] = -0.5; print(mlp._forward(x))
 
 ```
 

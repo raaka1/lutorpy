@@ -40,12 +40,15 @@ except ImportError:
     pass
 
 import lutorpy
-luaRuntime = lutorpy._lupa.LuaRuntime()
 
 def LuaRuntime(*args, **kwargs):
     global luaRuntime
+    if not kwargs.has_key('zero_based_index'):
+        kwargs['zero_based_index']=True
     luaRuntime = lutorpy._lupa.LuaRuntime(*args, **kwargs)
     return luaRuntime
+
+LuaRuntime()
 
 globals_ = None
 builtins_ = None
@@ -122,10 +125,14 @@ def array2tensor(nparray):
     import numpy as np
     # Byte , Char , Short , Int , Long , Float , and Double
     npType2tensorType = {'int8':'torch.ByteTensor',
+                         'uint8':'torch.ShortTensor',
                          'int8':'torch.CharTensor',
                          'int16':'torch.ShortTensor',
+                         'uint16':'torch.IntTensor',
                          'int32':'torch.IntTensor',
+                         'uint32':'torch.LongTensor',
                          'int64':'torch.LongTensor',
+                         'uint32':'torch.FloatTensor',
                          'float32':'torch.FloatTensor',
                          'float64':'torch.DoubleTensor'
                         }
@@ -138,5 +145,5 @@ def array2tensor(nparray):
         t.copyNumpyArray(nparray)
         return t
     else:
-        print('Unsupported numpy data type:'+str(nparray.dtype))
+        raise ValueError('Unsupported numpy data type:'+str(nparray.dtype))
     

@@ -802,12 +802,19 @@ class TestLuaRuntime(SetupLuaRuntimeMixin, unittest.TestCase):
         self.assertEqual(None, lupa.lua_type([]))
         self.assertEqual(None, lupa.lua_type(lupa))
         self.assertEqual(None, lupa.lua_type(lupa.lua_type))
+
+        
+class TestTorchAndZeroBasedIndex(SetupLuaRuntimeMixin, unittest.TestCase):
+    lua_runtime_kwargs = {'zero_based_index': True}
     def test_self_prepending(self):
         self.lua.execute('obj={}; obj.func = function(obj,val) return val end')
         lua_globals = self.lua.globals()
         obj = lua_globals['obj']
         self.assertEqual(obj.func(obj, 88), obj._func(88))
-
+    def test_zero_based_index(self):
+        tab = self.lua.eval('{3,44,5}')
+        self.assertEqual(tab[1],44)
+        
     def test_torch_numpy_conversion(self):
         import numpy as np
         self.lua.require("torch")
@@ -822,6 +829,12 @@ class TestLuaRuntime(SetupLuaRuntimeMixin, unittest.TestCase):
         arro2 = t2.asNumpyArray().flatten()
         np.testing.assert_array_equal(arri, arro2)
         
+class TestOneBasedIndex(SetupLuaRuntimeMixin, unittest.TestCase):
+    lua_runtime_kwargs = {'zero_based_index': False}
+    
+    def test_zero_based_index(self):
+        tab = self.lua.eval('{3,44,5}')
+        self.assertEqual(tab[1],3)    
 
 class TestAttributesNoAutoEncoding(SetupLuaRuntimeMixin, unittest.TestCase):
     lua_runtime_kwargs = {'encoding': None}
