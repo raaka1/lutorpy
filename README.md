@@ -37,12 +37,12 @@ lua.execute(' greeting = "hello world" ')
 print(greeting)
 ```
 
-### Note: alternative way to use lua
+### Alternative: alternative way to use lua
 if you don't want to mess the python global variables, you can skip the previous line, but you need to access lua global variables through lua.globals(). 
 
 Note that if you do this, all the following code should change acorrdingly.
 
-``` python
+```
 import lutorpy as lua
 lg = lua.globals()
 lua.execute(' greeting = "hello world" ')
@@ -50,8 +50,11 @@ print(lg.greeting)
 # without set_globals you have to use lua.require instead of require
 lua.require("torch")
 ```
-###  you also could switch to one-based indexing
-```python
+###  Alternative: you could also switch back to one-based indexing
+
+Note that if you do this, all the following code should change acorrdingly.
+
+```
 lua.LuaRuntime(zero_based_index=False)
 ```
 
@@ -101,7 +104,7 @@ print(arr)
                                 
 ## convert/copy numpy array to torch tensor
 
-Note: both torch tensor and cuda tensor are supported
+Note: both torch tensor and cuda tensor are supported.
 
 ``` python
 arr = np.random.randn(100)
@@ -164,7 +167,7 @@ print(y)
 ```
 
 ## prepending 'self' as the first argument automatically
-In lua, there are use 'mlp:add(module)' to use function without pass self to the function. In python, it's done by default, There are two ways to prepend 'self' to a lua function.
+In lua, we use syntax like 'mlp:add(module)' to use a function without pass self to the function. But in python, it's done by default, there are two ways to prepend 'self' to a lua function in lutorpy.
 
 The first way is inline prepending by add '_' to before any function name, then it will try to return a prepended version of the function:
 ``` python
