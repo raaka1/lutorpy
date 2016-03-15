@@ -165,7 +165,7 @@ cdef class LuaRuntime:
 
     Example usage::
 
-      >>> from lupa import LuaRuntime
+      >>> from lutorpy._lupa import LuaRuntime
       >>> lua = LuaRuntime()
 
       >>> lua.eval('1+1')

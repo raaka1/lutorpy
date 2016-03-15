@@ -2316,7 +2316,7 @@ class TestFastRLock(unittest.TestCase):
     """Copied from CPython's test.lock_tests module
     """
     def setUp(self):
-        from lupa._lupa import FastRLock
+        from lutorpy._lupa import FastRLock
         self.locktype = FastRLock
 
     def tearDown(self):

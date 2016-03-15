@@ -141,7 +141,6 @@ def array2tensor(nparray):
     if npType2tensorType.has_key(dtype):
         tensorType = npType2tensorType[dtype]
         t = luaRuntime.eval(tensorType+str(nparray.shape).replace(',)',')'))
-        ts = t.storage(t)
         t.copyNumpyArray(nparray)
         return t
     else:
