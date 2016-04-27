@@ -186,10 +186,13 @@ libraries = []
 libraries.append('luaT')
 libraries.append('TH')
 
+import numpy
 config = find_lua_build(no_luajit=has_option('--no-luajit'))
+includes = config.get('include_dirs')
+includes.append(numpy.get_include())
 ext_args = {
     'extra_objects': config.get('extra_objects'),
-    'include_dirs': config.get('include_dirs'),
+    'include_dirs': includes,
     'libraries': libraries,
     'library_dirs': config.get('libdir'),
     'runtime_library_dirs':  config.get('libdir')

@@ -1,9 +1,7 @@
 import os
 import ctypes
-lualib = ctypes.CDLL(os.path.expanduser("~") + "/torch/install/lib/libluajit.so", mode=ctypes.RTLD_GLOBAL)
-THlib = ctypes.CDLL(os.path.expanduser("~") + "/torch/install/lib/libTH.so", mode=ctypes.RTLD_GLOBAL)
-luaTlib = ctypes.CDLL(os.path.expanduser("~") + "/torch/install/lib/libluaT.so", mode=ctypes.RTLD_GLOBAL)
-
+from ctypes.util import find_library
+import os
 import inspect
 # We need to enable global symbol visibility for lupa in order to
 # support binary module loading in Lua.  If we can enable it here, we
@@ -31,6 +29,12 @@ except:
     pass
 
 del _try_import_with_global_library_symbols
+
+
+os.system(os.path.expanduser("~") + "/torch/install/bin/torch-activate")
+lualib = ctypes.CDLL(find_library('luajit'), mode=ctypes.RTLD_GLOBAL)
+THlib = ctypes.CDLL(find_library('TH'), mode=ctypes.RTLD_GLOBAL)
+luaTlib = ctypes.CDLL(find_library('luaT'), mode=ctypes.RTLD_GLOBAL)
 
 # the following is all that should stay in the namespace:
 
