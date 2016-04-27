@@ -16,36 +16,58 @@ python setup.py install     # use sudo if needed
 ```
 # Quick Start
 
-## boot strap lutorpy
+
 ``` python
+## boot strap lutorpy
 import lutorpy as lua
 lua.set_globals(globals(), __builtins__)
+## enable zero-based index
+lua.LuaRuntime(zero_based_index=True)
 
 ## use require("MODULE") to import lua modules
 require("nn")
-require('cunn')
-require('cudnn')
 require("image")
 
 ## run lua code in python with minimal modification:  replace ":" to "._"
 t = torch.DoubleTensor(10,3)
-print(t._size())
+print(t._size()) # corresponding lua version is t:size()
+# or you can pass 'self' manually
+print(t.size(t))
+
+## use zero-based index
+t[0][1] = 24
+print(t[0][1])
 
 ## convert torch tensor to numpy array
 ### Note: the underlying object are sharing the same memory, so the conversion is instant
 arr = t.asNumpyArray()
 print(arr.shape)
 
-## use torch.fromNumpyArray to create tensor
-import numpy as np
-arr = np.random.randn(100)
-t = torch.fromNumpyArray(arr)
-print(t._size())
+## now you are ready to try an example
+## minimal example of multi-layer perception(without training code)
+mlp = nn.Sequential()
+mlp._add(nn.Linear(100, 30))
+mlp._add(nn.Tanh())
+mlp._add(nn.Linear(30, 10))
 
+## generate a numpy array and convert it to torch tensor
+xn = np.random.randn(100)
+xt = torch.fromNumpyArray(xn)
+## process with the neural network
+yt = mlp._forward(xt)
+print(yt)
+
+## or for example, you can plot your result with matplotlib
+yn = yt.asNumpyArray()
+import matplotlib.pyplot as plt
+plt.plot(yn)
+
+## cheers! you get the hang of lutorpy.
+## you can have a look at the step-by-step tutorial and more complete example.
 ```
 
 
-# Tutorial
+# Step-by-step tutorial
 
 ## import lutorpy and bootstrap globals
 
@@ -66,7 +88,7 @@ lua.execute(' greeting = "hello world" ')
 print(greeting)
 ```
 
-### Alternative: alternative way to use lua
+### Alternative way to use lua
 if you don't want to mess the python global variables, you can skip the previous line, but you need to access lua global variables through lua.globals(). 
 
 Note that if you do this, all the following code should change acorrdingly.
@@ -79,7 +101,7 @@ print(lg.greeting)
 # without set_globals you have to use lua.require instead of require
 lua.require("torch")
 ```
-###  Alternative: you could also switch back to one-based indexing
+###  Alternatively you could also switch back to one-based indexing
 
 Note that if you do this, all the following code should change acorrdingly.
 
@@ -203,17 +225,6 @@ mlp.add(mlp, module)
 mlp._add(module) # equaliant to mlp:add(module) in lua
 ```
 
-The second way is using lua.bs to bootstrap the function.
-
-``` python
-mlp = nn.Sequential()
-module = nn.Linear(10, 5)
-# bootstrap the add function
-lua.bs(mlp,'add')
-# now we can use add without passing self as the first arugment
-mlp.add(module)
-```
-
 ## build another model and training it
 
 Train a model to perform XOR operation (see [this torch tutorial](https://github.com/torch/nn/blob/master/doc/training.md)).
@@ -259,6 +270,9 @@ x[0] = -0.5; x[1] =  0.5; print(mlp._forward(x))
 x[0] = -0.5; x[1] = -0.5; print(mlp._forward(x))
 
 ```
+
+# More usage and details
+Lutorpy is built upon [lupa](https://github.com/scoder/lupa), there are more features provided by lupa could be also useful, please check it out.
 
 # Acknowledge
 
