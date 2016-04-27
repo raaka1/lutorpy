@@ -8,7 +8,6 @@ MANIFEST
 *.pyc
 *.egg-info
 *.so
-*.c
 lupa/version.py
 
 # Vim swapfiles

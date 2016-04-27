@@ -748,37 +748,37 @@ cdef extern from "luaT.h":
     void *luaT_toudata(lua_State *L, int ud, const char *tname);
     void luaT_pushudata(lua_State *L, void *udata, const char *tname);
 
-cdef public api char2NumpyArray(char* data, long long size) with gil:
+cdef char2NumpyArray(char* data, long long size) with gil:
     if not (data and size >= 0): raise ValueError
     cdef np.npy_intp dims = size
     return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_INT8, <void*>data)
-cdef public api uchar2NumpyArray(unsigned char* data, long long size) with gil:
+cdef uchar2NumpyArray(unsigned char* data, long long size) with gil:
     if not (data and size >= 0): raise ValueError
     cdef np.npy_intp dims = size
     return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_UINT8, <void*>data)
-cdef public api short2NumpyArray(short* data, long long size) with gil:
+cdef short2NumpyArray(short* data, long long size) with gil:
     if not (data and size >= 0): raise ValueError
     cdef np.npy_intp dims = size
     return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_LONG, <void*>data)
-cdef public api int2NumpyArray(int* data, long long size) with gil:
+cdef int2NumpyArray(int* data, long long size) with gil:
     if not (data and size >= 0): raise ValueError
     cdef np.npy_intp dims = size
     return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_LONG, <void*>data)
-cdef public api long2NumpyArray(long* data, long long size) with gil:
+cdef long2NumpyArray(long* data, long long size) with gil:
     if not (data and size >= 0): raise ValueError
     cdef np.npy_intp dims = size
     return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_LONG, <void*>data)
-cdef public api float2NumpyArray(float* data, long long size) with gil:
+cdef float2NumpyArray(float* data, long long size) with gil:
     if not (data and size >= 0): raise ValueError
     cdef np.npy_intp dims = size
     return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_FLOAT, <void*>data)
-cdef public api double2NumpyArray(double* data, long long size) with gil:
+cdef double2NumpyArray(double* data, long long size) with gil:
     if not (data and size >= 0): raise ValueError
     cdef np.npy_intp dims = size
     return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_DOUBLE, <void*>data)
 
 
-cdef public api copyToNumpyArray(double* src, double[:] dst, long long size) with gil:
+cdef copyToNumpyArray(double* src, double[:] dst, long long size) with gil:
     if not (src and size >= 0): raise ValueError
     cdef long long i;
     for i in range(size):
