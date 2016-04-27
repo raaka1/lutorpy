@@ -822,7 +822,7 @@ class TestTorchAndZeroBasedIndex(SetupLuaRuntimeMixin, unittest.TestCase):
         torch = lua_globals['torch']
         
         arri = np.random.randn(10,5)
-        t = torch.Tensor().fromNumpyArray(arri)
+        t = torch.fromNumpyArray(arri)
         arro = t.asNumpyArray()
         np.testing.assert_array_equal(arri, arro)
         

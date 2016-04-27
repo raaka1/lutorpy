@@ -100,7 +100,7 @@ Note: both torch tensor and cuda tensor are supported.
 ``` python
 arr = np.random.randn(100)
 print(arr)
-t = torch.Tensor().fromNumpyArray(arr)
+t = torch.fromNumpyArray(arr)
 print(t)
 
 ```
@@ -116,7 +116,7 @@ print(arr)
 
 arr = np.random.randn(100)
 print(arr)
-t = torch.Tensor().fromNumpyArray(arr)
+t = torch.fromNumpyArray(arr)
 cudat = t._cuda()
 print(cudat)
 ```

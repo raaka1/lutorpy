@@ -228,6 +228,12 @@ cdef class LuaRuntime:
         self.init_python_lib(register_eval, register_builtins)
         lua.lua_settop(L, 0)
         lua.lua_atpanic(L, <lua.lua_CFunction>1)
+        try:
+            self.require("torch")
+            torch = self.eval("torch")
+            torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)
+        except:
+            print("Warning: failed to inject 'fromNumpyArray' function to torch, torch.fromNumpyArray won't work ")
 
     def __dealloc__(self):
         if self._state is not NULL:
@@ -868,57 +874,57 @@ cdef object array2THCharStorage(LuaRuntime runtime, lua_State* L, char [:] data)
         unlock_runtime(runtime)
     return storage
 
+def fromNumpyArray(_LuaObject obj, npArray):
+    cdef lua_State* L = obj._state
+    lock_runtime(obj._runtime)
+    old_top = lua.lua_gettop(L)
+    tensor = None
+    try:
+        obj._runtime.require("torch")
+        lg = obj._runtime.globals()
+        if npArray.dtype == 'double':
+            storage = array2THDoubleStorage(obj._runtime, L, npArray.flatten())
+            lg._ = storage
+            tensor = obj._runtime.eval("torch.DoubleTensor(_)")
+        elif npArray.dtype == 'float':
+            storage = array2THFloatStorage(obj._runtime, L, npArray.flatten())
+            lg._ = storage
+            tensor = obj._runtime.eval("torch.FloatTensor(_)")
+        elif npArray.dtype == 'int64':
+            storage = array2THLongStorage(obj._runtime, L, npArray.flatten())
+            lg._ = storage
+            tensor = obj._runtime.eval("torch.LongTensor(_)")
+        elif npArray.dtype == 'int16':
+            storage = array2THShortStorage(obj._runtime, L, npArray.flatten())
+            lg._ = storage
+            tensor = obj._runtime.eval("torch.ShortTensor(_)")
+        elif npArray.dtype == 'int32':
+            storage = array2THIntStorage(obj._runtime, L, npArray.flatten())
+            lg._ = storage
+            tensor = obj._runtime.eval("torch.IntTensor(_)")
+        elif npArray.dtype == 'int8':
+            storage = array2THCharStorage(obj._runtime, L, npArray.flatten())
+            lg._ = storage
+            tensor = obj._runtime.eval("torch.CharTensor(_)")
+        elif npArray.dtype == 'uint8':
+            storage = array2THByteStorage(obj._runtime, L, npArray.flatten())
+            lg._ = storage
+            tensor = obj._runtime.eval("torch.ByteTensor(_)")
+        shape = npArray.shape
+        tensor = tensor.reshape(tensor, *shape)
+    finally:
+        lua.lua_settop(L, old_top)
+        unlock_runtime(obj._runtime)
+    if tensor:
+        return tensor
+    else:
+        raise Exception('Error occured during conversion')   
+
 @cython.final
 @cython.internal
 @cython.no_gc_clear
 cdef class _TorchTensor(_LuaObject):
-    
-    def fromNumpyArray(_TorchTensor self, npArray):
-        cdef lua_State* L = self._state
-        lock_runtime(self._runtime)
-        old_top = lua.lua_gettop(L)
-        tensor = None
-        try:
-            self._runtime.require("torch")
-            lg = self._runtime.globals()
-            if npArray.dtype == 'double':
-                storage = array2THDoubleStorage(self._runtime, L, npArray.flatten())
-                lg._ = storage
-                tensor = self._runtime.eval("torch.DoubleTensor(_)")
-            elif npArray.dtype == 'float':
-                storage = array2THFloatStorage(self._runtime, L, npArray.flatten())
-                lg._ = storage
-                tensor = self._runtime.eval("torch.FloatTensor(_)")
-            elif npArray.dtype == 'int64':
-                storage = array2THLongStorage(self._runtime, L, npArray.flatten())
-                lg._ = storage
-                tensor = self._runtime.eval("torch.LongTensor(_)")
-            elif npArray.dtype == 'int16':
-                storage = array2THShortStorage(self._runtime, L, npArray.flatten())
-                lg._ = storage
-                tensor = self._runtime.eval("torch.ShortTensor(_)")
-            elif npArray.dtype == 'int32':
-                storage = array2THIntStorage(self._runtime, L, npArray.flatten())
-                lg._ = storage
-                tensor = self._runtime.eval("torch.IntTensor(_)")
-            elif npArray.dtype == 'int8':
-                storage = array2THCharStorage(self._runtime, L, npArray.flatten())
-                lg._ = storage
-                tensor = self._runtime.eval("torch.CharTensor(_)")
-            elif npArray.dtype == 'uint8':
-                storage = array2THByteStorage(self._runtime, L, npArray.flatten())
-                lg._ = storage
-                tensor = self._runtime.eval("torch.ByteTensor(_)")
-            shape = npArray.shape
-            tensor = tensor.reshape(tensor, *shape)
-        finally:
-            lua.lua_settop(L, old_top)
-            unlock_runtime(self._runtime)
-        if tensor:
-            return tensor
-        else:
-            raise Exception('Error occured during conversion')   
-            
+  
     def __array__(_TorchTensor self):
         nparray = self.asNumpyArray()
         return nparray

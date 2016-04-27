@@ -96,8 +96,6 @@ def execute(cmd):
     update_globals()
     return ret
 
-
-
 def table(*args, **kwargs):
     ret = luaRuntime.table(*args, **kwargs)
     update_globals()
@@ -120,4 +118,5 @@ def boostrap_self(obj,func_name):
     obj[func_name+'_'] = func
     obj[func_name] = func_self
 
-bs = boostrap_self 
+bs = boostrap_self
+
