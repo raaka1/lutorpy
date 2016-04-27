@@ -26,7 +26,7 @@ python setup.py install     # use sudo if needed
 ```
 # Quick Start
 
-
+## basic usage
 ``` python
 ## boot strap lutorpy
 import lutorpy as lua
@@ -51,8 +51,9 @@ print(t[0][1])
 ### Note: the underlying object are sharing the same memory, so the conversion is instant
 arr = t.asNumpyArray()
 print(arr.shape)
-
-## now you are ready to try an example
+```
+## example: multi-layer perception
+``` python
 ## minimal example of multi-layer perception(without training code)
 mlp = nn.Sequential()
 mlp._add(nn.Linear(100, 30))
