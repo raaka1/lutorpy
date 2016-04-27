@@ -51,6 +51,7 @@ mlp._add(nn.Tanh())
 mlp._add(nn.Linear(30, 10))
 
 ## generate a numpy array and convert it to torch tensor
+import numpy as np
 xn = np.random.randn(100)
 xt = torch.fromNumpyArray(xn)
 ## process with the neural network
