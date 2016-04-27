@@ -1,10 +1,9 @@
 # Lutorpy
 
-Lutorpy is a two-way bridge between Python/Numpy and Lua/Torch, allowing use using Torch packages(nn, rnn etc.) with numpy inside python.
+Lutorpy is a two-way bridge between Python/Numpy and Lua/Torch, it enables using Torch packages(nn, rnn etc.) in python.
 
-Support pythonic features such as zero-base indexing and automatic prepending self to function.
+Support pythonic features such as zero-base indexing and automatic prepending self to function and fast conversion between numpy array and torch tensor.
 
-This library is based on [lupa](https://github.com/scoder/lupa), please refer to [lupa](https://github.com/scoder/lupa) for more detailed usage.
 # Installation
 You need to install torch before you start
 ``` bash
