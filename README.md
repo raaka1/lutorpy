@@ -14,9 +14,38 @@ cd lutorpy
 python setup.py install     # use sudo if needed
 
 ```
+# Quick Start
+
+## boot strap lutorpy
+``` python
+import lutorpy as lua
+lua.set_globals(globals(), __builtins__)
+
+## use require("MODULE") to import lua modules
+require("nn")
+require('cunn')
+require('cudnn')
+require("image")
+
+## run lua code in python with minimal modification:  replace ":" to "._"
+t = torch.DoubleTensor(10,3)
+print(t._size())
+
+## convert torch tensor to numpy array
+### Note: the underlying object are sharing the same memory, so the conversion is instant
+arr = t.asNumpyArray()
+print(arr.shape)
+
+## use torch.fromNumpyArray to create tensor
+import numpy as np
+arr = np.random.randn(100)
+t = torch.fromNumpyArray(arr)
+print(t._size())
+
+```
 
 
-# Getting Start
+# Tutorial
 
 ## import lutorpy and bootstrap globals
 

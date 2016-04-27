@@ -79,7 +79,7 @@ def require(module_name):
     update_globals()
     return ret
 
-def set_globals(g, bi, verbose=True):
+def set_globals(g, bi, verbose=False):
     global globals_,builtins_,warningList
     warningList = []
     builtins_ = dir(bi)
