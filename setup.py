@@ -182,11 +182,20 @@ def has_option(name):
         return True
     return False
 
+libraries = []
+libraries.append('luaT')
+libraries.append('TH')
+
 config = find_lua_build(no_luajit=has_option('--no-luajit'))
 ext_args = {
     'extra_objects': config.get('extra_objects'),
     'include_dirs': config.get('include_dirs'),
+    'libraries': libraries,
+    'library_dirs': config.get('libdir'),
+    'runtime_library_dirs':  config.get('libdir')
 }
+
+
 
 macros = [('LUA_COMPAT_ALL', None)]
 if has_option('--without-assert'):

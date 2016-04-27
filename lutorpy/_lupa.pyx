@@ -696,22 +696,219 @@ cdef object lua_object_repr(lua_State* L, encoding):
         # safe 'decode'
         return py_bytes.decode('ISO-8859-1')
 
+# Import the Python-level symbols of numpy
+import numpy as np
+
+# Import the C-level symbols of numpy
+cimport numpy as np
+
+# Numpy must be initialized. When using numpy from C or Cython you must
+# _always_ do that, or you will have segfaults
+np.import_array()
+        
+cdef extern from "THTensor.h":
+    cdef struct THDoubleTensor
+    double *THDoubleTensor_data(THDoubleTensor *self)
+cdef extern from "THTensor.h":
+    cdef struct THCharTensor
+    char *THCharTensor_data(THCharTensor *self)
+cdef extern from "THTensor.h":
+    cdef struct THByteTensor
+    unsigned char *THByteTensor_data(THByteTensor *self)
+cdef extern from "THTensor.h":
+    cdef struct THIntTensor
+    int *THIntTensor_data(THIntTensor *self)
+cdef extern from "THTensor.h":
+    cdef struct THShortTensor
+    short *THShortTensor_data(THShortTensor *self)
+cdef extern from "THTensor.h":
+    cdef struct THLongTensor
+    long *THLongTensor_data(THLongTensor *self)
+cdef extern from "THTensor.h":
+    cdef struct THFloatTensor
+    float *THFloatTensor_data(THFloatTensor *self)
+    
+cdef extern from "luaT.h":
+    void *luaT_toudata(lua_State *L, int ud, const char *tname);
+
+cdef public api char2NumpyArray(char* data, long long size) with gil:
+    if not (data and size >= 0): raise ValueError
+    cdef np.npy_intp dims = size
+    return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_INT8, <void*>data)
+cdef public api uchar2NumpyArray(unsigned char* data, long long size) with gil:
+    if not (data and size >= 0): raise ValueError
+    cdef np.npy_intp dims = size
+    return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_UINT8, <void*>data)
+cdef public api short2NumpyArray(short* data, long long size) with gil:
+    if not (data and size >= 0): raise ValueError
+    cdef np.npy_intp dims = size
+    return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_LONG, <void*>data)
+cdef public api int2NumpyArray(int* data, long long size) with gil:
+    if not (data and size >= 0): raise ValueError
+    cdef np.npy_intp dims = size
+    return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_LONG, <void*>data)
+cdef public api long2NumpyArray(long* data, long long size) with gil:
+    if not (data and size >= 0): raise ValueError
+    cdef np.npy_intp dims = size
+    return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_LONG, <void*>data)
+cdef public api float2NumpyArray(float* data, long long size) with gil:
+    if not (data and size >= 0): raise ValueError
+    cdef np.npy_intp dims = size
+    return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_FLOAT, <void*>data)
+cdef public api double2NumpyArray(double* data, long long size) with gil:
+    if not (data and size >= 0): raise ValueError
+    cdef np.npy_intp dims = size
+    return np.PyArray_SimpleNewFromData(1, &dims, np.NPY_DOUBLE, <void*>data)
+
+
+cdef public api copyToNumpyArray(double* src, double[:] dst, long long size) with gil:
+    if not (src and size >= 0): raise ValueError
+    cdef long long i;
+    for i in range(size):
+        dst[i] = src[i]
+
 @cython.final
 @cython.internal
 @cython.no_gc_clear
 cdef class _TorchTensor(_LuaObject):
+   
+    def __array__(_TorchTensor self):
+        nparray = self.asNumpyArray()
+        return nparray
+    def _getTotalSize(_TorchTensor self):
+        size = self.size(self)
+        dims = size.size(size)
+        if dims >= 1:
+            totalSize = 1
+            for d in range(dims):
+                if self._runtime._zero_based_index:
+                    totalSize *= size[d]
+                else:
+                    totalSize *= size[d+1]
+            return totalSize
+        else:
+            return 0
+
+    def _getDoubleNumpyArray(_TorchTensor self):
+        cdef lua_State* L = self._state
+        cdef THDoubleTensor *native
+        cdef double *data
+        totalSize = self._getTotalSize()
+        lock_runtime(self._runtime)
+        old_top = lua.lua_gettop(L)
+        try:
+            self.push_lua_object()
+            native = <THDoubleTensor*?>luaT_toudata(L,-1,"torch.DoubleTensor")
+            data = THDoubleTensor_data(native)
+            nparray = double2NumpyArray(data, totalSize)
+        finally:
+            lua.lua_settop(L, old_top)
+            unlock_runtime(self._runtime)
+        return nparray
+    
+    def _getFloatNumpyArray(_TorchTensor self):
+        cdef lua_State* L = self._state
+        cdef THFloatTensor *native
+        cdef float *data
+        totalSize = self._getTotalSize()
+        lock_runtime(self._runtime)
+        old_top = lua.lua_gettop(L)
+        try:
+            self.push_lua_object()
+            native = <THFloatTensor*?>luaT_toudata(L,-1,"torch.FloatTensor")
+            data = THFloatTensor_data(native)
+            nparray = float2NumpyArray(data, totalSize)
+        finally:
+            lua.lua_settop(L, old_top)
+            unlock_runtime(self._runtime)
+        return nparray
+    
+    def _getLongNumpyArray(_TorchTensor self):
+        cdef lua_State* L = self._state
+        cdef THLongTensor *native
+        cdef long *data
+        totalSize = self._getTotalSize()
+        lock_runtime(self._runtime)
+        old_top = lua.lua_gettop(L)
+        try:
+            self.push_lua_object()
+            native = <THLongTensor*?>luaT_toudata(L,-1,"torch.LongTensor")
+            data = THLongTensor_data(native)
+            nparray = long2NumpyArray(data, totalSize)
+        finally:
+            lua.lua_settop(L, old_top)
+            unlock_runtime(self._runtime)
+        return nparray
+
+    def _getIntNumpyArray(_TorchTensor self):
+        cdef lua_State* L = self._state
+        cdef THIntTensor *native
+        cdef int *data
+        totalSize = self._getTotalSize()
+        lock_runtime(self._runtime)
+        old_top = lua.lua_gettop(L)
+        try:
+            self.push_lua_object()
+            native = <THIntTensor*?>luaT_toudata(L,-1,"torch.IntTensor")
+            data = THIntTensor_data(native)
+            nparray = int2NumpyArray(data, totalSize)
+        finally:
+            lua.lua_settop(L, old_top)
+            unlock_runtime(self._runtime)
+        return nparray
+    
+    def _getShortNumpyArray(_TorchTensor self):
+        cdef lua_State* L = self._state
+        cdef THShortTensor *native
+        cdef short *data
+        totalSize = self._getTotalSize()
+        lock_runtime(self._runtime)
+        old_top = lua.lua_gettop(L)
+        try:
+            self.push_lua_object()
+            native = <THShortTensor*?>luaT_toudata(L,-1,"torch.ShortTensor")
+            data = THShortTensor_data(native)
+            nparray = short2NumpyArray(data, totalSize)
+        finally:
+            lua.lua_settop(L, old_top)
+            unlock_runtime(self._runtime)
+        return nparray
+    
+    def _getCharNumpyArray(_TorchTensor self):
+        cdef lua_State* L = self._state
+        cdef THCharTensor *native
+        cdef char *data
+        totalSize = self._getTotalSize()
+        lock_runtime(self._runtime)
+        old_top = lua.lua_gettop(L)
+        try:
+            self.push_lua_object()
+            native = <THCharTensor*?>luaT_toudata(L,-1,"torch.CharTensor")
+            data = THCharTensor_data(native)
+            nparray = char2NumpyArray(data, totalSize)
+        finally:
+            lua.lua_settop(L, old_top)
+            unlock_runtime(self._runtime)
+        return nparray
+    
+    def _getByteNumpyArray(_TorchTensor self):
+        cdef lua_State* L = self._state
+        cdef THByteTensor *native
+        cdef unsigned char *data
+        totalSize = self._getTotalSize()
+        lock_runtime(self._runtime)
+        old_top = lua.lua_gettop(L)
+        try:
+            self.push_lua_object()
+            native = <THByteTensor*?>luaT_toudata(L,-1,"torch.ByteTensor")
+            data = THByteTensor_data(native)
+            nparray = uchar2NumpyArray(data, totalSize)
+        finally:
+            lua.lua_settop(L, old_top)
+            unlock_runtime(self._runtime)
+        return nparray
+
     def asNumpyArray(_TorchTensor self):
-        import numpy as np
-        # Byte , Char , Short , Int , Long , Float , and Double
-        typeDict = {'torch.ByteTensor':np.int8,
-                    'torch.CharTensor':np.int8,
-                    'torch.ShortTensor':np.int16,
-                    'torch.IntTensor':np.int32,
-                    'torch.LongTensor':np.int64,
-                    'torch.FloatTensor':np.float32,
-                    'torch.DoubleTensor':np.float64,
-                    'torch.CudaTensor':np.float32
-                   }
         size = self.size(self)
         dims = size.size(size)
         if dims >= 1:
@@ -722,17 +919,20 @@ cdef class _TorchTensor(_LuaObject):
                 else:
                     totalSize *= size[d+1]
             ttype = str(self.type(self))
-            if typeDict.has_key(ttype):
-                atype = typeDict[ttype]
-            else:
-                atype = np.float64
-            nparray = np.zeros(totalSize, dtype=atype)
-            s = self.storage(self)
-            for i in range(s.size(s)):
-                if self._runtime._zero_based_index:
-                    nparray[i] = s[i]
-                else:
-                    nparray[i] = s[i+1]
+            if ttype == 'torch.DoubleTensor':
+                nparray = self._getDoubleNumpyArray()
+            elif ttype == 'torch.LongTensor':
+                nparray = self._getLongNumpyArray()
+            elif ttype == 'torch.ShortTensor':
+                nparray = self._getShortNumpyArray()
+            elif ttype == 'torch.IntTensor':
+                nparray = self._getIntNumpyArray()
+            elif ttype == 'torch.FloatTensor':
+                nparray = self._getFloatNumpyArray()
+            elif ttype == 'torch.ByteTensor':
+                nparray = self._getByteNumpyArray()
+            elif ttype == 'torch.CharTensor':
+                nparray = self._getCharNumpyArray()
             shape = []
             for d in range(dims):
                 if self._runtime._zero_based_index:

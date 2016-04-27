@@ -1,6 +1,8 @@
 import os
 import ctypes
 lualib = ctypes.CDLL(os.path.expanduser("~") + "/torch/install/lib/libluajit.so", mode=ctypes.RTLD_GLOBAL)
+THlib = ctypes.CDLL(os.path.expanduser("~") + "/torch/install/lib/libTH.so", mode=ctypes.RTLD_GLOBAL)
+luaTlib = ctypes.CDLL(os.path.expanduser("~") + "/torch/install/lib/libluaT.so", mode=ctypes.RTLD_GLOBAL)
 
 import inspect
 # We need to enable global symbol visibility for lupa in order to
