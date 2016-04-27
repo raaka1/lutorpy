@@ -790,6 +790,8 @@ cdef class _TorchTensor(_LuaObject):
             return 0
 
     def _getDoubleNumpyArray(_TorchTensor self):
+        self = self.contiguous(self)
+        
         cdef lua_State* L = self._state
         cdef THDoubleTensor *native
         cdef double *data
@@ -807,6 +809,8 @@ cdef class _TorchTensor(_LuaObject):
         return nparray
     
     def _getFloatNumpyArray(_TorchTensor self):
+        self = self.contiguous(self)
+        
         cdef lua_State* L = self._state
         cdef THFloatTensor *native
         cdef float *data
@@ -824,6 +828,8 @@ cdef class _TorchTensor(_LuaObject):
         return nparray
     
     def _getLongNumpyArray(_TorchTensor self):
+        self = self.contiguous(self)
+        
         cdef lua_State* L = self._state
         cdef THLongTensor *native
         cdef long *data
@@ -841,6 +847,8 @@ cdef class _TorchTensor(_LuaObject):
         return nparray
 
     def _getIntNumpyArray(_TorchTensor self):
+        self = self.contiguous(self)
+        
         cdef lua_State* L = self._state
         cdef THIntTensor *native
         cdef int *data
@@ -858,6 +866,8 @@ cdef class _TorchTensor(_LuaObject):
         return nparray
     
     def _getShortNumpyArray(_TorchTensor self):
+        self = self.contiguous(self)
+        
         cdef lua_State* L = self._state
         cdef THShortTensor *native
         cdef short *data
@@ -875,6 +885,8 @@ cdef class _TorchTensor(_LuaObject):
         return nparray
     
     def _getCharNumpyArray(_TorchTensor self):
+        self = self.contiguous(self)
+        
         cdef lua_State* L = self._state
         cdef THCharTensor *native
         cdef char *data
@@ -892,6 +904,8 @@ cdef class _TorchTensor(_LuaObject):
         return nparray
     
     def _getByteNumpyArray(_TorchTensor self):
+        self = self.contiguous(self)
+        
         cdef lua_State* L = self._state
         cdef THByteTensor *native
         cdef unsigned char *data
