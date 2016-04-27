@@ -31,8 +31,9 @@ Now, we are ready to install lutorpy
 ``` bash
 git clone https://github.com/imodpasteur/lutorpy.git
 cd lutorpy
-python setup.py install     # use sudo if needed
+sudo python setup.py install
 ```
+#### note that it has been tested on ubuntu, please report issue if you encountered error.
 # Quick Start
 
 ## basic usage
