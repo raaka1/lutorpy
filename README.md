@@ -5,14 +5,24 @@ Lutorpy is a two-way bridge between Python/Numpy and Lua/Torch, allowing use usi
 Support pythonic features such as zero-base indexing and automatic prepending self to function.
 
 This library is based on [lupa](https://github.com/scoder/lupa), please refer to [lupa](https://github.com/scoder/lupa) for more detailed usage.
-
 # Installation
+Firstly, you need install torch
 ``` bash
-
+curl -s https://raw.githubusercontent.com/torch/distro/master/install-deps | bash
+```
+After you can use luarocks to install torch/lua modules
+``` bash
+luarocks install nn
+```
+If you don't have numpy installed you can install it by pip
+``` bash
+pip install numpy
+```
+Now, we are ready to install lutorpy
+``` bash
 git clone https://github.com/oeway/lutorpy.git
 cd lutorpy
 python setup.py install     # use sudo if needed
-
 ```
 # Quick Start
 
@@ -26,7 +36,6 @@ lua.LuaRuntime(zero_based_index=True)
 
 ## use require("MODULE") to import lua modules
 require("nn")
-require("image")
 
 ## run lua code in python with minimal modification:  replace ":" to "._"
 t = torch.DoubleTensor(10,3)
