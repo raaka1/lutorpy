@@ -20,7 +20,7 @@ pip install numpy
 ```
 Now, we are ready to install lutorpy
 ``` bash
-git clone https://github.com/oeway/lutorpy.git
+git clone https://github.com/imodpasteur/lutorpy.git
 cd lutorpy
 python setup.py install     # use sudo if needed
 ```
