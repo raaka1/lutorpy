@@ -14,7 +14,10 @@ Lutorpy is a libray built for deep learning with torch in python,  by a two-way 
 # Installation
 You need to install torch before you start
 ``` bash
-curl -s https://raw.githubusercontent.com/torch/distro/master/install-deps | bash
+# in a terminal, run the commands WITHOUT sudo
+git clone https://github.com/torch/distro.git ~/torch --recursive
+cd ~/torch; bash install-deps;
+./install.sh
 ```
 Then, you can use luarocks to install torch/lua modules
 ``` bash
