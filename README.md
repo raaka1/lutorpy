@@ -1,8 +1,15 @@
 # Lutorpy
 
-Lutorpy is a two-way bridge between Python/Numpy and Lua/Torch, it enables using Torch packages(nn, rnn etc.) in python.
+Lutorpy is a libray built for deep learning with torch in python,  by a two-way bridge between Python/Numpy and Lua/Torch, you can use any Torch modules(nn, rnn etc.) in python, and easily convert variables(array and tensor) between torch and numpy.
 
-Support pythonic features such as zero-base indexing and automatic prepending self to function and fast conversion between numpy array and torch tensor.
+# Features
+
+* import any lua/torch module to python and use it like python moduels
+* use lua objects directly in python, conversion between python object and lua object are done automatically
+* support zero-base indexing (lua uses 1-based indexing)
+* automatic prepending self to function by "._" syntax, easily convert ":" operator in lua to python
+* create torch tensor from numpy array with torch.fromNumpyArray(arr)
+* use tensor.asNumpyarray() to create a numpy array which share the memory with torch tensor
 
 # Installation
 You need to install torch before you start
