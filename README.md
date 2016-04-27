@@ -6,15 +6,15 @@ Support pythonic features such as zero-base indexing and automatic prepending se
 
 This library is based on [lupa](https://github.com/scoder/lupa), please refer to [lupa](https://github.com/scoder/lupa) for more detailed usage.
 # Installation
-Firstly, you need install torch
+You need to install torch before you start
 ``` bash
 curl -s https://raw.githubusercontent.com/torch/distro/master/install-deps | bash
 ```
-After you can use luarocks to install torch/lua modules
+Then, you can use luarocks to install torch/lua modules
 ``` bash
 luarocks install nn
 ```
-If you don't have numpy installed you can install it by pip
+If you don't have numpy installed, install it by pip
 ``` bash
 pip install numpy
 ```
