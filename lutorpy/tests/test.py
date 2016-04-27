@@ -819,15 +819,12 @@ class TestTorchAndZeroBasedIndex(SetupLuaRuntimeMixin, unittest.TestCase):
         import numpy as np
         self.lua.require("torch")
         lua_globals = self.lua.globals()
-        arri = np.random.randn(100)
-        t = lua_globals['torch'].Tensor(10,10)
-        t.copyNumpyArray(arri)
-        arro = t.asNumpyArray().flatten()
-        np.testing.assert_array_equal(arri, arro)
+        torch = lua_globals['torch']
         
-        t2 = lutorpy.array2tensor(arri)
-        arro2 = t2.asNumpyArray().flatten()
-        np.testing.assert_array_equal(arri, arro2)
+        arri = np.random.randn(10,5)
+        t = torch.Tensor().fromNumpyArray(arri)
+        arro = t.asNumpyArray()
+        np.testing.assert_array_equal(arri, arro)
         
 class TestOneBasedIndex(SetupLuaRuntimeMixin, unittest.TestCase):
     lua_runtime_kwargs = {'zero_based_index': False}

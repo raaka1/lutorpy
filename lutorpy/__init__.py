@@ -120,31 +120,4 @@ def boostrap_self(obj,func_name):
     obj[func_name+'_'] = func
     obj[func_name] = func_self
 
-bs = boostrap_self
-
-
-def array2tensor(nparray):
-    import numpy as np
-    # Byte , Char , Short , Int , Long , Float , and Double
-    npType2tensorType = {'int8':'torch.ByteTensor',
-                         'uint8':'torch.ShortTensor',
-                         'int8':'torch.CharTensor',
-                         'int16':'torch.ShortTensor',
-                         'uint16':'torch.IntTensor',
-                         'int32':'torch.IntTensor',
-                         'uint32':'torch.LongTensor',
-                         'int64':'torch.LongTensor',
-                         'uint32':'torch.FloatTensor',
-                         'float32':'torch.FloatTensor',
-                         'float64':'torch.DoubleTensor'
-                        }
-    luaRuntime.require('torch')
-    dtype = str(nparray.dtype)
-    if npType2tensorType.has_key(dtype):
-        tensorType = npType2tensorType[dtype]
-        t = luaRuntime.eval(tensorType+str(nparray.shape).replace(',)',')'))
-        t.copyNumpyArray(nparray)
-        return t
-    else:
-        raise ValueError('Unsupported numpy data type:'+str(nparray.dtype))
-    
+bs = boostrap_self 

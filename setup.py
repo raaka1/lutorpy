@@ -291,7 +291,7 @@ setup(
         'Operating System :: OS Independent',
         'Topic :: Software Development',
     ],
-
+    install_requires=['numpy'],
     packages=['lutorpy'],
     ext_modules=ext_modules,
     **extra_setup_args

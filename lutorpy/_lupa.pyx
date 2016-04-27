@@ -705,31 +705,42 @@ cimport numpy as np
 # Numpy must be initialized. When using numpy from C or Cython you must
 # _always_ do that, or you will have segfaults
 np.import_array()
-        
+
+cdef extern from "THStorage.h":
+    cdef struct THDoubleStorage
+    THDoubleStorage* THDoubleStorage_newWithData(double *data, long size)
+    cdef struct THFloatStorage
+    THFloatStorage* THFloatStorage_newWithData(float *data, long size)
+    cdef struct THByteStorage
+    THByteStorage* THByteStorage_newWithData(unsigned char *data, long size)
+    cdef struct THCharStorage
+    THCharStorage* THCharStorage_newWithData(char *data, long size)
+    cdef struct THIntStorage
+    THIntStorage* THIntStorage_newWithData(int *data, long size)
+    cdef struct THShortStorage
+    THShortStorage* THShortStorage_newWithData(short *data, long size)
+    cdef struct THLongStorage
+    THLongStorage* THLongStorage_newWithData(long *data, long size)
+    
 cdef extern from "THTensor.h":
     cdef struct THDoubleTensor
     double *THDoubleTensor_data(THDoubleTensor *self)
-cdef extern from "THTensor.h":
     cdef struct THCharTensor
     char *THCharTensor_data(THCharTensor *self)
-cdef extern from "THTensor.h":
     cdef struct THByteTensor
     unsigned char *THByteTensor_data(THByteTensor *self)
-cdef extern from "THTensor.h":
     cdef struct THIntTensor
     int *THIntTensor_data(THIntTensor *self)
-cdef extern from "THTensor.h":
     cdef struct THShortTensor
     short *THShortTensor_data(THShortTensor *self)
-cdef extern from "THTensor.h":
     cdef struct THLongTensor
     long *THLongTensor_data(THLongTensor *self)
-cdef extern from "THTensor.h":
     cdef struct THFloatTensor
     float *THFloatTensor_data(THFloatTensor *self)
     
 cdef extern from "luaT.h":
     void *luaT_toudata(lua_State *L, int ud, const char *tname);
+    void luaT_pushudata(lua_State *L, void *udata, const char *tname);
 
 cdef public api char2NumpyArray(char* data, long long size) with gil:
     if not (data and size >= 0): raise ValueError
@@ -767,14 +778,151 @@ cdef public api copyToNumpyArray(double* src, double[:] dst, long long size) wit
     for i in range(size):
         dst[i] = src[i]
 
+cdef object array2THDoubleStorage(LuaRuntime runtime, lua_State* L, double [:] data):
+    cdef THDoubleStorage *native
+    lock_runtime(runtime)
+    old_top = lua.lua_gettop(L)
+    try:
+        native = THDoubleStorage_newWithData(&data[0], len(data))
+        luaT_pushudata(L,<void*?>native,"torch.DoubleStorage")
+        storage = py_from_lua(runtime, L, -1)
+    finally:
+        lua.lua_settop(L, old_top)
+        unlock_runtime(runtime)
+    return storage
+cdef object array2THFloatStorage(LuaRuntime runtime, lua_State* L, float [:] data):
+    cdef THFloatStorage *native
+    lock_runtime(runtime)
+    old_top = lua.lua_gettop(L)
+    try:
+        native = THFloatStorage_newWithData(&data[0], len(data))
+        luaT_pushudata(L,<void*?>native,"torch.FloatStorage")
+        storage = py_from_lua(runtime, L, -1)
+    finally:
+        lua.lua_settop(L, old_top)
+        unlock_runtime(runtime)
+    return storage
+
+cdef object array2THLongStorage(LuaRuntime runtime, lua_State* L, long [:] data):
+    cdef THLongStorage *native
+    lock_runtime(runtime)
+    old_top = lua.lua_gettop(L)
+    try:
+        native = THLongStorage_newWithData(&data[0], len(data))
+        luaT_pushudata(L,<void*?>native,"torch.LongStorage")
+        storage = py_from_lua(runtime, L, -1)
+    finally:
+        lua.lua_settop(L, old_top)
+        unlock_runtime(runtime)
+    return storage
+
+cdef object array2THShortStorage(LuaRuntime runtime, lua_State* L, short [:] data):
+    cdef THShortStorage *native
+    lock_runtime(runtime)
+    old_top = lua.lua_gettop(L)
+    try:
+        native = THShortStorage_newWithData(&data[0], len(data))
+        luaT_pushudata(L,<void*?>native,"torch.ShortStorage")
+        storage = py_from_lua(runtime, L, -1)
+    finally:
+        lua.lua_settop(L, old_top)
+        unlock_runtime(runtime)
+    return storage
+
+cdef object array2THIntStorage(LuaRuntime runtime, lua_State* L, int [:] data):
+    cdef THIntStorage *native
+    lock_runtime(runtime)
+    old_top = lua.lua_gettop(L)
+    try:
+        native = THIntStorage_newWithData(&data[0], len(data))
+        luaT_pushudata(L,<void*?>native,"torch.IntStorage")
+        storage = py_from_lua(runtime, L, -1)
+    finally:
+        lua.lua_settop(L, old_top)
+        unlock_runtime(runtime)
+    return storage
+
+cdef object array2THByteStorage(LuaRuntime runtime, lua_State* L, unsigned char [:] data):
+    cdef THByteStorage *native
+    lock_runtime(runtime)
+    old_top = lua.lua_gettop(L)
+    try:
+        native = THByteStorage_newWithData(&data[0], len(data))
+        luaT_pushudata(L,<void*?>native,"torch.ByteStorage")
+        storage = py_from_lua(runtime, L, -1)
+    finally:
+        lua.lua_settop(L, old_top)
+        unlock_runtime(runtime)
+    return storage
+
+cdef object array2THCharStorage(LuaRuntime runtime, lua_State* L, char [:] data):
+    cdef THCharStorage *native
+    lock_runtime(runtime)
+    old_top = lua.lua_gettop(L)
+    try:
+        native = THCharStorage_newWithData(&data[0], len(data))
+        luaT_pushudata(L,<void*?>native,"torch.CharStorage")
+        storage = py_from_lua(runtime, L, -1)
+    finally:
+        lua.lua_settop(L, old_top)
+        unlock_runtime(runtime)
+    return storage
+
 @cython.final
 @cython.internal
 @cython.no_gc_clear
 cdef class _TorchTensor(_LuaObject):
-   
+    
+    def fromNumpyArray(_TorchTensor self, npArray):
+        cdef lua_State* L = self._state
+        lock_runtime(self._runtime)
+        old_top = lua.lua_gettop(L)
+        tensor = None
+        try:
+            self._runtime.require("torch")
+            lg = self._runtime.globals()
+            if npArray.dtype == 'double':
+                storage = array2THDoubleStorage(self._runtime, L, npArray.flatten())
+                lg._ = storage
+                tensor = self._runtime.eval("torch.DoubleTensor(_)")
+            elif npArray.dtype == 'float':
+                storage = array2THFloatStorage(self._runtime, L, npArray.flatten())
+                lg._ = storage
+                tensor = self._runtime.eval("torch.FloatTensor(_)")
+            elif npArray.dtype == 'int64':
+                storage = array2THLongStorage(self._runtime, L, npArray.flatten())
+                lg._ = storage
+                tensor = self._runtime.eval("torch.LongTensor(_)")
+            elif npArray.dtype == 'int16':
+                storage = array2THShortStorage(self._runtime, L, npArray.flatten())
+                lg._ = storage
+                tensor = self._runtime.eval("torch.ShortTensor(_)")
+            elif npArray.dtype == 'int32':
+                storage = array2THIntStorage(self._runtime, L, npArray.flatten())
+                lg._ = storage
+                tensor = self._runtime.eval("torch.IntTensor(_)")
+            elif npArray.dtype == 'int8':
+                storage = array2THCharStorage(self._runtime, L, npArray.flatten())
+                lg._ = storage
+                tensor = self._runtime.eval("torch.CharTensor(_)")
+            elif npArray.dtype == 'uint8':
+                storage = array2THByteStorage(self._runtime, L, npArray.flatten())
+                lg._ = storage
+                tensor = self._runtime.eval("torch.ByteTensor(_)")
+            shape = npArray.shape
+            tensor = tensor.reshape(tensor, *shape)
+        finally:
+            lua.lua_settop(L, old_top)
+            unlock_runtime(self._runtime)
+        if tensor:
+            return tensor
+        else:
+            raise Exception('Error occured during conversion')   
+            
     def __array__(_TorchTensor self):
         nparray = self.asNumpyArray()
         return nparray
+    
     def _getTotalSize(_TorchTensor self):
         size = self.size(self)
         dims = size.size(size)
@@ -956,19 +1104,7 @@ cdef class _TorchTensor(_LuaObject):
             return nparray.reshape(shape)
         else:
             raise Exception('Not implemented for dims = {dims}'.format(dims=dims))
-    
-    def copyNumpyArray(_TorchTensor self, array):
-        s = self.storage(self)
-        sl = s.size(s)
-        a = array.flatten()
-        al = a.shape[0]
-        sal = min(sl,al)
-        for i in xrange(sal):
-            if self._runtime._zero_based_index:
-                s[i] = a[i]
-            else:
-                s[i+1] = a[i]
-        
+
 cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
     cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)
     init_lua_object(obj, runtime, L, n)
