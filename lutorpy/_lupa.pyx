@@ -882,32 +882,33 @@ def fromNumpyArray(_LuaObject obj, npArray):
     try:
         obj._runtime.require("torch")
         lg = obj._runtime.globals()
+        npArray_ = np.ascontiguousarray(npArray).flatten()
         if npArray.dtype == 'double':
-            storage = array2THDoubleStorage(obj._runtime, L, npArray.flatten())
+            storage = array2THDoubleStorage(obj._runtime, L, npArray_)
             lg._ = storage
             tensor = obj._runtime.eval("torch.DoubleTensor(_)")
         elif npArray.dtype == 'float':
-            storage = array2THFloatStorage(obj._runtime, L, npArray.flatten())
+            storage = array2THFloatStorage(obj._runtime, L, npArray_)
             lg._ = storage
             tensor = obj._runtime.eval("torch.FloatTensor(_)")
         elif npArray.dtype == 'int64':
-            storage = array2THLongStorage(obj._runtime, L, npArray.flatten())
+            storage = array2THLongStorage(obj._runtime, L, npArray_)
             lg._ = storage
             tensor = obj._runtime.eval("torch.LongTensor(_)")
         elif npArray.dtype == 'int16':
-            storage = array2THShortStorage(obj._runtime, L, npArray.flatten())
+            storage = array2THShortStorage(obj._runtime, L, npArray_)
             lg._ = storage
             tensor = obj._runtime.eval("torch.ShortTensor(_)")
         elif npArray.dtype == 'int32':
-            storage = array2THIntStorage(obj._runtime, L, npArray.flatten())
+            storage = array2THIntStorage(obj._runtime, L, npArray_)
             lg._ = storage
             tensor = obj._runtime.eval("torch.IntTensor(_)")
         elif npArray.dtype == 'int8':
-            storage = array2THCharStorage(obj._runtime, L, npArray.flatten())
+            storage = array2THCharStorage(obj._runtime, L, npArray_)
             lg._ = storage
             tensor = obj._runtime.eval("torch.CharTensor(_)")
         elif npArray.dtype == 'uint8':
-            storage = array2THByteStorage(obj._runtime, L, npArray.flatten())
+            storage = array2THByteStorage(obj._runtime, L, npArray_)
             lg._ = storage
             tensor = obj._runtime.eval("torch.ByteTensor(_)")
         shape = npArray.shape
