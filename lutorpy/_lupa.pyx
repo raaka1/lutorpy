@@ -942,7 +942,6 @@ cdef class _TorchTensor(_LuaObject):
                     index = size + index + 1
                 if index > size:
                     raise IndexError('index out of range')
-            print index
         return self._getitem(index, is_attr_access=False)
     
     def __array__(_TorchTensor self):
