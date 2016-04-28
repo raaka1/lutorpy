@@ -11,6 +11,36 @@ Lutorpy is a libray built for deep learning with torch in python,  by a two-way 
 * create torch tensor from numpy array with torch.fromNumpyArray(arr)
 * use tensor.asNumpyarray() to create a numpy array which share the memory with torch tensor
 
+# Convert from Lua to Python/Lutorpy
+```lua
+-- lua code                             # python code (with lutorpy)
+                                        import numpy as np
+require "nn"                    ===>    require("nn")
+model = nn.Sequential()         ===>    model = nn.Sequential()
+
+-- use ":" to access add        ===>    # use "._" to access add
+model:add(nn.Linear(10, 3))     ===>    model._add(nn.Linear(10, 30))
+                                        
+x = torch.Tensor(10):zero()     ===>    arr = np.zeros(10)
+
+-- torch style(painful?)        ===>    # numpy style(elegent?) 
+x:narrow(1, 2, 6):fill(1)       ===>    arr[1:7] = 1
+
+                                        # convert numpy array to a torch tensor
+                                        x = torch.fromNumpyArray(arr)
+                                        
+                                        # or you can still use torch style
+x:narrow(1, 7, 2):fill(2)       ===>    x._narrow(1, 7, 2)._fill(2)
+
+-- 1-based index                ===>    # 0-based index
+x[10] = 3                       ===>    x[9] = 3
+                                        
+y = model:forward(x)            ===>    y = model._forward(x)
+
+                                        # you can convert y to a numpy array
+                                        yArr = y.asNumpyArray()
+```
+
 # Installation
 You need to install torch before you start
 ``` bash
