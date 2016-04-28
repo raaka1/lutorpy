@@ -918,7 +918,7 @@ def fromNumpyArray(_LuaObject obj, npArray):
     if tensor:
         return tensor
     else:
-        raise Exception('Error occured during conversion')   
+        raise Exception('Error occurred during conversion')   
 
 @cython.final
 @cython.internal
@@ -957,6 +957,8 @@ cdef class _TorchTensor(_LuaObject):
             native = <THDoubleTensor*?>luaT_toudata(L,-1,"torch.DoubleTensor")
             data = THDoubleTensor_data(native)
             nparray = double2NumpyArray(data, totalSize)
+        except:
+            raise Exception('Error occurred during conversion')   
         finally:
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
@@ -976,6 +978,8 @@ cdef class _TorchTensor(_LuaObject):
             native = <THFloatTensor*?>luaT_toudata(L,-1,"torch.FloatTensor")
             data = THFloatTensor_data(native)
             nparray = float2NumpyArray(data, totalSize)
+        except:
+            raise Exception('Error occurred during conversion') 
         finally:
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
@@ -995,6 +999,8 @@ cdef class _TorchTensor(_LuaObject):
             native = <THLongTensor*?>luaT_toudata(L,-1,"torch.LongTensor")
             data = THLongTensor_data(native)
             nparray = long2NumpyArray(data, totalSize)
+        except:
+            raise Exception('Error occurred during conversion') 
         finally:
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
@@ -1014,6 +1020,8 @@ cdef class _TorchTensor(_LuaObject):
             native = <THIntTensor*?>luaT_toudata(L,-1,"torch.IntTensor")
             data = THIntTensor_data(native)
             nparray = int2NumpyArray(data, totalSize)
+        except:
+            raise Exception('Error occurred during conversion') 
         finally:
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
@@ -1033,6 +1041,8 @@ cdef class _TorchTensor(_LuaObject):
             native = <THShortTensor*?>luaT_toudata(L,-1,"torch.ShortTensor")
             data = THShortTensor_data(native)
             nparray = short2NumpyArray(data, totalSize)
+        except:
+            raise Exception('Error occurred during conversion') 
         finally:
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
@@ -1052,6 +1062,8 @@ cdef class _TorchTensor(_LuaObject):
             native = <THCharTensor*?>luaT_toudata(L,-1,"torch.CharTensor")
             data = THCharTensor_data(native)
             nparray = char2NumpyArray(data, totalSize)
+        except:
+            raise Exception('Error occurred during conversion') 
         finally:
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
@@ -1071,6 +1083,8 @@ cdef class _TorchTensor(_LuaObject):
             native = <THByteTensor*?>luaT_toudata(L,-1,"torch.ByteTensor")
             data = THByteTensor_data(native)
             nparray = uchar2NumpyArray(data, totalSize)
+        except:
+            raise Exception('Error occurred during conversion') 
         finally:
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
@@ -1101,6 +1115,13 @@ cdef class _TorchTensor(_LuaObject):
                 nparray = self._getByteNumpyArray()
             elif ttype == 'torch.CharTensor':
                 nparray = self._getCharNumpyArray()
+            elif ttype == 'torch.CudaTensor':
+                # convert to float tensor first
+                ft = self.float(self)
+                nparray = ft._getFloatNumpyArray()
+            else:
+                raise Exception('Not implemented for {type}'.format(type=ttype))
+                
             shape = []
             for d in range(dims):
                 if self._runtime._zero_based_index:

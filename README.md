@@ -128,6 +128,9 @@ Note: the following setup is mandatory for going through this tutorial.
 import lutorpy as lua
 # setup runtime and use zero-based index
 lua.LuaRuntime(zero_based_index=True)
+
+### note: zero-based index will only work getter operator such as "t[0]", for torch function like narrow, you still need 1-based indexing.
+
 # set the python globals() and __builtins__ to lua,
 # so all the lua global variables can be seen in python globals()
 lua.set_globals(globals(), __builtins__)
@@ -210,10 +213,9 @@ print(t)
 ## convert to/from cudaTensor
 ``` python
 require('cutorch')
-t = torch.randn(10,10)
-cudat = t._cuda()
-#convert cudaTensor to floatTensor before convert to numpy array
-arr = cudat._float().asNumpyArray()
+cudat = torch.CudaTensor(10,10)
+#convert cudaTensor to numpy array
+arr = cudat.asNumpyArray()
 print(arr)
 
 arr = np.random.randn(100)
