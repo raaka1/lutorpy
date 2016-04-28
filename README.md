@@ -14,7 +14,7 @@ Lutorpy is a libray built for deep learning with torch in python,  by a two-way 
 # Convert from Lua to Python/Lutorpy
 ```lua
 -- lua code                             # python code (with lutorpy)
-                                        import numpy as np
+--                                      import numpy as np
 require "nn"                    ===>    require("nn")
 model = nn.Sequential()         ===>    model = nn.Sequential()
 
