@@ -3191,7 +3191,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_12_getIntNumpyArray(str
 static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_14_getShortNumpyArray(struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_16_getCharNumpyArray(struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_18_getByteNumpyArray(struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_self); /* proto */
+static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_self, PyObject *__pyx_v_copy); /* proto */
 static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_22asNumpyArray2(struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7lutorpy_5_lupa_9_LuaTable___iter__(struct __pyx_obj_7lutorpy_5_lupa__LuaTable *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7lutorpy_5_lupa_9_LuaTable_2keys(struct __pyx_obj_7lutorpy_5_lupa__LuaTable *__pyx_v_self); /* proto */
@@ -17904,7 +17904,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_18_getByteNumpyArray(st
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
  * 
- *     def asNumpyArray(_TorchTensor self):
+ *     def asNumpyArray(_TorchTensor self, copy=False):
  */
         __pyx_t_4 = ((PyObject *)__pyx_v_self->__pyx_base._runtime);
         __Pyx_INCREF(__pyx_t_4);
@@ -17944,7 +17944,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_18_getByteNumpyArray(st
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
  * 
- *     def asNumpyArray(_TorchTensor self):
+ *     def asNumpyArray(_TorchTensor self, copy=False):
  */
       __pyx_t_4 = ((PyObject *)__pyx_v_self->__pyx_base._runtime);
       __Pyx_INCREF(__pyx_t_4);
@@ -17983,26 +17983,67 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_18_getByteNumpyArray(st
 /* "lutorpy/_lupa.pyx":1050
  *             unlock_runtime(self._runtime)
  * 
- *     def asNumpyArray(_TorchTensor self):             # <<<<<<<<<<<<<<
+ *     def asNumpyArray(_TorchTensor self, copy=False):             # <<<<<<<<<<<<<<
  *         self = self.contiguous(self)
  *         cdef np.ndarray ndarray
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_21asNumpyArray(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static char __pyx_doc_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray[] = "_TorchTensor.asNumpyArray(self)";
-static PyObject *__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_21asNumpyArray(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
+static PyObject *__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_21asNumpyArray(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray[] = "_TorchTensor.asNumpyArray(self, copy=False)";
+static PyObject *__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_21asNumpyArray(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_copy = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("asNumpyArray (wrapper)", 0);
-  __pyx_r = __pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(((struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *)__pyx_v_self));
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_copy,0};
+    PyObject* values[1] = {0};
+    values[0] = ((PyObject *)Py_False);
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (kw_args > 0) {
+          PyObject* value = PyDict_GetItem(__pyx_kwds, __pyx_n_s_copy);
+          if (value) { values[0] = value; kw_args--; }
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "asNumpyArray") < 0)) __PYX_ERR(0, 1050, __pyx_L3_error)
+      }
+    } else {
+      switch (PyTuple_GET_SIZE(__pyx_args)) {
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+    }
+    __pyx_v_copy = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("asNumpyArray", 0, 0, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 1050, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("lutorpy._lupa._TorchTensor.asNumpyArray", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(((struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *)__pyx_v_self), __pyx_v_copy);
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_self) {
+static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_self, PyObject *__pyx_v_copy) {
   PyArrayObject *__pyx_v_ndarray = 0;
   PyObject *__pyx_v_ttype = NULL;
   PyObject *__pyx_v_ft = NULL;
@@ -18027,7 +18068,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct _
 
   /* "lutorpy/_lupa.pyx":1051
  * 
- *     def asNumpyArray(_TorchTensor self):
+ *     def asNumpyArray(_TorchTensor self, copy=False):
  *         self = self.contiguous(self)             # <<<<<<<<<<<<<<
  *         cdef np.ndarray ndarray
  *         ttype = str(self.type(self))
@@ -18678,7 +18719,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct _
  *             else:
  *                 raise Exception('Not implemented for {type}'.format(type=ttype))             # <<<<<<<<<<<<<<
  * 
- *             ndarray = np.array(array_wrapper, copy=False)
+ *             ndarray = np.array(array_wrapper, copy=copy)
  */
     /*else*/ {
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Not_implemented_for_type, __pyx_n_s_format); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1078, __pyx_L1_error)
@@ -18707,7 +18748,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct _
     /* "lutorpy/_lupa.pyx":1080
  *                 raise Exception('Not implemented for {type}'.format(type=ttype))
  * 
- *             ndarray = np.array(array_wrapper, copy=False)             # <<<<<<<<<<<<<<
+ *             ndarray = np.array(array_wrapper, copy=copy)             # <<<<<<<<<<<<<<
  *             # Assign our object to the 'base' of the ndarray object
  *             ndarray.base = <PyObject*> array_wrapper
  */
@@ -18723,7 +18764,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct _
     PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_v_array_wrapper);
     __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1080, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_copy, Py_False) < 0) __PYX_ERR(0, 1080, __pyx_L1_error)
+    if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_copy, __pyx_v_copy) < 0) __PYX_ERR(0, 1080, __pyx_L1_error)
     __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, __pyx_t_1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 1080, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -18734,7 +18775,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct _
     __pyx_t_3 = 0;
 
     /* "lutorpy/_lupa.pyx":1082
- *             ndarray = np.array(array_wrapper, copy=False)
+ *             ndarray = np.array(array_wrapper, copy=copy)
  *             # Assign our object to the 'base' of the ndarray object
  *             ndarray.base = <PyObject*> array_wrapper             # <<<<<<<<<<<<<<
  *             # Increment the reference count, as the above assignement was done in
@@ -18962,7 +19003,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray(struct _
   /* "lutorpy/_lupa.pyx":1050
  *             unlock_runtime(self._runtime)
  * 
- *     def asNumpyArray(_TorchTensor self):             # <<<<<<<<<<<<<<
+ *     def asNumpyArray(_TorchTensor self, copy=False):             # <<<<<<<<<<<<<<
  *         self = self.contiguous(self)
  *         cdef np.ndarray ndarray
  */
@@ -47948,7 +47989,7 @@ static PyMethodDef __pyx_methods_7lutorpy_5_lupa__TorchTensor[] = {
   {"_getShortNumpyArray", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_15_getShortNumpyArray, METH_NOARGS, __pyx_doc_7lutorpy_5_lupa_12_TorchTensor_14_getShortNumpyArray},
   {"_getCharNumpyArray", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_17_getCharNumpyArray, METH_NOARGS, __pyx_doc_7lutorpy_5_lupa_12_TorchTensor_16_getCharNumpyArray},
   {"_getByteNumpyArray", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_19_getByteNumpyArray, METH_NOARGS, __pyx_doc_7lutorpy_5_lupa_12_TorchTensor_18_getByteNumpyArray},
-  {"asNumpyArray", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_21asNumpyArray, METH_NOARGS, __pyx_doc_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray},
+  {"asNumpyArray", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_21asNumpyArray, METH_VARARGS|METH_KEYWORDS, __pyx_doc_7lutorpy_5_lupa_12_TorchTensor_20asNumpyArray},
   {"asNumpyArray2", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_12_TorchTensor_23asNumpyArray2, METH_NOARGS, __pyx_doc_7lutorpy_5_lupa_12_TorchTensor_22asNumpyArray2},
   {0, 0, 0, 0}
 };

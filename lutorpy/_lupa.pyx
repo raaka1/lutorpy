@@ -1047,7 +1047,7 @@ cdef class _TorchTensor(_LuaObject):
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
  
-    def asNumpyArray(_TorchTensor self):
+    def asNumpyArray(_TorchTensor self, copy=False):
         self = self.contiguous(self)
         cdef np.ndarray ndarray
         ttype = str(self.type(self))
@@ -1076,8 +1076,8 @@ cdef class _TorchTensor(_LuaObject):
                 array_wrapper = self._getCharNumpyArray()
             else:
                 raise Exception('Not implemented for {type}'.format(type=ttype))
-
-            ndarray = np.array(array_wrapper, copy=False)
+                
+            ndarray = np.array(array_wrapper, copy=copy)
             # Assign our object to the 'base' of the ndarray object
             ndarray.base = <PyObject*> array_wrapper
             # Increment the reference count, as the above assignement was done in
