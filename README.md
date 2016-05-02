@@ -19,7 +19,7 @@ require "nn"                    ===>    require("nn")
 model = nn.Sequential()         ===>    model = nn.Sequential()
 
 -- use ":" to access add        ===>    # use "._" to access add
-model:add(nn.Linear(10, 3))     ===>    model._add(nn.Linear(10, 30))
+model:add(nn.Linear(10, 3))     ===>    model._add(nn.Linear(10, 3))
                                         
 x = torch.Tensor(10):zero()     ===>    arr = np.zeros(10)
 
@@ -324,7 +324,7 @@ x[0] = -0.5; x[1] = -0.5; print(mlp._forward(x))
 
 ```
 
-# More usage and details
+# More details about using lua in python
 Lutorpy is built upon [lupa](https://github.com/scoder/lupa), there are more features provided by lupa could be also useful, please check it out.
 
 # Acknowledge
