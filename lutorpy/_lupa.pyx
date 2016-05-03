@@ -1467,12 +1467,12 @@ cdef object py_from_lua(LuaRuntime runtime, lua_State *L, int n):
         if py_obj:
             return <object>py_obj.obj
         return new_lua_function(runtime, L, n)
-    ol = L
-    ret = new_lua_object(runtime, L, n)
-    if not ret.size is None and not ret.storage is None:
-        del ret
-        ret = new_torch_tensor(runtime, ol, n)
-    return ret
+    old_L = L
+    obj = new_lua_object(runtime, L, n)
+    if obj.storage and obj.size and obj.isContiguous and obj.nDimension:
+        del obj
+        obj = new_torch_tensor(runtime, old_L, n)
+    return obj
 
 cdef py_object* unpack_userdata(lua_State *L, int n) nogil:
     """

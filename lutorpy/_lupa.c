@@ -2268,6 +2268,7 @@ static const char __pyx_k_LuaRuntime[] = "LuaRuntime";
 static const char __pyx_k_ValueError[] = "ValueError";
 static const char __pyx_k_contiguous[] = "contiguous";
 static const char __pyx_k_lua_object[] = "lua_object";
+static const char __pyx_k_nDimension[] = "nDimension";
 static const char __pyx_k_npArrayNew[] = "npArrayNew";
 static const char __pyx_k_pyx_vtable[] = "__pyx_vtable__";
 static const char __pyx_k_startswith[] = "startswith";
@@ -2279,6 +2280,7 @@ static const char __pyx_k_collections[] = "collections";
 static const char __pyx_k_RuntimeError[] = "RuntimeError";
 static const char __pyx_k_asNumpyArray[] = "asNumpyArray";
 static const char __pyx_k_getTotalSize[] = "_getTotalSize";
+static const char __pyx_k_isContiguous[] = "isContiguous";
 static const char __pyx_k_StopIteration[] = "StopIteration";
 static const char __pyx_k_as_attrgetter[] = "as_attrgetter";
 static const char __pyx_k_as_itemgetter[] = "as_itemgetter";
@@ -2468,6 +2470,7 @@ static PyObject *__pyx_n_s_int16;
 static PyObject *__pyx_n_s_int32;
 static PyObject *__pyx_n_s_int64;
 static PyObject *__pyx_n_s_int8;
+static PyObject *__pyx_n_s_isContiguous;
 static PyObject *__pyx_kp_s_item_attribute_access_not_suppor;
 static PyObject *__pyx_kp_s_iteration_is_only_supported_for;
 static PyObject *__pyx_n_s_iteritems;
@@ -2484,6 +2487,7 @@ static PyObject *__pyx_n_s_metaclass;
 static PyObject *__pyx_n_s_meth;
 static PyObject *__pyx_n_s_module;
 static PyObject *__pyx_kp_s_modulename_must_be_a_string;
+static PyObject *__pyx_n_s_nDimension;
 static PyObject *__pyx_n_s_name;
 static PyObject *__pyx_kp_u_ndarray_is_not_C_contiguous;
 static PyObject *__pyx_kp_u_ndarray_is_not_Fortran_contiguou;
@@ -22857,15 +22861,14 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
   lua_Number __pyx_v_number;
   struct __pyx_t_7lutorpy_5_lupa_py_object *__pyx_v_py_obj;
   int __pyx_v_lua_type;
-  lua_State *__pyx_v_ol;
-  struct __pyx_obj_7lutorpy_5_lupa__LuaObject *__pyx_v_ret = NULL;
+  lua_State *__pyx_v_old_L;
+  struct __pyx_obj_7lutorpy_5_lupa__LuaObject *__pyx_v_obj = NULL;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   int __pyx_t_3;
   char const *__pyx_t_4;
-  int __pyx_t_5;
   __Pyx_RefNannySetupContext("py_from_lua", 0);
 
   /* "lutorpy/_lupa.pyx":1435
@@ -23258,7 +23261,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
  *         if py_obj:
  *             return <object>py_obj.obj             # <<<<<<<<<<<<<<
  *         return new_lua_function(runtime, L, n)
- *     ol = L
+ *     old_L = L
  */
       __Pyx_XDECREF(__pyx_r);
       __Pyx_INCREF(((PyObject *)__pyx_v_py_obj->obj));
@@ -23278,8 +23281,8 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
  *         if py_obj:
  *             return <object>py_obj.obj
  *         return new_lua_function(runtime, L, n)             # <<<<<<<<<<<<<<
- *     ol = L
- *     ret = new_lua_object(runtime, L, n)
+ *     old_L = L
+ *     obj = new_lua_object(runtime, L, n)
  */
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_2 = ((PyObject *)__pyx_f_7lutorpy_5_lupa_new_lua_function(__pyx_v_runtime, __pyx_v_L, __pyx_v_n)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1469, __pyx_L1_error)
@@ -23302,91 +23305,107 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
   /* "lutorpy/_lupa.pyx":1470
  *             return <object>py_obj.obj
  *         return new_lua_function(runtime, L, n)
- *     ol = L             # <<<<<<<<<<<<<<
- *     ret = new_lua_object(runtime, L, n)
- *     if not ret.size is None and not ret.storage is None:
+ *     old_L = L             # <<<<<<<<<<<<<<
+ *     obj = new_lua_object(runtime, L, n)
+ *     if obj.storage and obj.size and obj.isContiguous and obj.nDimension:
  */
-  __pyx_v_ol = __pyx_v_L;
+  __pyx_v_old_L = __pyx_v_L;
 
   /* "lutorpy/_lupa.pyx":1471
  *         return new_lua_function(runtime, L, n)
- *     ol = L
- *     ret = new_lua_object(runtime, L, n)             # <<<<<<<<<<<<<<
- *     if not ret.size is None and not ret.storage is None:
- *         del ret
+ *     old_L = L
+ *     obj = new_lua_object(runtime, L, n)             # <<<<<<<<<<<<<<
+ *     if obj.storage and obj.size and obj.isContiguous and obj.nDimension:
+ *         del obj
  */
   __pyx_t_2 = ((PyObject *)__pyx_f_7lutorpy_5_lupa_new_lua_object(__pyx_v_runtime, __pyx_v_L, __pyx_v_n)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1471, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_v_ret = ((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_t_2);
+  __pyx_v_obj = ((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_t_2);
   __pyx_t_2 = 0;
 
   /* "lutorpy/_lupa.pyx":1472
- *     ol = L
- *     ret = new_lua_object(runtime, L, n)
- *     if not ret.size is None and not ret.storage is None:             # <<<<<<<<<<<<<<
- *         del ret
- *         ret = new_torch_tensor(runtime, ol, n)
+ *     old_L = L
+ *     obj = new_lua_object(runtime, L, n)
+ *     if obj.storage and obj.size and obj.isContiguous and obj.nDimension:             # <<<<<<<<<<<<<<
+ *         del obj
+ *         obj = new_torch_tensor(runtime, old_L, n)
  */
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_ret), __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1472, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_obj), __pyx_n_s_storage); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = (__pyx_t_2 != Py_None);
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 1472, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_5 = (__pyx_t_1 != 0);
-  if (__pyx_t_5) {
+  if (__pyx_t_1) {
   } else {
-    __pyx_t_3 = __pyx_t_5;
+    __pyx_t_3 = __pyx_t_1;
     goto __pyx_L8_bool_binop_done;
   }
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_ret), __pyx_n_s_storage); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1472, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_obj), __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_5 = (__pyx_t_2 != Py_None);
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 1472, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __pyx_t_1 = (__pyx_t_5 != 0);
+  if (__pyx_t_1) {
+  } else {
+    __pyx_t_3 = __pyx_t_1;
+    goto __pyx_L8_bool_binop_done;
+  }
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_obj), __pyx_n_s_isContiguous); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1472, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 1472, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  if (__pyx_t_1) {
+  } else {
+    __pyx_t_3 = __pyx_t_1;
+    goto __pyx_L8_bool_binop_done;
+  }
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_obj), __pyx_n_s_nDimension); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1472, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 1472, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_t_3 = __pyx_t_1;
   __pyx_L8_bool_binop_done:;
   if (__pyx_t_3) {
 
     /* "lutorpy/_lupa.pyx":1473
- *     ret = new_lua_object(runtime, L, n)
- *     if not ret.size is None and not ret.storage is None:
- *         del ret             # <<<<<<<<<<<<<<
- *         ret = new_torch_tensor(runtime, ol, n)
- *     return ret
+ *     obj = new_lua_object(runtime, L, n)
+ *     if obj.storage and obj.size and obj.isContiguous and obj.nDimension:
+ *         del obj             # <<<<<<<<<<<<<<
+ *         obj = new_torch_tensor(runtime, old_L, n)
+ *     return obj
  */
-    __Pyx_DECREF(((PyObject *)__pyx_v_ret));
-    __pyx_v_ret = NULL;
+    __Pyx_DECREF(((PyObject *)__pyx_v_obj));
+    __pyx_v_obj = NULL;
 
     /* "lutorpy/_lupa.pyx":1474
- *     if not ret.size is None and not ret.storage is None:
- *         del ret
- *         ret = new_torch_tensor(runtime, ol, n)             # <<<<<<<<<<<<<<
- *     return ret
+ *     if obj.storage and obj.size and obj.isContiguous and obj.nDimension:
+ *         del obj
+ *         obj = new_torch_tensor(runtime, old_L, n)             # <<<<<<<<<<<<<<
+ *     return obj
  * 
  */
-    __pyx_t_2 = ((PyObject *)__pyx_f_7lutorpy_5_lupa_new_torch_tensor(__pyx_v_runtime, __pyx_v_ol, __pyx_v_n)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1474, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)__pyx_f_7lutorpy_5_lupa_new_torch_tensor(__pyx_v_runtime, __pyx_v_old_L, __pyx_v_n)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1474, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_v_ret = ((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_t_2);
+    __pyx_v_obj = ((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_t_2);
     __pyx_t_2 = 0;
 
     /* "lutorpy/_lupa.pyx":1472
- *     ol = L
- *     ret = new_lua_object(runtime, L, n)
- *     if not ret.size is None and not ret.storage is None:             # <<<<<<<<<<<<<<
- *         del ret
- *         ret = new_torch_tensor(runtime, ol, n)
+ *     old_L = L
+ *     obj = new_lua_object(runtime, L, n)
+ *     if obj.storage and obj.size and obj.isContiguous and obj.nDimension:             # <<<<<<<<<<<<<<
+ *         del obj
+ *         obj = new_torch_tensor(runtime, old_L, n)
  */
   }
 
   /* "lutorpy/_lupa.pyx":1475
- *         del ret
- *         ret = new_torch_tensor(runtime, ol, n)
- *     return ret             # <<<<<<<<<<<<<<
+ *         del obj
+ *         obj = new_torch_tensor(runtime, old_L, n)
+ *     return obj             # <<<<<<<<<<<<<<
  * 
  * cdef py_object* unpack_userdata(lua_State *L, int n) nogil:
  */
   __Pyx_XDECREF(__pyx_r);
-  __Pyx_INCREF(((PyObject *)__pyx_v_ret));
-  __pyx_r = ((PyObject *)__pyx_v_ret);
+  __Pyx_INCREF(((PyObject *)__pyx_v_obj));
+  __pyx_r = ((PyObject *)__pyx_v_obj);
   goto __pyx_L0;
 
   /* "lutorpy/_lupa.pyx":1430
@@ -23403,14 +23422,14 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
   __Pyx_AddTraceback("lutorpy._lupa.py_from_lua", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
-  __Pyx_XDECREF((PyObject *)__pyx_v_ret);
+  __Pyx_XDECREF((PyObject *)__pyx_v_obj);
   __Pyx_XGIVEREF(__pyx_r);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
 /* "lutorpy/_lupa.pyx":1477
- *     return ret
+ *     return obj
  * 
  * cdef py_object* unpack_userdata(lua_State *L, int n) nogil:             # <<<<<<<<<<<<<<
  *     """
@@ -23526,7 +23545,7 @@ static struct __pyx_t_7lutorpy_5_lupa_py_object *__pyx_f_7lutorpy_5_lupa_unpack_
   goto __pyx_L0;
 
   /* "lutorpy/_lupa.pyx":1477
- *     return ret
+ *     return obj
  * 
  * cdef py_object* unpack_userdata(lua_State *L, int n) nogil:             # <<<<<<<<<<<<<<
  *     """
@@ -35316,6 +35335,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_int32, __pyx_k_int32, sizeof(__pyx_k_int32), 0, 0, 1, 1},
   {&__pyx_n_s_int64, __pyx_k_int64, sizeof(__pyx_k_int64), 0, 0, 1, 1},
   {&__pyx_n_s_int8, __pyx_k_int8, sizeof(__pyx_k_int8), 0, 0, 1, 1},
+  {&__pyx_n_s_isContiguous, __pyx_k_isContiguous, sizeof(__pyx_k_isContiguous), 0, 0, 1, 1},
   {&__pyx_kp_s_item_attribute_access_not_suppor, __pyx_k_item_attribute_access_not_suppor, sizeof(__pyx_k_item_attribute_access_not_suppor), 0, 0, 1, 0},
   {&__pyx_kp_s_iteration_is_only_supported_for, __pyx_k_iteration_is_only_supported_for, sizeof(__pyx_k_iteration_is_only_supported_for), 0, 0, 1, 0},
   {&__pyx_n_s_iteritems, __pyx_k_iteritems, sizeof(__pyx_k_iteritems), 0, 0, 1, 1},
@@ -35332,6 +35352,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_meth, __pyx_k_meth, sizeof(__pyx_k_meth), 0, 0, 1, 1},
   {&__pyx_n_s_module, __pyx_k_module, sizeof(__pyx_k_module), 0, 0, 1, 1},
   {&__pyx_kp_s_modulename_must_be_a_string, __pyx_k_modulename_must_be_a_string, sizeof(__pyx_k_modulename_must_be_a_string), 0, 0, 1, 0},
+  {&__pyx_n_s_nDimension, __pyx_k_nDimension, sizeof(__pyx_k_nDimension), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
   {&__pyx_kp_u_ndarray_is_not_C_contiguous, __pyx_k_ndarray_is_not_C_contiguous, sizeof(__pyx_k_ndarray_is_not_C_contiguous), 0, 1, 0, 0},
   {&__pyx_kp_u_ndarray_is_not_Fortran_contiguou, __pyx_k_ndarray_is_not_Fortran_contiguou, sizeof(__pyx_k_ndarray_is_not_Fortran_contiguou), 0, 1, 0, 0},
