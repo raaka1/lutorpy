@@ -4,6 +4,7 @@ from ctypes.util import find_library
 import os
 import inspect
 from sys import platform as _platform
+import builtins
 
 try:
     os.system(os.path.expanduser("~") + "/torch/install/bin/torch-activate")
@@ -70,10 +71,9 @@ def LuaRuntime(*args, **kwargs):
 
 LuaRuntime()
 
-globals_ = None
-builtins_ = None
+builtins_ = dir(builtins)
 warningList = []
-def update_globals(verbose = False):
+def update_globals(globals_, verbose = False):
     if globals_ is None:
         return
     lg = luaRuntime.globals()
@@ -94,47 +94,58 @@ def update_globals(verbose = False):
         
 def require(module_name):
     ret = luaRuntime.require(module_name)
-    update_globals()
+    stack = inspect.stack()
+    try:
+        globals_ = stack[1][0].f_globals
+        update_globals(globals_, verbose=False)
+    finally:
+        del stack
     return ret
-
-def set_globals(g, bi, verbose=False):
-    global globals_,builtins_,warningList
-    warningList = []
-    builtins_ = dir(bi)
-    globals_ = g
-    update_globals(verbose)
     
 def eval(cmd):
     ret = luaRuntime.eval(cmd)
-    update_globals()
+    stack = inspect.stack()
+    try:
+        globals_ = stack[1][0].f_globals
+        update_globals(globals_, verbose=False)
+    finally:
+        del stack
     return ret
 
 def execute(cmd):
     ret = luaRuntime.execute(cmd)
-    update_globals()
+    stack = inspect.stack()
+    try:
+        globals_ = stack[1][0].f_globals
+        update_globals(globals_, verbose=False)
+    finally:
+        del stack
     return ret
 
 def table(*args, **kwargs):
     ret = luaRuntime.table(*args, **kwargs)
-    update_globals()
+    stack = inspect.stack()
+    try:
+        globals_ = stack[1][0].f_globals
+        update_globals(globals_, verbose=False)
+    finally:
+        del stack
     return ret
 
 def table_from(*args, **kwargs):
     ret = luaRuntime.table_from(*args, **kwargs)
-    update_globals()
+    stack = inspect.stack()
+    try:
+        globals_ = stack[1][0].f_globals
+        update_globals(globals_, verbose=False)
+    finally:
+        del stack
     return ret
 
-def boostrap_self(obj,func_name):
-    '''
-        bootstrap a function to add self as the first argument
-    '''
-    if obj[func_name+'_']:
-        return
-    func = obj[func_name]
-    def func_self(*opt):
-        func(obj,*opt)
-    obj[func_name+'_'] = func
-    obj[func_name] = func_self
 
-bs = boostrap_self
-
+stack = inspect.stack()
+try:
+    globals_ = stack[1][0].f_globals
+    update_globals(globals_, verbose=False)
+finally:
+    del stack

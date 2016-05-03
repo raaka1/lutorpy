@@ -701,22 +701,6 @@ cdef object lua_object_repr(lua_State* L, encoding):
     except UnicodeDecodeError:
         # safe 'decode'
         return py_bytes.decode('ISO-8859-1')
-
-cdef extern from "THStorage.h":
-    cdef struct THDoubleStorage
-    THDoubleStorage* THDoubleStorage_newWithData(double *data, long size)
-    cdef struct THFloatStorage
-    THFloatStorage* THFloatStorage_newWithData(float *data, long size)
-    cdef struct THByteStorage
-    THByteStorage* THByteStorage_newWithData(unsigned char *data, long size)
-    cdef struct THCharStorage
-    THCharStorage* THCharStorage_newWithData(char *data, long size)
-    cdef struct THIntStorage
-    THIntStorage* THIntStorage_newWithData(int *data, long size)
-    cdef struct THShortStorage
-    THShortStorage* THShortStorage_newWithData(short *data, long size)
-    cdef struct THLongStorage
-    THLongStorage* THLongStorage_newWithData(long *data, long size)
     
 cdef extern from "THTensor.h":
     cdef struct THDoubleTensor
@@ -755,6 +739,7 @@ cdef class ArrayWrapper:
     cdef void* data_ptr
     cdef int size
     cdef int typenum
+        
     cdef set_data(self, int size, void* data_ptr, int typenum):
         """ Set the data of the array
         This cannot be done in the constructor as it must recieve C-level
@@ -780,90 +765,38 @@ cdef class ArrayWrapper:
                                                self.typenum, self.data_ptr)
         return ndarray
 
-    def __dealloc__(self):
+    #def __dealloc__(self):
         """ Frees the array. This is called by Python when all the
         references to the object are gone. """
-        free(<void*>self.data_ptr)
+        #free(<void*>self.data_ptr)
 
 def fromNumpyArray(_LuaObject obj, npArray):
-    cdef lua_State* L = obj._state
-    cdef double[:] ddata
-    cdef float[:] fdata
-    cdef short[:] sdata
-    cdef long[:] ldata
-    cdef int[:] idata
-    cdef char[:] cdata
-    cdef unsigned char[:] udata
-    lock_runtime(obj._runtime)
-    old_top = lua.lua_gettop(L)
-    tensor = None
-    try:
-        obj._runtime.require("torch")
-        lg = obj._runtime.globals()
-        npArray_ = np.ascontiguousarray(npArray).flatten()
-        if npArray.dtype == 'double': 
-            ddata = npArray_
-            luaT_pushudata(L,<void*?>THDoubleStorage_newWithData(&ddata[0], len(ddata)),"torch.DoubleStorage")
-            storage = py_from_lua(obj._runtime, L, -1)
-            lua.lua_settop(L, old_top)
-            lg._ = storage
-            tensor = obj._runtime.eval("torch.DoubleTensor(_)")
-        elif npArray.dtype == 'float':
-            fdata = npArray_
-            luaT_pushudata(L,<void*?> THFloatStorage_newWithData(&fdata[0], len(fdata)),"torch.FloatStorage")
-            storage = py_from_lua(obj._runtime, L, -1)
-            lua.lua_settop(L, old_top)
-            lg._ = storage
-            tensor = obj._runtime.eval("torch.FloatTensor(_)")
-        elif npArray.dtype == 'int64':
-            ldata = npArray_
-            luaT_pushudata(L,<void*?>THLongStorage_newWithData(&ldata[0], len(ldata)),"torch.LongStorage")
-            storage = py_from_lua(obj._runtime, L, -1)
-            lua.lua_settop(L, old_top)
-            lg._ = storage
-            tensor = obj._runtime.eval("torch.LongTensor(_)")
-        elif npArray.dtype == 'int16':
-            sdata = npArray_
-            luaT_pushudata(L,<void*?>THShortStorage_newWithData(&sdata[0], len(sdata)),"torch.ShortStorage")
-            storage = py_from_lua(obj._runtime, L, -1)
-            lua.lua_settop(L, old_top)
-            lg._ = storage
-            tensor = obj._runtime.eval("torch.ShortTensor(_)")
-        elif npArray.dtype == 'int32':
-            idata = npArray_
-            luaT_pushudata(L,<void*?>THIntStorage_newWithData(&idata[0], len(idata)),"torch.IntStorage")
-            storage = py_from_lua(obj._runtime, L, -1)
-            lua.lua_settop(L, old_top)
-            lg._ = storage
-            tensor = obj._runtime.eval("torch.IntTensor(_)")
-        elif npArray.dtype == 'int8':
-            cdata = npArray_
-            luaT_pushudata(L,<void*?>THCharStorage_newWithData(&cdata[0], len(cdata)),"torch.CharStorage")
-            storage = py_from_lua(obj._runtime, L, -1)
-            lua.lua_settop(L, old_top)
-            lg._ = storage
-            tensor = obj._runtime.eval("torch.CharTensor(_)")
-        elif npArray.dtype == 'uint8':
-            udata = npArray_
-            luaT_pushudata(L,<void*?>THByteStorage_newWithData(&udata[0], len(udata)),"torch.ByteStorage")
-            storage = py_from_lua(obj._runtime, L, -1)
-            lua.lua_settop(L, old_top)
-            lg._ = storage
-            tensor = obj._runtime.eval("torch.ByteTensor(_)")
-        else:
-            raise Exception('Not implemented for {type}'.format(type=npArray.dtype))
-        obj.base = npArray_
-        shape = npArray.shape
-        tensor = tensor.reshape(tensor, *shape)
-        return tensor 
-    finally:
-        lua.lua_settop(L, old_top)
-        unlock_runtime(obj._runtime)       
+     # Byte , Char , Short , Int , Long , Float , and Double
+    npType2tensorType = {'int8':'torch.ByteTensor',
+                         'int8':'torch.CharTensor',
+                         'int16':'torch.ShortTensor',
+                         'int32':'torch.IntTensor',
+                         'int64':'torch.LongTensor',
+                         'float32':'torch.FloatTensor',
+                         'float64':'torch.DoubleTensor'
+                        }
+    obj._runtime.require('torch')
+    dtype = str(npArray.dtype)
+    if npType2tensorType.has_key(dtype):
+        tensorType = npType2tensorType[dtype]
+        t = obj._runtime.eval(tensorType+str(npArray.shape).replace(',)',')'))
+        tensor = t.contiguous(t)
+        npArrayNew = tensor.asNumpyArray()
+        np.copyto(npArrayNew, npArray)
+        return tensor
+    else:
+        print('Unsupported numpy data type:'+str(npArray.dtype))     
 
 @cython.final
 @cython.internal
 @cython.no_gc_clear
 cdef class _TorchTensor(_LuaObject):
+
     def __getitem__(self, index):
         if isinstance(index, int):
             if self._runtime._zero_based_index:
@@ -899,6 +832,53 @@ cdef class _TorchTensor(_LuaObject):
             return totalSize
         else:
             return 0
+ 
+    def asNumpyArray(_TorchTensor self, copy=False):
+        self = self.contiguous(self)
+        cdef np.ndarray ndarray
+        ttype = str(self.type(self))
+        if ttype == 'torch.CudaTensor':
+            # convert to float tensor first
+            ft = self.float(self)
+            ndarray = ft.asNumpyArray()
+            return ndarray
+        size = self.size(self)
+        dims = size.size(size)
+        if dims >= 1:
+            totalSize = self._getTotalSize()
+            if ttype == 'torch.DoubleTensor':
+                array_wrapper = self._getDoubleNumpyArray()
+            elif ttype == 'torch.LongTensor':
+                array_wrapper = self._getLongNumpyArray()
+            elif ttype == 'torch.ShortTensor':
+                array_wrapper = self._getShortNumpyArray()
+            elif ttype == 'torch.IntTensor':
+                array_wrapper = self._getIntNumpyArray()
+            elif ttype == 'torch.FloatTensor':
+                array_wrapper = self._getFloatNumpyArray()
+            elif ttype == 'torch.ByteTensor':
+                array_wrapper = self._getByteNumpyArray()
+            elif ttype == 'torch.CharTensor':
+                array_wrapper = self._getCharNumpyArray()
+            else:
+                raise Exception('Not implemented for {type}'.format(type=ttype))
+                
+            ndarray = np.array(array_wrapper, copy=copy)
+            # Assign our object to the 'base' of the ndarray object
+            ndarray.base = <PyObject*> self
+            # Increment the reference count, as the above assignement was done in
+            # C, and Python does not know that there is this additional reference
+            Py_INCREF(self)
+            
+            shape = []
+            for d in range(dims):
+                if self._runtime._zero_based_index:
+                    shape.append(size[d])
+                else:
+                    shape.append(size[d+1])
+            return ndarray.reshape(shape)
+        else:
+            raise Exception('Not implemented for dims = {dims}'.format(dims=dims))
 
     def _getDoubleNumpyArray(_TorchTensor self):
         
@@ -1046,92 +1026,6 @@ cdef class _TorchTensor(_LuaObject):
         finally:
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
- 
-    def asNumpyArray(_TorchTensor self, copy=False):
-        self = self.contiguous(self)
-        cdef np.ndarray ndarray
-        ttype = str(self.type(self))
-        if ttype == 'torch.CudaTensor':
-            # convert to float tensor first
-            ft = self.float(self)
-            ndarray = ft.asNumpyArray()
-            return ndarray
-        size = self.size(self)
-        dims = size.size(size)
-        if dims >= 1:
-            totalSize = self._getTotalSize()
-            if ttype == 'torch.DoubleTensor':
-                array_wrapper = self._getDoubleNumpyArray()
-            elif ttype == 'torch.LongTensor':
-                array_wrapper = self._getLongNumpyArray()
-            elif ttype == 'torch.ShortTensor':
-                array_wrapper = self._getShortNumpyArray()
-            elif ttype == 'torch.IntTensor':
-                array_wrapper = self._getIntNumpyArray()
-            elif ttype == 'torch.FloatTensor':
-                array_wrapper = self._getFloatNumpyArray()
-            elif ttype == 'torch.ByteTensor':
-                array_wrapper = self._getByteNumpyArray()
-            elif ttype == 'torch.CharTensor':
-                array_wrapper = self._getCharNumpyArray()
-            else:
-                raise Exception('Not implemented for {type}'.format(type=ttype))
-                
-            ndarray = np.array(array_wrapper, copy=copy)
-            # Assign our object to the 'base' of the ndarray object
-            ndarray.base = <PyObject*> array_wrapper
-            # Increment the reference count, as the above assignement was done in
-            # C, and Python does not know that there is this additional reference
-            Py_INCREF(array_wrapper)
-            shape = []
-            for d in range(dims):
-                if self._runtime._zero_based_index:
-                    shape.append(size[d])
-                else:
-                    shape.append(size[d+1])
-            return ndarray.reshape(shape)
-        else:
-            raise Exception('Not implemented for dims = {dims}'.format(dims=dims))
-    def asNumpyArray2(_TorchTensor self):
-        size = self.size(self)
-        dims = size.size(size)
-        if dims >= 1:
-            totalSize = 1
-            for d in range(dims):
-                if self._runtime._zero_based_index:
-                    totalSize *= size[d]
-                else:
-                    totalSize *= size[d+1]
-            ttype = str(self.type(self))
-            if ttype == 'torch.DoubleTensor':
-                nparray = self._getDoubleNumpyArray()
-            elif ttype == 'torch.LongTensor':
-                nparray = self._getLongNumpyArray()
-            elif ttype == 'torch.ShortTensor':
-                nparray = self._getShortNumpyArray()
-            elif ttype == 'torch.IntTensor':
-                nparray = self._getIntNumpyArray()
-            elif ttype == 'torch.FloatTensor':
-                nparray = self._getFloatNumpyArray()
-            elif ttype == 'torch.ByteTensor':
-                nparray = self._getByteNumpyArray()
-            elif ttype == 'torch.CharTensor':
-                nparray = self._getCharNumpyArray()
-            elif ttype == 'torch.CudaTensor':
-                # convert to float tensor first
-                ft = self.float(self)
-                nparray = ft._getFloatNumpyArray()
-            else:
-                raise Exception('Not implemented for {type}'.format(type=ttype))
-            shape = []
-            for d in range(dims):
-                if self._runtime._zero_based_index:
-                    shape.append(size[d])
-                else:
-                    shape.append(size[d+1])
-            return nparray.reshape(shape)
-        else:
-            raise Exception('Not implemented for dims = {dims}'.format(dims=dims))
 
 cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
     cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)

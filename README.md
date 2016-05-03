@@ -14,6 +14,7 @@ Lutorpy is a libray built for deep learning with torch in python,  by a two-way 
 # Convert from Lua to Python/Lutorpy
 ```lua
 -- lua code                             # python code (with lutorpy)
+--                                      import lutorpy as lua
 --                                      import numpy as np
 require "nn"                    ===>    require("nn")
 model = nn.Sequential()         ===>    model = nn.Sequential()
@@ -68,11 +69,8 @@ sudo python setup.py install
 
 ## basic usage
 ``` python
-## boot strap lutorpy
+## import lutorpy
 import lutorpy as lua
-lua.set_globals(globals(), __builtins__)
-## enable zero-based index
-lua.LuaRuntime(zero_based_index=True)
 
 ## use require("MODULE") to import lua modules
 require("nn")
@@ -120,20 +118,14 @@ plt.plot(yn)
 
 # Step-by-step tutorial
 
-## import lutorpy and bootstrap globals
-
-Note: the following setup is mandatory for going through this tutorial.
+## import lutorpy
 
 ``` python
 import lutorpy as lua
-# setup runtime and use zero-based index
+# setup runtime and use zero-based index(optional, enabled by default)
 lua.LuaRuntime(zero_based_index=True)
 
 ### note: zero-based index will only work getter operator such as "t[0]", for torch function like narrow, you still need 1-based indexing.
-
-# set the python globals() and __builtins__ to lua,
-# so all the lua global variables can be seen in python globals()
-lua.set_globals(globals(), __builtins__)
 ```
 ## hello world
 
@@ -142,19 +134,6 @@ lua.execute(' greeting = "hello world" ')
 print(greeting)
 ```
 
-### Alternative way to use lua
-if you don't want to mess the python global variables, you can skip the previous line, but you need to access lua global variables through lua.globals(). 
-
-Note that if you do this, all the following code should change acorrdingly.
-
-```
-import lutorpy as lua
-lg = lua.globals()
-lua.execute(' greeting = "hello world" ')
-print(lg.greeting)
-# without set_globals you have to use lua.require instead of require
-lua.require("torch")
-```
 ###  Alternatively you could also switch back to one-based indexing
 
 Note that if you do this, all the following code should change acorrdingly.
@@ -168,10 +147,6 @@ lua.LuaRuntime(zero_based_index=False)
 ``` python
 a = lua.eval(' {11, 22} ') # define a lua table with two elements
 print(a[0])
-
-lua.execute(' b={33, 44} ') # define another lua table with two elements
-print(b[0])
-print(b[1])
 
 ```
 
@@ -324,8 +299,13 @@ x[0] = -0.5; x[1] = -0.5; print(mlp._forward(x))
 
 ```
 
-# More usage and details
-Lutorpy is built upon [lupa](https://github.com/scoder/lupa), there are more features provided by lupa could be also useful, please check it out.
+# Details of implementation and more usage
+
+ * For applying tensor.asNumpyArray() method to a torch tensor, if the tensor is contiguous, the memory will be shared between numpy array and torch tensor, if the tensor is not contiguous, a contiguous clone of the tensor will be used, so the created numpy array won't share memory with the old tensor.
+ 
+ * For torch.fromNumpyArray(), there will be no memory sharing between the numpy array and the tenosr created.
+
+ * Lutorpy is built upon [lupa](https://github.com/scoder/lupa), there are more features provided by lupa could be also useful, please check it out.
 
 # Acknowledge
 
