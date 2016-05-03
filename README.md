@@ -15,13 +15,13 @@ Lutorpy is a libray built for deep learning with torch in python,  by a two-way 
 ```lua
 -- lua code                             # python code (with lutorpy)
 --                                      import lutorpy as lua
---                                      import numpy as np
 require "nn"                    ===>    require("nn")
 model = nn.Sequential()         ===>    model = nn.Sequential()
 
 -- use ":" to access add        ===>    # use "._" to access add
 model:add(nn.Linear(10, 3))     ===>    model._add(nn.Linear(10, 3))
-                                        
+
+--                                      import numpy as np
 x = torch.Tensor(10):zero()     ===>    arr = np.zeros(10)
 
 -- torch style(painful?)        ===>    # numpy style(elegent?) 
