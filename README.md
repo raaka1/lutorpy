@@ -20,7 +20,7 @@ require "nn"                    ===>    require("nn")
 model = nn.Sequential()         ===>    model = nn.Sequential()
 
 -- use ":" to access add        ===>    # use "._" to access add
-model:add(nn.Linear(10, 3))     ===>    model._add(nn.Linear(10, 30))
+model:add(nn.Linear(10, 3))     ===>    model._add(nn.Linear(10, 3))
                                         
 x = torch.Tensor(10):zero()     ===>    arr = np.zeros(10)
 
@@ -299,13 +299,16 @@ x[0] = -0.5; x[1] = -0.5; print(mlp._forward(x))
 
 ```
 
-# Details of implementation and more usage
+
+# Details of implementation
 
  * For applying tensor.asNumpyArray() method to a torch tensor, if the tensor is contiguous, the memory will be shared between numpy array and torch tensor, if the tensor is not contiguous, a contiguous clone of the tensor will be used, so the created numpy array won't share memory with the old tensor.
  
  * For torch.fromNumpyArray(), there will be no memory sharing between the numpy array and the tenosr created.
 
- * Lutorpy is built upon [lupa](https://github.com/scoder/lupa), there are more features provided by lupa could be also useful, please check it out.
+
+# More details about using lua in python
+Lutorpy is built upon [lupa](https://github.com/scoder/lupa), there are more features provided by lupa could be also useful, please check it out.
 
 # Acknowledge
 
