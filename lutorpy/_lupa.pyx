@@ -63,6 +63,38 @@ cdef struct py_object:
 
 include "lock.pxi"
 
+cdef extern from "THTensor.h":
+    cdef struct THDoubleTensor
+    double *THDoubleTensor_data(THDoubleTensor *self)
+    cdef struct THCharTensor
+    char *THCharTensor_data(THCharTensor *self)
+    cdef struct THByteTensor
+    unsigned char *THByteTensor_data(THByteTensor *self)
+    cdef struct THIntTensor
+    int *THIntTensor_data(THIntTensor *self)
+    cdef struct THShortTensor
+    short *THShortTensor_data(THShortTensor *self)
+    cdef struct THLongTensor
+    long *THLongTensor_data(THLongTensor *self)
+    cdef struct THFloatTensor
+    float *THFloatTensor_data(THFloatTensor *self)
+    
+cdef extern from "luaT.h":
+    void *luaT_toudata(lua_State *L, int ud, const char *tname);
+    void luaT_pushudata(lua_State *L, void *udata, const char *tname);
+
+# Import the Python-level symbols of numpy
+import numpy as np
+
+# Import the C-level symbols of numpy
+cimport numpy as np
+
+# Numpy must be initialized. When using numpy from C or Cython you must
+# _always_ do that, or you will have segfaults
+np.import_array()
+
+#from libc.stdlib cimport free
+from cpython cimport PyObject, Py_INCREF
 
 class LuaError(Exception):
     """Base class for errors in the Lua runtime.
@@ -228,6 +260,7 @@ cdef class LuaRuntime:
         self.init_python_lib(register_eval, register_builtins)
         lua.lua_settop(L, 0)
         lua.lua_atpanic(L, <lua.lua_CFunction>1)
+        
         try:
             self.require("torch")
             torch = self.eval("torch")
@@ -701,39 +734,6 @@ cdef object lua_object_repr(lua_State* L, encoding):
     except UnicodeDecodeError:
         # safe 'decode'
         return py_bytes.decode('ISO-8859-1')
-    
-cdef extern from "THTensor.h":
-    cdef struct THDoubleTensor
-    double *THDoubleTensor_data(THDoubleTensor *self)
-    cdef struct THCharTensor
-    char *THCharTensor_data(THCharTensor *self)
-    cdef struct THByteTensor
-    unsigned char *THByteTensor_data(THByteTensor *self)
-    cdef struct THIntTensor
-    int *THIntTensor_data(THIntTensor *self)
-    cdef struct THShortTensor
-    short *THShortTensor_data(THShortTensor *self)
-    cdef struct THLongTensor
-    long *THLongTensor_data(THLongTensor *self)
-    cdef struct THFloatTensor
-    float *THFloatTensor_data(THFloatTensor *self)
-    
-cdef extern from "luaT.h":
-    void *luaT_toudata(lua_State *L, int ud, const char *tname);
-    void luaT_pushudata(lua_State *L, void *udata, const char *tname);
-
-# Import the Python-level symbols of numpy
-import numpy as np
-
-# Import the C-level symbols of numpy
-cimport numpy as np
-
-# Numpy must be initialized. When using numpy from C or Cython you must
-# _always_ do that, or you will have segfaults
-np.import_array()
-
-from libc.stdlib cimport free
-from cpython cimport PyObject, Py_INCREF
 
 cdef class ArrayWrapper:
     cdef void* data_ptr
@@ -772,7 +772,7 @@ cdef class ArrayWrapper:
 
 def fromNumpyArray(_LuaObject obj, npArray):
      # Byte , Char , Short , Int , Long , Float , and Double
-    npType2tensorType = {'int8':'torch.ByteTensor',
+    npType2tensorType = {'uint8':'torch.ByteTensor',
                          'int8':'torch.CharTensor',
                          'int16':'torch.ShortTensor',
                          'int32':'torch.IntTensor',
@@ -790,7 +790,7 @@ def fromNumpyArray(_LuaObject obj, npArray):
         np.copyto(npArrayNew, npArray)
         return tensor
     else:
-        print('Unsupported numpy data type:'+str(npArray.dtype))     
+        raise Exception('Unsupported numpy data type: {type}'.format(type=str(npArray.dtype)))
 
 @cython.final
 @cython.internal
@@ -1027,7 +1027,7 @@ cdef class _TorchTensor(_LuaObject):
             lua.lua_settop(L, old_top)
             unlock_runtime(self._runtime)
 
-cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
+cdef _TorchTensor new_torch_tensor(LuaRuntime runtime, lua_State* L, int n):
     cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)
     init_lua_object(obj, runtime, L, n)
     return obj
@@ -1471,7 +1471,7 @@ cdef object py_from_lua(LuaRuntime runtime, lua_State *L, int n):
     ret = new_lua_object(runtime, L, n)
     if not ret.size is None and not ret.storage is None:
         del ret
-        ret = new_lua_tensor(runtime, ol, n)
+        ret = new_torch_tensor(runtime, ol, n)
     return ret
 
 cdef py_object* unpack_userdata(lua_State *L, int n) nogil:

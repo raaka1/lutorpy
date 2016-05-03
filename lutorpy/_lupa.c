@@ -822,7 +822,7 @@ struct __pyx_opt_args_7lutorpy_5_lupa_py_to_lua;
 struct __pyx_opt_args_7lutorpy_5_lupa_push_lua_arguments;
 
 /* "lutorpy/_lupa.pyx":52
- * cdef int PY2 = PY_MAJOR_VERSION == 2
+ * cdef int IS_PY2 = PY_MAJOR_VERSION == 2
  * 
  * cdef enum WrappedObjectFlags:             # <<<<<<<<<<<<<<
  *     # flags that determine the behaviour of a wrapped object:
@@ -901,7 +901,7 @@ struct __pyx_obj_7lutorpy_5_lupa_FastRLock {
 };
 
 
-/* "lutorpy/_lupa.pyx":114
+/* "lutorpy/_lupa.pyx":146
  * 
  * @cython.no_gc_clear
  * cdef class LuaRuntime:             # <<<<<<<<<<<<<<
@@ -925,7 +925,7 @@ struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime {
 };
 
 
-/* "lutorpy/_lupa.pyx":489
+/* "lutorpy/_lupa.pyx":522
  * @cython.no_gc_clear
  * @cython.freelist(16)
  * cdef class _LuaObject:             # <<<<<<<<<<<<<<
@@ -942,7 +942,7 @@ struct __pyx_obj_7lutorpy_5_lupa__LuaObject {
 
 
 /* "lutorpy/_lupa.pyx":738
- * from cpython cimport PyObject, Py_INCREF
+ *         return py_bytes.decode('ISO-8859-1')
  * 
  * cdef class ArrayWrapper:             # <<<<<<<<<<<<<<
  *     cdef void* data_ptr
@@ -1050,7 +1050,7 @@ struct __pyx_obj_7lutorpy_5_lupa__PyProtocolWrapper {
 };
 
 
-/* "lutorpy/_lupa.pyx":192
+/* "lutorpy/_lupa.pyx":224
  *     cdef bint _zero_based_index
  * 
  *     def __cinit__(self, encoding='UTF-8', source_encoding=None,             # <<<<<<<<<<<<<<
@@ -1063,7 +1063,7 @@ struct __pyx_obj_7lutorpy_5_lupa___pyx_scope_struct____cinit__ {
 };
 
 
-/* "lutorpy/_lupa.pyx":402
+/* "lutorpy/_lupa.pyx":435
  * # from Lua scripts
  * 
  * def unpacks_lua_table(func):             # <<<<<<<<<<<<<<
@@ -1076,7 +1076,7 @@ struct __pyx_obj_7lutorpy_5_lupa___pyx_scope_struct_1_unpacks_lua_table {
 };
 
 
-/* "lutorpy/_lupa.pyx":428
+/* "lutorpy/_lupa.pyx":461
  * 
  * 
  * def unpacks_lua_table_method(meth):             # <<<<<<<<<<<<<<
@@ -1089,7 +1089,7 @@ struct __pyx_obj_7lutorpy_5_lupa___pyx_scope_struct_2_unpacks_lua_table_method {
 };
 
 
-/* "lutorpy/_lupa.pyx":595
+/* "lutorpy/_lupa.pyx":628
  *         return py_string
  * 
  *     def __getattr__(self, name):             # <<<<<<<<<<<<<<
@@ -1104,7 +1104,7 @@ struct __pyx_obj_7lutorpy_5_lupa___pyx_scope_struct_3___getattr__ {
 
 
 
-/* "lutorpy/_lupa.pyx":114
+/* "lutorpy/_lupa.pyx":146
  * 
  * @cython.no_gc_clear
  * cdef class LuaRuntime:             # <<<<<<<<<<<<<<
@@ -1125,7 +1125,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
 static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, int, int);
 
 
-/* "lutorpy/_lupa.pyx":489
+/* "lutorpy/_lupa.pyx":522
  * @cython.no_gc_clear
  * @cython.freelist(16)
  * cdef class _LuaObject:             # <<<<<<<<<<<<<<
@@ -1146,7 +1146,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
 
 
 /* "lutorpy/_lupa.pyx":738
- * from cpython cimport PyObject, Py_INCREF
+ *         return py_bytes.decode('ISO-8859-1')
  * 
  * cdef class ArrayWrapper:             # <<<<<<<<<<<<<<
  *     cdef void* data_ptr
@@ -2082,7 +2082,7 @@ static PyObject *__pyx_v_7lutorpy_5_lupa_exc_info = 0;
 static PyObject *__pyx_v_7lutorpy_5_lupa_Mapping = 0;
 static PyObject *__pyx_v_7lutorpy_5_lupa_wraps = 0;
 static PyObject *__pyx_v_7lutorpy_5_lupa_builtins = 0;
-static int __pyx_v_7lutorpy_5_lupa_PY2;
+static int __pyx_v_7lutorpy_5_lupa_IS_PY2;
 static luaL_Reg __pyx_v_7lutorpy_5_lupa_py_object_lib[6];
 static luaL_Reg __pyx_v_7lutorpy_5_lupa_py_lib[7];
 static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_lock_lock(struct __pyx_obj_7lutorpy_5_lupa_FastRLock *, long, int); /*proto*/
@@ -2094,7 +2094,7 @@ static CYTHON_INLINE void __pyx_f_7lutorpy_5_lupa_unlock_runtime(struct __pyx_ob
 static struct __pyx_obj_7lutorpy_5_lupa__LuaObject *__pyx_f_7lutorpy_5_lupa_new_lua_object(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, int); /*proto*/
 static void __pyx_f_7lutorpy_5_lupa_init_lua_object(struct __pyx_obj_7lutorpy_5_lupa__LuaObject *, struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, int); /*proto*/
 static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *, PyObject *); /*proto*/
-static struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_f_7lutorpy_5_lupa_new_lua_tensor(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, int); /*proto*/
+static struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_f_7lutorpy_5_lupa_new_torch_tensor(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, int); /*proto*/
 static struct __pyx_obj_7lutorpy_5_lupa__LuaTable *__pyx_f_7lutorpy_5_lupa_new_lua_table(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, int); /*proto*/
 static struct __pyx_obj_7lutorpy_5_lupa__LuaFunction *__pyx_f_7lutorpy_5_lupa_new_lua_function(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, int); /*proto*/
 static struct __pyx_obj_7lutorpy_5_lupa__LuaCoroutineFunction *__pyx_f_7lutorpy_5_lupa_new_lua_coroutine_function(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, int); /*proto*/
@@ -2113,7 +2113,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa__isascii(unsigned char *); /*pr
 static PyObject *__pyx_f_7lutorpy_5_lupa__asciiOrNone(PyObject *); /*proto*/
 static int __pyx_f_7lutorpy_5_lupa_raise_lua_error(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, int); /*proto*/
 static PyObject *__pyx_f_7lutorpy_5_lupa_build_lua_error_message(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, PyObject *, int); /*proto*/
-static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, PyObject *); /*proto*/
+static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, PyObject *, PyObject *); /*proto*/
 static PyObject *__pyx_f_7lutorpy_5_lupa_call_lua(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, PyObject *); /*proto*/
 static PyObject *__pyx_f_7lutorpy_5_lupa_execute_lua_call(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, Py_ssize_t); /*proto*/
 static int __pyx_f_7lutorpy_5_lupa_push_lua_arguments(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, lua_State *, PyObject *, struct __pyx_opt_args_7lutorpy_5_lupa_push_lua_arguments *__pyx_optional_args); /*proto*/
@@ -2214,6 +2214,7 @@ static const char __pyx_k_range[] = "range";
 static const char __pyx_k_shape[] = "shape";
 static const char __pyx_k_table[] = "table";
 static const char __pyx_k_torch[] = "torch";
+static const char __pyx_k_uint8[] = "uint8";
 static const char __pyx_k_wraps[] = "wraps";
 static const char __pyx_k_append[] = "append";
 static const char __pyx_k_copyto[] = "copyto";
@@ -2250,6 +2251,7 @@ static const char __pyx_k_builtins[] = "builtins";
 static const char __pyx_k_encoding[] = "encoding";
 static const char __pyx_k_exc_info[] = "exc_info";
 static const char __pyx_k_function[] = "function";
+static const char __pyx_k_lua_code[] = "lua_code";
 static const char __pyx_k_lua_type[] = "lua_type";
 static const char __pyx_k_qualname[] = "__qualname__";
 static const char __pyx_k_userdata[] = "userdata";
@@ -2323,7 +2325,6 @@ static const char __pyx_k_Syntax_error_in_Lua_code[] = "Syntax error in Lua code
 static const char __pyx_k_self_prepending_function[] = "self_prepending_function";
 static const char __pyx_k_unpacks_lua_table_method[] = "unpacks_lua_table_method";
 static const char __pyx_k_failed_to_convert_s_object[] = "failed to convert %s object";
-static const char __pyx_k_Unsupported_numpy_data_type[] = "Unsupported numpy data type:";
 static const char __pyx_k_modulename_must_be_a_string[] = "modulename must be a string";
 static const char __pyx_k_ndarray_is_not_C_contiguous[] = "ndarray is not C contiguous";
 static const char __pyx_k_Lua_object_is_not_a_function[] = "Lua object is not a function";
@@ -2343,6 +2344,7 @@ static const char __pyx_k_Format_string_allocated_too_shor[] = "Format string al
 static const char __pyx_k_Non_native_byte_order_not_suppor[] = "Non-native byte order not supported";
 static const char __pyx_k_Type_cannot_be_instantiated_from[] = "Type cannot be instantiated from Python";
 static const char __pyx_k_Type_cannot_be_instantiated_manu[] = "Type cannot be instantiated manually";
+static const char __pyx_k_Unsupported_numpy_data_type_type[] = "Unsupported numpy data type: {type}";
 static const char __pyx_k_Warning_failed_to_inject_fromNum[] = "Warning: failed to inject 'fromNumpyArray' function to torch, torch.fromNumpyArray won't work ";
 static const char __pyx_k_attribute_filter_and_attribute_h[] = "attribute_filter and attribute_handlers are mutually exclusive";
 static const char __pyx_k_attribute_filter_must_be_callabl[] = "attribute_filter must be callable";
@@ -2388,7 +2390,7 @@ static PyObject *__pyx_kp_s_Type_cannot_be_instantiated_manu;
 static PyObject *__pyx_kp_b_UTF_8;
 static PyObject *__pyx_kp_s_UTF_8;
 static PyObject *__pyx_n_s_UnicodeDecodeError;
-static PyObject *__pyx_kp_s_Unsupported_numpy_data_type;
+static PyObject *__pyx_kp_s_Unsupported_numpy_data_type_type;
 static PyObject *__pyx_n_s_ValueError;
 static PyObject *__pyx_kp_s_Warning_failed_to_inject_fromNum;
 static PyObject *__pyx_n_b__20;
@@ -2472,6 +2474,7 @@ static PyObject *__pyx_n_s_iteritems;
 static PyObject *__pyx_n_s_kwargs;
 static PyObject *__pyx_kp_s_lost_reference;
 static PyObject *__pyx_n_s_ltype;
+static PyObject *__pyx_n_s_lua_code;
 static PyObject *__pyx_n_s_lua_object;
 static PyObject *__pyx_n_s_lua_type;
 static PyObject *__pyx_n_s_lua_type_name;
@@ -2534,6 +2537,7 @@ static PyObject *__pyx_kp_s_torch_IntTensor;
 static PyObject *__pyx_kp_s_torch_LongTensor;
 static PyObject *__pyx_kp_s_torch_ShortTensor;
 static PyObject *__pyx_n_s_type;
+static PyObject *__pyx_n_s_uint8;
 static PyObject *__pyx_kp_u_unknown_dtype_code_in_numpy_pxd;
 static PyObject *__pyx_n_s_unpack_returned_tuples;
 static PyObject *__pyx_n_s_unpacks_lua_table;
@@ -2558,8 +2562,8 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
 static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__pyx_v_x); /* proto */
 static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_encoding, PyObject *__pyx_v_source_encoding, PyObject *__pyx_v_attribute_filter, PyObject *__pyx_v_attribute_handlers, int __pyx_v_register_eval, int __pyx_v_unpack_returned_tuples, int __pyx_v_register_builtins, int __pyx_v_zero_based_index); /* proto */
 static void __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_2__dealloc__(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_lua_code); /* proto */
-static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_lua_code); /* proto */
+static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_lua_code, PyObject *__pyx_v_args); /* proto */
+static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_lua_code, PyObject *__pyx_v_args); /* proto */
 static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_modulename); /* proto */
 static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self); /* proto */
 static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_12table(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_items, PyObject *__pyx_v_kwargs); /* proto */
@@ -3824,7 +3828,7 @@ static CYTHON_INLINE void __pyx_f_7lutorpy_5_lupa_unlock_lock(struct __pyx_obj_7
   /* function exit code */
 }
 
-/* "lutorpy/_lupa.pyx":77
+/* "lutorpy/_lupa.pyx":109
  * 
  * 
  * def lua_type(obj):             # <<<<<<<<<<<<<<
@@ -3871,7 +3875,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
   PyObject *__pyx_t_14 = NULL;
   __Pyx_RefNannySetupContext("lua_type", 0);
 
-  /* "lutorpy/_lupa.pyx":84
+  /* "lutorpy/_lupa.pyx":116
  *     For non-wrapper objects (i.e. normal Python objects), returns None.
  *     """
  *     if not isinstance(obj, _LuaObject):             # <<<<<<<<<<<<<<
@@ -3882,7 +3886,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_2 = ((!(__pyx_t_1 != 0)) != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":85
+    /* "lutorpy/_lupa.pyx":117
  *     """
  *     if not isinstance(obj, _LuaObject):
  *         return None             # <<<<<<<<<<<<<<
@@ -3894,7 +3898,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     __pyx_r = Py_None;
     goto __pyx_L0;
 
-    /* "lutorpy/_lupa.pyx":84
+    /* "lutorpy/_lupa.pyx":116
  *     For non-wrapper objects (i.e. normal Python objects), returns None.
  *     """
  *     if not isinstance(obj, _LuaObject):             # <<<<<<<<<<<<<<
@@ -3903,7 +3907,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
   }
 
-  /* "lutorpy/_lupa.pyx":86
+  /* "lutorpy/_lupa.pyx":118
  *     if not isinstance(obj, _LuaObject):
  *         return None
  *     lua_object = <_LuaObject>obj             # <<<<<<<<<<<<<<
@@ -3915,7 +3919,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
   __pyx_v_lua_object = ((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":87
+  /* "lutorpy/_lupa.pyx":119
  *         return None
  *     lua_object = <_LuaObject>obj
  *     assert lua_object._runtime is not None             # <<<<<<<<<<<<<<
@@ -3927,12 +3931,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     __pyx_t_2 = (((PyObject *)__pyx_v_lua_object->_runtime) != Py_None);
     if (unlikely(!(__pyx_t_2 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 87, __pyx_L1_error)
+      __PYX_ERR(0, 119, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":88
+  /* "lutorpy/_lupa.pyx":120
  *     lua_object = <_LuaObject>obj
  *     assert lua_object._runtime is not None
  *     lock_runtime(lua_object._runtime)             # <<<<<<<<<<<<<<
@@ -3941,10 +3945,10 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
   __pyx_t_3 = ((PyObject *)__pyx_v_lua_object->_runtime);
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 88, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 120, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":89
+  /* "lutorpy/_lupa.pyx":121
  *     assert lua_object._runtime is not None
  *     lock_runtime(lua_object._runtime)
  *     L = lua_object._state             # <<<<<<<<<<<<<<
@@ -3954,7 +3958,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
   __pyx_t_5 = __pyx_v_lua_object->_state;
   __pyx_v_L = __pyx_t_5;
 
-  /* "lutorpy/_lupa.pyx":90
+  /* "lutorpy/_lupa.pyx":122
  *     lock_runtime(lua_object._runtime)
  *     L = lua_object._state
  *     old_top = lua.lua_gettop(L)             # <<<<<<<<<<<<<<
@@ -3963,7 +3967,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
   __pyx_v_old_top = lua_gettop(__pyx_v_L);
 
-  /* "lutorpy/_lupa.pyx":92
+  /* "lutorpy/_lupa.pyx":124
  *     old_top = lua.lua_gettop(L)
  *     cdef const char* lua_type_name
  *     try:             # <<<<<<<<<<<<<<
@@ -3972,7 +3976,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":93
+    /* "lutorpy/_lupa.pyx":125
  *     cdef const char* lua_type_name
  *     try:
  *         lua.lua_rawgeti(L, lua.LUA_REGISTRYINDEX, lua_object._ref)             # <<<<<<<<<<<<<<
@@ -3981,7 +3985,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
     lua_rawgeti(__pyx_v_L, LUA_REGISTRYINDEX, __pyx_v_lua_object->_ref);
 
-    /* "lutorpy/_lupa.pyx":94
+    /* "lutorpy/_lupa.pyx":126
  *     try:
  *         lua.lua_rawgeti(L, lua.LUA_REGISTRYINDEX, lua_object._ref)
  *         ltype = lua.lua_type(L, -1)             # <<<<<<<<<<<<<<
@@ -3990,7 +3994,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
     __pyx_v_ltype = lua_type(__pyx_v_L, -1);
 
-    /* "lutorpy/_lupa.pyx":95
+    /* "lutorpy/_lupa.pyx":127
  *         lua.lua_rawgeti(L, lua.LUA_REGISTRYINDEX, lua_object._ref)
  *         ltype = lua.lua_type(L, -1)
  *         if ltype == lua.LUA_TTABLE:             # <<<<<<<<<<<<<<
@@ -4000,7 +4004,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     __pyx_t_2 = ((__pyx_v_ltype == LUA_TTABLE) != 0);
     if (__pyx_t_2) {
 
-      /* "lutorpy/_lupa.pyx":96
+      /* "lutorpy/_lupa.pyx":128
  *         ltype = lua.lua_type(L, -1)
  *         if ltype == lua.LUA_TTABLE:
  *             return 'table'             # <<<<<<<<<<<<<<
@@ -4012,7 +4016,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
       __pyx_r = __pyx_n_s_table;
       goto __pyx_L4_return;
 
-      /* "lutorpy/_lupa.pyx":95
+      /* "lutorpy/_lupa.pyx":127
  *         lua.lua_rawgeti(L, lua.LUA_REGISTRYINDEX, lua_object._ref)
  *         ltype = lua.lua_type(L, -1)
  *         if ltype == lua.LUA_TTABLE:             # <<<<<<<<<<<<<<
@@ -4021,7 +4025,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
     }
 
-    /* "lutorpy/_lupa.pyx":97
+    /* "lutorpy/_lupa.pyx":129
  *         if ltype == lua.LUA_TTABLE:
  *             return 'table'
  *         elif ltype == lua.LUA_TFUNCTION:             # <<<<<<<<<<<<<<
@@ -4031,7 +4035,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     __pyx_t_2 = ((__pyx_v_ltype == LUA_TFUNCTION) != 0);
     if (__pyx_t_2) {
 
-      /* "lutorpy/_lupa.pyx":98
+      /* "lutorpy/_lupa.pyx":130
  *             return 'table'
  *         elif ltype == lua.LUA_TFUNCTION:
  *             return 'function'             # <<<<<<<<<<<<<<
@@ -4043,7 +4047,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
       __pyx_r = __pyx_n_s_function;
       goto __pyx_L4_return;
 
-      /* "lutorpy/_lupa.pyx":97
+      /* "lutorpy/_lupa.pyx":129
  *         if ltype == lua.LUA_TTABLE:
  *             return 'table'
  *         elif ltype == lua.LUA_TFUNCTION:             # <<<<<<<<<<<<<<
@@ -4052,7 +4056,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
     }
 
-    /* "lutorpy/_lupa.pyx":99
+    /* "lutorpy/_lupa.pyx":131
  *         elif ltype == lua.LUA_TFUNCTION:
  *             return 'function'
  *         elif ltype == lua.LUA_TTHREAD:             # <<<<<<<<<<<<<<
@@ -4062,7 +4066,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     __pyx_t_2 = ((__pyx_v_ltype == LUA_TTHREAD) != 0);
     if (__pyx_t_2) {
 
-      /* "lutorpy/_lupa.pyx":100
+      /* "lutorpy/_lupa.pyx":132
  *             return 'function'
  *         elif ltype == lua.LUA_TTHREAD:
  *             return 'thread'             # <<<<<<<<<<<<<<
@@ -4074,7 +4078,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
       __pyx_r = __pyx_n_s_thread;
       goto __pyx_L4_return;
 
-      /* "lutorpy/_lupa.pyx":99
+      /* "lutorpy/_lupa.pyx":131
  *         elif ltype == lua.LUA_TFUNCTION:
  *             return 'function'
  *         elif ltype == lua.LUA_TTHREAD:             # <<<<<<<<<<<<<<
@@ -4083,7 +4087,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
     }
 
-    /* "lutorpy/_lupa.pyx":101
+    /* "lutorpy/_lupa.pyx":133
  *         elif ltype == lua.LUA_TTHREAD:
  *             return 'thread'
  *         elif isinstance(obj, _TorchTensor):             # <<<<<<<<<<<<<<
@@ -4094,7 +4098,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     __pyx_t_1 = (__pyx_t_2 != 0);
     if (__pyx_t_1) {
 
-      /* "lutorpy/_lupa.pyx":102
+      /* "lutorpy/_lupa.pyx":134
  *             return 'thread'
  *         elif isinstance(obj, _TorchTensor):
  *             return 'tensor'             # <<<<<<<<<<<<<<
@@ -4106,7 +4110,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
       __pyx_r = __pyx_n_s_tensor;
       goto __pyx_L4_return;
 
-      /* "lutorpy/_lupa.pyx":101
+      /* "lutorpy/_lupa.pyx":133
  *         elif ltype == lua.LUA_TTHREAD:
  *             return 'thread'
  *         elif isinstance(obj, _TorchTensor):             # <<<<<<<<<<<<<<
@@ -4115,7 +4119,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
     }
 
-    /* "lutorpy/_lupa.pyx":103
+    /* "lutorpy/_lupa.pyx":135
  *         elif isinstance(obj, _TorchTensor):
  *             return 'tensor'
  *         elif ltype in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):             # <<<<<<<<<<<<<<
@@ -4134,7 +4138,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     __pyx_t_2 = (__pyx_t_1 != 0);
     if (__pyx_t_2) {
 
-      /* "lutorpy/_lupa.pyx":104
+      /* "lutorpy/_lupa.pyx":136
  *             return 'tensor'
  *         elif ltype in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):
  *             return 'userdata'             # <<<<<<<<<<<<<<
@@ -4146,7 +4150,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
       __pyx_r = __pyx_n_s_userdata;
       goto __pyx_L4_return;
 
-      /* "lutorpy/_lupa.pyx":103
+      /* "lutorpy/_lupa.pyx":135
  *         elif isinstance(obj, _TorchTensor):
  *             return 'tensor'
  *         elif ltype in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):             # <<<<<<<<<<<<<<
@@ -4155,31 +4159,31 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
     }
 
-    /* "lutorpy/_lupa.pyx":106
+    /* "lutorpy/_lupa.pyx":138
  *             return 'userdata'
  *         else:
  *             lua_type_name = lua.lua_typename(L, ltype)             # <<<<<<<<<<<<<<
- *             return lua_type_name if PY2 else lua_type_name.decode('ascii')
+ *             return lua_type_name if IS_PY2 else lua_type_name.decode('ascii')
  *     finally:
  */
     /*else*/ {
       __pyx_v_lua_type_name = lua_typename(__pyx_v_L, __pyx_v_ltype);
 
-      /* "lutorpy/_lupa.pyx":107
+      /* "lutorpy/_lupa.pyx":139
  *         else:
  *             lua_type_name = lua.lua_typename(L, ltype)
- *             return lua_type_name if PY2 else lua_type_name.decode('ascii')             # <<<<<<<<<<<<<<
+ *             return lua_type_name if IS_PY2 else lua_type_name.decode('ascii')             # <<<<<<<<<<<<<<
  *     finally:
  *         lua.lua_settop(L, old_top)
  */
       __Pyx_XDECREF(__pyx_r);
-      if ((__pyx_v_7lutorpy_5_lupa_PY2 != 0)) {
-        __pyx_t_6 = __Pyx_PyBytes_FromString(__pyx_v_lua_type_name); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L5_error)
+      if ((__pyx_v_7lutorpy_5_lupa_IS_PY2 != 0)) {
+        __pyx_t_6 = __Pyx_PyBytes_FromString(__pyx_v_lua_type_name); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_3 = __pyx_t_6;
         __pyx_t_6 = 0;
       } else {
-        __pyx_t_6 = __Pyx_decode_c_string(__pyx_v_lua_type_name, 0, strlen(__pyx_v_lua_type_name), NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 107, __pyx_L5_error)
+        __pyx_t_6 = __Pyx_decode_c_string(__pyx_v_lua_type_name, 0, strlen(__pyx_v_lua_type_name), NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 139, __pyx_L5_error)
         __Pyx_GOTREF(__pyx_t_6);
         __pyx_t_3 = __pyx_t_6;
         __pyx_t_6 = 0;
@@ -4190,8 +4194,8 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     }
   }
 
-  /* "lutorpy/_lupa.pyx":109
- *             return lua_type_name if PY2 else lua_type_name.decode('ascii')
+  /* "lutorpy/_lupa.pyx":141
+ *             return lua_type_name if IS_PY2 else lua_type_name.decode('ascii')
  *     finally:
  *         lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
  *         unlock_runtime(lua_object._runtime)
@@ -4217,7 +4221,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
       {
         lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-        /* "lutorpy/_lupa.pyx":110
+        /* "lutorpy/_lupa.pyx":142
  *     finally:
  *         lua.lua_settop(L, old_top)
  *         unlock_runtime(lua_object._runtime)             # <<<<<<<<<<<<<<
@@ -4248,8 +4252,8 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
       __pyx_t_14 = __pyx_r;
       __pyx_r = 0;
 
-      /* "lutorpy/_lupa.pyx":109
- *             return lua_type_name if PY2 else lua_type_name.decode('ascii')
+      /* "lutorpy/_lupa.pyx":141
+ *             return lua_type_name if IS_PY2 else lua_type_name.decode('ascii')
  *     finally:
  *         lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
  *         unlock_runtime(lua_object._runtime)
@@ -4257,7 +4261,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
  */
       lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-      /* "lutorpy/_lupa.pyx":110
+      /* "lutorpy/_lupa.pyx":142
  *     finally:
  *         lua.lua_settop(L, old_top)
  *         unlock_runtime(lua_object._runtime)             # <<<<<<<<<<<<<<
@@ -4274,7 +4278,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
     }
   }
 
-  /* "lutorpy/_lupa.pyx":77
+  /* "lutorpy/_lupa.pyx":109
  * 
  * 
  * def lua_type(obj):             # <<<<<<<<<<<<<<
@@ -4295,7 +4299,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_lua_type(CYTHON_UNUSED PyObject *__pyx
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":192
+/* "lutorpy/_lupa.pyx":224
  *     cdef bint _zero_based_index
  * 
  *     def __cinit__(self, encoding='UTF-8', source_encoding=None,             # <<<<<<<<<<<<<<
@@ -4323,7 +4327,7 @@ static int __pyx_pw_7lutorpy_5_lupa_10LuaRuntime_1__cinit__(PyObject *__pyx_v_se
     values[0] = ((PyObject *)__pyx_kp_s_UTF_8);
     values[1] = ((PyObject *)Py_None);
 
-    /* "lutorpy/_lupa.pyx":193
+    /* "lutorpy/_lupa.pyx":225
  * 
  *     def __cinit__(self, encoding='UTF-8', source_encoding=None,
  *                   attribute_filter=None, attribute_handlers=None,             # <<<<<<<<<<<<<<
@@ -4391,7 +4395,7 @@ static int __pyx_pw_7lutorpy_5_lupa_10LuaRuntime_1__cinit__(PyObject *__pyx_v_se
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 192, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "__cinit__") < 0)) __PYX_ERR(0, 224, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -4412,10 +4416,10 @@ static int __pyx_pw_7lutorpy_5_lupa_10LuaRuntime_1__cinit__(PyObject *__pyx_v_se
     __pyx_v_attribute_filter = values[2];
     __pyx_v_attribute_handlers = values[3];
     if (values[4]) {
-      __pyx_v_register_eval = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_register_eval == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 194, __pyx_L3_error)
+      __pyx_v_register_eval = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_register_eval == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L3_error)
     } else {
 
-      /* "lutorpy/_lupa.pyx":194
+      /* "lutorpy/_lupa.pyx":226
  *     def __cinit__(self, encoding='UTF-8', source_encoding=None,
  *                   attribute_filter=None, attribute_handlers=None,
  *                   bint register_eval=True, bint unpack_returned_tuples=False,             # <<<<<<<<<<<<<<
@@ -4425,15 +4429,15 @@ static int __pyx_pw_7lutorpy_5_lupa_10LuaRuntime_1__cinit__(PyObject *__pyx_v_se
       __pyx_v_register_eval = ((int)1);
     }
     if (values[5]) {
-      __pyx_v_unpack_returned_tuples = __Pyx_PyObject_IsTrue(values[5]); if (unlikely((__pyx_v_unpack_returned_tuples == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 194, __pyx_L3_error)
+      __pyx_v_unpack_returned_tuples = __Pyx_PyObject_IsTrue(values[5]); if (unlikely((__pyx_v_unpack_returned_tuples == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 226, __pyx_L3_error)
     } else {
       __pyx_v_unpack_returned_tuples = ((int)0);
     }
     if (values[6]) {
-      __pyx_v_register_builtins = __Pyx_PyObject_IsTrue(values[6]); if (unlikely((__pyx_v_register_builtins == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 195, __pyx_L3_error)
+      __pyx_v_register_builtins = __Pyx_PyObject_IsTrue(values[6]); if (unlikely((__pyx_v_register_builtins == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 227, __pyx_L3_error)
     } else {
 
-      /* "lutorpy/_lupa.pyx":195
+      /* "lutorpy/_lupa.pyx":227
  *                   attribute_filter=None, attribute_handlers=None,
  *                   bint register_eval=True, bint unpack_returned_tuples=False,
  *                   bint register_builtins=True,             # <<<<<<<<<<<<<<
@@ -4443,10 +4447,10 @@ static int __pyx_pw_7lutorpy_5_lupa_10LuaRuntime_1__cinit__(PyObject *__pyx_v_se
       __pyx_v_register_builtins = ((int)1);
     }
     if (values[7]) {
-      __pyx_v_zero_based_index = __Pyx_PyObject_IsTrue(values[7]); if (unlikely((__pyx_v_zero_based_index == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 196, __pyx_L3_error)
+      __pyx_v_zero_based_index = __Pyx_PyObject_IsTrue(values[7]); if (unlikely((__pyx_v_zero_based_index == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 228, __pyx_L3_error)
     } else {
 
-      /* "lutorpy/_lupa.pyx":196
+      /* "lutorpy/_lupa.pyx":228
  *                   bint register_eval=True, bint unpack_returned_tuples=False,
  *                   bint register_builtins=True,
  *                   bint zero_based_index=False):             # <<<<<<<<<<<<<<
@@ -4458,7 +4462,7 @@ static int __pyx_pw_7lutorpy_5_lupa_10LuaRuntime_1__cinit__(PyObject *__pyx_v_se
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 192, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("__cinit__", 0, 0, 8, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 224, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("lutorpy._lupa.LuaRuntime.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4466,7 +4470,7 @@ static int __pyx_pw_7lutorpy_5_lupa_10LuaRuntime_1__cinit__(PyObject *__pyx_v_se
   __pyx_L4_argument_unpacking_done:;
   __pyx_r = __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_v_self), __pyx_v_encoding, __pyx_v_source_encoding, __pyx_v_attribute_filter, __pyx_v_attribute_handlers, __pyx_v_register_eval, __pyx_v_unpack_returned_tuples, __pyx_v_register_builtins, __pyx_v_zero_based_index);
 
-  /* "lutorpy/_lupa.pyx":192
+  /* "lutorpy/_lupa.pyx":224
  *     cdef bint _zero_based_index
  * 
  *     def __cinit__(self, encoding='UTF-8', source_encoding=None,             # <<<<<<<<<<<<<<
@@ -4479,7 +4483,7 @@ static int __pyx_pw_7lutorpy_5_lupa_10LuaRuntime_1__cinit__(PyObject *__pyx_v_se
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":234
+/* "lutorpy/_lupa.pyx":267
  *             self.require("torch")
  *             torch = self.eval("torch")
  *             torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)             # <<<<<<<<<<<<<<
@@ -4515,9 +4519,9 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   __pyx_outer_scope = (struct __pyx_obj_7lutorpy_5_lupa___pyx_scope_struct____cinit__ *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_fromNumpyArray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_fromNumpyArray); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_torch)) { __Pyx_RaiseClosureNameError("torch"); __PYX_ERR(0, 234, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_torch)) { __Pyx_RaiseClosureNameError("torch"); __PYX_ERR(0, 267, __pyx_L1_error) }
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -4530,7 +4534,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
       __pyx_t_4 = 1;
     }
   }
-  __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (__pyx_t_3) {
     __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -4541,7 +4545,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   __Pyx_INCREF(__pyx_v_x);
   __Pyx_GIVEREF(__pyx_v_x);
   PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_v_x);
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 267, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -4563,7 +4567,7 @@ static PyObject *__pyx_lambda_funcdef_lambda(PyObject *__pyx_self, PyObject *__p
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":192
+/* "lutorpy/_lupa.pyx":224
  *     cdef bint _zero_based_index
  * 
  *     def __cinit__(self, encoding='UTF-8', source_encoding=None,             # <<<<<<<<<<<<<<
@@ -4598,7 +4602,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
   }
   __Pyx_GOTREF(__pyx_cur_scope);
 
-  /* "lutorpy/_lupa.pyx":197
+  /* "lutorpy/_lupa.pyx":229
  *                   bint register_builtins=True,
  *                   bint zero_based_index=False):
  *         cdef lua_State* L = lua.luaL_newstate()             # <<<<<<<<<<<<<<
@@ -4607,7 +4611,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
   __pyx_v_L = luaL_newstate();
 
-  /* "lutorpy/_lupa.pyx":198
+  /* "lutorpy/_lupa.pyx":230
  *                   bint zero_based_index=False):
  *         cdef lua_State* L = lua.luaL_newstate()
  *         if L is NULL:             # <<<<<<<<<<<<<<
@@ -4617,23 +4621,23 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
   __pyx_t_1 = ((__pyx_v_L == NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":199
+    /* "lutorpy/_lupa.pyx":231
  *         cdef lua_State* L = lua.luaL_newstate()
  *         if L is NULL:
  *             raise LuaError("Failed to initialise Lua runtime")             # <<<<<<<<<<<<<<
  *         self._state = L
  *         self._lock = FastRLock()
  */
-    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 199, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 199, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_tuple__3, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 199, __pyx_L1_error)
+    __PYX_ERR(0, 231, __pyx_L1_error)
 
-    /* "lutorpy/_lupa.pyx":198
+    /* "lutorpy/_lupa.pyx":230
  *                   bint zero_based_index=False):
  *         cdef lua_State* L = lua.luaL_newstate()
  *         if L is NULL:             # <<<<<<<<<<<<<<
@@ -4642,7 +4646,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
   }
 
-  /* "lutorpy/_lupa.pyx":200
+  /* "lutorpy/_lupa.pyx":232
  *         if L is NULL:
  *             raise LuaError("Failed to initialise Lua runtime")
  *         self._state = L             # <<<<<<<<<<<<<<
@@ -4651,14 +4655,14 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
   __pyx_v_self->_state = __pyx_v_L;
 
-  /* "lutorpy/_lupa.pyx":201
+  /* "lutorpy/_lupa.pyx":233
  *             raise LuaError("Failed to initialise Lua runtime")
  *         self._state = L
  *         self._lock = FastRLock()             # <<<<<<<<<<<<<<
  *         self._pyrefs_in_lua = {}
  *         self._encoding = _asciiOrNone(encoding)
  */
-  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7lutorpy_5_lupa_FastRLock), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 201, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7lutorpy_5_lupa_FastRLock), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->_lock);
@@ -4666,14 +4670,14 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
   __pyx_v_self->_lock = ((struct __pyx_obj_7lutorpy_5_lupa_FastRLock *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":202
+  /* "lutorpy/_lupa.pyx":234
  *         self._state = L
  *         self._lock = FastRLock()
  *         self._pyrefs_in_lua = {}             # <<<<<<<<<<<<<<
  *         self._encoding = _asciiOrNone(encoding)
  *         self._source_encoding = _asciiOrNone(source_encoding) or self._encoding or b'UTF-8'
  */
-  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 202, __pyx_L1_error)
+  __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->_pyrefs_in_lua);
@@ -4681,14 +4685,14 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
   __pyx_v_self->_pyrefs_in_lua = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":203
+  /* "lutorpy/_lupa.pyx":235
  *         self._lock = FastRLock()
  *         self._pyrefs_in_lua = {}
  *         self._encoding = _asciiOrNone(encoding)             # <<<<<<<<<<<<<<
  *         self._source_encoding = _asciiOrNone(source_encoding) or self._encoding or b'UTF-8'
  *         if attribute_filter is not None and not callable(attribute_filter):
  */
-  __pyx_t_3 = __pyx_f_7lutorpy_5_lupa__asciiOrNone(__pyx_v_encoding); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 203, __pyx_L1_error)
+  __pyx_t_3 = __pyx_f_7lutorpy_5_lupa__asciiOrNone(__pyx_v_encoding); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 235, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_3);
   __Pyx_GOTREF(__pyx_v_self->_encoding);
@@ -4696,16 +4700,16 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
   __pyx_v_self->_encoding = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":204
+  /* "lutorpy/_lupa.pyx":236
  *         self._pyrefs_in_lua = {}
  *         self._encoding = _asciiOrNone(encoding)
  *         self._source_encoding = _asciiOrNone(source_encoding) or self._encoding or b'UTF-8'             # <<<<<<<<<<<<<<
  *         if attribute_filter is not None and not callable(attribute_filter):
  *             raise ValueError("attribute_filter must be callable")
  */
-  __pyx_t_2 = __pyx_f_7lutorpy_5_lupa__asciiOrNone(__pyx_v_source_encoding); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_7lutorpy_5_lupa__asciiOrNone(__pyx_v_source_encoding); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 236, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 236, __pyx_L1_error)
   if (!__pyx_t_1) {
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   } else {
@@ -4714,7 +4718,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
     __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_self->_encoding); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 204, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_self->_encoding); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 236, __pyx_L1_error)
   if (!__pyx_t_1) {
   } else {
     __Pyx_INCREF(__pyx_v_self->_encoding);
@@ -4730,7 +4734,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
   __pyx_v_self->_source_encoding = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":205
+  /* "lutorpy/_lupa.pyx":237
  *         self._encoding = _asciiOrNone(encoding)
  *         self._source_encoding = _asciiOrNone(source_encoding) or self._encoding or b'UTF-8'
  *         if attribute_filter is not None and not callable(attribute_filter):             # <<<<<<<<<<<<<<
@@ -4744,26 +4748,26 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
     __pyx_t_1 = __pyx_t_5;
     goto __pyx_L8_bool_binop_done;
   }
-  __pyx_t_5 = __Pyx_PyCallable_Check(__pyx_v_attribute_filter); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 205, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyCallable_Check(__pyx_v_attribute_filter); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 237, __pyx_L1_error)
   __pyx_t_4 = ((!(__pyx_t_5 != 0)) != 0);
   __pyx_t_1 = __pyx_t_4;
   __pyx_L8_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":206
+    /* "lutorpy/_lupa.pyx":238
  *         self._source_encoding = _asciiOrNone(source_encoding) or self._encoding or b'UTF-8'
  *         if attribute_filter is not None and not callable(attribute_filter):
  *             raise ValueError("attribute_filter must be callable")             # <<<<<<<<<<<<<<
  *         self._attribute_filter = attribute_filter
  *         self._unpack_returned_tuples = unpack_returned_tuples
  */
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 206, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__4, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 206, __pyx_L1_error)
+    __PYX_ERR(0, 238, __pyx_L1_error)
 
-    /* "lutorpy/_lupa.pyx":205
+    /* "lutorpy/_lupa.pyx":237
  *         self._encoding = _asciiOrNone(encoding)
  *         self._source_encoding = _asciiOrNone(source_encoding) or self._encoding or b'UTF-8'
  *         if attribute_filter is not None and not callable(attribute_filter):             # <<<<<<<<<<<<<<
@@ -4772,7 +4776,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
   }
 
-  /* "lutorpy/_lupa.pyx":207
+  /* "lutorpy/_lupa.pyx":239
  *         if attribute_filter is not None and not callable(attribute_filter):
  *             raise ValueError("attribute_filter must be callable")
  *         self._attribute_filter = attribute_filter             # <<<<<<<<<<<<<<
@@ -4785,7 +4789,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
   __Pyx_DECREF(__pyx_v_self->_attribute_filter);
   __pyx_v_self->_attribute_filter = __pyx_v_attribute_filter;
 
-  /* "lutorpy/_lupa.pyx":208
+  /* "lutorpy/_lupa.pyx":240
  *             raise ValueError("attribute_filter must be callable")
  *         self._attribute_filter = attribute_filter
  *         self._unpack_returned_tuples = unpack_returned_tuples             # <<<<<<<<<<<<<<
@@ -4794,7 +4798,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
   __pyx_v_self->_unpack_returned_tuples = __pyx_v_unpack_returned_tuples;
 
-  /* "lutorpy/_lupa.pyx":209
+  /* "lutorpy/_lupa.pyx":241
  *         self._attribute_filter = attribute_filter
  *         self._unpack_returned_tuples = unpack_returned_tuples
  *         self._zero_based_index = zero_based_index             # <<<<<<<<<<<<<<
@@ -4803,17 +4807,17 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
   __pyx_v_self->_zero_based_index = __pyx_v_zero_based_index;
 
-  /* "lutorpy/_lupa.pyx":211
+  /* "lutorpy/_lupa.pyx":243
  *         self._zero_based_index = zero_based_index
  * 
  *         if attribute_handlers:             # <<<<<<<<<<<<<<
  *             raise_error = False
  *             try:
  */
-  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_attribute_handlers); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 211, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_IsTrue(__pyx_v_attribute_handlers); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 243, __pyx_L1_error)
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":212
+    /* "lutorpy/_lupa.pyx":244
  * 
  *         if attribute_handlers:
  *             raise_error = False             # <<<<<<<<<<<<<<
@@ -4822,7 +4826,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
     __pyx_v_raise_error = 0;
 
-    /* "lutorpy/_lupa.pyx":213
+    /* "lutorpy/_lupa.pyx":245
  *         if attribute_handlers:
  *             raise_error = False
  *             try:             # <<<<<<<<<<<<<<
@@ -4838,7 +4842,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
       __Pyx_XGOTREF(__pyx_t_8);
       /*try:*/ {
 
-        /* "lutorpy/_lupa.pyx":214
+        /* "lutorpy/_lupa.pyx":246
  *             raise_error = False
  *             try:
  *                 getter, setter = attribute_handlers             # <<<<<<<<<<<<<<
@@ -4855,7 +4859,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
           if (unlikely(size != 2)) {
             if (size > 2) __Pyx_RaiseTooManyValuesError(2);
             else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-            __PYX_ERR(0, 214, __pyx_L11_error)
+            __PYX_ERR(0, 246, __pyx_L11_error)
           }
           #if CYTHON_COMPILING_IN_CPYTHON
           if (likely(PyTuple_CheckExact(sequence))) {
@@ -4868,21 +4872,21 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
           __Pyx_INCREF(__pyx_t_3);
           __Pyx_INCREF(__pyx_t_2);
           #else
-          __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 214, __pyx_L11_error)
+          __pyx_t_3 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 246, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_3);
-          __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 214, __pyx_L11_error)
+          __pyx_t_2 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 246, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_2);
           #endif
         } else {
           Py_ssize_t index = -1;
-          __pyx_t_9 = PyObject_GetIter(__pyx_v_attribute_handlers); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 214, __pyx_L11_error)
+          __pyx_t_9 = PyObject_GetIter(__pyx_v_attribute_handlers); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 246, __pyx_L11_error)
           __Pyx_GOTREF(__pyx_t_9);
           __pyx_t_10 = Py_TYPE(__pyx_t_9)->tp_iternext;
           index = 0; __pyx_t_3 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_3)) goto __pyx_L19_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_3);
           index = 1; __pyx_t_2 = __pyx_t_10(__pyx_t_9); if (unlikely(!__pyx_t_2)) goto __pyx_L19_unpacking_failed;
           __Pyx_GOTREF(__pyx_t_2);
-          if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 214, __pyx_L11_error)
+          if (__Pyx_IternextUnpackEndCheck(__pyx_t_10(__pyx_t_9), 2) < 0) __PYX_ERR(0, 246, __pyx_L11_error)
           __pyx_t_10 = NULL;
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           goto __pyx_L20_unpacking_done;
@@ -4890,7 +4894,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
           __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
           __pyx_t_10 = NULL;
           if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-          __PYX_ERR(0, 214, __pyx_L11_error)
+          __PYX_ERR(0, 246, __pyx_L11_error)
           __pyx_L20_unpacking_done:;
         }
         __pyx_v_getter = __pyx_t_3;
@@ -4898,7 +4902,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
         __pyx_v_setter = __pyx_t_2;
         __pyx_t_2 = 0;
 
-        /* "lutorpy/_lupa.pyx":213
+        /* "lutorpy/_lupa.pyx":245
  *         if attribute_handlers:
  *             raise_error = False
  *             try:             # <<<<<<<<<<<<<<
@@ -4907,7 +4911,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
       }
 
-      /* "lutorpy/_lupa.pyx":218
+      /* "lutorpy/_lupa.pyx":250
  *                 raise_error = True
  *             else:
  *                 if (getter is not None and not callable(getter) or             # <<<<<<<<<<<<<<
@@ -4921,7 +4925,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
           goto __pyx_L23_next_or;
         } else {
         }
-        __pyx_t_5 = __Pyx_PyCallable_Check(__pyx_v_getter); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 218, __pyx_L13_except_error)
+        __pyx_t_5 = __Pyx_PyCallable_Check(__pyx_v_getter); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 250, __pyx_L13_except_error)
         __pyx_t_4 = ((!(__pyx_t_5 != 0)) != 0);
         if (!__pyx_t_4) {
         } else {
@@ -4930,7 +4934,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
         }
         __pyx_L23_next_or:;
 
-        /* "lutorpy/_lupa.pyx":219
+        /* "lutorpy/_lupa.pyx":251
  *             else:
  *                 if (getter is not None and not callable(getter) or
  *                         setter is not None and not callable(setter)):             # <<<<<<<<<<<<<<
@@ -4944,12 +4948,12 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
           __pyx_t_1 = __pyx_t_5;
           goto __pyx_L22_bool_binop_done;
         }
-        __pyx_t_5 = __Pyx_PyCallable_Check(__pyx_v_setter); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 219, __pyx_L13_except_error)
+        __pyx_t_5 = __Pyx_PyCallable_Check(__pyx_v_setter); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 251, __pyx_L13_except_error)
         __pyx_t_4 = ((!(__pyx_t_5 != 0)) != 0);
         __pyx_t_1 = __pyx_t_4;
         __pyx_L22_bool_binop_done:;
 
-        /* "lutorpy/_lupa.pyx":218
+        /* "lutorpy/_lupa.pyx":250
  *                 raise_error = True
  *             else:
  *                 if (getter is not None and not callable(getter) or             # <<<<<<<<<<<<<<
@@ -4958,7 +4962,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
         if (__pyx_t_1) {
 
-          /* "lutorpy/_lupa.pyx":220
+          /* "lutorpy/_lupa.pyx":252
  *                 if (getter is not None and not callable(getter) or
  *                         setter is not None and not callable(setter)):
  *                     raise_error = True             # <<<<<<<<<<<<<<
@@ -4967,7 +4971,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
           __pyx_v_raise_error = 1;
 
-          /* "lutorpy/_lupa.pyx":218
+          /* "lutorpy/_lupa.pyx":250
  *                 raise_error = True
  *             else:
  *                 if (getter is not None and not callable(getter) or             # <<<<<<<<<<<<<<
@@ -4986,7 +4990,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
       __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-      /* "lutorpy/_lupa.pyx":215
+      /* "lutorpy/_lupa.pyx":247
  *             try:
  *                 getter, setter = attribute_handlers
  *             except (ValueError, TypeError):             # <<<<<<<<<<<<<<
@@ -4996,12 +5000,12 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
       __pyx_t_11 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_ValueError) || __Pyx_PyErr_ExceptionMatches(__pyx_builtin_TypeError);
       if (__pyx_t_11) {
         __Pyx_AddTraceback("lutorpy._lupa.LuaRuntime.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-        if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_9) < 0) __PYX_ERR(0, 215, __pyx_L13_except_error)
+        if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_3, &__pyx_t_9) < 0) __PYX_ERR(0, 247, __pyx_L13_except_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_GOTREF(__pyx_t_9);
 
-        /* "lutorpy/_lupa.pyx":216
+        /* "lutorpy/_lupa.pyx":248
  *                 getter, setter = attribute_handlers
  *             except (ValueError, TypeError):
  *                 raise_error = True             # <<<<<<<<<<<<<<
@@ -5017,7 +5021,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
       goto __pyx_L13_except_error;
       __pyx_L13_except_error:;
 
-      /* "lutorpy/_lupa.pyx":213
+      /* "lutorpy/_lupa.pyx":245
  *         if attribute_handlers:
  *             raise_error = False
  *             try:             # <<<<<<<<<<<<<<
@@ -5039,7 +5043,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
       __pyx_L18_try_end:;
     }
 
-    /* "lutorpy/_lupa.pyx":221
+    /* "lutorpy/_lupa.pyx":253
  *                         setter is not None and not callable(setter)):
  *                     raise_error = True
  *             if raise_error:             # <<<<<<<<<<<<<<
@@ -5049,20 +5053,20 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
     __pyx_t_1 = (__pyx_v_raise_error != 0);
     if (__pyx_t_1) {
 
-      /* "lutorpy/_lupa.pyx":222
+      /* "lutorpy/_lupa.pyx":254
  *                     raise_error = True
  *             if raise_error:
  *                 raise ValueError("attribute_handlers must be a sequence of two callables")             # <<<<<<<<<<<<<<
  *             if attribute_filter and (getter is not None or setter is not None):
  *                 raise ValueError("attribute_filter and attribute_handlers are mutually exclusive")
  */
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 222, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__5, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 254, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_Raise(__pyx_t_9, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __PYX_ERR(0, 222, __pyx_L1_error)
+      __PYX_ERR(0, 254, __pyx_L1_error)
 
-      /* "lutorpy/_lupa.pyx":221
+      /* "lutorpy/_lupa.pyx":253
  *                         setter is not None and not callable(setter)):
  *                     raise_error = True
  *             if raise_error:             # <<<<<<<<<<<<<<
@@ -5071,20 +5075,20 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
     }
 
-    /* "lutorpy/_lupa.pyx":223
+    /* "lutorpy/_lupa.pyx":255
  *             if raise_error:
  *                 raise ValueError("attribute_handlers must be a sequence of two callables")
  *             if attribute_filter and (getter is not None or setter is not None):             # <<<<<<<<<<<<<<
  *                 raise ValueError("attribute_filter and attribute_handlers are mutually exclusive")
  *             self._attribute_getter, self._attribute_setter = getter, setter
  */
-    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_attribute_filter); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 223, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_IsTrue(__pyx_v_attribute_filter); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 255, __pyx_L1_error)
     if (__pyx_t_4) {
     } else {
       __pyx_t_1 = __pyx_t_4;
       goto __pyx_L30_bool_binop_done;
     }
-    if (unlikely(!__pyx_v_getter)) { __Pyx_RaiseUnboundLocalError("getter"); __PYX_ERR(0, 223, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_getter)) { __Pyx_RaiseUnboundLocalError("getter"); __PYX_ERR(0, 255, __pyx_L1_error) }
     __pyx_t_4 = (__pyx_v_getter != Py_None);
     __pyx_t_5 = (__pyx_t_4 != 0);
     if (!__pyx_t_5) {
@@ -5092,27 +5096,27 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
       __pyx_t_1 = __pyx_t_5;
       goto __pyx_L30_bool_binop_done;
     }
-    if (unlikely(!__pyx_v_setter)) { __Pyx_RaiseUnboundLocalError("setter"); __PYX_ERR(0, 223, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_setter)) { __Pyx_RaiseUnboundLocalError("setter"); __PYX_ERR(0, 255, __pyx_L1_error) }
     __pyx_t_5 = (__pyx_v_setter != Py_None);
     __pyx_t_4 = (__pyx_t_5 != 0);
     __pyx_t_1 = __pyx_t_4;
     __pyx_L30_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "lutorpy/_lupa.pyx":224
+      /* "lutorpy/_lupa.pyx":256
  *                 raise ValueError("attribute_handlers must be a sequence of two callables")
  *             if attribute_filter and (getter is not None or setter is not None):
  *                 raise ValueError("attribute_filter and attribute_handlers are mutually exclusive")             # <<<<<<<<<<<<<<
  *             self._attribute_getter, self._attribute_setter = getter, setter
  * 
  */
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 224, __pyx_L1_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple__6, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 256, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_Raise(__pyx_t_9, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-      __PYX_ERR(0, 224, __pyx_L1_error)
+      __PYX_ERR(0, 256, __pyx_L1_error)
 
-      /* "lutorpy/_lupa.pyx":223
+      /* "lutorpy/_lupa.pyx":255
  *             if raise_error:
  *                 raise ValueError("attribute_handlers must be a sequence of two callables")
  *             if attribute_filter and (getter is not None or setter is not None):             # <<<<<<<<<<<<<<
@@ -5121,17 +5125,17 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
     }
 
-    /* "lutorpy/_lupa.pyx":225
+    /* "lutorpy/_lupa.pyx":257
  *             if attribute_filter and (getter is not None or setter is not None):
  *                 raise ValueError("attribute_filter and attribute_handlers are mutually exclusive")
  *             self._attribute_getter, self._attribute_setter = getter, setter             # <<<<<<<<<<<<<<
  * 
  *         lua.luaL_openlibs(L)
  */
-    if (unlikely(!__pyx_v_getter)) { __Pyx_RaiseUnboundLocalError("getter"); __PYX_ERR(0, 225, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_getter)) { __Pyx_RaiseUnboundLocalError("getter"); __PYX_ERR(0, 257, __pyx_L1_error) }
     __pyx_t_9 = __pyx_v_getter;
     __Pyx_INCREF(__pyx_t_9);
-    if (unlikely(!__pyx_v_setter)) { __Pyx_RaiseUnboundLocalError("setter"); __PYX_ERR(0, 225, __pyx_L1_error) }
+    if (unlikely(!__pyx_v_setter)) { __Pyx_RaiseUnboundLocalError("setter"); __PYX_ERR(0, 257, __pyx_L1_error) }
     __pyx_t_3 = __pyx_v_setter;
     __Pyx_INCREF(__pyx_t_3);
     __Pyx_GIVEREF(__pyx_t_9);
@@ -5145,7 +5149,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
     __pyx_v_self->_attribute_setter = __pyx_t_3;
     __pyx_t_3 = 0;
 
-    /* "lutorpy/_lupa.pyx":211
+    /* "lutorpy/_lupa.pyx":243
  *         self._zero_based_index = zero_based_index
  * 
  *         if attribute_handlers:             # <<<<<<<<<<<<<<
@@ -5154,7 +5158,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
   }
 
-  /* "lutorpy/_lupa.pyx":227
+  /* "lutorpy/_lupa.pyx":259
  *             self._attribute_getter, self._attribute_setter = getter, setter
  * 
  *         lua.luaL_openlibs(L)             # <<<<<<<<<<<<<<
@@ -5163,36 +5167,36 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
   luaL_openlibs(__pyx_v_L);
 
-  /* "lutorpy/_lupa.pyx":228
+  /* "lutorpy/_lupa.pyx":260
  * 
  *         lua.luaL_openlibs(L)
  *         self.init_python_lib(register_eval, register_builtins)             # <<<<<<<<<<<<<<
  *         lua.lua_settop(L, 0)
  *         lua.lua_atpanic(L, <lua.lua_CFunction>1)
  */
-  __pyx_t_11 = __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(__pyx_v_self, __pyx_v_register_eval, __pyx_v_register_builtins); if (unlikely(__pyx_t_11 == -1)) __PYX_ERR(0, 228, __pyx_L1_error)
+  __pyx_t_11 = __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(__pyx_v_self, __pyx_v_register_eval, __pyx_v_register_builtins); if (unlikely(__pyx_t_11 == -1)) __PYX_ERR(0, 260, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":229
+  /* "lutorpy/_lupa.pyx":261
  *         lua.luaL_openlibs(L)
  *         self.init_python_lib(register_eval, register_builtins)
  *         lua.lua_settop(L, 0)             # <<<<<<<<<<<<<<
  *         lua.lua_atpanic(L, <lua.lua_CFunction>1)
- *         try:
+ * 
  */
   lua_settop(__pyx_v_L, 0);
 
-  /* "lutorpy/_lupa.pyx":230
+  /* "lutorpy/_lupa.pyx":262
  *         self.init_python_lib(register_eval, register_builtins)
  *         lua.lua_settop(L, 0)
  *         lua.lua_atpanic(L, <lua.lua_CFunction>1)             # <<<<<<<<<<<<<<
+ * 
  *         try:
- *             self.require("torch")
  */
   lua_atpanic(__pyx_v_L, ((lua_CFunction)1));
 
-  /* "lutorpy/_lupa.pyx":231
- *         lua.lua_settop(L, 0)
+  /* "lutorpy/_lupa.pyx":264
  *         lua.lua_atpanic(L, <lua.lua_CFunction>1)
+ * 
  *         try:             # <<<<<<<<<<<<<<
  *             self.require("torch")
  *             torch = self.eval("torch")
@@ -5206,51 +5210,51 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
     __Pyx_XGOTREF(__pyx_t_6);
     /*try:*/ {
 
-      /* "lutorpy/_lupa.pyx":232
- *         lua.lua_atpanic(L, <lua.lua_CFunction>1)
+      /* "lutorpy/_lupa.pyx":265
+ * 
  *         try:
  *             self.require("torch")             # <<<<<<<<<<<<<<
  *             torch = self.eval("torch")
  *             torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)
  */
-      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_require); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 232, __pyx_L33_error)
+      __pyx_t_3 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_require); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 265, __pyx_L33_error)
       __Pyx_GOTREF(__pyx_t_3);
-      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 232, __pyx_L33_error)
+      __pyx_t_9 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__7, NULL); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 265, __pyx_L33_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
 
-      /* "lutorpy/_lupa.pyx":233
+      /* "lutorpy/_lupa.pyx":266
  *         try:
  *             self.require("torch")
  *             torch = self.eval("torch")             # <<<<<<<<<<<<<<
  *             torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)
  *         except:
  */
-      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_eval); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 233, __pyx_L33_error)
+      __pyx_t_9 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_eval); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 266, __pyx_L33_error)
       __Pyx_GOTREF(__pyx_t_9);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 233, __pyx_L33_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_tuple__8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 266, __pyx_L33_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_GIVEREF(__pyx_t_3);
       __pyx_cur_scope->__pyx_v_torch = __pyx_t_3;
       __pyx_t_3 = 0;
 
-      /* "lutorpy/_lupa.pyx":234
+      /* "lutorpy/_lupa.pyx":267
  *             self.require("torch")
  *             torch = self.eval("torch")
  *             torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)             # <<<<<<<<<<<<<<
  *         except:
  *             print("Warning: failed to inject 'fromNumpyArray' function to torch, torch.fromNumpyArray won't work ")
  */
-      __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_10LuaRuntime_9__cinit___lambda, 0, __pyx_n_s_cinit___locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_n_s_lutorpy__lupa, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 234, __pyx_L33_error)
+      __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_10LuaRuntime_9__cinit___lambda, 0, __pyx_n_s_cinit___locals_lambda, ((PyObject*)__pyx_cur_scope), __pyx_n_s_lutorpy__lupa, __pyx_d, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 267, __pyx_L33_error)
       __Pyx_GOTREF(__pyx_t_3);
-      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_torch, __pyx_n_s_fromNumpyArray, __pyx_t_3) < 0) __PYX_ERR(0, 234, __pyx_L33_error)
+      if (__Pyx_PyObject_SetAttrStr(__pyx_cur_scope->__pyx_v_torch, __pyx_n_s_fromNumpyArray, __pyx_t_3) < 0) __PYX_ERR(0, 267, __pyx_L33_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "lutorpy/_lupa.pyx":231
- *         lua.lua_settop(L, 0)
+      /* "lutorpy/_lupa.pyx":264
  *         lua.lua_atpanic(L, <lua.lua_CFunction>1)
+ * 
  *         try:             # <<<<<<<<<<<<<<
  *             self.require("torch")
  *             torch = self.eval("torch")
@@ -5266,7 +5270,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
     __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
     __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "lutorpy/_lupa.pyx":235
+    /* "lutorpy/_lupa.pyx":268
  *             torch = self.eval("torch")
  *             torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)
  *         except:             # <<<<<<<<<<<<<<
@@ -5275,19 +5279,19 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
  */
     /*except:*/ {
       __Pyx_AddTraceback("lutorpy._lupa.LuaRuntime.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_9, &__pyx_t_2) < 0) __PYX_ERR(0, 235, __pyx_L35_except_error)
+      if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_9, &__pyx_t_2) < 0) __PYX_ERR(0, 268, __pyx_L35_except_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GOTREF(__pyx_t_2);
 
-      /* "lutorpy/_lupa.pyx":236
+      /* "lutorpy/_lupa.pyx":269
  *             torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)
  *         except:
  *             print("Warning: failed to inject 'fromNumpyArray' function to torch, torch.fromNumpyArray won't work ")             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-      if (__Pyx_PrintOne(0, __pyx_kp_s_Warning_failed_to_inject_fromNum) < 0) __PYX_ERR(0, 236, __pyx_L35_except_error)
+      if (__Pyx_PrintOne(0, __pyx_kp_s_Warning_failed_to_inject_fromNum) < 0) __PYX_ERR(0, 269, __pyx_L35_except_error)
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
       __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -5295,9 +5299,9 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
     }
     __pyx_L35_except_error:;
 
-    /* "lutorpy/_lupa.pyx":231
- *         lua.lua_settop(L, 0)
+    /* "lutorpy/_lupa.pyx":264
  *         lua.lua_atpanic(L, <lua.lua_CFunction>1)
+ * 
  *         try:             # <<<<<<<<<<<<<<
  *             self.require("torch")
  *             torch = self.eval("torch")
@@ -5317,7 +5321,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
     __pyx_L40_try_end:;
   }
 
-  /* "lutorpy/_lupa.pyx":192
+  /* "lutorpy/_lupa.pyx":224
  *     cdef bint _zero_based_index
  * 
  *     def __cinit__(self, encoding='UTF-8', source_encoding=None,             # <<<<<<<<<<<<<<
@@ -5342,7 +5346,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10LuaRuntime___cinit__(struct __pyx_obj_7lut
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":238
+/* "lutorpy/_lupa.pyx":271
  *             print("Warning: failed to inject 'fromNumpyArray' function to torch, torch.fromNumpyArray won't work ")
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -5366,7 +5370,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_2__dealloc__(struct __pyx_obj_
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "lutorpy/_lupa.pyx":239
+  /* "lutorpy/_lupa.pyx":272
  * 
  *     def __dealloc__(self):
  *         if self._state is not NULL:             # <<<<<<<<<<<<<<
@@ -5376,7 +5380,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_2__dealloc__(struct __pyx_obj_
   __pyx_t_1 = ((__pyx_v_self->_state != NULL) != 0);
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":240
+    /* "lutorpy/_lupa.pyx":273
  *     def __dealloc__(self):
  *         if self._state is not NULL:
  *             lua.lua_close(self._state)             # <<<<<<<<<<<<<<
@@ -5385,7 +5389,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_2__dealloc__(struct __pyx_obj_
  */
     lua_close(__pyx_v_self->_state);
 
-    /* "lutorpy/_lupa.pyx":241
+    /* "lutorpy/_lupa.pyx":274
  *         if self._state is not NULL:
  *             lua.lua_close(self._state)
  *             self._state = NULL             # <<<<<<<<<<<<<<
@@ -5394,7 +5398,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_2__dealloc__(struct __pyx_obj_
  */
     __pyx_v_self->_state = NULL;
 
-    /* "lutorpy/_lupa.pyx":239
+    /* "lutorpy/_lupa.pyx":272
  * 
  *     def __dealloc__(self):
  *         if self._state is not NULL:             # <<<<<<<<<<<<<<
@@ -5403,7 +5407,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_2__dealloc__(struct __pyx_obj_
  */
   }
 
-  /* "lutorpy/_lupa.pyx":238
+  /* "lutorpy/_lupa.pyx":271
  *             print("Warning: failed to inject 'fromNumpyArray' function to torch, torch.fromNumpyArray won't work ")
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -5415,7 +5419,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_2__dealloc__(struct __pyx_obj_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "lutorpy/_lupa.pyx":244
+/* "lutorpy/_lupa.pyx":277
  * 
  *     @cython.final
  *     cdef int reraise_on_exception(self) except -1:             # <<<<<<<<<<<<<<
@@ -5434,7 +5438,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_reraise_on_exception(struct __py
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("reraise_on_exception", 0);
 
-  /* "lutorpy/_lupa.pyx":245
+  /* "lutorpy/_lupa.pyx":278
  *     @cython.final
  *     cdef int reraise_on_exception(self) except -1:
  *         if self._raised_exception is not None:             # <<<<<<<<<<<<<<
@@ -5445,7 +5449,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_reraise_on_exception(struct __py
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":246
+    /* "lutorpy/_lupa.pyx":279
  *     cdef int reraise_on_exception(self) except -1:
  *         if self._raised_exception is not None:
  *             exception = self._raised_exception             # <<<<<<<<<<<<<<
@@ -5457,7 +5461,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_reraise_on_exception(struct __py
     __pyx_v_exception = ((PyObject*)__pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "lutorpy/_lupa.pyx":247
+    /* "lutorpy/_lupa.pyx":280
  *         if self._raised_exception is not None:
  *             exception = self._raised_exception
  *             self._raised_exception = None             # <<<<<<<<<<<<<<
@@ -5470,7 +5474,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_reraise_on_exception(struct __py
     __Pyx_DECREF(__pyx_v_self->_raised_exception);
     __pyx_v_self->_raised_exception = ((PyObject*)Py_None);
 
-    /* "lutorpy/_lupa.pyx":248
+    /* "lutorpy/_lupa.pyx":281
  *             exception = self._raised_exception
  *             self._raised_exception = None
  *             raise exception[0], exception[1], exception[2]             # <<<<<<<<<<<<<<
@@ -5479,29 +5483,29 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_reraise_on_exception(struct __py
  */
     if (unlikely(__pyx_v_exception == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 248, __pyx_L1_error)
+      __PYX_ERR(0, 281, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_exception, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 248, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetItemInt_Tuple(__pyx_v_exception, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     if (unlikely(__pyx_v_exception == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 248, __pyx_L1_error)
+      __PYX_ERR(0, 281, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_exception, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 248, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_exception, 1, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     if (unlikely(__pyx_v_exception == Py_None)) {
       PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-      __PYX_ERR(0, 248, __pyx_L1_error)
+      __PYX_ERR(0, 281, __pyx_L1_error)
     }
-    __pyx_t_5 = __Pyx_GetItemInt_Tuple(__pyx_v_exception, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 248, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_GetItemInt_Tuple(__pyx_v_exception, 2, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 281, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_3, __pyx_t_4, __pyx_t_5, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 248, __pyx_L1_error)
+    __PYX_ERR(0, 281, __pyx_L1_error)
 
-    /* "lutorpy/_lupa.pyx":245
+    /* "lutorpy/_lupa.pyx":278
  *     @cython.final
  *     cdef int reraise_on_exception(self) except -1:
  *         if self._raised_exception is not None:             # <<<<<<<<<<<<<<
@@ -5510,7 +5514,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_reraise_on_exception(struct __py
  */
   }
 
-  /* "lutorpy/_lupa.pyx":249
+  /* "lutorpy/_lupa.pyx":282
  *             self._raised_exception = None
  *             raise exception[0], exception[1], exception[2]
  *         return 0             # <<<<<<<<<<<<<<
@@ -5520,7 +5524,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_reraise_on_exception(struct __py
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":244
+  /* "lutorpy/_lupa.pyx":277
  * 
  *     @cython.final
  *     cdef int reraise_on_exception(self) except -1:             # <<<<<<<<<<<<<<
@@ -5541,7 +5545,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_reraise_on_exception(struct __py
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":252
+/* "lutorpy/_lupa.pyx":285
  * 
  *     @cython.final
  *     cdef int store_raised_exception(self) except -1:             # <<<<<<<<<<<<<<
@@ -5557,7 +5561,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_store_raised_exception(struct __
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("store_raised_exception", 0);
 
-  /* "lutorpy/_lupa.pyx":253
+  /* "lutorpy/_lupa.pyx":286
  *     @cython.final
  *     cdef int store_raised_exception(self) except -1:
  *         self._raised_exception = exc_info()             # <<<<<<<<<<<<<<
@@ -5576,31 +5580,31 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_store_raised_exception(struct __
     }
   }
   if (__pyx_t_3) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   } else {
-    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 253, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallNoArg(__pyx_t_2); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 286, __pyx_L1_error)
   }
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  if (!(likely(PyTuple_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 253, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(__pyx_t_1))||((__pyx_t_1) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_t_1)->tp_name), 0))) __PYX_ERR(0, 286, __pyx_L1_error)
   __Pyx_GIVEREF(__pyx_t_1);
   __Pyx_GOTREF(__pyx_v_self->_raised_exception);
   __Pyx_DECREF(__pyx_v_self->_raised_exception);
   __pyx_v_self->_raised_exception = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lutorpy/_lupa.pyx":254
+  /* "lutorpy/_lupa.pyx":287
  *     cdef int store_raised_exception(self) except -1:
  *         self._raised_exception = exc_info()
  *         return 0             # <<<<<<<<<<<<<<
  * 
- *     def eval(self, lua_code):
+ *     def eval(self, lua_code, *args):
  */
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":252
+  /* "lutorpy/_lupa.pyx":285
  * 
  *     @cython.final
  *     cdef int store_raised_exception(self) except -1:             # <<<<<<<<<<<<<<
@@ -5620,29 +5624,79 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_store_raised_exception(struct __
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":256
+/* "lutorpy/_lupa.pyx":289
  *         return 0
  * 
- *     def eval(self, lua_code):             # <<<<<<<<<<<<<<
+ *     def eval(self, lua_code, *args):             # <<<<<<<<<<<<<<
  *         """Evaluate a Lua expression passed in a string.
  *         """
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_5eval(PyObject *__pyx_v_self, PyObject *__pyx_v_lua_code); /*proto*/
-static char __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_4eval[] = "LuaRuntime.eval(self, lua_code)\nEvaluate a Lua expression passed in a string.\n        ";
-static PyObject *__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_5eval(PyObject *__pyx_v_self, PyObject *__pyx_v_lua_code) {
+static PyObject *__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_5eval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_4eval[] = "LuaRuntime.eval(self, lua_code, *args)\nEvaluate a Lua expression passed in a string.\n        ";
+static PyObject *__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_5eval(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_lua_code = 0;
+  PyObject *__pyx_v_args = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("eval (wrapper)", 0);
-  __pyx_r = __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_v_self), ((PyObject *)__pyx_v_lua_code));
+  if (PyTuple_GET_SIZE(__pyx_args) > 1) {
+    __pyx_v_args = PyTuple_GetSlice(__pyx_args, 1, PyTuple_GET_SIZE(__pyx_args));
+    if (unlikely(!__pyx_v_args)) {
+      __Pyx_RefNannyFinishContext();
+      return NULL;
+    }
+    __Pyx_GOTREF(__pyx_v_args);
+  } else {
+    __pyx_v_args = __pyx_empty_tuple; __Pyx_INCREF(__pyx_empty_tuple);
+  }
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_lua_code,0};
+    PyObject* values[1] = {0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        default:
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_lua_code)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t used_pos_args = (pos_args < 1) ? pos_args : 1;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, used_pos_args, "eval") < 0)) __PYX_ERR(0, 289, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) < 1) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+    }
+    __pyx_v_lua_code = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("eval", 0, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 289, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
+  __Pyx_AddTraceback("lutorpy._lupa.LuaRuntime.eval", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_v_self), __pyx_v_lua_code, __pyx_v_args);
 
   /* function exit code */
+  __Pyx_XDECREF(__pyx_v_args);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_lua_code) {
+static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_lua_code, PyObject *__pyx_v_args) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5653,7 +5707,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(struct __pyx_obj_7l
   __Pyx_RefNannySetupContext("eval", 0);
   __Pyx_INCREF(__pyx_v_lua_code);
 
-  /* "lutorpy/_lupa.pyx":259
+  /* "lutorpy/_lupa.pyx":292
  *         """Evaluate a Lua expression passed in a string.
  *         """
  *         assert self._state is not NULL             # <<<<<<<<<<<<<<
@@ -5664,70 +5718,70 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(struct __pyx_obj_7l
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_self->_state != NULL) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 259, __pyx_L1_error)
+      __PYX_ERR(0, 292, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":260
+  /* "lutorpy/_lupa.pyx":293
  *         """
  *         assert self._state is not NULL
  *         if isinstance(lua_code, unicode):             # <<<<<<<<<<<<<<
  *             lua_code = (<unicode>lua_code).encode(self._source_encoding)
- *         return run_lua(self, b'return ' + lua_code)
+ *         return run_lua(self, b'return ' + lua_code, args)
  */
   __pyx_t_1 = PyUnicode_Check(__pyx_v_lua_code); 
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":261
+    /* "lutorpy/_lupa.pyx":294
  *         assert self._state is not NULL
  *         if isinstance(lua_code, unicode):
  *             lua_code = (<unicode>lua_code).encode(self._source_encoding)             # <<<<<<<<<<<<<<
- *         return run_lua(self, b'return ' + lua_code)
+ *         return run_lua(self, b'return ' + lua_code, args)
  * 
  */
     if (unlikely(__pyx_v_lua_code == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "encode");
-      __PYX_ERR(0, 261, __pyx_L1_error)
+      __PYX_ERR(0, 294, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_self->_source_encoding); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L1_error)
-    __pyx_t_4 = PyUnicode_AsEncodedString(((PyObject*)__pyx_v_lua_code), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_self->_source_encoding); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) __PYX_ERR(0, 294, __pyx_L1_error)
+    __pyx_t_4 = PyUnicode_AsEncodedString(((PyObject*)__pyx_v_lua_code), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 294, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF_SET(__pyx_v_lua_code, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":260
+    /* "lutorpy/_lupa.pyx":293
  *         """
  *         assert self._state is not NULL
  *         if isinstance(lua_code, unicode):             # <<<<<<<<<<<<<<
  *             lua_code = (<unicode>lua_code).encode(self._source_encoding)
- *         return run_lua(self, b'return ' + lua_code)
+ *         return run_lua(self, b'return ' + lua_code, args)
  */
   }
 
-  /* "lutorpy/_lupa.pyx":262
+  /* "lutorpy/_lupa.pyx":295
  *         if isinstance(lua_code, unicode):
  *             lua_code = (<unicode>lua_code).encode(self._source_encoding)
- *         return run_lua(self, b'return ' + lua_code)             # <<<<<<<<<<<<<<
+ *         return run_lua(self, b'return ' + lua_code, args)             # <<<<<<<<<<<<<<
  * 
- *     def execute(self, lua_code):
+ *     def execute(self, lua_code, *args):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_4 = PyNumber_Add(__pyx_kp_b_return, __pyx_v_lua_code); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 262, __pyx_L1_error)
+  __pyx_t_4 = PyNumber_Add(__pyx_kp_b_return, __pyx_v_lua_code); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (!(likely(PyBytes_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 262, __pyx_L1_error)
-  __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_run_lua(__pyx_v_self, ((PyObject*)__pyx_t_4)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 262, __pyx_L1_error)
+  if (!(likely(PyBytes_CheckExact(__pyx_t_4))||((__pyx_t_4) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 295, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_run_lua(__pyx_v_self, ((PyObject*)__pyx_t_4), __pyx_v_args); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 295, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_r = __pyx_t_5;
   __pyx_t_5 = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":256
+  /* "lutorpy/_lupa.pyx":289
  *         return 0
  * 
- *     def eval(self, lua_code):             # <<<<<<<<<<<<<<
+ *     def eval(self, lua_code, *args):             # <<<<<<<<<<<<<<
  *         """Evaluate a Lua expression passed in a string.
  *         """
  */
@@ -5745,29 +5799,79 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_4eval(struct __pyx_obj_7l
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":264
- *         return run_lua(self, b'return ' + lua_code)
+/* "lutorpy/_lupa.pyx":297
+ *         return run_lua(self, b'return ' + lua_code, args)
  * 
- *     def execute(self, lua_code):             # <<<<<<<<<<<<<<
+ *     def execute(self, lua_code, *args):             # <<<<<<<<<<<<<<
  *         """Execute a Lua program passed in a string.
  *         """
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_7execute(PyObject *__pyx_v_self, PyObject *__pyx_v_lua_code); /*proto*/
-static char __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_6execute[] = "LuaRuntime.execute(self, lua_code)\nExecute a Lua program passed in a string.\n        ";
-static PyObject *__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_7execute(PyObject *__pyx_v_self, PyObject *__pyx_v_lua_code) {
+static PyObject *__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_7execute(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_6execute[] = "LuaRuntime.execute(self, lua_code, *args)\nExecute a Lua program passed in a string.\n        ";
+static PyObject *__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_7execute(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyObject *__pyx_v_lua_code = 0;
+  PyObject *__pyx_v_args = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("execute (wrapper)", 0);
-  __pyx_r = __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_v_self), ((PyObject *)__pyx_v_lua_code));
+  if (PyTuple_GET_SIZE(__pyx_args) > 1) {
+    __pyx_v_args = PyTuple_GetSlice(__pyx_args, 1, PyTuple_GET_SIZE(__pyx_args));
+    if (unlikely(!__pyx_v_args)) {
+      __Pyx_RefNannyFinishContext();
+      return NULL;
+    }
+    __Pyx_GOTREF(__pyx_v_args);
+  } else {
+    __pyx_v_args = __pyx_empty_tuple; __Pyx_INCREF(__pyx_empty_tuple);
+  }
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_lua_code,0};
+    PyObject* values[1] = {0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        default:
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        case  0: break;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = PyDict_GetItem(__pyx_kwds, __pyx_n_s_lua_code)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+      }
+      if (unlikely(kw_args > 0)) {
+        const Py_ssize_t used_pos_args = (pos_args < 1) ? pos_args : 1;
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, used_pos_args, "execute") < 0)) __PYX_ERR(0, 297, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) < 1) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+    }
+    __pyx_v_lua_code = values[0];
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("execute", 0, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 297, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
+  __Pyx_AddTraceback("lutorpy._lupa.LuaRuntime.execute", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_v_self), __pyx_v_lua_code, __pyx_v_args);
 
   /* function exit code */
+  __Pyx_XDECREF(__pyx_v_args);
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_lua_code) {
+static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_self, PyObject *__pyx_v_lua_code, PyObject *__pyx_v_args) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -5777,7 +5881,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(struct __pyx_obj
   __Pyx_RefNannySetupContext("execute", 0);
   __Pyx_INCREF(__pyx_v_lua_code);
 
-  /* "lutorpy/_lupa.pyx":267
+  /* "lutorpy/_lupa.pyx":300
  *         """Execute a Lua program passed in a string.
  *         """
  *         assert self._state is not NULL             # <<<<<<<<<<<<<<
@@ -5788,67 +5892,67 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(struct __pyx_obj
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_self->_state != NULL) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 267, __pyx_L1_error)
+      __PYX_ERR(0, 300, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":268
+  /* "lutorpy/_lupa.pyx":301
  *         """
  *         assert self._state is not NULL
  *         if isinstance(lua_code, unicode):             # <<<<<<<<<<<<<<
  *             lua_code = (<unicode>lua_code).encode(self._source_encoding)
- *         return run_lua(self, lua_code)
+ *         return run_lua(self, lua_code, args)
  */
   __pyx_t_1 = PyUnicode_Check(__pyx_v_lua_code); 
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":269
+    /* "lutorpy/_lupa.pyx":302
  *         assert self._state is not NULL
  *         if isinstance(lua_code, unicode):
  *             lua_code = (<unicode>lua_code).encode(self._source_encoding)             # <<<<<<<<<<<<<<
- *         return run_lua(self, lua_code)
+ *         return run_lua(self, lua_code, args)
  * 
  */
     if (unlikely(__pyx_v_lua_code == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "encode");
-      __PYX_ERR(0, 269, __pyx_L1_error)
+      __PYX_ERR(0, 302, __pyx_L1_error)
     }
-    __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_self->_source_encoding); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) __PYX_ERR(0, 269, __pyx_L1_error)
-    __pyx_t_4 = PyUnicode_AsEncodedString(((PyObject*)__pyx_v_lua_code), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_AsString(__pyx_v_self->_source_encoding); if (unlikely((!__pyx_t_3) && PyErr_Occurred())) __PYX_ERR(0, 302, __pyx_L1_error)
+    __pyx_t_4 = PyUnicode_AsEncodedString(((PyObject*)__pyx_v_lua_code), __pyx_t_3, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 302, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF_SET(__pyx_v_lua_code, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":268
+    /* "lutorpy/_lupa.pyx":301
  *         """
  *         assert self._state is not NULL
  *         if isinstance(lua_code, unicode):             # <<<<<<<<<<<<<<
  *             lua_code = (<unicode>lua_code).encode(self._source_encoding)
- *         return run_lua(self, lua_code)
+ *         return run_lua(self, lua_code, args)
  */
   }
 
-  /* "lutorpy/_lupa.pyx":270
+  /* "lutorpy/_lupa.pyx":303
  *         if isinstance(lua_code, unicode):
  *             lua_code = (<unicode>lua_code).encode(self._source_encoding)
- *         return run_lua(self, lua_code)             # <<<<<<<<<<<<<<
+ *         return run_lua(self, lua_code, args)             # <<<<<<<<<<<<<<
  * 
  *     def require(self, modulename):
  */
   __Pyx_XDECREF(__pyx_r);
-  if (!(likely(PyBytes_CheckExact(__pyx_v_lua_code))||((__pyx_v_lua_code) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v_lua_code)->tp_name), 0))) __PYX_ERR(0, 270, __pyx_L1_error)
-  __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_run_lua(__pyx_v_self, ((PyObject*)__pyx_v_lua_code)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 270, __pyx_L1_error)
+  if (!(likely(PyBytes_CheckExact(__pyx_v_lua_code))||((__pyx_v_lua_code) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "bytes", Py_TYPE(__pyx_v_lua_code)->tp_name), 0))) __PYX_ERR(0, 303, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_run_lua(__pyx_v_self, ((PyObject*)__pyx_v_lua_code), __pyx_v_args); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 303, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_r = __pyx_t_4;
   __pyx_t_4 = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":264
- *         return run_lua(self, b'return ' + lua_code)
+  /* "lutorpy/_lupa.pyx":297
+ *         return run_lua(self, b'return ' + lua_code, args)
  * 
- *     def execute(self, lua_code):             # <<<<<<<<<<<<<<
+ *     def execute(self, lua_code, *args):             # <<<<<<<<<<<<<<
  *         """Execute a Lua program passed in a string.
  *         """
  */
@@ -5865,8 +5969,8 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_6execute(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":272
- *         return run_lua(self, lua_code)
+/* "lutorpy/_lupa.pyx":305
+ *         return run_lua(self, lua_code, args)
  * 
  *     def require(self, modulename):             # <<<<<<<<<<<<<<
  *         """Load a Lua library into the runtime.
@@ -5909,7 +6013,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
   PyObject *__pyx_t_15 = NULL;
   __Pyx_RefNannySetupContext("require", 0);
 
-  /* "lutorpy/_lupa.pyx":275
+  /* "lutorpy/_lupa.pyx":308
  *         """Load a Lua library into the runtime.
  *         """
  *         assert self._state is not NULL             # <<<<<<<<<<<<<<
@@ -5920,12 +6024,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_self->_state != NULL) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 275, __pyx_L1_error)
+      __PYX_ERR(0, 308, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":276
+  /* "lutorpy/_lupa.pyx":309
  *         """
  *         assert self._state is not NULL
  *         cdef lua_State *L = self._state             # <<<<<<<<<<<<<<
@@ -5935,7 +6039,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
   __pyx_t_1 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_1;
 
-  /* "lutorpy/_lupa.pyx":277
+  /* "lutorpy/_lupa.pyx":310
  *         assert self._state is not NULL
  *         cdef lua_State *L = self._state
  *         if not isinstance(modulename, (bytes, unicode)):             # <<<<<<<<<<<<<<
@@ -5956,20 +6060,20 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
   __pyx_t_3 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_3) {
 
-    /* "lutorpy/_lupa.pyx":278
+    /* "lutorpy/_lupa.pyx":311
  *         cdef lua_State *L = self._state
  *         if not isinstance(modulename, (bytes, unicode)):
  *             raise TypeError("modulename must be a string")             # <<<<<<<<<<<<<<
  *         lock_runtime(self)
  *         old_top = lua.lua_gettop(L)
  */
-    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 278, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 311, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 278, __pyx_L1_error)
+    __PYX_ERR(0, 311, __pyx_L1_error)
 
-    /* "lutorpy/_lupa.pyx":277
+    /* "lutorpy/_lupa.pyx":310
  *         assert self._state is not NULL
  *         cdef lua_State *L = self._state
  *         if not isinstance(modulename, (bytes, unicode)):             # <<<<<<<<<<<<<<
@@ -5978,16 +6082,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
  */
   }
 
-  /* "lutorpy/_lupa.pyx":279
+  /* "lutorpy/_lupa.pyx":312
  *         if not isinstance(modulename, (bytes, unicode)):
  *             raise TypeError("modulename must be a string")
  *         lock_runtime(self)             # <<<<<<<<<<<<<<
  *         old_top = lua.lua_gettop(L)
  *         try:
  */
-  __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_lock_runtime(__pyx_v_self); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 279, __pyx_L1_error)
+  __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_lock_runtime(__pyx_v_self); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 312, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":280
+  /* "lutorpy/_lupa.pyx":313
  *             raise TypeError("modulename must be a string")
  *         lock_runtime(self)
  *         old_top = lua.lua_gettop(L)             # <<<<<<<<<<<<<<
@@ -5996,7 +6100,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
  */
   __pyx_v_old_top = lua_gettop(__pyx_v_L);
 
-  /* "lutorpy/_lupa.pyx":281
+  /* "lutorpy/_lupa.pyx":314
  *         lock_runtime(self)
  *         old_top = lua.lua_gettop(L)
  *         try:             # <<<<<<<<<<<<<<
@@ -6005,7 +6109,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":282
+    /* "lutorpy/_lupa.pyx":315
  *         old_top = lua.lua_gettop(L)
  *         try:
  *             lua.lua_getglobal(L, 'require')             # <<<<<<<<<<<<<<
@@ -6014,7 +6118,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
  */
     lua_getglobal(__pyx_v_L, ((char *)"require"));
 
-    /* "lutorpy/_lupa.pyx":283
+    /* "lutorpy/_lupa.pyx":316
  *         try:
  *             lua.lua_getglobal(L, 'require')
  *             if lua.lua_isnil(L, -1):             # <<<<<<<<<<<<<<
@@ -6024,23 +6128,23 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
     __pyx_t_3 = (lua_isnil(__pyx_v_L, -1) != 0);
     if (__pyx_t_3) {
 
-      /* "lutorpy/_lupa.pyx":284
+      /* "lutorpy/_lupa.pyx":317
  *             lua.lua_getglobal(L, 'require')
  *             if lua.lua_isnil(L, -1):
  *                 raise LuaError("require is not defined")             # <<<<<<<<<<<<<<
  *             return call_lua(self, L, (modulename,))
  *         finally:
  */
-      __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 284, __pyx_L7_error)
+      __pyx_t_5 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 317, __pyx_L7_error)
       __Pyx_GOTREF(__pyx_t_5);
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 284, __pyx_L7_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_5, __pyx_tuple__10, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 317, __pyx_L7_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_Raise(__pyx_t_7, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __PYX_ERR(0, 284, __pyx_L7_error)
+      __PYX_ERR(0, 317, __pyx_L7_error)
 
-      /* "lutorpy/_lupa.pyx":283
+      /* "lutorpy/_lupa.pyx":316
  *         try:
  *             lua.lua_getglobal(L, 'require')
  *             if lua.lua_isnil(L, -1):             # <<<<<<<<<<<<<<
@@ -6049,7 +6153,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
  */
     }
 
-    /* "lutorpy/_lupa.pyx":285
+    /* "lutorpy/_lupa.pyx":318
  *             if lua.lua_isnil(L, -1):
  *                 raise LuaError("require is not defined")
  *             return call_lua(self, L, (modulename,))             # <<<<<<<<<<<<<<
@@ -6057,12 +6161,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
  *             lua.lua_settop(L, old_top)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 285, __pyx_L7_error)
+    __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 318, __pyx_L7_error)
     __Pyx_GOTREF(__pyx_t_7);
     __Pyx_INCREF(__pyx_v_modulename);
     __Pyx_GIVEREF(__pyx_v_modulename);
     PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_v_modulename);
-    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_call_lua(__pyx_v_self, __pyx_v_L, ((PyObject*)__pyx_t_7)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 285, __pyx_L7_error)
+    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_call_lua(__pyx_v_self, __pyx_v_L, ((PyObject*)__pyx_t_7)); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 318, __pyx_L7_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_r = __pyx_t_5;
@@ -6070,7 +6174,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
     goto __pyx_L6_return;
   }
 
-  /* "lutorpy/_lupa.pyx":287
+  /* "lutorpy/_lupa.pyx":320
  *             return call_lua(self, L, (modulename,))
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -6097,7 +6201,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
       {
         lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-        /* "lutorpy/_lupa.pyx":288
+        /* "lutorpy/_lupa.pyx":321
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self)             # <<<<<<<<<<<<<<
@@ -6125,7 +6229,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
       __pyx_t_15 = __pyx_r;
       __pyx_r = 0;
 
-      /* "lutorpy/_lupa.pyx":287
+      /* "lutorpy/_lupa.pyx":320
  *             return call_lua(self, L, (modulename,))
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -6134,7 +6238,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
  */
       lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-      /* "lutorpy/_lupa.pyx":288
+      /* "lutorpy/_lupa.pyx":321
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self)             # <<<<<<<<<<<<<<
@@ -6148,8 +6252,8 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
     }
   }
 
-  /* "lutorpy/_lupa.pyx":272
- *         return run_lua(self, lua_code)
+  /* "lutorpy/_lupa.pyx":305
+ *         return run_lua(self, lua_code, args)
  * 
  *     def require(self, modulename):             # <<<<<<<<<<<<<<
  *         """Load a Lua library into the runtime.
@@ -6168,7 +6272,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_8require(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":290
+/* "lutorpy/_lupa.pyx":323
  *             unlock_runtime(self)
  * 
  *     def globals(self):             # <<<<<<<<<<<<<<
@@ -6210,7 +6314,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
   PyObject *__pyx_t_13 = NULL;
   __Pyx_RefNannySetupContext("globals", 0);
 
-  /* "lutorpy/_lupa.pyx":294
+  /* "lutorpy/_lupa.pyx":327
  *         table.
  *         """
  *         assert self._state is not NULL             # <<<<<<<<<<<<<<
@@ -6221,12 +6325,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_self->_state != NULL) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 294, __pyx_L1_error)
+      __PYX_ERR(0, 327, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":295
+  /* "lutorpy/_lupa.pyx":328
  *         """
  *         assert self._state is not NULL
  *         cdef lua_State *L = self._state             # <<<<<<<<<<<<<<
@@ -6236,16 +6340,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
   __pyx_t_1 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_1;
 
-  /* "lutorpy/_lupa.pyx":296
+  /* "lutorpy/_lupa.pyx":329
  *         assert self._state is not NULL
  *         cdef lua_State *L = self._state
  *         lock_runtime(self)             # <<<<<<<<<<<<<<
  *         old_top = lua.lua_gettop(L)
  *         try:
  */
-  __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_lock_runtime(__pyx_v_self); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 296, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_lock_runtime(__pyx_v_self); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 329, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":297
+  /* "lutorpy/_lupa.pyx":330
  *         cdef lua_State *L = self._state
  *         lock_runtime(self)
  *         old_top = lua.lua_gettop(L)             # <<<<<<<<<<<<<<
@@ -6254,7 +6358,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
  */
   __pyx_v_old_top = lua_gettop(__pyx_v_L);
 
-  /* "lutorpy/_lupa.pyx":298
+  /* "lutorpy/_lupa.pyx":331
  *         lock_runtime(self)
  *         old_top = lua.lua_gettop(L)
  *         try:             # <<<<<<<<<<<<<<
@@ -6263,7 +6367,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":299
+    /* "lutorpy/_lupa.pyx":332
  *         old_top = lua.lua_gettop(L)
  *         try:
  *             lua.lua_getglobal(L, '_G')             # <<<<<<<<<<<<<<
@@ -6272,7 +6376,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
  */
     lua_getglobal(__pyx_v_L, ((char *)"_G"));
 
-    /* "lutorpy/_lupa.pyx":300
+    /* "lutorpy/_lupa.pyx":333
  *         try:
  *             lua.lua_getglobal(L, '_G')
  *             if lua.lua_isnil(L, -1):             # <<<<<<<<<<<<<<
@@ -6282,23 +6386,23 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
     __pyx_t_3 = (lua_isnil(__pyx_v_L, -1) != 0);
     if (__pyx_t_3) {
 
-      /* "lutorpy/_lupa.pyx":301
+      /* "lutorpy/_lupa.pyx":334
  *             lua.lua_getglobal(L, '_G')
  *             if lua.lua_isnil(L, -1):
  *                 raise LuaError("globals not defined")             # <<<<<<<<<<<<<<
  *             return py_from_lua(self, L, -1)
  *         finally:
  */
-      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 301, __pyx_L4_error)
+      __pyx_t_4 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 334, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 301, __pyx_L4_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__11, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 334, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_Raise(__pyx_t_5, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-      __PYX_ERR(0, 301, __pyx_L4_error)
+      __PYX_ERR(0, 334, __pyx_L4_error)
 
-      /* "lutorpy/_lupa.pyx":300
+      /* "lutorpy/_lupa.pyx":333
  *         try:
  *             lua.lua_getglobal(L, '_G')
  *             if lua.lua_isnil(L, -1):             # <<<<<<<<<<<<<<
@@ -6307,7 +6411,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
  */
     }
 
-    /* "lutorpy/_lupa.pyx":302
+    /* "lutorpy/_lupa.pyx":335
  *             if lua.lua_isnil(L, -1):
  *                 raise LuaError("globals not defined")
  *             return py_from_lua(self, L, -1)             # <<<<<<<<<<<<<<
@@ -6315,14 +6419,14 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
  *             lua.lua_settop(L, old_top)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_py_from_lua(__pyx_v_self, __pyx_v_L, -1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 302, __pyx_L4_error)
+    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_py_from_lua(__pyx_v_self, __pyx_v_L, -1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 335, __pyx_L4_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_r = __pyx_t_5;
     __pyx_t_5 = 0;
     goto __pyx_L3_return;
   }
 
-  /* "lutorpy/_lupa.pyx":304
+  /* "lutorpy/_lupa.pyx":337
  *             return py_from_lua(self, L, -1)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -6349,7 +6453,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
       {
         lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-        /* "lutorpy/_lupa.pyx":305
+        /* "lutorpy/_lupa.pyx":338
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self)             # <<<<<<<<<<<<<<
@@ -6377,7 +6481,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
       __pyx_t_13 = __pyx_r;
       __pyx_r = 0;
 
-      /* "lutorpy/_lupa.pyx":304
+      /* "lutorpy/_lupa.pyx":337
  *             return py_from_lua(self, L, -1)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -6386,7 +6490,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
  */
       lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-      /* "lutorpy/_lupa.pyx":305
+      /* "lutorpy/_lupa.pyx":338
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self)             # <<<<<<<<<<<<<<
@@ -6400,7 +6504,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
     }
   }
 
-  /* "lutorpy/_lupa.pyx":290
+  /* "lutorpy/_lupa.pyx":323
  *             unlock_runtime(self)
  * 
  *     def globals(self):             # <<<<<<<<<<<<<<
@@ -6420,7 +6524,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_10globals(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":307
+/* "lutorpy/_lupa.pyx":340
  *             unlock_runtime(self)
  * 
  *     def table(self, *items, **kwargs):             # <<<<<<<<<<<<<<
@@ -6461,7 +6565,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_12table(struct __pyx_obj_
   PyObject *__pyx_t_5 = NULL;
   __Pyx_RefNannySetupContext("table", 0);
 
-  /* "lutorpy/_lupa.pyx":312
+  /* "lutorpy/_lupa.pyx":345
  *         are set as key-value pairs.
  *         """
  *         return self.table_from(items, kwargs)             # <<<<<<<<<<<<<<
@@ -6469,7 +6573,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_12table(struct __pyx_obj_
  *     def table_from(self, *args):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_table_from); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_table_from); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_t_3 = NULL;
   __pyx_t_4 = 0;
@@ -6483,7 +6587,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_12table(struct __pyx_obj_
       __pyx_t_4 = 1;
     }
   }
-  __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __pyx_t_5 = PyTuple_New(2+__pyx_t_4); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (__pyx_t_3) {
     __Pyx_GIVEREF(__pyx_t_3); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_3); __pyx_t_3 = NULL;
@@ -6494,7 +6598,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_12table(struct __pyx_obj_
   __Pyx_INCREF(__pyx_v_kwargs);
   __Pyx_GIVEREF(__pyx_v_kwargs);
   PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_4, __pyx_v_kwargs);
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 312, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_5, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 345, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -6502,7 +6606,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_12table(struct __pyx_obj_
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":307
+  /* "lutorpy/_lupa.pyx":340
  *             unlock_runtime(self)
  * 
  *     def table(self, *items, **kwargs):             # <<<<<<<<<<<<<<
@@ -6524,7 +6628,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_12table(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":314
+/* "lutorpy/_lupa.pyx":347
  *         return self.table_from(items, kwargs)
  * 
  *     def table_from(self, *args):             # <<<<<<<<<<<<<<
@@ -6583,7 +6687,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
   PyObject *__pyx_t_20 = NULL;
   __Pyx_RefNannySetupContext("table_from", 0);
 
-  /* "lutorpy/_lupa.pyx":324
+  /* "lutorpy/_lupa.pyx":357
  *         (wrapped Python objects); they are not converted to Lua tables.
  *         """
  *         assert self._state is not NULL             # <<<<<<<<<<<<<<
@@ -6594,12 +6698,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_self->_state != NULL) != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 324, __pyx_L1_error)
+      __PYX_ERR(0, 357, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":325
+  /* "lutorpy/_lupa.pyx":358
  *         """
  *         assert self._state is not NULL
  *         cdef lua_State *L = self._state             # <<<<<<<<<<<<<<
@@ -6609,7 +6713,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
   __pyx_t_1 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_1;
 
-  /* "lutorpy/_lupa.pyx":326
+  /* "lutorpy/_lupa.pyx":359
  *         assert self._state is not NULL
  *         cdef lua_State *L = self._state
  *         cdef int i = 1             # <<<<<<<<<<<<<<
@@ -6618,16 +6722,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
   __pyx_v_i = 1;
 
-  /* "lutorpy/_lupa.pyx":327
+  /* "lutorpy/_lupa.pyx":360
  *         cdef lua_State *L = self._state
  *         cdef int i = 1
  *         lock_runtime(self)             # <<<<<<<<<<<<<<
  *         old_top = lua.lua_gettop(L)
  *         try:
  */
-  __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_lock_runtime(__pyx_v_self); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 327, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_lock_runtime(__pyx_v_self); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 360, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":328
+  /* "lutorpy/_lupa.pyx":361
  *         cdef int i = 1
  *         lock_runtime(self)
  *         old_top = lua.lua_gettop(L)             # <<<<<<<<<<<<<<
@@ -6636,7 +6740,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
   __pyx_v_old_top = lua_gettop(__pyx_v_L);
 
-  /* "lutorpy/_lupa.pyx":329
+  /* "lutorpy/_lupa.pyx":362
  *         lock_runtime(self)
  *         old_top = lua.lua_gettop(L)
  *         try:             # <<<<<<<<<<<<<<
@@ -6645,7 +6749,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":330
+    /* "lutorpy/_lupa.pyx":363
  *         old_top = lua.lua_gettop(L)
  *         try:
  *             lua.lua_newtable(L)             # <<<<<<<<<<<<<<
@@ -6654,7 +6758,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
     lua_newtable(__pyx_v_L);
 
-    /* "lutorpy/_lupa.pyx":332
+    /* "lutorpy/_lupa.pyx":365
  *             lua.lua_newtable(L)
  *             # FIXME: how to check for failure?
  *             for obj in args:             # <<<<<<<<<<<<<<
@@ -6665,15 +6769,15 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
     for (;;) {
       if (__pyx_t_4 >= PyTuple_GET_SIZE(__pyx_t_3)) break;
       #if CYTHON_COMPILING_IN_CPYTHON
-      __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 332, __pyx_L4_error)
+      __pyx_t_5 = PyTuple_GET_ITEM(__pyx_t_3, __pyx_t_4); __Pyx_INCREF(__pyx_t_5); __pyx_t_4++; if (unlikely(0 < 0)) __PYX_ERR(0, 365, __pyx_L4_error)
       #else
-      __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 332, __pyx_L4_error)
+      __pyx_t_5 = PySequence_ITEM(__pyx_t_3, __pyx_t_4); __pyx_t_4++; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 365, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_5);
       #endif
       __Pyx_XDECREF_SET(__pyx_v_obj, __pyx_t_5);
       __pyx_t_5 = 0;
 
-      /* "lutorpy/_lupa.pyx":333
+      /* "lutorpy/_lupa.pyx":366
  *             # FIXME: how to check for failure?
  *             for obj in args:
  *                 if isinstance(obj, dict):             # <<<<<<<<<<<<<<
@@ -6684,7 +6788,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
       __pyx_t_7 = (__pyx_t_6 != 0);
       if (__pyx_t_7) {
 
-        /* "lutorpy/_lupa.pyx":334
+        /* "lutorpy/_lupa.pyx":367
  *             for obj in args:
  *                 if isinstance(obj, dict):
  *                     for key, value in obj.iteritems():             # <<<<<<<<<<<<<<
@@ -6694,9 +6798,9 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
         __pyx_t_8 = 0;
         if (unlikely(__pyx_v_obj == Py_None)) {
           PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "iteritems");
-          __PYX_ERR(0, 334, __pyx_L4_error)
+          __PYX_ERR(0, 367, __pyx_L4_error)
         }
-        __pyx_t_10 = __Pyx_dict_iterator(__pyx_v_obj, 0, __pyx_n_s_iteritems, (&__pyx_t_9), (&__pyx_t_2)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 334, __pyx_L4_error)
+        __pyx_t_10 = __Pyx_dict_iterator(__pyx_v_obj, 0, __pyx_n_s_iteritems, (&__pyx_t_9), (&__pyx_t_2)); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 367, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_10);
         __Pyx_XDECREF(__pyx_t_5);
         __pyx_t_5 = __pyx_t_10;
@@ -6704,7 +6808,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
         while (1) {
           __pyx_t_12 = __Pyx_dict_iter_next(__pyx_t_5, __pyx_t_9, &__pyx_t_8, &__pyx_t_10, &__pyx_t_11, NULL, __pyx_t_2);
           if (unlikely(__pyx_t_12 == 0)) break;
-          if (unlikely(__pyx_t_12 == -1)) __PYX_ERR(0, 334, __pyx_L4_error)
+          if (unlikely(__pyx_t_12 == -1)) __PYX_ERR(0, 367, __pyx_L4_error)
           __Pyx_GOTREF(__pyx_t_10);
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_XDECREF_SET(__pyx_v_key, __pyx_t_10);
@@ -6712,25 +6816,25 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
           __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_11);
           __pyx_t_11 = 0;
 
-          /* "lutorpy/_lupa.pyx":335
+          /* "lutorpy/_lupa.pyx":368
  *                 if isinstance(obj, dict):
  *                     for key, value in obj.iteritems():
  *                         py_to_lua(self, L, key)             # <<<<<<<<<<<<<<
  *                         py_to_lua(self, L, value)
  *                         lua.lua_rawset(L, -3)
  */
-          __pyx_t_12 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_key, NULL); if (unlikely(__pyx_t_12 == -1)) __PYX_ERR(0, 335, __pyx_L4_error)
+          __pyx_t_12 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_key, NULL); if (unlikely(__pyx_t_12 == -1)) __PYX_ERR(0, 368, __pyx_L4_error)
 
-          /* "lutorpy/_lupa.pyx":336
+          /* "lutorpy/_lupa.pyx":369
  *                     for key, value in obj.iteritems():
  *                         py_to_lua(self, L, key)
  *                         py_to_lua(self, L, value)             # <<<<<<<<<<<<<<
  *                         lua.lua_rawset(L, -3)
  * 
  */
-          __pyx_t_12 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_value, NULL); if (unlikely(__pyx_t_12 == -1)) __PYX_ERR(0, 336, __pyx_L4_error)
+          __pyx_t_12 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_value, NULL); if (unlikely(__pyx_t_12 == -1)) __PYX_ERR(0, 369, __pyx_L4_error)
 
-          /* "lutorpy/_lupa.pyx":337
+          /* "lutorpy/_lupa.pyx":370
  *                         py_to_lua(self, L, key)
  *                         py_to_lua(self, L, value)
  *                         lua.lua_rawset(L, -3)             # <<<<<<<<<<<<<<
@@ -6741,7 +6845,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
         }
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "lutorpy/_lupa.pyx":333
+        /* "lutorpy/_lupa.pyx":366
  *             # FIXME: how to check for failure?
  *             for obj in args:
  *                 if isinstance(obj, dict):             # <<<<<<<<<<<<<<
@@ -6751,7 +6855,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
         goto __pyx_L8;
       }
 
-      /* "lutorpy/_lupa.pyx":339
+      /* "lutorpy/_lupa.pyx":372
  *                         lua.lua_rawset(L, -3)
  * 
  *                 elif isinstance(obj, _LuaTable):             # <<<<<<<<<<<<<<
@@ -6762,16 +6866,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
       __pyx_t_6 = (__pyx_t_7 != 0);
       if (__pyx_t_6) {
 
-        /* "lutorpy/_lupa.pyx":341
+        /* "lutorpy/_lupa.pyx":374
  *                 elif isinstance(obj, _LuaTable):
  *                     # Stack:                            # tbl
  *                     (<_LuaObject>obj).push_lua_object() # tbl, obj             # <<<<<<<<<<<<<<
  *                     lua.lua_pushnil(L)                  # tbl, obj, nil       // iterate over obj (-2)
  *                     while lua.lua_next(L, -2):          # tbl, obj, k, v
  */
-        __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_v_obj)); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 341, __pyx_L4_error)
+        __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_v_obj)); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 374, __pyx_L4_error)
 
-        /* "lutorpy/_lupa.pyx":342
+        /* "lutorpy/_lupa.pyx":375
  *                     # Stack:                            # tbl
  *                     (<_LuaObject>obj).push_lua_object() # tbl, obj
  *                     lua.lua_pushnil(L)                  # tbl, obj, nil       // iterate over obj (-2)             # <<<<<<<<<<<<<<
@@ -6780,7 +6884,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
         lua_pushnil(__pyx_v_L);
 
-        /* "lutorpy/_lupa.pyx":343
+        /* "lutorpy/_lupa.pyx":376
  *                     (<_LuaObject>obj).push_lua_object() # tbl, obj
  *                     lua.lua_pushnil(L)                  # tbl, obj, nil       // iterate over obj (-2)
  *                     while lua.lua_next(L, -2):          # tbl, obj, k, v             # <<<<<<<<<<<<<<
@@ -6791,7 +6895,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
           __pyx_t_6 = (lua_next(__pyx_v_L, -2) != 0);
           if (!__pyx_t_6) break;
 
-          /* "lutorpy/_lupa.pyx":344
+          /* "lutorpy/_lupa.pyx":377
  *                     lua.lua_pushnil(L)                  # tbl, obj, nil       // iterate over obj (-2)
  *                     while lua.lua_next(L, -2):          # tbl, obj, k, v
  *                         lua.lua_pushvalue(L, -2)        # tbl, obj, k, v, k   // copy key (because             # <<<<<<<<<<<<<<
@@ -6800,7 +6904,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
           lua_pushvalue(__pyx_v_L, -2);
 
-          /* "lutorpy/_lupa.pyx":345
+          /* "lutorpy/_lupa.pyx":378
  *                     while lua.lua_next(L, -2):          # tbl, obj, k, v
  *                         lua.lua_pushvalue(L, -2)        # tbl, obj, k, v, k   // copy key (because
  *                         lua.lua_insert(L, -2)           # tbl, obj, k, k, v   // lua_next needs a key for iteration)             # <<<<<<<<<<<<<<
@@ -6809,7 +6913,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
           lua_insert(__pyx_v_L, -2);
 
-          /* "lutorpy/_lupa.pyx":346
+          /* "lutorpy/_lupa.pyx":379
  *                         lua.lua_pushvalue(L, -2)        # tbl, obj, k, v, k   // copy key (because
  *                         lua.lua_insert(L, -2)           # tbl, obj, k, k, v   // lua_next needs a key for iteration)
  *                         lua.lua_settable(L, -5)         # tbl, obj, k         // tbl[k] = v             # <<<<<<<<<<<<<<
@@ -6819,7 +6923,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
           lua_settable(__pyx_v_L, -5);
         }
 
-        /* "lutorpy/_lupa.pyx":347
+        /* "lutorpy/_lupa.pyx":380
  *                         lua.lua_insert(L, -2)           # tbl, obj, k, k, v   // lua_next needs a key for iteration)
  *                         lua.lua_settable(L, -5)         # tbl, obj, k         // tbl[k] = v
  *                     lua.lua_pop(L, 1)                   # tbl                 // remove obj from stack             # <<<<<<<<<<<<<<
@@ -6828,7 +6932,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
         lua_pop(__pyx_v_L, 1);
 
-        /* "lutorpy/_lupa.pyx":339
+        /* "lutorpy/_lupa.pyx":372
  *                         lua.lua_rawset(L, -3)
  * 
  *                 elif isinstance(obj, _LuaTable):             # <<<<<<<<<<<<<<
@@ -6838,7 +6942,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
         goto __pyx_L8;
       }
 
-      /* "lutorpy/_lupa.pyx":349
+      /* "lutorpy/_lupa.pyx":382
  *                     lua.lua_pop(L, 1)                   # tbl                 // remove obj from stack
  * 
  *                 elif isinstance(obj, Mapping):             # <<<<<<<<<<<<<<
@@ -6847,12 +6951,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
       __pyx_t_5 = __pyx_v_7lutorpy_5_lupa_Mapping;
       __Pyx_INCREF(__pyx_t_5);
-      __pyx_t_6 = PyObject_IsInstance(__pyx_v_obj, __pyx_t_5); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 349, __pyx_L4_error)
+      __pyx_t_6 = PyObject_IsInstance(__pyx_v_obj, __pyx_t_5); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 382, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __pyx_t_7 = (__pyx_t_6 != 0);
       if (__pyx_t_7) {
 
-        /* "lutorpy/_lupa.pyx":350
+        /* "lutorpy/_lupa.pyx":383
  * 
  *                 elif isinstance(obj, Mapping):
  *                     for key in obj:             # <<<<<<<<<<<<<<
@@ -6863,26 +6967,26 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
           __pyx_t_5 = __pyx_v_obj; __Pyx_INCREF(__pyx_t_5); __pyx_t_9 = 0;
           __pyx_t_13 = NULL;
         } else {
-          __pyx_t_9 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 350, __pyx_L4_error)
+          __pyx_t_9 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 383, __pyx_L4_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_13 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 350, __pyx_L4_error)
+          __pyx_t_13 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 383, __pyx_L4_error)
         }
         for (;;) {
           if (likely(!__pyx_t_13)) {
             if (likely(PyList_CheckExact(__pyx_t_5))) {
               if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_5)) break;
               #if CYTHON_COMPILING_IN_CPYTHON
-              __pyx_t_11 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_11); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 350, __pyx_L4_error)
+              __pyx_t_11 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_11); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 383, __pyx_L4_error)
               #else
-              __pyx_t_11 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 350, __pyx_L4_error)
+              __pyx_t_11 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 383, __pyx_L4_error)
               __Pyx_GOTREF(__pyx_t_11);
               #endif
             } else {
               if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
               #if CYTHON_COMPILING_IN_CPYTHON
-              __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_11); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 350, __pyx_L4_error)
+              __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_11); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 383, __pyx_L4_error)
               #else
-              __pyx_t_11 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 350, __pyx_L4_error)
+              __pyx_t_11 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 383, __pyx_L4_error)
               __Pyx_GOTREF(__pyx_t_11);
               #endif
             }
@@ -6892,7 +6996,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 350, __pyx_L4_error)
+                else __PYX_ERR(0, 383, __pyx_L4_error)
               }
               break;
             }
@@ -6901,37 +7005,37 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
           __Pyx_XDECREF_SET(__pyx_v_key, __pyx_t_11);
           __pyx_t_11 = 0;
 
-          /* "lutorpy/_lupa.pyx":351
+          /* "lutorpy/_lupa.pyx":384
  *                 elif isinstance(obj, Mapping):
  *                     for key in obj:
  *                         value = obj[key]             # <<<<<<<<<<<<<<
  *                         py_to_lua(self, L, key)
  *                         py_to_lua(self, L, value)
  */
-          __pyx_t_11 = PyObject_GetItem(__pyx_v_obj, __pyx_v_key); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 351, __pyx_L4_error)
+          __pyx_t_11 = PyObject_GetItem(__pyx_v_obj, __pyx_v_key); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 384, __pyx_L4_error)
           __Pyx_GOTREF(__pyx_t_11);
           __Pyx_XDECREF_SET(__pyx_v_value, __pyx_t_11);
           __pyx_t_11 = 0;
 
-          /* "lutorpy/_lupa.pyx":352
+          /* "lutorpy/_lupa.pyx":385
  *                     for key in obj:
  *                         value = obj[key]
  *                         py_to_lua(self, L, key)             # <<<<<<<<<<<<<<
  *                         py_to_lua(self, L, value)
  *                         lua.lua_rawset(L, -3)
  */
-          __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_key, NULL); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 352, __pyx_L4_error)
+          __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_key, NULL); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 385, __pyx_L4_error)
 
-          /* "lutorpy/_lupa.pyx":353
+          /* "lutorpy/_lupa.pyx":386
  *                         value = obj[key]
  *                         py_to_lua(self, L, key)
  *                         py_to_lua(self, L, value)             # <<<<<<<<<<<<<<
  *                         lua.lua_rawset(L, -3)
  *                 else:
  */
-          __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_value, NULL); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 353, __pyx_L4_error)
+          __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_value, NULL); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 386, __pyx_L4_error)
 
-          /* "lutorpy/_lupa.pyx":354
+          /* "lutorpy/_lupa.pyx":387
  *                         py_to_lua(self, L, key)
  *                         py_to_lua(self, L, value)
  *                         lua.lua_rawset(L, -3)             # <<<<<<<<<<<<<<
@@ -6940,7 +7044,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
           lua_rawset(__pyx_v_L, -3);
 
-          /* "lutorpy/_lupa.pyx":350
+          /* "lutorpy/_lupa.pyx":383
  * 
  *                 elif isinstance(obj, Mapping):
  *                     for key in obj:             # <<<<<<<<<<<<<<
@@ -6950,7 +7054,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
         }
         __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-        /* "lutorpy/_lupa.pyx":349
+        /* "lutorpy/_lupa.pyx":382
  *                     lua.lua_pop(L, 1)                   # tbl                 // remove obj from stack
  * 
  *                 elif isinstance(obj, Mapping):             # <<<<<<<<<<<<<<
@@ -6960,7 +7064,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
         goto __pyx_L8;
       }
 
-      /* "lutorpy/_lupa.pyx":356
+      /* "lutorpy/_lupa.pyx":389
  *                         lua.lua_rawset(L, -3)
  *                 else:
  *                     for arg in obj:             # <<<<<<<<<<<<<<
@@ -6972,26 +7076,26 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
           __pyx_t_5 = __pyx_v_obj; __Pyx_INCREF(__pyx_t_5); __pyx_t_9 = 0;
           __pyx_t_13 = NULL;
         } else {
-          __pyx_t_9 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 356, __pyx_L4_error)
+          __pyx_t_9 = -1; __pyx_t_5 = PyObject_GetIter(__pyx_v_obj); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 389, __pyx_L4_error)
           __Pyx_GOTREF(__pyx_t_5);
-          __pyx_t_13 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 356, __pyx_L4_error)
+          __pyx_t_13 = Py_TYPE(__pyx_t_5)->tp_iternext; if (unlikely(!__pyx_t_13)) __PYX_ERR(0, 389, __pyx_L4_error)
         }
         for (;;) {
           if (likely(!__pyx_t_13)) {
             if (likely(PyList_CheckExact(__pyx_t_5))) {
               if (__pyx_t_9 >= PyList_GET_SIZE(__pyx_t_5)) break;
               #if CYTHON_COMPILING_IN_CPYTHON
-              __pyx_t_11 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_11); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 356, __pyx_L4_error)
+              __pyx_t_11 = PyList_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_11); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 389, __pyx_L4_error)
               #else
-              __pyx_t_11 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 356, __pyx_L4_error)
+              __pyx_t_11 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 389, __pyx_L4_error)
               __Pyx_GOTREF(__pyx_t_11);
               #endif
             } else {
               if (__pyx_t_9 >= PyTuple_GET_SIZE(__pyx_t_5)) break;
               #if CYTHON_COMPILING_IN_CPYTHON
-              __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_11); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 356, __pyx_L4_error)
+              __pyx_t_11 = PyTuple_GET_ITEM(__pyx_t_5, __pyx_t_9); __Pyx_INCREF(__pyx_t_11); __pyx_t_9++; if (unlikely(0 < 0)) __PYX_ERR(0, 389, __pyx_L4_error)
               #else
-              __pyx_t_11 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 356, __pyx_L4_error)
+              __pyx_t_11 = PySequence_ITEM(__pyx_t_5, __pyx_t_9); __pyx_t_9++; if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 389, __pyx_L4_error)
               __Pyx_GOTREF(__pyx_t_11);
               #endif
             }
@@ -7001,7 +7105,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
               PyObject* exc_type = PyErr_Occurred();
               if (exc_type) {
                 if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-                else __PYX_ERR(0, 356, __pyx_L4_error)
+                else __PYX_ERR(0, 389, __pyx_L4_error)
               }
               break;
             }
@@ -7010,16 +7114,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
           __Pyx_XDECREF_SET(__pyx_v_arg, __pyx_t_11);
           __pyx_t_11 = 0;
 
-          /* "lutorpy/_lupa.pyx":357
+          /* "lutorpy/_lupa.pyx":390
  *                 else:
  *                     for arg in obj:
  *                         py_to_lua(self, L, arg)             # <<<<<<<<<<<<<<
  *                         lua.lua_rawseti(L, -2, i)
  *                         i += 1
  */
-          __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_arg, NULL); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 357, __pyx_L4_error)
+          __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_py_to_lua(__pyx_v_self, __pyx_v_L, __pyx_v_arg, NULL); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 390, __pyx_L4_error)
 
-          /* "lutorpy/_lupa.pyx":358
+          /* "lutorpy/_lupa.pyx":391
  *                     for arg in obj:
  *                         py_to_lua(self, L, arg)
  *                         lua.lua_rawseti(L, -2, i)             # <<<<<<<<<<<<<<
@@ -7028,7 +7132,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
           lua_rawseti(__pyx_v_L, -2, __pyx_v_i);
 
-          /* "lutorpy/_lupa.pyx":359
+          /* "lutorpy/_lupa.pyx":392
  *                         py_to_lua(self, L, arg)
  *                         lua.lua_rawseti(L, -2, i)
  *                         i += 1             # <<<<<<<<<<<<<<
@@ -7037,7 +7141,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
           __pyx_v_i = (__pyx_v_i + 1);
 
-          /* "lutorpy/_lupa.pyx":356
+          /* "lutorpy/_lupa.pyx":389
  *                         lua.lua_rawset(L, -3)
  *                 else:
  *                     for arg in obj:             # <<<<<<<<<<<<<<
@@ -7049,7 +7153,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
       }
       __pyx_L8:;
 
-      /* "lutorpy/_lupa.pyx":332
+      /* "lutorpy/_lupa.pyx":365
  *             lua.lua_newtable(L)
  *             # FIXME: how to check for failure?
  *             for obj in args:             # <<<<<<<<<<<<<<
@@ -7059,7 +7163,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
     }
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "lutorpy/_lupa.pyx":360
+    /* "lutorpy/_lupa.pyx":393
  *                         lua.lua_rawseti(L, -2, i)
  *                         i += 1
  *             return py_from_lua(self, L, -1)             # <<<<<<<<<<<<<<
@@ -7067,14 +7171,14 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  *             lua.lua_settop(L, old_top)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __pyx_f_7lutorpy_5_lupa_py_from_lua(__pyx_v_self, __pyx_v_L, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 360, __pyx_L4_error)
+    __pyx_t_3 = __pyx_f_7lutorpy_5_lupa_py_from_lua(__pyx_v_self, __pyx_v_L, -1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 393, __pyx_L4_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L3_return;
   }
 
-  /* "lutorpy/_lupa.pyx":362
+  /* "lutorpy/_lupa.pyx":395
  *             return py_from_lua(self, L, -1)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -7103,7 +7207,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
       {
         lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-        /* "lutorpy/_lupa.pyx":363
+        /* "lutorpy/_lupa.pyx":396
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self)             # <<<<<<<<<<<<<<
@@ -7131,7 +7235,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
       __pyx_t_20 = __pyx_r;
       __pyx_r = 0;
 
-      /* "lutorpy/_lupa.pyx":362
+      /* "lutorpy/_lupa.pyx":395
  *             return py_from_lua(self, L, -1)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -7140,7 +7244,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
  */
       lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-      /* "lutorpy/_lupa.pyx":363
+      /* "lutorpy/_lupa.pyx":396
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self)             # <<<<<<<<<<<<<<
@@ -7154,7 +7258,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
     }
   }
 
-  /* "lutorpy/_lupa.pyx":314
+  /* "lutorpy/_lupa.pyx":347
  *         return self.table_from(items, kwargs)
  * 
  *     def table_from(self, *args):             # <<<<<<<<<<<<<<
@@ -7180,7 +7284,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10LuaRuntime_14table_from(struct __pyx
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":366
+/* "lutorpy/_lupa.pyx":399
  * 
  *     @cython.final
  *     cdef int register_py_object(self, bytes cname, bytes pyname, object obj) except -1:             # <<<<<<<<<<<<<<
@@ -7203,7 +7307,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
   PyObject *__pyx_t_9 = NULL;
   __Pyx_RefNannySetupContext("register_py_object", 0);
 
-  /* "lutorpy/_lupa.pyx":367
+  /* "lutorpy/_lupa.pyx":400
  *     @cython.final
  *     cdef int register_py_object(self, bytes cname, bytes pyname, object obj) except -1:
  *         cdef lua_State *L = self._state             # <<<<<<<<<<<<<<
@@ -7213,22 +7317,22 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
   __pyx_t_1 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_1;
 
-  /* "lutorpy/_lupa.pyx":368
+  /* "lutorpy/_lupa.pyx":401
  *     cdef int register_py_object(self, bytes cname, bytes pyname, object obj) except -1:
  *         cdef lua_State *L = self._state
  *         lua.lua_pushlstring(L, cname, len(cname))             # <<<<<<<<<<<<<<
  *         if not py_to_lua_custom(self, L, obj, 0):
  *             lua.lua_pop(L, 1)
  */
-  __pyx_t_2 = __Pyx_PyObject_AsString(__pyx_v_cname); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsString(__pyx_v_cname); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 401, __pyx_L1_error)
   if (unlikely(__pyx_v_cname == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 368, __pyx_L1_error)
+    __PYX_ERR(0, 401, __pyx_L1_error)
   }
-  __pyx_t_3 = PyBytes_GET_SIZE(__pyx_v_cname); if (unlikely(__pyx_t_3 == -1)) __PYX_ERR(0, 368, __pyx_L1_error)
+  __pyx_t_3 = PyBytes_GET_SIZE(__pyx_v_cname); if (unlikely(__pyx_t_3 == -1)) __PYX_ERR(0, 401, __pyx_L1_error)
   lua_pushlstring(__pyx_v_L, __pyx_t_2, __pyx_t_3);
 
-  /* "lutorpy/_lupa.pyx":369
+  /* "lutorpy/_lupa.pyx":402
  *         cdef lua_State *L = self._state
  *         lua.lua_pushlstring(L, cname, len(cname))
  *         if not py_to_lua_custom(self, L, obj, 0):             # <<<<<<<<<<<<<<
@@ -7238,7 +7342,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
   __pyx_t_4 = ((!(__pyx_f_7lutorpy_5_lupa_py_to_lua_custom(__pyx_v_self, __pyx_v_L, __pyx_v_obj, 0) != 0)) != 0);
   if (__pyx_t_4) {
 
-    /* "lutorpy/_lupa.pyx":370
+    /* "lutorpy/_lupa.pyx":403
  *         lua.lua_pushlstring(L, cname, len(cname))
  *         if not py_to_lua_custom(self, L, obj, 0):
  *             lua.lua_pop(L, 1)             # <<<<<<<<<<<<<<
@@ -7247,16 +7351,16 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
  */
     lua_pop(__pyx_v_L, 1);
 
-    /* "lutorpy/_lupa.pyx":371
+    /* "lutorpy/_lupa.pyx":404
  *         if not py_to_lua_custom(self, L, obj, 0):
  *             lua.lua_pop(L, 1)
  *             raise LuaError("failed to convert %s object" % pyname)             # <<<<<<<<<<<<<<
  *         lua.lua_pushlstring(L, pyname, len(pyname))
  *         lua.lua_pushvalue(L, -2)
  */
-    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 404, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_failed_to_convert_s_object, __pyx_v_pyname); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 371, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyString_Format(__pyx_kp_s_failed_to_convert_s_object, __pyx_v_pyname); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 404, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = NULL;
     if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_6))) {
@@ -7269,26 +7373,26 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
       }
     }
     if (!__pyx_t_8) {
-      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_t_7); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 404, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_GOTREF(__pyx_t_5);
     } else {
-      __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_9 = PyTuple_New(1+1); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 404, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GIVEREF(__pyx_t_8); PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_8); __pyx_t_8 = NULL;
       __Pyx_GIVEREF(__pyx_t_7);
       PyTuple_SET_ITEM(__pyx_t_9, 0+1, __pyx_t_7);
       __pyx_t_7 = 0;
-      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 371, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_9, NULL); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 404, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
     }
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_Raise(__pyx_t_5, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    __PYX_ERR(0, 371, __pyx_L1_error)
+    __PYX_ERR(0, 404, __pyx_L1_error)
 
-    /* "lutorpy/_lupa.pyx":369
+    /* "lutorpy/_lupa.pyx":402
  *         cdef lua_State *L = self._state
  *         lua.lua_pushlstring(L, cname, len(cname))
  *         if not py_to_lua_custom(self, L, obj, 0):             # <<<<<<<<<<<<<<
@@ -7297,22 +7401,22 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
  */
   }
 
-  /* "lutorpy/_lupa.pyx":372
+  /* "lutorpy/_lupa.pyx":405
  *             lua.lua_pop(L, 1)
  *             raise LuaError("failed to convert %s object" % pyname)
  *         lua.lua_pushlstring(L, pyname, len(pyname))             # <<<<<<<<<<<<<<
  *         lua.lua_pushvalue(L, -2)
  *         lua.lua_rawset(L, -5)
  */
-  __pyx_t_2 = __Pyx_PyObject_AsString(__pyx_v_pyname); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_AsString(__pyx_v_pyname); if (unlikely((!__pyx_t_2) && PyErr_Occurred())) __PYX_ERR(0, 405, __pyx_L1_error)
   if (unlikely(__pyx_v_pyname == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 372, __pyx_L1_error)
+    __PYX_ERR(0, 405, __pyx_L1_error)
   }
-  __pyx_t_3 = PyBytes_GET_SIZE(__pyx_v_pyname); if (unlikely(__pyx_t_3 == -1)) __PYX_ERR(0, 372, __pyx_L1_error)
+  __pyx_t_3 = PyBytes_GET_SIZE(__pyx_v_pyname); if (unlikely(__pyx_t_3 == -1)) __PYX_ERR(0, 405, __pyx_L1_error)
   lua_pushlstring(__pyx_v_L, __pyx_t_2, __pyx_t_3);
 
-  /* "lutorpy/_lupa.pyx":373
+  /* "lutorpy/_lupa.pyx":406
  *             raise LuaError("failed to convert %s object" % pyname)
  *         lua.lua_pushlstring(L, pyname, len(pyname))
  *         lua.lua_pushvalue(L, -2)             # <<<<<<<<<<<<<<
@@ -7321,7 +7425,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
  */
   lua_pushvalue(__pyx_v_L, -2);
 
-  /* "lutorpy/_lupa.pyx":374
+  /* "lutorpy/_lupa.pyx":407
  *         lua.lua_pushlstring(L, pyname, len(pyname))
  *         lua.lua_pushvalue(L, -2)
  *         lua.lua_rawset(L, -5)             # <<<<<<<<<<<<<<
@@ -7330,7 +7434,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
  */
   lua_rawset(__pyx_v_L, -5);
 
-  /* "lutorpy/_lupa.pyx":375
+  /* "lutorpy/_lupa.pyx":408
  *         lua.lua_pushvalue(L, -2)
  *         lua.lua_rawset(L, -5)
  *         lua.lua_rawset(L, lua.LUA_REGISTRYINDEX)             # <<<<<<<<<<<<<<
@@ -7339,7 +7443,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
  */
   lua_rawset(__pyx_v_L, LUA_REGISTRYINDEX);
 
-  /* "lutorpy/_lupa.pyx":376
+  /* "lutorpy/_lupa.pyx":409
  *         lua.lua_rawset(L, -5)
  *         lua.lua_rawset(L, lua.LUA_REGISTRYINDEX)
  *         return 0             # <<<<<<<<<<<<<<
@@ -7349,7 +7453,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":366
+  /* "lutorpy/_lupa.pyx":399
  * 
  *     @cython.final
  *     cdef int register_py_object(self, bytes cname, bytes pyname, object obj) except -1:             # <<<<<<<<<<<<<<
@@ -7371,7 +7475,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(struct __pyx_
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":379
+/* "lutorpy/_lupa.pyx":412
  * 
  *     @cython.final
  *     cdef int init_python_lib(self, bint register_eval, bint register_builtins) except -1:             # <<<<<<<<<<<<<<
@@ -7389,7 +7493,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("init_python_lib", 0);
 
-  /* "lutorpy/_lupa.pyx":380
+  /* "lutorpy/_lupa.pyx":413
  *     @cython.final
  *     cdef int init_python_lib(self, bint register_eval, bint register_builtins) except -1:
  *         cdef lua_State *L = self._state             # <<<<<<<<<<<<<<
@@ -7399,7 +7503,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
   __pyx_t_1 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_1;
 
-  /* "lutorpy/_lupa.pyx":383
+  /* "lutorpy/_lupa.pyx":416
  * 
  *         # create 'python' lib and register our own object metatable
  *         lua.luaL_openlib(L, "python", py_lib, 0)             # <<<<<<<<<<<<<<
@@ -7408,7 +7512,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
  */
   luaL_openlib(__pyx_v_L, ((char *)"python"), __pyx_v_7lutorpy_5_lupa_py_lib, 0);
 
-  /* "lutorpy/_lupa.pyx":384
+  /* "lutorpy/_lupa.pyx":417
  *         # create 'python' lib and register our own object metatable
  *         lua.luaL_openlib(L, "python", py_lib, 0)
  *         lua.luaL_newmetatable(L, POBJECT)             # <<<<<<<<<<<<<<
@@ -7417,7 +7521,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
  */
   luaL_newmetatable(__pyx_v_L, ((char *)"POBJECT"));
 
-  /* "lutorpy/_lupa.pyx":385
+  /* "lutorpy/_lupa.pyx":418
  *         lua.luaL_openlib(L, "python", py_lib, 0)
  *         lua.luaL_newmetatable(L, POBJECT)
  *         lua.luaL_openlib(L, NULL, py_object_lib, 0)             # <<<<<<<<<<<<<<
@@ -7426,7 +7530,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
  */
   luaL_openlib(__pyx_v_L, NULL, __pyx_v_7lutorpy_5_lupa_py_object_lib, 0);
 
-  /* "lutorpy/_lupa.pyx":386
+  /* "lutorpy/_lupa.pyx":419
  *         lua.luaL_newmetatable(L, POBJECT)
  *         lua.luaL_openlib(L, NULL, py_object_lib, 0)
  *         lua.lua_pop(L, 1)             # <<<<<<<<<<<<<<
@@ -7435,16 +7539,16 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
  */
   lua_pop(__pyx_v_L, 1);
 
-  /* "lutorpy/_lupa.pyx":389
+  /* "lutorpy/_lupa.pyx":422
  * 
  *         # register global names in the module
  *         self.register_py_object(b'Py_None',  b'none', None)             # <<<<<<<<<<<<<<
  *         if register_eval:
  *             self.register_py_object(b'eval',     b'eval', eval)
  */
-  __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(__pyx_v_self, __pyx_n_b_Py_None, __pyx_n_b_none, Py_None); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 389, __pyx_L1_error)
+  __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(__pyx_v_self, __pyx_n_b_Py_None, __pyx_n_b_none, Py_None); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 422, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":390
+  /* "lutorpy/_lupa.pyx":423
  *         # register global names in the module
  *         self.register_py_object(b'Py_None',  b'none', None)
  *         if register_eval:             # <<<<<<<<<<<<<<
@@ -7454,16 +7558,16 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
   __pyx_t_3 = (__pyx_v_register_eval != 0);
   if (__pyx_t_3) {
 
-    /* "lutorpy/_lupa.pyx":391
+    /* "lutorpy/_lupa.pyx":424
  *         self.register_py_object(b'Py_None',  b'none', None)
  *         if register_eval:
  *             self.register_py_object(b'eval',     b'eval', eval)             # <<<<<<<<<<<<<<
  *         if register_builtins:
  *             self.register_py_object(b'builtins', b'builtins', builtins)
  */
-    __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(__pyx_v_self, __pyx_n_b_eval, __pyx_n_b_eval, __pyx_builtin_eval); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 391, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(__pyx_v_self, __pyx_n_b_eval, __pyx_n_b_eval, __pyx_builtin_eval); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 424, __pyx_L1_error)
 
-    /* "lutorpy/_lupa.pyx":390
+    /* "lutorpy/_lupa.pyx":423
  *         # register global names in the module
  *         self.register_py_object(b'Py_None',  b'none', None)
  *         if register_eval:             # <<<<<<<<<<<<<<
@@ -7472,7 +7576,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
  */
   }
 
-  /* "lutorpy/_lupa.pyx":392
+  /* "lutorpy/_lupa.pyx":425
  *         if register_eval:
  *             self.register_py_object(b'eval',     b'eval', eval)
  *         if register_builtins:             # <<<<<<<<<<<<<<
@@ -7482,7 +7586,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
   __pyx_t_3 = (__pyx_v_register_builtins != 0);
   if (__pyx_t_3) {
 
-    /* "lutorpy/_lupa.pyx":393
+    /* "lutorpy/_lupa.pyx":426
  *             self.register_py_object(b'eval',     b'eval', eval)
  *         if register_builtins:
  *             self.register_py_object(b'builtins', b'builtins', builtins)             # <<<<<<<<<<<<<<
@@ -7491,10 +7595,10 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
  */
     __pyx_t_4 = __pyx_v_7lutorpy_5_lupa_builtins;
     __Pyx_INCREF(__pyx_t_4);
-    __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(__pyx_v_self, __pyx_n_b_builtins, __pyx_n_b_builtins, __pyx_t_4); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 393, __pyx_L1_error)
+    __pyx_t_2 = __pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object(__pyx_v_self, __pyx_n_b_builtins, __pyx_n_b_builtins, __pyx_t_4); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 426, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":392
+    /* "lutorpy/_lupa.pyx":425
  *         if register_eval:
  *             self.register_py_object(b'eval',     b'eval', eval)
  *         if register_builtins:             # <<<<<<<<<<<<<<
@@ -7503,7 +7607,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
  */
   }
 
-  /* "lutorpy/_lupa.pyx":395
+  /* "lutorpy/_lupa.pyx":428
  *             self.register_py_object(b'builtins', b'builtins', builtins)
  * 
  *         return 0  # nothing left to return on the stack             # <<<<<<<<<<<<<<
@@ -7513,7 +7617,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":379
+  /* "lutorpy/_lupa.pyx":412
  * 
  *     @cython.final
  *     cdef int init_python_lib(self, bint register_eval, bint register_builtins) except -1:             # <<<<<<<<<<<<<<
@@ -7531,7 +7635,7 @@ static int __pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib(struct __pyx_obj
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":402
+/* "lutorpy/_lupa.pyx":435
  * # from Lua scripts
  * 
  * def unpacks_lua_table(func):             # <<<<<<<<<<<<<<
@@ -7554,7 +7658,7 @@ static PyObject *__pyx_pw_7lutorpy_5_lupa_3unpacks_lua_table(PyObject *__pyx_sel
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":422
+/* "lutorpy/_lupa.pyx":455
  *     """
  *     @wraps(func)
  *     def wrapper(*args):             # <<<<<<<<<<<<<<
@@ -7595,15 +7699,15 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_17unpacks_lua_table_wrapper(PyObject *
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_INCREF(__pyx_v_args);
 
-  /* "lutorpy/_lupa.pyx":423
+  /* "lutorpy/_lupa.pyx":456
  *     @wraps(func)
  *     def wrapper(*args):
  *         args, kwargs = _fix_args_kwargs(args)             # <<<<<<<<<<<<<<
  *         return func(*args, **kwargs)
  *     return wrapper
  */
-  if (!(likely(PyTuple_CheckExact(__pyx_v_args))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v_args)->tp_name), 0))) __PYX_ERR(0, 423, __pyx_L1_error)
-  __pyx_t_1 = __pyx_f_7lutorpy_5_lupa__fix_args_kwargs(((PyObject*)__pyx_v_args)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 423, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(__pyx_v_args))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v_args)->tp_name), 0))) __PYX_ERR(0, 456, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7lutorpy_5_lupa__fix_args_kwargs(((PyObject*)__pyx_v_args)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 456, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(__pyx_t_1 != Py_None)) {
     PyObject* sequence = __pyx_t_1;
@@ -7615,7 +7719,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_17unpacks_lua_table_wrapper(PyObject *
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 423, __pyx_L1_error)
+      __PYX_ERR(0, 456, __pyx_L1_error)
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
@@ -7623,21 +7727,21 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_17unpacks_lua_table_wrapper(PyObject *
     __Pyx_INCREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_t_3);
     #else
-    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 423, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 456, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 423, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 456, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
-    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 423, __pyx_L1_error)
+    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 456, __pyx_L1_error)
   }
   __Pyx_DECREF_SET(__pyx_v_args, __pyx_t_2);
   __pyx_t_2 = 0;
   __pyx_v_kwargs = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":424
+  /* "lutorpy/_lupa.pyx":457
  *     def wrapper(*args):
  *         args, kwargs = _fix_args_kwargs(args)
  *         return func(*args, **kwargs)             # <<<<<<<<<<<<<<
@@ -7645,21 +7749,21 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_17unpacks_lua_table_wrapper(PyObject *
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_func)) { __Pyx_RaiseClosureNameError("func"); __PYX_ERR(0, 424, __pyx_L1_error) }
-  __pyx_t_1 = PySequence_Tuple(__pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 424, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_func)) { __Pyx_RaiseClosureNameError("func"); __PYX_ERR(0, 457, __pyx_L1_error) }
+  __pyx_t_1 = PySequence_Tuple(__pyx_v_args); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (unlikely(__pyx_v_kwargs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-    __PYX_ERR(0, 424, __pyx_L1_error)
+    __PYX_ERR(0, 457, __pyx_L1_error)
   }
   if (likely(PyDict_CheckExact(__pyx_v_kwargs))) {
-    __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 457, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   } else {
-    __pyx_t_3 = PyObject_CallFunctionObjArgs((PyObject*)&PyDict_Type, __pyx_v_kwargs, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 424, __pyx_L1_error)
+    __pyx_t_3 = PyObject_CallFunctionObjArgs((PyObject*)&PyDict_Type, __pyx_v_kwargs, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 457, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
-  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_v_func, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 424, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_v_func, __pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 457, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -7667,7 +7771,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_17unpacks_lua_table_wrapper(PyObject *
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":422
+  /* "lutorpy/_lupa.pyx":455
  *     """
  *     @wraps(func)
  *     def wrapper(*args):             # <<<<<<<<<<<<<<
@@ -7690,7 +7794,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_17unpacks_lua_table_wrapper(PyObject *
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":402
+/* "lutorpy/_lupa.pyx":435
  * # from Lua scripts
  * 
  * def unpacks_lua_table(func):             # <<<<<<<<<<<<<<
@@ -7719,7 +7823,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_2unpacks_lua_table(CYTHON_UNUSED PyObj
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_func);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_func);
 
-  /* "lutorpy/_lupa.pyx":421
+  /* "lutorpy/_lupa.pyx":454
  *     robustly.
  *     """
  *     @wraps(func)             # <<<<<<<<<<<<<<
@@ -7738,29 +7842,29 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_2unpacks_lua_table(CYTHON_UNUSED PyObj
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_cur_scope->__pyx_v_func); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_cur_scope->__pyx_v_func); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_func);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_func);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_cur_scope->__pyx_v_func);
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":422
+  /* "lutorpy/_lupa.pyx":455
  *     """
  *     @wraps(func)
  *     def wrapper(*args):             # <<<<<<<<<<<<<<
  *         args, kwargs = _fix_args_kwargs(args)
  *         return func(*args, **kwargs)
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_17unpacks_lua_table_1wrapper, 0, __pyx_n_s_unpacks_lua_table_locals_wrapper, ((PyObject*)__pyx_cur_scope), __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 422, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_17unpacks_lua_table_1wrapper, 0, __pyx_n_s_unpacks_lua_table_locals_wrapper, ((PyObject*)__pyx_cur_scope), __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__13)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -7773,17 +7877,17 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_2unpacks_lua_table(CYTHON_UNUSED PyObj
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 421, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 454, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -7791,7 +7895,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_2unpacks_lua_table(CYTHON_UNUSED PyObj
   __pyx_v_wrapper = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "lutorpy/_lupa.pyx":425
+  /* "lutorpy/_lupa.pyx":458
  *         args, kwargs = _fix_args_kwargs(args)
  *         return func(*args, **kwargs)
  *     return wrapper             # <<<<<<<<<<<<<<
@@ -7803,7 +7907,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_2unpacks_lua_table(CYTHON_UNUSED PyObj
   __pyx_r = __pyx_v_wrapper;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":402
+  /* "lutorpy/_lupa.pyx":435
  * # from Lua scripts
  * 
  * def unpacks_lua_table(func):             # <<<<<<<<<<<<<<
@@ -7828,7 +7932,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_2unpacks_lua_table(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":428
+/* "lutorpy/_lupa.pyx":461
  * 
  * 
  * def unpacks_lua_table_method(meth):             # <<<<<<<<<<<<<<
@@ -7851,7 +7955,7 @@ static PyObject *__pyx_pw_7lutorpy_5_lupa_5unpacks_lua_table_method(PyObject *__
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":434
+/* "lutorpy/_lupa.pyx":467
  *     """
  *     @wraps(meth)
  *     def wrapper(self, *args):             # <<<<<<<<<<<<<<
@@ -7897,7 +8001,7 @@ static PyObject *__pyx_pw_7lutorpy_5_lupa_24unpacks_lua_table_method_1wrapper(Py
       }
       if (unlikely(kw_args > 0)) {
         const Py_ssize_t used_pos_args = (pos_args < 1) ? pos_args : 1;
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, used_pos_args, "wrapper") < 0)) __PYX_ERR(0, 434, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, used_pos_args, "wrapper") < 0)) __PYX_ERR(0, 467, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) < 1) {
       goto __pyx_L5_argtuple_error;
@@ -7908,7 +8012,7 @@ static PyObject *__pyx_pw_7lutorpy_5_lupa_24unpacks_lua_table_method_1wrapper(Py
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("wrapper", 0, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 434, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("wrapper", 0, 1, 1, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 467, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_DECREF(__pyx_v_args); __pyx_v_args = 0;
   __Pyx_AddTraceback("lutorpy._lupa.unpacks_lua_table_method.wrapper", __pyx_clineno, __pyx_lineno, __pyx_filename);
@@ -7937,15 +8041,15 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_24unpacks_lua_table_method_wrapper(PyO
   __pyx_cur_scope = __pyx_outer_scope;
   __Pyx_INCREF(__pyx_v_args);
 
-  /* "lutorpy/_lupa.pyx":435
+  /* "lutorpy/_lupa.pyx":468
  *     @wraps(meth)
  *     def wrapper(self, *args):
  *         args, kwargs = _fix_args_kwargs(args)             # <<<<<<<<<<<<<<
  *         return meth(self, *args, **kwargs)
  *     return wrapper
  */
-  if (!(likely(PyTuple_CheckExact(__pyx_v_args))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v_args)->tp_name), 0))) __PYX_ERR(0, 435, __pyx_L1_error)
-  __pyx_t_1 = __pyx_f_7lutorpy_5_lupa__fix_args_kwargs(((PyObject*)__pyx_v_args)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
+  if (!(likely(PyTuple_CheckExact(__pyx_v_args))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "tuple", Py_TYPE(__pyx_v_args)->tp_name), 0))) __PYX_ERR(0, 468, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7lutorpy_5_lupa__fix_args_kwargs(((PyObject*)__pyx_v_args)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 468, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   if (likely(__pyx_t_1 != Py_None)) {
     PyObject* sequence = __pyx_t_1;
@@ -7957,7 +8061,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_24unpacks_lua_table_method_wrapper(PyO
     if (unlikely(size != 2)) {
       if (size > 2) __Pyx_RaiseTooManyValuesError(2);
       else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-      __PYX_ERR(0, 435, __pyx_L1_error)
+      __PYX_ERR(0, 468, __pyx_L1_error)
     }
     #if CYTHON_COMPILING_IN_CPYTHON
     __pyx_t_2 = PyTuple_GET_ITEM(sequence, 0); 
@@ -7965,21 +8069,21 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_24unpacks_lua_table_method_wrapper(PyO
     __Pyx_INCREF(__pyx_t_2);
     __Pyx_INCREF(__pyx_t_3);
     #else
-    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_2 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
-    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 435, __pyx_L1_error)
+    __pyx_t_3 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 468, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     #endif
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   } else {
-    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 435, __pyx_L1_error)
+    __Pyx_RaiseNoneNotIterableError(); __PYX_ERR(0, 468, __pyx_L1_error)
   }
   __Pyx_DECREF_SET(__pyx_v_args, __pyx_t_2);
   __pyx_t_2 = 0;
   __pyx_v_kwargs = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":436
+  /* "lutorpy/_lupa.pyx":469
  *     def wrapper(self, *args):
  *         args, kwargs = _fix_args_kwargs(args)
  *         return meth(self, *args, **kwargs)             # <<<<<<<<<<<<<<
@@ -7987,30 +8091,30 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_24unpacks_lua_table_method_wrapper(PyO
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_meth)) { __Pyx_RaiseClosureNameError("meth"); __PYX_ERR(0, 436, __pyx_L1_error) }
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_meth)) { __Pyx_RaiseClosureNameError("meth"); __PYX_ERR(0, 469, __pyx_L1_error) }
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(__pyx_v_self);
   __Pyx_GIVEREF(__pyx_v_self);
   PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_v_self);
-  __pyx_t_3 = PySequence_Tuple(__pyx_v_args); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_3 = PySequence_Tuple(__pyx_v_args); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_t_3); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (unlikely(__pyx_v_kwargs == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "argument after ** must be a mapping, not NoneType");
-    __PYX_ERR(0, 436, __pyx_L1_error)
+    __PYX_ERR(0, 469, __pyx_L1_error)
   }
   if (likely(PyDict_CheckExact(__pyx_v_kwargs))) {
-    __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __pyx_t_3 = PyDict_Copy(__pyx_v_kwargs); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   } else {
-    __pyx_t_3 = PyObject_CallFunctionObjArgs((PyObject*)&PyDict_Type, __pyx_v_kwargs, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 436, __pyx_L1_error)
+    __pyx_t_3 = PyObject_CallFunctionObjArgs((PyObject*)&PyDict_Type, __pyx_v_kwargs, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 469, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
   }
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_v_meth, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 436, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_v_meth, __pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 469, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -8018,7 +8122,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_24unpacks_lua_table_method_wrapper(PyO
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":434
+  /* "lutorpy/_lupa.pyx":467
  *     """
  *     @wraps(meth)
  *     def wrapper(self, *args):             # <<<<<<<<<<<<<<
@@ -8041,7 +8145,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_24unpacks_lua_table_method_wrapper(PyO
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":428
+/* "lutorpy/_lupa.pyx":461
  * 
  * 
  * def unpacks_lua_table_method(meth):             # <<<<<<<<<<<<<<
@@ -8070,7 +8174,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_4unpacks_lua_table_method(CYTHON_UNUSE
   __Pyx_INCREF(__pyx_cur_scope->__pyx_v_meth);
   __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_meth);
 
-  /* "lutorpy/_lupa.pyx":433
+  /* "lutorpy/_lupa.pyx":466
  *     (i.e. it knows about the 'self' argument).
  *     """
  *     @wraps(meth)             # <<<<<<<<<<<<<<
@@ -8089,29 +8193,29 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_4unpacks_lua_table_method(CYTHON_UNUSE
     }
   }
   if (!__pyx_t_4) {
-    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_cur_scope->__pyx_v_meth); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_3, __pyx_cur_scope->__pyx_v_meth); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 466, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
   } else {
-    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(1+1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 466, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_4); __pyx_t_4 = NULL;
     __Pyx_INCREF(__pyx_cur_scope->__pyx_v_meth);
     __Pyx_GIVEREF(__pyx_cur_scope->__pyx_v_meth);
     PyTuple_SET_ITEM(__pyx_t_5, 0+1, __pyx_cur_scope->__pyx_v_meth);
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_t_5, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 466, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
   }
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":434
+  /* "lutorpy/_lupa.pyx":467
  *     """
  *     @wraps(meth)
  *     def wrapper(self, *args):             # <<<<<<<<<<<<<<
  *         args, kwargs = _fix_args_kwargs(args)
  *         return meth(self, *args, **kwargs)
  */
-  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_24unpacks_lua_table_method_1wrapper, 0, __pyx_n_s_unpacks_lua_table_method_locals, ((PyObject*)__pyx_cur_scope), __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 434, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_24unpacks_lua_table_method_1wrapper, 0, __pyx_n_s_unpacks_lua_table_method_locals, ((PyObject*)__pyx_cur_scope), __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__15)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 467, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_t_5 = NULL;
   if (CYTHON_COMPILING_IN_CPYTHON && unlikely(PyMethod_Check(__pyx_t_2))) {
@@ -8124,17 +8228,17 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_4unpacks_lua_table_method(CYTHON_UNUSE
     }
   }
   if (!__pyx_t_5) {
-    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_CallOneArg(__pyx_t_2, __pyx_t_3); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 466, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_GOTREF(__pyx_t_1);
   } else {
-    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(1+1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 466, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_4, 0, __pyx_t_5); __pyx_t_5 = NULL;
     __Pyx_GIVEREF(__pyx_t_3);
     PyTuple_SET_ITEM(__pyx_t_4, 0+1, __pyx_t_3);
     __pyx_t_3 = 0;
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 433, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_t_4, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 466, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   }
@@ -8142,7 +8246,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_4unpacks_lua_table_method(CYTHON_UNUSE
   __pyx_v_wrapper = __pyx_t_1;
   __pyx_t_1 = 0;
 
-  /* "lutorpy/_lupa.pyx":437
+  /* "lutorpy/_lupa.pyx":470
  *         args, kwargs = _fix_args_kwargs(args)
  *         return meth(self, *args, **kwargs)
  *     return wrapper             # <<<<<<<<<<<<<<
@@ -8154,7 +8258,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_4unpacks_lua_table_method(CYTHON_UNUSE
   __pyx_r = __pyx_v_wrapper;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":428
+  /* "lutorpy/_lupa.pyx":461
  * 
  * 
  * def unpacks_lua_table_method(meth):             # <<<<<<<<<<<<<<
@@ -8179,7 +8283,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_4unpacks_lua_table_method(CYTHON_UNUSE
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":440
+/* "lutorpy/_lupa.pyx":473
  * 
  * 
  * cdef tuple _fix_args_kwargs(tuple args):             # <<<<<<<<<<<<<<
@@ -8213,7 +8317,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
   char const *__pyx_t_15;
   __Pyx_RefNannySetupContext("_fix_args_kwargs", 0);
 
-  /* "lutorpy/_lupa.pyx":446
+  /* "lutorpy/_lupa.pyx":479
  *     it is a table.
  *     """
  *     if len(args) != 1:             # <<<<<<<<<<<<<<
@@ -8222,13 +8326,13 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
  */
   if (unlikely(__pyx_v_args == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "object of type 'NoneType' has no len()");
-    __PYX_ERR(0, 446, __pyx_L1_error)
+    __PYX_ERR(0, 479, __pyx_L1_error)
   }
-  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 446, __pyx_L1_error)
+  __pyx_t_1 = PyTuple_GET_SIZE(__pyx_v_args); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 479, __pyx_L1_error)
   __pyx_t_2 = ((__pyx_t_1 != 1) != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":447
+    /* "lutorpy/_lupa.pyx":480
  *     """
  *     if len(args) != 1:
  *         return args, {}             # <<<<<<<<<<<<<<
@@ -8236,9 +8340,9 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
  *     arg = args[0]
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 447, __pyx_L1_error)
+    __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 447, __pyx_L1_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 480, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(__pyx_v_args);
     __Pyx_GIVEREF(__pyx_v_args);
@@ -8250,7 +8354,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
     __pyx_t_4 = 0;
     goto __pyx_L0;
 
-    /* "lutorpy/_lupa.pyx":446
+    /* "lutorpy/_lupa.pyx":479
  *     it is a table.
  *     """
  *     if len(args) != 1:             # <<<<<<<<<<<<<<
@@ -8259,7 +8363,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
  */
   }
 
-  /* "lutorpy/_lupa.pyx":449
+  /* "lutorpy/_lupa.pyx":482
  *         return args, {}
  * 
  *     arg = args[0]             # <<<<<<<<<<<<<<
@@ -8268,14 +8372,14 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
  */
   if (unlikely(__pyx_v_args == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
-    __PYX_ERR(0, 449, __pyx_L1_error)
+    __PYX_ERR(0, 482, __pyx_L1_error)
   }
-  __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_args, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 449, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_GetItemInt_Tuple(__pyx_v_args, 0, long, 1, __Pyx_PyInt_From_long, 0, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 482, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __pyx_v_arg = __pyx_t_4;
   __pyx_t_4 = 0;
 
-  /* "lutorpy/_lupa.pyx":450
+  /* "lutorpy/_lupa.pyx":483
  * 
  *     arg = args[0]
  *     if not isinstance(arg, _LuaTable):             # <<<<<<<<<<<<<<
@@ -8286,7 +8390,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
   __pyx_t_5 = ((!(__pyx_t_2 != 0)) != 0);
   if (__pyx_t_5) {
 
-    /* "lutorpy/_lupa.pyx":451
+    /* "lutorpy/_lupa.pyx":484
  *     arg = args[0]
  *     if not isinstance(arg, _LuaTable):
  *         return args, {}             # <<<<<<<<<<<<<<
@@ -8294,9 +8398,9 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
  *     table = <_LuaTable>arg
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 451, __pyx_L1_error)
+    __pyx_t_4 = PyDict_New(); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 484, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 451, __pyx_L1_error)
+    __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 484, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_INCREF(__pyx_v_args);
     __Pyx_GIVEREF(__pyx_v_args);
@@ -8308,7 +8412,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
     __pyx_t_3 = 0;
     goto __pyx_L0;
 
-    /* "lutorpy/_lupa.pyx":450
+    /* "lutorpy/_lupa.pyx":483
  * 
  *     arg = args[0]
  *     if not isinstance(arg, _LuaTable):             # <<<<<<<<<<<<<<
@@ -8317,7 +8421,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
  */
   }
 
-  /* "lutorpy/_lupa.pyx":453
+  /* "lutorpy/_lupa.pyx":486
  *         return args, {}
  * 
  *     table = <_LuaTable>arg             # <<<<<<<<<<<<<<
@@ -8329,7 +8433,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
   __pyx_v_table = ((struct __pyx_obj_7lutorpy_5_lupa__LuaTable *)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":454
+  /* "lutorpy/_lupa.pyx":487
  * 
  *     table = <_LuaTable>arg
  *     encoding = table._runtime._source_encoding             # <<<<<<<<<<<<<<
@@ -8341,17 +8445,17 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
   __pyx_v_encoding = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":457
+  /* "lutorpy/_lupa.pyx":490
  * 
  *     # arguments with keys from 1 to #tbl are passed as positional
  *     new_args = [             # <<<<<<<<<<<<<<
  *         table._getitem(key, is_attr_access=False)
  *         for key in range(1, table._len() + 1)
  */
-  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 457, __pyx_L1_error)
+  __pyx_t_3 = PyList_New(0); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 490, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
 
-  /* "lutorpy/_lupa.pyx":459
+  /* "lutorpy/_lupa.pyx":492
  *     new_args = [
  *         table._getitem(key, is_attr_access=False)
  *         for key in range(1, table._len() + 1)             # <<<<<<<<<<<<<<
@@ -8362,47 +8466,47 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
   for (__pyx_t_7 = 1; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
     __pyx_v_key = __pyx_t_7;
 
-    /* "lutorpy/_lupa.pyx":458
+    /* "lutorpy/_lupa.pyx":491
  *     # arguments with keys from 1 to #tbl are passed as positional
  *     new_args = [
  *         table._getitem(key, is_attr_access=False)             # <<<<<<<<<<<<<<
  *         for key in range(1, table._len() + 1)
  *     ]
  */
-    __pyx_t_4 = __Pyx_PyInt_FromSize_t(__pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 458, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_FromSize_t(__pyx_v_key); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 491, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_8 = __pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_v_table), __pyx_t_4, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 458, __pyx_L1_error)
+    __pyx_t_8 = __pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_v_table), __pyx_t_4, 0); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 491, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 457, __pyx_L1_error)
+    if (unlikely(__Pyx_ListComp_Append(__pyx_t_3, (PyObject*)__pyx_t_8))) __PYX_ERR(0, 490, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
   }
   __pyx_v_new_args = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":463
+  /* "lutorpy/_lupa.pyx":496
  * 
  *     # arguments with non-integer keys are passed as named
  *     new_kwargs = {             # <<<<<<<<<<<<<<
- *         (<bytes>key).decode(encoding) if not PY2 and isinstance(key, bytes) else key: value
+ *         (<bytes>key).decode(encoding) if not IS_PY2 and isinstance(key, bytes) else key: value
  *         for key, value in _LuaIter(table, ITEMS)
  */
   { /* enter inner scope */
     PyObject *__pyx_7genexpr__pyx_v_key = NULL;
     PyObject *__pyx_7genexpr__pyx_v_value = NULL;
-    __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 463, __pyx_L9_error)
+    __pyx_t_3 = PyDict_New(); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 496, __pyx_L9_error)
     __Pyx_GOTREF(__pyx_t_3);
 
-    /* "lutorpy/_lupa.pyx":465
+    /* "lutorpy/_lupa.pyx":498
  *     new_kwargs = {
- *         (<bytes>key).decode(encoding) if not PY2 and isinstance(key, bytes) else key: value
+ *         (<bytes>key).decode(encoding) if not IS_PY2 and isinstance(key, bytes) else key: value
  *         for key, value in _LuaIter(table, ITEMS)             # <<<<<<<<<<<<<<
  *         if not isinstance(key, (int, long))
  *     }
  */
-    __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_e_7lutorpy_5_lupa_ITEMS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 465, __pyx_L9_error)
+    __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_e_7lutorpy_5_lupa_ITEMS); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 498, __pyx_L9_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 465, __pyx_L9_error)
+    __pyx_t_4 = PyTuple_New(2); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 498, __pyx_L9_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_INCREF(((PyObject *)__pyx_v_table));
     __Pyx_GIVEREF(((PyObject *)__pyx_v_table));
@@ -8410,16 +8514,16 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
     __Pyx_GIVEREF(__pyx_t_8);
     PyTuple_SET_ITEM(__pyx_t_4, 1, __pyx_t_8);
     __pyx_t_8 = 0;
-    __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7lutorpy_5_lupa__LuaIter), __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 465, __pyx_L9_error)
+    __pyx_t_8 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7lutorpy_5_lupa__LuaIter), __pyx_t_4, NULL); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 498, __pyx_L9_error)
     __Pyx_GOTREF(__pyx_t_8);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     if (likely(PyList_CheckExact(__pyx_t_8)) || PyTuple_CheckExact(__pyx_t_8)) {
       __pyx_t_4 = __pyx_t_8; __Pyx_INCREF(__pyx_t_4); __pyx_t_1 = 0;
       __pyx_t_9 = NULL;
     } else {
-      __pyx_t_1 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 465, __pyx_L9_error)
+      __pyx_t_1 = -1; __pyx_t_4 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 498, __pyx_L9_error)
       __Pyx_GOTREF(__pyx_t_4);
-      __pyx_t_9 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 465, __pyx_L9_error)
+      __pyx_t_9 = Py_TYPE(__pyx_t_4)->tp_iternext; if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 498, __pyx_L9_error)
     }
     __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
     for (;;) {
@@ -8427,17 +8531,17 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
         if (likely(PyList_CheckExact(__pyx_t_4))) {
           if (__pyx_t_1 >= PyList_GET_SIZE(__pyx_t_4)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_1); __Pyx_INCREF(__pyx_t_8); __pyx_t_1++; if (unlikely(0 < 0)) __PYX_ERR(0, 465, __pyx_L9_error)
+          __pyx_t_8 = PyList_GET_ITEM(__pyx_t_4, __pyx_t_1); __Pyx_INCREF(__pyx_t_8); __pyx_t_1++; if (unlikely(0 < 0)) __PYX_ERR(0, 498, __pyx_L9_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_4, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 465, __pyx_L9_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_4, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 498, __pyx_L9_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         } else {
           if (__pyx_t_1 >= PyTuple_GET_SIZE(__pyx_t_4)) break;
           #if CYTHON_COMPILING_IN_CPYTHON
-          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_1); __Pyx_INCREF(__pyx_t_8); __pyx_t_1++; if (unlikely(0 < 0)) __PYX_ERR(0, 465, __pyx_L9_error)
+          __pyx_t_8 = PyTuple_GET_ITEM(__pyx_t_4, __pyx_t_1); __Pyx_INCREF(__pyx_t_8); __pyx_t_1++; if (unlikely(0 < 0)) __PYX_ERR(0, 498, __pyx_L9_error)
           #else
-          __pyx_t_8 = PySequence_ITEM(__pyx_t_4, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 465, __pyx_L9_error)
+          __pyx_t_8 = PySequence_ITEM(__pyx_t_4, __pyx_t_1); __pyx_t_1++; if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 498, __pyx_L9_error)
           __Pyx_GOTREF(__pyx_t_8);
           #endif
         }
@@ -8447,7 +8551,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
           PyObject* exc_type = PyErr_Occurred();
           if (exc_type) {
             if (likely(exc_type == PyExc_StopIteration || PyErr_GivenExceptionMatches(exc_type, PyExc_StopIteration))) PyErr_Clear();
-            else __PYX_ERR(0, 465, __pyx_L9_error)
+            else __PYX_ERR(0, 498, __pyx_L9_error)
           }
           break;
         }
@@ -8463,7 +8567,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
         if (unlikely(size != 2)) {
           if (size > 2) __Pyx_RaiseTooManyValuesError(2);
           else if (size >= 0) __Pyx_RaiseNeedMoreValuesError(size);
-          __PYX_ERR(0, 465, __pyx_L9_error)
+          __PYX_ERR(0, 498, __pyx_L9_error)
         }
         #if CYTHON_COMPILING_IN_CPYTHON
         if (likely(PyTuple_CheckExact(sequence))) {
@@ -8476,15 +8580,15 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
         __Pyx_INCREF(__pyx_t_10);
         __Pyx_INCREF(__pyx_t_11);
         #else
-        __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 465, __pyx_L9_error)
+        __pyx_t_10 = PySequence_ITEM(sequence, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 498, __pyx_L9_error)
         __Pyx_GOTREF(__pyx_t_10);
-        __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 465, __pyx_L9_error)
+        __pyx_t_11 = PySequence_ITEM(sequence, 1); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 498, __pyx_L9_error)
         __Pyx_GOTREF(__pyx_t_11);
         #endif
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       } else {
         Py_ssize_t index = -1;
-        __pyx_t_12 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 465, __pyx_L9_error)
+        __pyx_t_12 = PyObject_GetIter(__pyx_t_8); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 498, __pyx_L9_error)
         __Pyx_GOTREF(__pyx_t_12);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
         __pyx_t_13 = Py_TYPE(__pyx_t_12)->tp_iternext;
@@ -8492,7 +8596,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
         __Pyx_GOTREF(__pyx_t_10);
         index = 1; __pyx_t_11 = __pyx_t_13(__pyx_t_12); if (unlikely(!__pyx_t_11)) goto __pyx_L12_unpacking_failed;
         __Pyx_GOTREF(__pyx_t_11);
-        if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 465, __pyx_L9_error)
+        if (__Pyx_IternextUnpackEndCheck(__pyx_t_13(__pyx_t_12), 2) < 0) __PYX_ERR(0, 498, __pyx_L9_error)
         __pyx_t_13 = NULL;
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         goto __pyx_L13_unpacking_done;
@@ -8500,7 +8604,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
         __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
         __pyx_t_13 = NULL;
         if (__Pyx_IterFinish() == 0) __Pyx_RaiseNeedMoreValuesError(index);
-        __PYX_ERR(0, 465, __pyx_L9_error)
+        __PYX_ERR(0, 498, __pyx_L9_error)
         __pyx_L13_unpacking_done:;
       }
       __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_key, __pyx_t_10);
@@ -8508,8 +8612,8 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
       __Pyx_XDECREF_SET(__pyx_7genexpr__pyx_v_value, __pyx_t_11);
       __pyx_t_11 = 0;
 
-      /* "lutorpy/_lupa.pyx":466
- *         (<bytes>key).decode(encoding) if not PY2 and isinstance(key, bytes) else key: value
+      /* "lutorpy/_lupa.pyx":499
+ *         (<bytes>key).decode(encoding) if not IS_PY2 and isinstance(key, bytes) else key: value
  *         for key, value in _LuaIter(table, ITEMS)
  *         if not isinstance(key, (int, long))             # <<<<<<<<<<<<<<
  *     }
@@ -8529,14 +8633,14 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
       __pyx_t_2 = ((!(__pyx_t_5 != 0)) != 0);
       if (__pyx_t_2) {
 
-        /* "lutorpy/_lupa.pyx":464
+        /* "lutorpy/_lupa.pyx":497
  *     # arguments with non-integer keys are passed as named
  *     new_kwargs = {
- *         (<bytes>key).decode(encoding) if not PY2 and isinstance(key, bytes) else key: value             # <<<<<<<<<<<<<<
+ *         (<bytes>key).decode(encoding) if not IS_PY2 and isinstance(key, bytes) else key: value             # <<<<<<<<<<<<<<
  *         for key, value in _LuaIter(table, ITEMS)
  *         if not isinstance(key, (int, long))
  */
-        __pyx_t_5 = ((!(__pyx_v_7lutorpy_5_lupa_PY2 != 0)) != 0);
+        __pyx_t_5 = ((!(__pyx_v_7lutorpy_5_lupa_IS_PY2 != 0)) != 0);
         if (__pyx_t_5) {
         } else {
           __pyx_t_2 = __pyx_t_5;
@@ -8549,10 +8653,10 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
         if (__pyx_t_2) {
           if (unlikely(__pyx_7genexpr__pyx_v_key == Py_None)) {
             PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-            __PYX_ERR(0, 464, __pyx_L9_error)
+            __PYX_ERR(0, 497, __pyx_L9_error)
           }
-          __pyx_t_15 = __Pyx_PyObject_AsString(__pyx_v_encoding); if (unlikely((!__pyx_t_15) && PyErr_Occurred())) __PYX_ERR(0, 464, __pyx_L9_error)
-          __pyx_t_11 = __Pyx_decode_bytes(((PyObject*)__pyx_7genexpr__pyx_v_key), 0, PY_SSIZE_T_MAX, __pyx_t_15, NULL, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 464, __pyx_L9_error)
+          __pyx_t_15 = __Pyx_PyObject_AsString(__pyx_v_encoding); if (unlikely((!__pyx_t_15) && PyErr_Occurred())) __PYX_ERR(0, 497, __pyx_L9_error)
+          __pyx_t_11 = __Pyx_decode_bytes(((PyObject*)__pyx_7genexpr__pyx_v_key), 0, PY_SSIZE_T_MAX, __pyx_t_15, NULL, NULL); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 497, __pyx_L9_error)
           __Pyx_GOTREF(__pyx_t_11);
           __pyx_t_8 = __pyx_t_11;
           __pyx_t_11 = 0;
@@ -8561,18 +8665,18 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
           __pyx_t_8 = __pyx_7genexpr__pyx_v_key;
         }
 
-        /* "lutorpy/_lupa.pyx":465
+        /* "lutorpy/_lupa.pyx":498
  *     new_kwargs = {
- *         (<bytes>key).decode(encoding) if not PY2 and isinstance(key, bytes) else key: value
+ *         (<bytes>key).decode(encoding) if not IS_PY2 and isinstance(key, bytes) else key: value
  *         for key, value in _LuaIter(table, ITEMS)             # <<<<<<<<<<<<<<
  *         if not isinstance(key, (int, long))
  *     }
  */
-        if (unlikely(PyDict_SetItem(__pyx_t_3, (PyObject*)__pyx_t_8, (PyObject*)__pyx_7genexpr__pyx_v_value))) __PYX_ERR(0, 464, __pyx_L9_error)
+        if (unlikely(PyDict_SetItem(__pyx_t_3, (PyObject*)__pyx_t_8, (PyObject*)__pyx_7genexpr__pyx_v_value))) __PYX_ERR(0, 497, __pyx_L9_error)
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
 
-        /* "lutorpy/_lupa.pyx":466
- *         (<bytes>key).decode(encoding) if not PY2 and isinstance(key, bytes) else key: value
+        /* "lutorpy/_lupa.pyx":499
+ *         (<bytes>key).decode(encoding) if not IS_PY2 and isinstance(key, bytes) else key: value
  *         for key, value in _LuaIter(table, ITEMS)
  *         if not isinstance(key, (int, long))             # <<<<<<<<<<<<<<
  *     }
@@ -8580,9 +8684,9 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
  */
       }
 
-      /* "lutorpy/_lupa.pyx":465
+      /* "lutorpy/_lupa.pyx":498
  *     new_kwargs = {
- *         (<bytes>key).decode(encoding) if not PY2 and isinstance(key, bytes) else key: value
+ *         (<bytes>key).decode(encoding) if not IS_PY2 and isinstance(key, bytes) else key: value
  *         for key, value in _LuaIter(table, ITEMS)             # <<<<<<<<<<<<<<
  *         if not isinstance(key, (int, long))
  *     }
@@ -8601,7 +8705,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
   __pyx_v_new_kwargs = ((PyObject*)__pyx_t_3);
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":468
+  /* "lutorpy/_lupa.pyx":501
  *         if not isinstance(key, (int, long))
  *     }
  *     return new_args, new_kwargs             # <<<<<<<<<<<<<<
@@ -8609,7 +8713,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 468, __pyx_L1_error)
+  __pyx_t_3 = PyTuple_New(2); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 501, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_INCREF(__pyx_v_new_args);
   __Pyx_GIVEREF(__pyx_v_new_args);
@@ -8621,7 +8725,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
   __pyx_t_3 = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":440
+  /* "lutorpy/_lupa.pyx":473
  * 
  * 
  * cdef tuple _fix_args_kwargs(tuple args):             # <<<<<<<<<<<<<<
@@ -8650,7 +8754,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa__fix_args_kwargs(PyObject *__pyx_v_args
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":474
+/* "lutorpy/_lupa.pyx":507
  * # fast, re-entrant runtime locking
  * 
  * cdef inline int lock_runtime(LuaRuntime runtime) except -1:             # <<<<<<<<<<<<<<
@@ -8666,7 +8770,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_lock_runtime(struct __pyx_obj_7
   PyObject *__pyx_t_3 = NULL;
   __Pyx_RefNannySetupContext("lock_runtime", 0);
 
-  /* "lutorpy/_lupa.pyx":475
+  /* "lutorpy/_lupa.pyx":508
  * 
  * cdef inline int lock_runtime(LuaRuntime runtime) except -1:
  *     if not lock_lock(runtime._lock, pythread.PyThread_get_thread_ident(), True):             # <<<<<<<<<<<<<<
@@ -8679,23 +8783,23 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_lock_runtime(struct __pyx_obj_7
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":476
+    /* "lutorpy/_lupa.pyx":509
  * cdef inline int lock_runtime(LuaRuntime runtime) except -1:
  *     if not lock_lock(runtime._lock, pythread.PyThread_get_thread_ident(), True):
  *         raise LuaError("Failed to acquire thread lock")             # <<<<<<<<<<<<<<
  *     return 0
  * 
  */
-    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 476, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 509, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 476, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_tuple__16, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 509, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 476, __pyx_L1_error)
+    __PYX_ERR(0, 509, __pyx_L1_error)
 
-    /* "lutorpy/_lupa.pyx":475
+    /* "lutorpy/_lupa.pyx":508
  * 
  * cdef inline int lock_runtime(LuaRuntime runtime) except -1:
  *     if not lock_lock(runtime._lock, pythread.PyThread_get_thread_ident(), True):             # <<<<<<<<<<<<<<
@@ -8704,7 +8808,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_lock_runtime(struct __pyx_obj_7
  */
   }
 
-  /* "lutorpy/_lupa.pyx":477
+  /* "lutorpy/_lupa.pyx":510
  *     if not lock_lock(runtime._lock, pythread.PyThread_get_thread_ident(), True):
  *         raise LuaError("Failed to acquire thread lock")
  *     return 0             # <<<<<<<<<<<<<<
@@ -8714,7 +8818,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_lock_runtime(struct __pyx_obj_7
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":474
+  /* "lutorpy/_lupa.pyx":507
  * # fast, re-entrant runtime locking
  * 
  * cdef inline int lock_runtime(LuaRuntime runtime) except -1:             # <<<<<<<<<<<<<<
@@ -8733,7 +8837,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_lock_runtime(struct __pyx_obj_7
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":479
+/* "lutorpy/_lupa.pyx":512
  *     return 0
  * 
  * cdef inline void unlock_runtime(LuaRuntime runtime) nogil:             # <<<<<<<<<<<<<<
@@ -8743,7 +8847,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_lock_runtime(struct __pyx_obj_7
 
 static CYTHON_INLINE void __pyx_f_7lutorpy_5_lupa_unlock_runtime(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_runtime) {
 
-  /* "lutorpy/_lupa.pyx":480
+  /* "lutorpy/_lupa.pyx":513
  * 
  * cdef inline void unlock_runtime(LuaRuntime runtime) nogil:
  *     unlock_lock(runtime._lock)             # <<<<<<<<<<<<<<
@@ -8752,7 +8856,7 @@ static CYTHON_INLINE void __pyx_f_7lutorpy_5_lupa_unlock_runtime(struct __pyx_ob
  */
   __pyx_f_7lutorpy_5_lupa_unlock_lock(__pyx_v_runtime->_lock);
 
-  /* "lutorpy/_lupa.pyx":479
+  /* "lutorpy/_lupa.pyx":512
  *     return 0
  * 
  * cdef inline void unlock_runtime(LuaRuntime runtime) nogil:             # <<<<<<<<<<<<<<
@@ -8763,7 +8867,7 @@ static CYTHON_INLINE void __pyx_f_7lutorpy_5_lupa_unlock_runtime(struct __pyx_ob
   /* function exit code */
 }
 
-/* "lutorpy/_lupa.pyx":496
+/* "lutorpy/_lupa.pyx":529
  *     cdef int _ref
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -8793,20 +8897,20 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject___init__(CYTHON_UNUSED struct _
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__init__", 0);
 
-  /* "lutorpy/_lupa.pyx":497
+  /* "lutorpy/_lupa.pyx":530
  * 
  *     def __init__(self):
  *         raise TypeError("Type cannot be instantiated manually")             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 497, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__17, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 530, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(0, 497, __pyx_L1_error)
+  __PYX_ERR(0, 530, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":496
+  /* "lutorpy/_lupa.pyx":529
  *     cdef int _ref
  * 
  *     def __init__(self):             # <<<<<<<<<<<<<<
@@ -8823,7 +8927,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject___init__(CYTHON_UNUSED struct _
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":499
+/* "lutorpy/_lupa.pyx":532
  *         raise TypeError("Type cannot be instantiated manually")
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -8858,7 +8962,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
   PyObject *__pyx_t_10 = NULL;
   __Pyx_RefNannySetupContext("__dealloc__", 0);
 
-  /* "lutorpy/_lupa.pyx":500
+  /* "lutorpy/_lupa.pyx":533
  * 
  *     def __dealloc__(self):
  *         if self._runtime is None:             # <<<<<<<<<<<<<<
@@ -8869,7 +8973,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":501
+    /* "lutorpy/_lupa.pyx":534
  *     def __dealloc__(self):
  *         if self._runtime is None:
  *             return             # <<<<<<<<<<<<<<
@@ -8878,7 +8982,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
  */
     goto __pyx_L0;
 
-    /* "lutorpy/_lupa.pyx":500
+    /* "lutorpy/_lupa.pyx":533
  * 
  *     def __dealloc__(self):
  *         if self._runtime is None:             # <<<<<<<<<<<<<<
@@ -8887,7 +8991,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
  */
   }
 
-  /* "lutorpy/_lupa.pyx":502
+  /* "lutorpy/_lupa.pyx":535
  *         if self._runtime is None:
  *             return
  *         cdef lua_State* L = self._state             # <<<<<<<<<<<<<<
@@ -8897,7 +9001,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
   __pyx_t_3 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_3;
 
-  /* "lutorpy/_lupa.pyx":503
+  /* "lutorpy/_lupa.pyx":536
  *             return
  *         cdef lua_State* L = self._state
  *         try:             # <<<<<<<<<<<<<<
@@ -8913,7 +9017,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
     __Pyx_XGOTREF(__pyx_t_6);
     /*try:*/ {
 
-      /* "lutorpy/_lupa.pyx":504
+      /* "lutorpy/_lupa.pyx":537
  *         cdef lua_State* L = self._state
  *         try:
  *             lock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -8922,10 +9026,10 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
  */
       __pyx_t_7 = ((PyObject *)__pyx_v_self->_runtime);
       __Pyx_INCREF(__pyx_t_7);
-      __pyx_t_8 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_7)); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 504, __pyx_L4_error)
+      __pyx_t_8 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_7)); if (unlikely(__pyx_t_8 == -1)) __PYX_ERR(0, 537, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-      /* "lutorpy/_lupa.pyx":505
+      /* "lutorpy/_lupa.pyx":538
  *         try:
  *             lock_runtime(self._runtime)
  *             locked = True             # <<<<<<<<<<<<<<
@@ -8934,7 +9038,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
  */
       __pyx_v_locked = 1;
 
-      /* "lutorpy/_lupa.pyx":503
+      /* "lutorpy/_lupa.pyx":536
  *             return
  *         cdef lua_State* L = self._state
  *         try:             # <<<<<<<<<<<<<<
@@ -8950,7 +9054,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
     __Pyx_PyThreadState_assign
     __Pyx_XDECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "lutorpy/_lupa.pyx":506
+    /* "lutorpy/_lupa.pyx":539
  *             lock_runtime(self._runtime)
  *             locked = True
  *         except:             # <<<<<<<<<<<<<<
@@ -8959,12 +9063,12 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
  */
     /*except:*/ {
       __Pyx_AddTraceback("lutorpy._lupa._LuaObject.__dealloc__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_9, &__pyx_t_10) < 0) __PYX_ERR(0, 506, __pyx_L6_except_error)
+      if (__Pyx_GetException(&__pyx_t_7, &__pyx_t_9, &__pyx_t_10) < 0) __PYX_ERR(0, 539, __pyx_L6_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_GOTREF(__pyx_t_9);
       __Pyx_GOTREF(__pyx_t_10);
 
-      /* "lutorpy/_lupa.pyx":507
+      /* "lutorpy/_lupa.pyx":540
  *             locked = True
  *         except:
  *             locked = False             # <<<<<<<<<<<<<<
@@ -8979,7 +9083,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
     }
     __pyx_L6_except_error:;
 
-    /* "lutorpy/_lupa.pyx":503
+    /* "lutorpy/_lupa.pyx":536
  *             return
  *         cdef lua_State* L = self._state
  *         try:             # <<<<<<<<<<<<<<
@@ -9001,7 +9105,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
     __pyx_L11_try_end:;
   }
 
-  /* "lutorpy/_lupa.pyx":508
+  /* "lutorpy/_lupa.pyx":541
  *         except:
  *             locked = False
  *         lua.luaL_unref(L, lua.LUA_REGISTRYINDEX, self._ref)             # <<<<<<<<<<<<<<
@@ -9010,7 +9114,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
  */
   luaL_unref(__pyx_v_L, LUA_REGISTRYINDEX, __pyx_v_self->_ref);
 
-  /* "lutorpy/_lupa.pyx":509
+  /* "lutorpy/_lupa.pyx":542
  *             locked = False
  *         lua.luaL_unref(L, lua.LUA_REGISTRYINDEX, self._ref)
  *         if locked:             # <<<<<<<<<<<<<<
@@ -9020,7 +9124,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
   __pyx_t_2 = (__pyx_v_locked != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":510
+    /* "lutorpy/_lupa.pyx":543
  *         lua.luaL_unref(L, lua.LUA_REGISTRYINDEX, self._ref)
  *         if locked:
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9032,7 +9136,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
     __pyx_f_7lutorpy_5_lupa_unlock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_10));
     __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
 
-    /* "lutorpy/_lupa.pyx":509
+    /* "lutorpy/_lupa.pyx":542
  *             locked = False
  *         lua.luaL_unref(L, lua.LUA_REGISTRYINDEX, self._ref)
  *         if locked:             # <<<<<<<<<<<<<<
@@ -9041,7 +9145,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
  */
   }
 
-  /* "lutorpy/_lupa.pyx":499
+  /* "lutorpy/_lupa.pyx":532
  *         raise TypeError("Type cannot be instantiated manually")
  * 
  *     def __dealloc__(self):             # <<<<<<<<<<<<<<
@@ -9060,7 +9164,7 @@ static void __pyx_pf_7lutorpy_5_lupa_10_LuaObject_2__dealloc__(struct __pyx_obj_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "lutorpy/_lupa.pyx":513
+/* "lutorpy/_lupa.pyx":546
  * 
  *     @cython.final
  *     cdef inline int push_lua_object(self) except -1:             # <<<<<<<<<<<<<<
@@ -9078,7 +9182,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(st
   PyObject *__pyx_t_4 = NULL;
   __Pyx_RefNannySetupContext("push_lua_object", 0);
 
-  /* "lutorpy/_lupa.pyx":514
+  /* "lutorpy/_lupa.pyx":547
  *     @cython.final
  *     cdef inline int push_lua_object(self) except -1:
  *         cdef lua_State* L = self._state             # <<<<<<<<<<<<<<
@@ -9088,7 +9192,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(st
   __pyx_t_1 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_1;
 
-  /* "lutorpy/_lupa.pyx":515
+  /* "lutorpy/_lupa.pyx":548
  *     cdef inline int push_lua_object(self) except -1:
  *         cdef lua_State* L = self._state
  *         lua.lua_rawgeti(L, lua.LUA_REGISTRYINDEX, self._ref)             # <<<<<<<<<<<<<<
@@ -9097,7 +9201,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(st
  */
   lua_rawgeti(__pyx_v_L, LUA_REGISTRYINDEX, __pyx_v_self->_ref);
 
-  /* "lutorpy/_lupa.pyx":516
+  /* "lutorpy/_lupa.pyx":549
  *         cdef lua_State* L = self._state
  *         lua.lua_rawgeti(L, lua.LUA_REGISTRYINDEX, self._ref)
  *         if lua.lua_isnil(L, -1):             # <<<<<<<<<<<<<<
@@ -9107,7 +9211,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(st
   __pyx_t_2 = (lua_isnil(__pyx_v_L, -1) != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":517
+    /* "lutorpy/_lupa.pyx":550
  *         lua.lua_rawgeti(L, lua.LUA_REGISTRYINDEX, self._ref)
  *         if lua.lua_isnil(L, -1):
  *             lua.lua_pop(L, 1)             # <<<<<<<<<<<<<<
@@ -9116,23 +9220,23 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(st
  */
     lua_pop(__pyx_v_L, 1);
 
-    /* "lutorpy/_lupa.pyx":518
+    /* "lutorpy/_lupa.pyx":551
  *         if lua.lua_isnil(L, -1):
  *             lua.lua_pop(L, 1)
  *             raise LuaError("lost reference")             # <<<<<<<<<<<<<<
  * 
  *     def __call__(self, *args):
  */
-    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 518, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 551, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 518, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__18, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 551, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __Pyx_Raise(__pyx_t_4, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-    __PYX_ERR(0, 518, __pyx_L1_error)
+    __PYX_ERR(0, 551, __pyx_L1_error)
 
-    /* "lutorpy/_lupa.pyx":516
+    /* "lutorpy/_lupa.pyx":549
  *         cdef lua_State* L = self._state
  *         lua.lua_rawgeti(L, lua.LUA_REGISTRYINDEX, self._ref)
  *         if lua.lua_isnil(L, -1):             # <<<<<<<<<<<<<<
@@ -9141,7 +9245,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(st
  */
   }
 
-  /* "lutorpy/_lupa.pyx":513
+  /* "lutorpy/_lupa.pyx":546
  * 
  *     @cython.final
  *     cdef inline int push_lua_object(self) except -1:             # <<<<<<<<<<<<<<
@@ -9162,7 +9266,7 @@ static CYTHON_INLINE int __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(st
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":520
+/* "lutorpy/_lupa.pyx":553
  *             raise LuaError("lost reference")
  * 
  *     def __call__(self, *args):             # <<<<<<<<<<<<<<
@@ -9207,7 +9311,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
   PyObject *__pyx_t_13 = NULL;
   __Pyx_RefNannySetupContext("__call__", 0);
 
-  /* "lutorpy/_lupa.pyx":521
+  /* "lutorpy/_lupa.pyx":554
  * 
  *     def __call__(self, *args):
  *         assert self._runtime is not None             # <<<<<<<<<<<<<<
@@ -9219,12 +9323,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
     __pyx_t_1 = (((PyObject *)__pyx_v_self->_runtime) != Py_None);
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 521, __pyx_L1_error)
+      __PYX_ERR(0, 554, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":522
+  /* "lutorpy/_lupa.pyx":555
  *     def __call__(self, *args):
  *         assert self._runtime is not None
  *         cdef lua_State* L = self._state             # <<<<<<<<<<<<<<
@@ -9234,7 +9338,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
   __pyx_t_2 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_2;
 
-  /* "lutorpy/_lupa.pyx":523
+  /* "lutorpy/_lupa.pyx":556
  *         assert self._runtime is not None
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9243,10 +9347,10 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
  */
   __pyx_t_3 = ((PyObject *)__pyx_v_self->_runtime);
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 523, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 556, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":524
+  /* "lutorpy/_lupa.pyx":557
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)
  *         try:             # <<<<<<<<<<<<<<
@@ -9255,7 +9359,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":525
+    /* "lutorpy/_lupa.pyx":558
  *         lock_runtime(self._runtime)
  *         try:
  *             lua.lua_settop(L, 0)             # <<<<<<<<<<<<<<
@@ -9264,16 +9368,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
  */
     lua_settop(__pyx_v_L, 0);
 
-    /* "lutorpy/_lupa.pyx":526
+    /* "lutorpy/_lupa.pyx":559
  *         try:
  *             lua.lua_settop(L, 0)
  *             self.push_lua_object()             # <<<<<<<<<<<<<<
  *             return call_lua(self._runtime, L, args)
  *         finally:
  */
-    __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 526, __pyx_L4_error)
+    __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 559, __pyx_L4_error)
 
-    /* "lutorpy/_lupa.pyx":527
+    /* "lutorpy/_lupa.pyx":560
  *             lua.lua_settop(L, 0)
  *             self.push_lua_object()
  *             return call_lua(self._runtime, L, args)             # <<<<<<<<<<<<<<
@@ -9283,7 +9387,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_3 = ((PyObject *)__pyx_v_self->_runtime);
     __Pyx_INCREF(__pyx_t_3);
-    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_call_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3), __pyx_v_L, __pyx_v_args); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 527, __pyx_L4_error)
+    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_call_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3), __pyx_v_L, __pyx_v_args); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 560, __pyx_L4_error)
     __Pyx_GOTREF(__pyx_t_5);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
     __pyx_r = __pyx_t_5;
@@ -9291,7 +9395,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
     goto __pyx_L3_return;
   }
 
-  /* "lutorpy/_lupa.pyx":529
+  /* "lutorpy/_lupa.pyx":562
  *             return call_lua(self._runtime, L, args)
  *         finally:
  *             lua.lua_settop(L, 0)             # <<<<<<<<<<<<<<
@@ -9318,7 +9422,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
       {
         lua_settop(__pyx_v_L, 0);
 
-        /* "lutorpy/_lupa.pyx":530
+        /* "lutorpy/_lupa.pyx":563
  *         finally:
  *             lua.lua_settop(L, 0)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9349,7 +9453,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
       __pyx_t_13 = __pyx_r;
       __pyx_r = 0;
 
-      /* "lutorpy/_lupa.pyx":529
+      /* "lutorpy/_lupa.pyx":562
  *             return call_lua(self._runtime, L, args)
  *         finally:
  *             lua.lua_settop(L, 0)             # <<<<<<<<<<<<<<
@@ -9358,7 +9462,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
  */
       lua_settop(__pyx_v_L, 0);
 
-      /* "lutorpy/_lupa.pyx":530
+      /* "lutorpy/_lupa.pyx":563
  *         finally:
  *             lua.lua_settop(L, 0)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9375,7 +9479,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
     }
   }
 
-  /* "lutorpy/_lupa.pyx":520
+  /* "lutorpy/_lupa.pyx":553
  *             raise LuaError("lost reference")
  * 
  *     def __call__(self, *args):             # <<<<<<<<<<<<<<
@@ -9395,7 +9499,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_4__call__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":532
+/* "lutorpy/_lupa.pyx":565
  *             unlock_runtime(self._runtime)
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -9421,7 +9525,7 @@ static Py_ssize_t __pyx_pf_7lutorpy_5_lupa_10_LuaObject_6__len__(struct __pyx_ob
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__len__", 0);
 
-  /* "lutorpy/_lupa.pyx":533
+  /* "lutorpy/_lupa.pyx":566
  * 
  *     def __len__(self):
  *         return self._len()             # <<<<<<<<<<<<<<
@@ -9431,7 +9535,7 @@ static Py_ssize_t __pyx_pf_7lutorpy_5_lupa_10_LuaObject_6__len__(struct __pyx_ob
   __pyx_r = __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(__pyx_v_self);
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":532
+  /* "lutorpy/_lupa.pyx":565
  *             unlock_runtime(self._runtime)
  * 
  *     def __len__(self):             # <<<<<<<<<<<<<<
@@ -9445,7 +9549,7 @@ static Py_ssize_t __pyx_pf_7lutorpy_5_lupa_10_LuaObject_6__len__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":536
+/* "lutorpy/_lupa.pyx":569
  * 
  *     @cython.final
  *     cdef size_t _len(self):             # <<<<<<<<<<<<<<
@@ -9472,7 +9576,7 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
   PyObject *__pyx_t_12 = NULL;
   __Pyx_RefNannySetupContext("_len", 0);
 
-  /* "lutorpy/_lupa.pyx":537
+  /* "lutorpy/_lupa.pyx":570
  *     @cython.final
  *     cdef size_t _len(self):
  *         assert self._runtime is not None             # <<<<<<<<<<<<<<
@@ -9484,12 +9588,12 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
     __pyx_t_1 = (((PyObject *)__pyx_v_self->_runtime) != Py_None);
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 537, __pyx_L1_error)
+      __PYX_ERR(0, 570, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":538
+  /* "lutorpy/_lupa.pyx":571
  *     cdef size_t _len(self):
  *         assert self._runtime is not None
  *         cdef lua_State* L = self._state             # <<<<<<<<<<<<<<
@@ -9499,7 +9603,7 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
   __pyx_t_2 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_2;
 
-  /* "lutorpy/_lupa.pyx":539
+  /* "lutorpy/_lupa.pyx":572
  *         assert self._runtime is not None
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9508,10 +9612,10 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
  */
   __pyx_t_3 = ((PyObject *)__pyx_v_self->_runtime);
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 539, __pyx_L1_error)
+  __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 572, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":540
+  /* "lutorpy/_lupa.pyx":573
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)
  *         size = 0             # <<<<<<<<<<<<<<
@@ -9520,7 +9624,7 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
  */
   __pyx_v_size = 0;
 
-  /* "lutorpy/_lupa.pyx":541
+  /* "lutorpy/_lupa.pyx":574
  *         lock_runtime(self._runtime)
  *         size = 0
  *         try:             # <<<<<<<<<<<<<<
@@ -9529,16 +9633,16 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":542
+    /* "lutorpy/_lupa.pyx":575
  *         size = 0
  *         try:
  *             self.push_lua_object()             # <<<<<<<<<<<<<<
  *             size = lua.lua_objlen(L, -1)
  *             lua.lua_pop(L, 1)
  */
-    __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 542, __pyx_L4_error)
+    __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_4 == -1)) __PYX_ERR(0, 575, __pyx_L4_error)
 
-    /* "lutorpy/_lupa.pyx":543
+    /* "lutorpy/_lupa.pyx":576
  *         try:
  *             self.push_lua_object()
  *             size = lua.lua_objlen(L, -1)             # <<<<<<<<<<<<<<
@@ -9547,7 +9651,7 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
  */
     __pyx_v_size = lua_objlen(__pyx_v_L, -1);
 
-    /* "lutorpy/_lupa.pyx":544
+    /* "lutorpy/_lupa.pyx":577
  *             self.push_lua_object()
  *             size = lua.lua_objlen(L, -1)
  *             lua.lua_pop(L, 1)             # <<<<<<<<<<<<<<
@@ -9557,7 +9661,7 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
     lua_pop(__pyx_v_L, 1);
   }
 
-  /* "lutorpy/_lupa.pyx":546
+  /* "lutorpy/_lupa.pyx":579
  *             lua.lua_pop(L, 1)
  *         finally:
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9611,7 +9715,7 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
     __pyx_L5:;
   }
 
-  /* "lutorpy/_lupa.pyx":547
+  /* "lutorpy/_lupa.pyx":580
  *         finally:
  *             unlock_runtime(self._runtime)
  *         return size             # <<<<<<<<<<<<<<
@@ -9621,7 +9725,7 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
   __pyx_r = __pyx_v_size;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":536
+  /* "lutorpy/_lupa.pyx":569
  * 
  *     @cython.final
  *     cdef size_t _len(self):             # <<<<<<<<<<<<<<
@@ -9639,7 +9743,7 @@ static size_t __pyx_f_7lutorpy_5_lupa_10_LuaObject__len(struct __pyx_obj_7lutorp
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":549
+/* "lutorpy/_lupa.pyx":582
  *         return size
  * 
  *     def __nonzero__(self):             # <<<<<<<<<<<<<<
@@ -9665,7 +9769,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_8__nonzero__(CYTHON_UNUSED stru
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__nonzero__", 0);
 
-  /* "lutorpy/_lupa.pyx":550
+  /* "lutorpy/_lupa.pyx":583
  * 
  *     def __nonzero__(self):
  *         return True             # <<<<<<<<<<<<<<
@@ -9675,7 +9779,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_8__nonzero__(CYTHON_UNUSED stru
   __pyx_r = 1;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":549
+  /* "lutorpy/_lupa.pyx":582
  *         return size
  * 
  *     def __nonzero__(self):             # <<<<<<<<<<<<<<
@@ -9689,7 +9793,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_8__nonzero__(CYTHON_UNUSED stru
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":552
+/* "lutorpy/_lupa.pyx":585
  *         return True
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -9716,20 +9820,20 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_10__iter__(CYTHON_UNUSED 
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__iter__", 0);
 
-  /* "lutorpy/_lupa.pyx":554
+  /* "lutorpy/_lupa.pyx":587
  *     def __iter__(self):
  *         # if not provided, iteration will try item access and call into Lua
  *         raise TypeError("iteration is only supported for tables")             # <<<<<<<<<<<<<<
  * 
  *     def __repr__(self):
  */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 554, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__19, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_Raise(__pyx_t_1, 0, 0, 0);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(0, 554, __pyx_L1_error)
+  __PYX_ERR(0, 587, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":552
+  /* "lutorpy/_lupa.pyx":585
  *         return True
  * 
  *     def __iter__(self):             # <<<<<<<<<<<<<<
@@ -9747,7 +9851,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_10__iter__(CYTHON_UNUSED 
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":556
+/* "lutorpy/_lupa.pyx":589
  *         raise TypeError("iteration is only supported for tables")
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -9788,7 +9892,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
   PyObject *__pyx_t_13 = NULL;
   __Pyx_RefNannySetupContext("__repr__", 0);
 
-  /* "lutorpy/_lupa.pyx":557
+  /* "lutorpy/_lupa.pyx":590
  * 
  *     def __repr__(self):
  *         assert self._runtime is not None             # <<<<<<<<<<<<<<
@@ -9800,12 +9904,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
     __pyx_t_1 = (((PyObject *)__pyx_v_self->_runtime) != Py_None);
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 557, __pyx_L1_error)
+      __PYX_ERR(0, 590, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":558
+  /* "lutorpy/_lupa.pyx":591
  *     def __repr__(self):
  *         assert self._runtime is not None
  *         cdef lua_State* L = self._state             # <<<<<<<<<<<<<<
@@ -9815,7 +9919,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
   __pyx_t_2 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_2;
 
-  /* "lutorpy/_lupa.pyx":559
+  /* "lutorpy/_lupa.pyx":592
  *         assert self._runtime is not None
  *         cdef lua_State* L = self._state
  *         encoding = self._runtime._encoding.decode('ASCII') if self._runtime._encoding else 'UTF-8'             # <<<<<<<<<<<<<<
@@ -9826,9 +9930,9 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
   if (__pyx_t_1) {
     if (unlikely(__pyx_v_self->_runtime->_encoding == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-      __PYX_ERR(0, 559, __pyx_L1_error)
+      __PYX_ERR(0, 592, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_decode_bytes(__pyx_v_self->_runtime->_encoding, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 559, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_decode_bytes(__pyx_v_self->_runtime->_encoding, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 592, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __pyx_t_4;
     __pyx_t_4 = 0;
@@ -9839,7 +9943,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
   __pyx_v_encoding = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":560
+  /* "lutorpy/_lupa.pyx":593
  *         cdef lua_State* L = self._state
  *         encoding = self._runtime._encoding.decode('ASCII') if self._runtime._encoding else 'UTF-8'
  *         lock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9848,10 +9952,10 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
  */
   __pyx_t_3 = ((PyObject *)__pyx_v_self->_runtime);
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 560, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 593, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":561
+  /* "lutorpy/_lupa.pyx":594
  *         encoding = self._runtime._encoding.decode('ASCII') if self._runtime._encoding else 'UTF-8'
  *         lock_runtime(self._runtime)
  *         try:             # <<<<<<<<<<<<<<
@@ -9860,16 +9964,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":562
+    /* "lutorpy/_lupa.pyx":595
  *         lock_runtime(self._runtime)
  *         try:
  *             self.push_lua_object()             # <<<<<<<<<<<<<<
  *             return lua_object_repr(L, encoding)
  *         finally:
  */
-    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 562, __pyx_L4_error)
+    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 595, __pyx_L4_error)
 
-    /* "lutorpy/_lupa.pyx":563
+    /* "lutorpy/_lupa.pyx":596
  *         try:
  *             self.push_lua_object()
  *             return lua_object_repr(L, encoding)             # <<<<<<<<<<<<<<
@@ -9877,14 +9981,14 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
  *             lua.lua_pop(L, 1)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_3 = __pyx_f_7lutorpy_5_lupa_lua_object_repr(__pyx_v_L, __pyx_v_encoding); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 563, __pyx_L4_error)
+    __pyx_t_3 = __pyx_f_7lutorpy_5_lupa_lua_object_repr(__pyx_v_L, __pyx_v_encoding); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 596, __pyx_L4_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_r = __pyx_t_3;
     __pyx_t_3 = 0;
     goto __pyx_L3_return;
   }
 
-  /* "lutorpy/_lupa.pyx":565
+  /* "lutorpy/_lupa.pyx":598
  *             return lua_object_repr(L, encoding)
  *         finally:
  *             lua.lua_pop(L, 1)             # <<<<<<<<<<<<<<
@@ -9911,7 +10015,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
       {
         lua_pop(__pyx_v_L, 1);
 
-        /* "lutorpy/_lupa.pyx":566
+        /* "lutorpy/_lupa.pyx":599
  *         finally:
  *             lua.lua_pop(L, 1)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9942,7 +10046,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
       __pyx_t_13 = __pyx_r;
       __pyx_r = 0;
 
-      /* "lutorpy/_lupa.pyx":565
+      /* "lutorpy/_lupa.pyx":598
  *             return lua_object_repr(L, encoding)
  *         finally:
  *             lua.lua_pop(L, 1)             # <<<<<<<<<<<<<<
@@ -9951,7 +10055,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
  */
       lua_pop(__pyx_v_L, 1);
 
-      /* "lutorpy/_lupa.pyx":566
+      /* "lutorpy/_lupa.pyx":599
  *         finally:
  *             lua.lua_pop(L, 1)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -9968,7 +10072,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
     }
   }
 
-  /* "lutorpy/_lupa.pyx":556
+  /* "lutorpy/_lupa.pyx":589
  *         raise TypeError("iteration is only supported for tables")
  * 
  *     def __repr__(self):             # <<<<<<<<<<<<<<
@@ -9989,7 +10093,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_12__repr__(struct __pyx_o
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":568
+/* "lutorpy/_lupa.pyx":601
  *             unlock_runtime(self._runtime)
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -10038,7 +10142,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
   int __pyx_t_17;
   __Pyx_RefNannySetupContext("__str__", 0);
 
-  /* "lutorpy/_lupa.pyx":569
+  /* "lutorpy/_lupa.pyx":602
  * 
  *     def __str__(self):
  *         assert self._runtime is not None             # <<<<<<<<<<<<<<
@@ -10050,12 +10154,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
     __pyx_t_1 = (((PyObject *)__pyx_v_self->_runtime) != Py_None);
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 569, __pyx_L1_error)
+      __PYX_ERR(0, 602, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":570
+  /* "lutorpy/_lupa.pyx":603
  *     def __str__(self):
  *         assert self._runtime is not None
  *         cdef lua_State* L = self._state             # <<<<<<<<<<<<<<
@@ -10065,7 +10169,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
   __pyx_t_2 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_2;
 
-  /* "lutorpy/_lupa.pyx":571
+  /* "lutorpy/_lupa.pyx":604
  *         assert self._runtime is not None
  *         cdef lua_State* L = self._state
  *         cdef unicode py_string = None             # <<<<<<<<<<<<<<
@@ -10075,7 +10179,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
   __Pyx_INCREF(Py_None);
   __pyx_v_py_string = ((PyObject*)Py_None);
 
-  /* "lutorpy/_lupa.pyx":573
+  /* "lutorpy/_lupa.pyx":606
  *         cdef unicode py_string = None
  *         cdef const_char_ptr s
  *         cdef size_t size = 0             # <<<<<<<<<<<<<<
@@ -10084,7 +10188,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
  */
   __pyx_v_size = 0;
 
-  /* "lutorpy/_lupa.pyx":574
+  /* "lutorpy/_lupa.pyx":607
  *         cdef const_char_ptr s
  *         cdef size_t size = 0
  *         encoding = self._runtime._encoding.decode('ASCII') if self._runtime._encoding else 'UTF-8'             # <<<<<<<<<<<<<<
@@ -10095,9 +10199,9 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
   if (__pyx_t_1) {
     if (unlikely(__pyx_v_self->_runtime->_encoding == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-      __PYX_ERR(0, 574, __pyx_L1_error)
+      __PYX_ERR(0, 607, __pyx_L1_error)
     }
-    __pyx_t_4 = __Pyx_decode_bytes(__pyx_v_self->_runtime->_encoding, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 574, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_decode_bytes(__pyx_v_self->_runtime->_encoding, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeASCII); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 607, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __pyx_t_4;
     __pyx_t_4 = 0;
@@ -10108,7 +10212,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
   __pyx_v_encoding = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":575
+  /* "lutorpy/_lupa.pyx":608
  *         cdef size_t size = 0
  *         encoding = self._runtime._encoding.decode('ASCII') if self._runtime._encoding else 'UTF-8'
  *         lock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -10117,22 +10221,22 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
  */
   __pyx_t_3 = ((PyObject *)__pyx_v_self->_runtime);
   __Pyx_INCREF(__pyx_t_3);
-  __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 575, __pyx_L1_error)
+  __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_3)); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 608, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":576
+  /* "lutorpy/_lupa.pyx":609
  *         encoding = self._runtime._encoding.decode('ASCII') if self._runtime._encoding else 'UTF-8'
  *         lock_runtime(self._runtime)
  *         old_top = lua.lua_gettop(L)             # <<<<<<<<<<<<<<
  *         try:
  *             self.push_lua_object()
  */
-  __pyx_t_3 = __Pyx_PyInt_From_int(lua_gettop(__pyx_v_L)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 576, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyInt_From_int(lua_gettop(__pyx_v_L)); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 609, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __pyx_v_old_top = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":577
+  /* "lutorpy/_lupa.pyx":610
  *         lock_runtime(self._runtime)
  *         old_top = lua.lua_gettop(L)
  *         try:             # <<<<<<<<<<<<<<
@@ -10141,16 +10245,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":578
+    /* "lutorpy/_lupa.pyx":611
  *         old_top = lua.lua_gettop(L)
  *         try:
  *             self.push_lua_object()             # <<<<<<<<<<<<<<
  *             if lua.luaL_callmeta(L, -1, "__tostring"):
  *                 s = lua.lua_tolstring(L, -1, &size)
  */
-    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 578, __pyx_L4_error)
+    __pyx_t_5 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_5 == -1)) __PYX_ERR(0, 611, __pyx_L4_error)
 
-    /* "lutorpy/_lupa.pyx":579
+    /* "lutorpy/_lupa.pyx":612
  *         try:
  *             self.push_lua_object()
  *             if lua.luaL_callmeta(L, -1, "__tostring"):             # <<<<<<<<<<<<<<
@@ -10160,7 +10264,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
     __pyx_t_1 = (luaL_callmeta(__pyx_v_L, -1, ((char *)"__tostring")) != 0);
     if (__pyx_t_1) {
 
-      /* "lutorpy/_lupa.pyx":580
+      /* "lutorpy/_lupa.pyx":613
  *             self.push_lua_object()
  *             if lua.luaL_callmeta(L, -1, "__tostring"):
  *                 s = lua.lua_tolstring(L, -1, &size)             # <<<<<<<<<<<<<<
@@ -10169,7 +10273,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
  */
       __pyx_v_s = lua_tolstring(__pyx_v_L, -1, (&__pyx_v_size));
 
-      /* "lutorpy/_lupa.pyx":581
+      /* "lutorpy/_lupa.pyx":614
  *             if lua.luaL_callmeta(L, -1, "__tostring"):
  *                 s = lua.lua_tolstring(L, -1, &size)
  *                 if s:             # <<<<<<<<<<<<<<
@@ -10179,7 +10283,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
       __pyx_t_1 = (__pyx_v_s != 0);
       if (__pyx_t_1) {
 
-        /* "lutorpy/_lupa.pyx":582
+        /* "lutorpy/_lupa.pyx":615
  *                 s = lua.lua_tolstring(L, -1, &size)
  *                 if s:
  *                     try:             # <<<<<<<<<<<<<<
@@ -10195,16 +10299,16 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
           __Pyx_XGOTREF(__pyx_t_8);
           /*try:*/ {
 
-            /* "lutorpy/_lupa.pyx":583
+            /* "lutorpy/_lupa.pyx":616
  *                 if s:
  *                     try:
  *                         py_string = s[:size].decode(encoding)             # <<<<<<<<<<<<<<
  *                     except UnicodeDecodeError:
  *                         # safe 'decode'
  */
-            __pyx_t_4 = __Pyx_PyBytes_FromStringAndSize(((const char*)__pyx_v_s) + 0, __pyx_v_size - 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 583, __pyx_L8_error)
+            __pyx_t_4 = __Pyx_PyBytes_FromStringAndSize(((const char*)__pyx_v_s) + 0, __pyx_v_size - 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 616, __pyx_L8_error)
             __Pyx_GOTREF(__pyx_t_4);
-            __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_decode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 583, __pyx_L8_error)
+            __pyx_t_9 = __Pyx_PyObject_GetAttrStr(__pyx_t_4, __pyx_n_s_decode); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 616, __pyx_L8_error)
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
             __pyx_t_4 = NULL;
@@ -10218,25 +10322,25 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
               }
             }
             if (!__pyx_t_4) {
-              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_encoding); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 583, __pyx_L8_error)
+              __pyx_t_3 = __Pyx_PyObject_CallOneArg(__pyx_t_9, __pyx_v_encoding); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_3);
             } else {
-              __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 583, __pyx_L8_error)
+              __pyx_t_10 = PyTuple_New(1+1); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 616, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_10);
               __Pyx_GIVEREF(__pyx_t_4); PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_4); __pyx_t_4 = NULL;
               __Pyx_INCREF(__pyx_v_encoding);
               __Pyx_GIVEREF(__pyx_v_encoding);
               PyTuple_SET_ITEM(__pyx_t_10, 0+1, __pyx_v_encoding);
-              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 583, __pyx_L8_error)
+              __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_9, __pyx_t_10, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 616, __pyx_L8_error)
               __Pyx_GOTREF(__pyx_t_3);
               __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
             }
             __Pyx_DECREF(__pyx_t_9); __pyx_t_9 = 0;
-            if (!(likely(PyUnicode_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 583, __pyx_L8_error)
+            if (!(likely(PyUnicode_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_3)->tp_name), 0))) __PYX_ERR(0, 616, __pyx_L8_error)
             __Pyx_DECREF_SET(__pyx_v_py_string, ((PyObject*)__pyx_t_3));
             __pyx_t_3 = 0;
 
-            /* "lutorpy/_lupa.pyx":582
+            /* "lutorpy/_lupa.pyx":615
  *                 s = lua.lua_tolstring(L, -1, &size)
  *                 if s:
  *                     try:             # <<<<<<<<<<<<<<
@@ -10255,7 +10359,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
           __Pyx_XDECREF(__pyx_t_9); __pyx_t_9 = 0;
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-          /* "lutorpy/_lupa.pyx":584
+          /* "lutorpy/_lupa.pyx":617
  *                     try:
  *                         py_string = s[:size].decode(encoding)
  *                     except UnicodeDecodeError:             # <<<<<<<<<<<<<<
@@ -10265,21 +10369,21 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
           __pyx_t_5 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_UnicodeDecodeError);
           if (__pyx_t_5) {
             __Pyx_AddTraceback("lutorpy._lupa._LuaObject.__str__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-            if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_9, &__pyx_t_10) < 0) __PYX_ERR(0, 584, __pyx_L10_except_error)
+            if (__Pyx_GetException(&__pyx_t_3, &__pyx_t_9, &__pyx_t_10) < 0) __PYX_ERR(0, 617, __pyx_L10_except_error)
             __Pyx_GOTREF(__pyx_t_3);
             __Pyx_GOTREF(__pyx_t_9);
             __Pyx_GOTREF(__pyx_t_10);
 
-            /* "lutorpy/_lupa.pyx":586
+            /* "lutorpy/_lupa.pyx":619
  *                     except UnicodeDecodeError:
  *                         # safe 'decode'
  *                         py_string = s[:size].decode('ISO-8859-1')             # <<<<<<<<<<<<<<
  *             if py_string is None:
  *                 lua.lua_settop(L, old_top + 1)
  */
-            __pyx_t_4 = __Pyx_decode_c_string(__pyx_v_s, 0, __pyx_v_size, NULL, NULL, PyUnicode_DecodeLatin1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 586, __pyx_L10_except_error)
+            __pyx_t_4 = __Pyx_decode_c_string(__pyx_v_s, 0, __pyx_v_size, NULL, NULL, PyUnicode_DecodeLatin1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 619, __pyx_L10_except_error)
             __Pyx_GOTREF(__pyx_t_4);
-            if (!(likely(PyUnicode_CheckExact(__pyx_t_4))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 586, __pyx_L10_except_error)
+            if (!(likely(PyUnicode_CheckExact(__pyx_t_4))||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_4)->tp_name), 0))) __PYX_ERR(0, 619, __pyx_L10_except_error)
             __Pyx_DECREF_SET(__pyx_v_py_string, ((PyObject*)__pyx_t_4));
             __pyx_t_4 = 0;
             __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
@@ -10290,7 +10394,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
           goto __pyx_L10_except_error;
           __pyx_L10_except_error:;
 
-          /* "lutorpy/_lupa.pyx":582
+          /* "lutorpy/_lupa.pyx":615
  *                 s = lua.lua_tolstring(L, -1, &size)
  *                 if s:
  *                     try:             # <<<<<<<<<<<<<<
@@ -10312,7 +10416,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
           __pyx_L15_try_end:;
         }
 
-        /* "lutorpy/_lupa.pyx":581
+        /* "lutorpy/_lupa.pyx":614
  *             if lua.luaL_callmeta(L, -1, "__tostring"):
  *                 s = lua.lua_tolstring(L, -1, &size)
  *                 if s:             # <<<<<<<<<<<<<<
@@ -10321,7 +10425,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
  */
       }
 
-      /* "lutorpy/_lupa.pyx":579
+      /* "lutorpy/_lupa.pyx":612
  *         try:
  *             self.push_lua_object()
  *             if lua.luaL_callmeta(L, -1, "__tostring"):             # <<<<<<<<<<<<<<
@@ -10330,7 +10434,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
  */
     }
 
-    /* "lutorpy/_lupa.pyx":587
+    /* "lutorpy/_lupa.pyx":620
  *                         # safe 'decode'
  *                         py_string = s[:size].decode('ISO-8859-1')
  *             if py_string is None:             # <<<<<<<<<<<<<<
@@ -10341,33 +10445,33 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
     __pyx_t_11 = (__pyx_t_1 != 0);
     if (__pyx_t_11) {
 
-      /* "lutorpy/_lupa.pyx":588
+      /* "lutorpy/_lupa.pyx":621
  *                         py_string = s[:size].decode('ISO-8859-1')
  *             if py_string is None:
  *                 lua.lua_settop(L, old_top + 1)             # <<<<<<<<<<<<<<
  *                 py_string = lua_object_repr(L, encoding)
  *         finally:
  */
-      __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_old_top, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 588, __pyx_L4_error)
+      __pyx_t_10 = __Pyx_PyInt_AddObjC(__pyx_v_old_top, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 621, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_10);
-      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 588, __pyx_L4_error)
+      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_t_10); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 621, __pyx_L4_error)
       __Pyx_DECREF(__pyx_t_10); __pyx_t_10 = 0;
       lua_settop(__pyx_v_L, __pyx_t_5);
 
-      /* "lutorpy/_lupa.pyx":589
+      /* "lutorpy/_lupa.pyx":622
  *             if py_string is None:
  *                 lua.lua_settop(L, old_top + 1)
  *                 py_string = lua_object_repr(L, encoding)             # <<<<<<<<<<<<<<
  *         finally:
  *             lua.lua_settop(L, old_top)
  */
-      __pyx_t_10 = __pyx_f_7lutorpy_5_lupa_lua_object_repr(__pyx_v_L, __pyx_v_encoding); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 589, __pyx_L4_error)
+      __pyx_t_10 = __pyx_f_7lutorpy_5_lupa_lua_object_repr(__pyx_v_L, __pyx_v_encoding); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 622, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_10);
-      if (!(likely(PyUnicode_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 589, __pyx_L4_error)
+      if (!(likely(PyUnicode_CheckExact(__pyx_t_10))||((__pyx_t_10) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected %.16s, got %.200s", "unicode", Py_TYPE(__pyx_t_10)->tp_name), 0))) __PYX_ERR(0, 622, __pyx_L4_error)
       __Pyx_DECREF_SET(__pyx_v_py_string, ((PyObject*)__pyx_t_10));
       __pyx_t_10 = 0;
 
-      /* "lutorpy/_lupa.pyx":587
+      /* "lutorpy/_lupa.pyx":620
  *                         # safe 'decode'
  *                         py_string = s[:size].decode('ISO-8859-1')
  *             if py_string is None:             # <<<<<<<<<<<<<<
@@ -10377,7 +10481,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
     }
   }
 
-  /* "lutorpy/_lupa.pyx":591
+  /* "lutorpy/_lupa.pyx":624
  *                 py_string = lua_object_repr(L, encoding)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -10386,10 +10490,10 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
  */
   /*finally:*/ {
     /*normal exit:*/{
-      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_old_top); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 591, __pyx_L1_error)
+      __pyx_t_5 = __Pyx_PyInt_As_int(__pyx_v_old_top); if (unlikely((__pyx_t_5 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 624, __pyx_L1_error)
       lua_settop(__pyx_v_L, __pyx_t_5);
 
-      /* "lutorpy/_lupa.pyx":592
+      /* "lutorpy/_lupa.pyx":625
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -10422,17 +10526,17 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
       __pyx_t_5 = __pyx_lineno; __pyx_t_12 = __pyx_clineno; __pyx_t_13 = __pyx_filename;
       {
 
-        /* "lutorpy/_lupa.pyx":591
+        /* "lutorpy/_lupa.pyx":624
  *                 py_string = lua_object_repr(L, encoding)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
  *             unlock_runtime(self._runtime)
  *         return py_string
  */
-        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_v_old_top); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 591, __pyx_L20_error)
+        __pyx_t_17 = __Pyx_PyInt_As_int(__pyx_v_old_top); if (unlikely((__pyx_t_17 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 624, __pyx_L20_error)
         lua_settop(__pyx_v_L, __pyx_t_17);
 
-        /* "lutorpy/_lupa.pyx":592
+        /* "lutorpy/_lupa.pyx":625
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -10475,7 +10579,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
     __pyx_L5:;
   }
 
-  /* "lutorpy/_lupa.pyx":593
+  /* "lutorpy/_lupa.pyx":626
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)
  *         return py_string             # <<<<<<<<<<<<<<
@@ -10487,7 +10591,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
   __pyx_r = __pyx_v_py_string;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":568
+  /* "lutorpy/_lupa.pyx":601
  *             unlock_runtime(self._runtime)
  * 
  *     def __str__(self):             # <<<<<<<<<<<<<<
@@ -10512,7 +10616,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_14__str__(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":595
+/* "lutorpy/_lupa.pyx":628
  *         return py_string
  * 
  *     def __getattr__(self, name):             # <<<<<<<<<<<<<<
@@ -10533,7 +10637,7 @@ static PyObject *__pyx_pw_7lutorpy_5_lupa_10_LuaObject_17__getattr__(PyObject *_
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":609
+/* "lutorpy/_lupa.pyx":642
  *             ret = self._getitem(newname, is_attr_access=True)
  *             if not ret is None and isinstance(ret, _LuaFunction):
  *                 def self_prepending_function(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -10579,7 +10683,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_11__getattr___self_prepen
   __pyx_outer_scope = (struct __pyx_obj_7lutorpy_5_lupa___pyx_scope_struct_3___getattr__ *) __Pyx_CyFunction_GetClosure(__pyx_self);
   __pyx_cur_scope = __pyx_outer_scope;
 
-  /* "lutorpy/_lupa.pyx":610
+  /* "lutorpy/_lupa.pyx":643
  *             if not ret is None and isinstance(ret, _LuaFunction):
  *                 def self_prepending_function(*args, **kwargs):
  *                     return ret(self,*args, **kwargs)             # <<<<<<<<<<<<<<
@@ -10587,24 +10691,24 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_11__getattr___self_prepen
  *         return ret
  */
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_cur_scope->__pyx_v_ret)) { __Pyx_RaiseClosureNameError("ret"); __PYX_ERR(0, 610, __pyx_L1_error) }
-  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 610, __pyx_L1_error) }
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+  if (unlikely(!__pyx_cur_scope->__pyx_v_ret)) { __Pyx_RaiseClosureNameError("ret"); __PYX_ERR(0, 643, __pyx_L1_error) }
+  if (unlikely(!__pyx_cur_scope->__pyx_v_self)) { __Pyx_RaiseClosureNameError("self"); __PYX_ERR(0, 643, __pyx_L1_error) }
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_INCREF(((PyObject *)__pyx_cur_scope->__pyx_v_self));
   __Pyx_GIVEREF(((PyObject *)__pyx_cur_scope->__pyx_v_self));
   PyTuple_SET_ITEM(__pyx_t_1, 0, ((PyObject *)__pyx_cur_scope->__pyx_v_self));
-  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_args); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 610, __pyx_L1_error)
+  __pyx_t_2 = PyNumber_Add(__pyx_t_1, __pyx_v_args); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_v_ret, __pyx_t_2, __pyx_v_kwargs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 610, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_cur_scope->__pyx_v_ret, __pyx_t_2, __pyx_v_kwargs); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 643, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":609
+  /* "lutorpy/_lupa.pyx":642
  *             ret = self._getitem(newname, is_attr_access=True)
  *             if not ret is None and isinstance(ret, _LuaFunction):
  *                 def self_prepending_function(*args, **kwargs):             # <<<<<<<<<<<<<<
@@ -10624,7 +10728,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_11__getattr___self_prepen
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":595
+/* "lutorpy/_lupa.pyx":628
  *         return py_string
  * 
  *     def __getattr__(self, name):             # <<<<<<<<<<<<<<
@@ -10659,7 +10763,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_INCREF(__pyx_v_name);
 
-  /* "lutorpy/_lupa.pyx":596
+  /* "lutorpy/_lupa.pyx":629
  * 
  *     def __getattr__(self, name):
  *         assert self._runtime is not None             # <<<<<<<<<<<<<<
@@ -10671,12 +10775,12 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
     __pyx_t_1 = (((PyObject *)__pyx_cur_scope->__pyx_v_self->_runtime) != Py_None);
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 596, __pyx_L1_error)
+      __PYX_ERR(0, 629, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":597
+  /* "lutorpy/_lupa.pyx":630
  *     def __getattr__(self, name):
  *         assert self._runtime is not None
  *         if isinstance(name, unicode):             # <<<<<<<<<<<<<<
@@ -10687,7 +10791,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":598
+    /* "lutorpy/_lupa.pyx":631
  *         assert self._runtime is not None
  *         if isinstance(name, unicode):
  *             if (<unicode>name).startswith(u'__') and (<unicode>name).endswith(u'__'):             # <<<<<<<<<<<<<<
@@ -10696,9 +10800,9 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  */
     if (unlikely(__pyx_v_name == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "startswith");
-      __PYX_ERR(0, 598, __pyx_L1_error)
+      __PYX_ERR(0, 631, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyUnicode_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_u__20, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 598, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_u__20, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 631, __pyx_L1_error)
     if ((__pyx_t_1 != 0)) {
     } else {
       __pyx_t_2 = (__pyx_t_1 != 0);
@@ -10706,14 +10810,14 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
     }
     if (unlikely(__pyx_v_name == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "endswith");
-      __PYX_ERR(0, 598, __pyx_L1_error)
+      __PYX_ERR(0, 631, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyUnicode_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_u__20, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 598, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_u__20, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 631, __pyx_L1_error)
     __pyx_t_2 = (__pyx_t_1 != 0);
     __pyx_L5_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "lutorpy/_lupa.pyx":599
+      /* "lutorpy/_lupa.pyx":632
  *         if isinstance(name, unicode):
  *             if (<unicode>name).startswith(u'__') and (<unicode>name).endswith(u'__'):
  *                 return object.__getattr__(self, name)             # <<<<<<<<<<<<<<
@@ -10721,7 +10825,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  *         elif isinstance(name, bytes):
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_getattr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 599, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_getattr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 632, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_5 = NULL;
       __pyx_t_6 = 0;
@@ -10735,7 +10839,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
           __pyx_t_6 = 1;
         }
       }
-      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 599, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 632, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -10746,7 +10850,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
       __Pyx_INCREF(__pyx_v_name);
       __Pyx_GIVEREF(__pyx_v_name);
       PyTuple_SET_ITEM(__pyx_t_7, 1+__pyx_t_6, __pyx_v_name);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 599, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 632, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10754,7 +10858,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
       __pyx_t_3 = 0;
       goto __pyx_L0;
 
-      /* "lutorpy/_lupa.pyx":598
+      /* "lutorpy/_lupa.pyx":631
  *         assert self._runtime is not None
  *         if isinstance(name, unicode):
  *             if (<unicode>name).startswith(u'__') and (<unicode>name).endswith(u'__'):             # <<<<<<<<<<<<<<
@@ -10763,7 +10867,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  */
     }
 
-    /* "lutorpy/_lupa.pyx":600
+    /* "lutorpy/_lupa.pyx":633
  *             if (<unicode>name).startswith(u'__') and (<unicode>name).endswith(u'__'):
  *                 return object.__getattr__(self, name)
  *             name = (<unicode>name).encode(self._runtime._source_encoding)             # <<<<<<<<<<<<<<
@@ -10772,15 +10876,15 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  */
     if (unlikely(__pyx_v_name == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "encode");
-      __PYX_ERR(0, 600, __pyx_L1_error)
+      __PYX_ERR(0, 633, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_cur_scope->__pyx_v_self->_runtime->_source_encoding); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(0, 600, __pyx_L1_error)
-    __pyx_t_3 = PyUnicode_AsEncodedString(((PyObject*)__pyx_v_name), __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 600, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_cur_scope->__pyx_v_self->_runtime->_source_encoding); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(0, 633, __pyx_L1_error)
+    __pyx_t_3 = PyUnicode_AsEncodedString(((PyObject*)__pyx_v_name), __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 633, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_name, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "lutorpy/_lupa.pyx":597
+    /* "lutorpy/_lupa.pyx":630
  *     def __getattr__(self, name):
  *         assert self._runtime is not None
  *         if isinstance(name, unicode):             # <<<<<<<<<<<<<<
@@ -10790,7 +10894,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
     goto __pyx_L3;
   }
 
-  /* "lutorpy/_lupa.pyx":601
+  /* "lutorpy/_lupa.pyx":634
  *                 return object.__getattr__(self, name)
  *             name = (<unicode>name).encode(self._runtime._source_encoding)
  *         elif isinstance(name, bytes):             # <<<<<<<<<<<<<<
@@ -10801,7 +10905,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
   __pyx_t_1 = (__pyx_t_2 != 0);
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":602
+    /* "lutorpy/_lupa.pyx":635
  *             name = (<unicode>name).encode(self._runtime._source_encoding)
  *         elif isinstance(name, bytes):
  *             if (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):             # <<<<<<<<<<<<<<
@@ -10810,9 +10914,9 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  */
     if (unlikely(__pyx_v_name == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "startswith");
-      __PYX_ERR(0, 602, __pyx_L1_error)
+      __PYX_ERR(0, 635, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_PyBytes_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_b__20, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 602, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBytes_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_b__20, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 635, __pyx_L1_error)
     if ((__pyx_t_2 != 0)) {
     } else {
       __pyx_t_1 = (__pyx_t_2 != 0);
@@ -10820,14 +10924,14 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
     }
     if (unlikely(__pyx_v_name == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "endswith");
-      __PYX_ERR(0, 602, __pyx_L1_error)
+      __PYX_ERR(0, 635, __pyx_L1_error)
     }
-    __pyx_t_2 = __Pyx_PyBytes_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_b__20, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 602, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyBytes_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_b__20, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_2 == -1)) __PYX_ERR(0, 635, __pyx_L1_error)
     __pyx_t_1 = (__pyx_t_2 != 0);
     __pyx_L8_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "lutorpy/_lupa.pyx":603
+      /* "lutorpy/_lupa.pyx":636
  *         elif isinstance(name, bytes):
  *             if (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):
  *                 return object.__getattr__(self, name)             # <<<<<<<<<<<<<<
@@ -10835,7 +10939,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  *         if ret == None and name.startswith('_'):
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_getattr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 603, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_getattr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 636, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_7 = NULL;
       __pyx_t_6 = 0;
@@ -10849,7 +10953,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
           __pyx_t_6 = 1;
         }
       }
-      __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 603, __pyx_L1_error)
+      __pyx_t_5 = PyTuple_New(2+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 636, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_5);
       if (__pyx_t_7) {
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -10860,7 +10964,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
       __Pyx_INCREF(__pyx_v_name);
       __Pyx_GIVEREF(__pyx_v_name);
       PyTuple_SET_ITEM(__pyx_t_5, 1+__pyx_t_6, __pyx_v_name);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 603, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 636, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
@@ -10868,7 +10972,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
       __pyx_t_3 = 0;
       goto __pyx_L0;
 
-      /* "lutorpy/_lupa.pyx":602
+      /* "lutorpy/_lupa.pyx":635
  *             name = (<unicode>name).encode(self._runtime._source_encoding)
  *         elif isinstance(name, bytes):
  *             if (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):             # <<<<<<<<<<<<<<
@@ -10877,7 +10981,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  */
     }
 
-    /* "lutorpy/_lupa.pyx":601
+    /* "lutorpy/_lupa.pyx":634
  *                 return object.__getattr__(self, name)
  *             name = (<unicode>name).encode(self._runtime._source_encoding)
  *         elif isinstance(name, bytes):             # <<<<<<<<<<<<<<
@@ -10887,72 +10991,72 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
   }
   __pyx_L3:;
 
-  /* "lutorpy/_lupa.pyx":604
+  /* "lutorpy/_lupa.pyx":637
  *             if (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):
  *                 return object.__getattr__(self, name)
  *         ret = self._getitem(name, is_attr_access=True)             # <<<<<<<<<<<<<<
  *         if ret == None and name.startswith('_'):
  *             newname = name[1:]
  */
-  __pyx_t_3 = __pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(__pyx_cur_scope->__pyx_v_self, __pyx_v_name, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 604, __pyx_L1_error)
+  __pyx_t_3 = __pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(__pyx_cur_scope->__pyx_v_self, __pyx_v_name, 1); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 637, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
   __Pyx_GIVEREF(__pyx_t_3);
   __pyx_cur_scope->__pyx_v_ret = __pyx_t_3;
   __pyx_t_3 = 0;
 
-  /* "lutorpy/_lupa.pyx":605
+  /* "lutorpy/_lupa.pyx":638
  *                 return object.__getattr__(self, name)
  *         ret = self._getitem(name, is_attr_access=True)
  *         if ret == None and name.startswith('_'):             # <<<<<<<<<<<<<<
  *             newname = name[1:]
  *             ret = self._getitem(newname, is_attr_access=True)
  */
-  __pyx_t_3 = PyObject_RichCompare(__pyx_cur_scope->__pyx_v_ret, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 605, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_t_3 = PyObject_RichCompare(__pyx_cur_scope->__pyx_v_ret, Py_None, Py_EQ); __Pyx_XGOTREF(__pyx_t_3); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 638, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_3); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
   if (__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L11_bool_binop_done;
   }
-  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_startswith); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_GetAttrStr(__pyx_v_name, __pyx_n_s_startswith); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_3);
-  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_PyObject_Call(__pyx_t_3, __pyx_tuple__22, NULL); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_IsTrue(__pyx_t_4); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
   __pyx_t_1 = __pyx_t_2;
   __pyx_L11_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":606
+    /* "lutorpy/_lupa.pyx":639
  *         ret = self._getitem(name, is_attr_access=True)
  *         if ret == None and name.startswith('_'):
  *             newname = name[1:]             # <<<<<<<<<<<<<<
  *             ret = self._getitem(newname, is_attr_access=True)
  *             if not ret is None and isinstance(ret, _LuaFunction):
  */
-    __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_name, 1, 0, NULL, NULL, &__pyx_slice__23, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 606, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetSlice(__pyx_v_name, 1, 0, NULL, NULL, &__pyx_slice__23, 1, 0, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 639, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_v_newname = __pyx_t_4;
     __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":607
+    /* "lutorpy/_lupa.pyx":640
  *         if ret == None and name.startswith('_'):
  *             newname = name[1:]
  *             ret = self._getitem(newname, is_attr_access=True)             # <<<<<<<<<<<<<<
  *             if not ret is None and isinstance(ret, _LuaFunction):
  *                 def self_prepending_function(*args, **kwargs):
  */
-    __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(__pyx_cur_scope->__pyx_v_self, __pyx_v_newname, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 607, __pyx_L1_error)
+    __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(__pyx_cur_scope->__pyx_v_self, __pyx_v_newname, 1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 640, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_GOTREF(__pyx_cur_scope->__pyx_v_ret);
     __Pyx_DECREF_SET(__pyx_cur_scope->__pyx_v_ret, __pyx_t_4);
     __Pyx_GIVEREF(__pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":608
+    /* "lutorpy/_lupa.pyx":641
  *             newname = name[1:]
  *             ret = self._getitem(newname, is_attr_access=True)
  *             if not ret is None and isinstance(ret, _LuaFunction):             # <<<<<<<<<<<<<<
@@ -10975,19 +11079,19 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
     __pyx_L14_bool_binop_done:;
     if (__pyx_t_1) {
 
-      /* "lutorpy/_lupa.pyx":609
+      /* "lutorpy/_lupa.pyx":642
  *             ret = self._getitem(newname, is_attr_access=True)
  *             if not ret is None and isinstance(ret, _LuaFunction):
  *                 def self_prepending_function(*args, **kwargs):             # <<<<<<<<<<<<<<
  *                     return ret(self,*args, **kwargs)
  *                 return self_prepending_function
  */
-      __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_10_LuaObject_11__getattr___1self_prepending_function, 0, __pyx_n_s_getattr___locals_self_prependi, ((PyObject*)__pyx_cur_scope), __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 609, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_10_LuaObject_11__getattr___1self_prepending_function, 0, __pyx_n_s_getattr___locals_self_prependi, ((PyObject*)__pyx_cur_scope), __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__25)); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 642, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_v_self_prepending_function = __pyx_t_4;
       __pyx_t_4 = 0;
 
-      /* "lutorpy/_lupa.pyx":611
+      /* "lutorpy/_lupa.pyx":644
  *                 def self_prepending_function(*args, **kwargs):
  *                     return ret(self,*args, **kwargs)
  *                 return self_prepending_function             # <<<<<<<<<<<<<<
@@ -10999,7 +11103,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
       __pyx_r = __pyx_v_self_prepending_function;
       goto __pyx_L0;
 
-      /* "lutorpy/_lupa.pyx":608
+      /* "lutorpy/_lupa.pyx":641
  *             newname = name[1:]
  *             ret = self._getitem(newname, is_attr_access=True)
  *             if not ret is None and isinstance(ret, _LuaFunction):             # <<<<<<<<<<<<<<
@@ -11008,7 +11112,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  */
     }
 
-    /* "lutorpy/_lupa.pyx":605
+    /* "lutorpy/_lupa.pyx":638
  *                 return object.__getattr__(self, name)
  *         ret = self._getitem(name, is_attr_access=True)
  *         if ret == None and name.startswith('_'):             # <<<<<<<<<<<<<<
@@ -11017,7 +11121,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
  */
   }
 
-  /* "lutorpy/_lupa.pyx":612
+  /* "lutorpy/_lupa.pyx":645
  *                     return ret(self,*args, **kwargs)
  *                 return self_prepending_function
  *         return ret             # <<<<<<<<<<<<<<
@@ -11029,7 +11133,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
   __pyx_r = __pyx_cur_scope->__pyx_v_ret;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":595
+  /* "lutorpy/_lupa.pyx":628
  *         return py_string
  * 
  *     def __getattr__(self, name):             # <<<<<<<<<<<<<<
@@ -11055,7 +11159,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_16__getattr__(struct __py
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":614
+/* "lutorpy/_lupa.pyx":647
  *         return ret
  * 
  *     def __getitem__(self, index_or_name):             # <<<<<<<<<<<<<<
@@ -11082,7 +11186,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_18__getitem__(struct __py
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("__getitem__", 0);
 
-  /* "lutorpy/_lupa.pyx":615
+  /* "lutorpy/_lupa.pyx":648
  * 
  *     def __getitem__(self, index_or_name):
  *         return self._getitem(index_or_name, is_attr_access=False)             # <<<<<<<<<<<<<<
@@ -11090,13 +11194,13 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_18__getitem__(struct __py
  *     @cython.final
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(__pyx_v_self, __pyx_v_index_or_name, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 615, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(__pyx_v_self, __pyx_v_index_or_name, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 648, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":614
+  /* "lutorpy/_lupa.pyx":647
  *         return ret
  * 
  *     def __getitem__(self, index_or_name):             # <<<<<<<<<<<<<<
@@ -11115,7 +11219,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_10_LuaObject_18__getitem__(struct __py
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":618
+/* "lutorpy/_lupa.pyx":651
  * 
  *     @cython.final
  *     cdef _getitem(self, name, bint is_attr_access):             # <<<<<<<<<<<<<<
@@ -11148,7 +11252,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
   __Pyx_RefNannySetupContext("_getitem", 0);
   __Pyx_INCREF(__pyx_v_name);
 
-  /* "lutorpy/_lupa.pyx":619
+  /* "lutorpy/_lupa.pyx":652
  *     @cython.final
  *     cdef _getitem(self, name, bint is_attr_access):
  *         if isinstance(name, int) and self._runtime._zero_based_index:             # <<<<<<<<<<<<<<
@@ -11167,19 +11271,19 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":620
+    /* "lutorpy/_lupa.pyx":653
  *     cdef _getitem(self, name, bint is_attr_access):
  *         if isinstance(name, int) and self._runtime._zero_based_index:
  *             name = name + 1             # <<<<<<<<<<<<<<
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)
  */
-    __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_name, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 620, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_name, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 653, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF_SET(__pyx_v_name, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":619
+    /* "lutorpy/_lupa.pyx":652
  *     @cython.final
  *     cdef _getitem(self, name, bint is_attr_access):
  *         if isinstance(name, int) and self._runtime._zero_based_index:             # <<<<<<<<<<<<<<
@@ -11188,7 +11292,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
  */
   }
 
-  /* "lutorpy/_lupa.pyx":621
+  /* "lutorpy/_lupa.pyx":654
  *         if isinstance(name, int) and self._runtime._zero_based_index:
  *             name = name + 1
  *         cdef lua_State* L = self._state             # <<<<<<<<<<<<<<
@@ -11198,7 +11302,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
   __pyx_t_5 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_5;
 
-  /* "lutorpy/_lupa.pyx":622
+  /* "lutorpy/_lupa.pyx":655
  *             name = name + 1
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -11207,10 +11311,10 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
  */
   __pyx_t_4 = ((PyObject *)__pyx_v_self->_runtime);
   __Pyx_INCREF(__pyx_t_4);
-  __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_4)); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 622, __pyx_L1_error)
+  __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_4)); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 655, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "lutorpy/_lupa.pyx":623
+  /* "lutorpy/_lupa.pyx":656
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)
  *         old_top = lua.lua_gettop(L)             # <<<<<<<<<<<<<<
@@ -11219,7 +11323,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
  */
   __pyx_v_old_top = lua_gettop(__pyx_v_L);
 
-  /* "lutorpy/_lupa.pyx":624
+  /* "lutorpy/_lupa.pyx":657
  *         lock_runtime(self._runtime)
  *         old_top = lua.lua_gettop(L)
  *         try:             # <<<<<<<<<<<<<<
@@ -11228,16 +11332,16 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":625
+    /* "lutorpy/_lupa.pyx":658
  *         old_top = lua.lua_gettop(L)
  *         try:
  *             self.push_lua_object()             # <<<<<<<<<<<<<<
  *             lua_type = lua.lua_type(L, -1)
  *             if lua_type == lua.LUA_TFUNCTION or lua_type == lua.LUA_TTHREAD:
  */
-    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 625, __pyx_L7_error)
+    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 658, __pyx_L7_error)
 
-    /* "lutorpy/_lupa.pyx":626
+    /* "lutorpy/_lupa.pyx":659
  *         try:
  *             self.push_lua_object()
  *             lua_type = lua.lua_type(L, -1)             # <<<<<<<<<<<<<<
@@ -11246,7 +11350,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
  */
     __pyx_v_lua_type = lua_type(__pyx_v_L, -1);
 
-    /* "lutorpy/_lupa.pyx":627
+    /* "lutorpy/_lupa.pyx":660
  *             self.push_lua_object()
  *             lua_type = lua.lua_type(L, -1)
  *             if lua_type == lua.LUA_TFUNCTION or lua_type == lua.LUA_TTHREAD:             # <<<<<<<<<<<<<<
@@ -11257,7 +11361,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
       case LUA_TFUNCTION:
       case LUA_TTHREAD:
 
-      /* "lutorpy/_lupa.pyx":628
+      /* "lutorpy/_lupa.pyx":661
  *             lua_type = lua.lua_type(L, -1)
  *             if lua_type == lua.LUA_TFUNCTION or lua_type == lua.LUA_TTHREAD:
  *                 lua.lua_pop(L, 1)             # <<<<<<<<<<<<<<
@@ -11266,7 +11370,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
  */
       lua_pop(__pyx_v_L, 1);
 
-      /* "lutorpy/_lupa.pyx":629
+      /* "lutorpy/_lupa.pyx":662
  *             if lua_type == lua.LUA_TFUNCTION or lua_type == lua.LUA_TTHREAD:
  *                 lua.lua_pop(L, 1)
  *                 raise (AttributeError if is_attr_access else TypeError)(             # <<<<<<<<<<<<<<
@@ -11280,14 +11384,14 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
         __Pyx_INCREF(__pyx_builtin_TypeError);
         __pyx_t_4 = __pyx_builtin_TypeError;
       }
-      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 629, __pyx_L7_error)
+      __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_tuple__26, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 662, __pyx_L7_error)
       __Pyx_GOTREF(__pyx_t_7);
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_Raise(__pyx_t_7, 0, 0, 0);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-      __PYX_ERR(0, 629, __pyx_L7_error)
+      __PYX_ERR(0, 662, __pyx_L7_error)
 
-      /* "lutorpy/_lupa.pyx":627
+      /* "lutorpy/_lupa.pyx":660
  *             self.push_lua_object()
  *             lua_type = lua.lua_type(L, -1)
  *             if lua_type == lua.LUA_TFUNCTION or lua_type == lua.LUA_TTHREAD:             # <<<<<<<<<<<<<<
@@ -11298,7 +11402,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
       default: break;
     }
 
-    /* "lutorpy/_lupa.pyx":632
+    /* "lutorpy/_lupa.pyx":665
  *                     "item/attribute access not supported on functions")
  *             # table[nil] fails, so map None -> python.none for Lua tables
  *             py_to_lua(self._runtime, L, name, wrap_none=lua_type == lua.LUA_TTABLE)             # <<<<<<<<<<<<<<
@@ -11309,10 +11413,10 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
     __Pyx_INCREF(__pyx_t_7);
     __pyx_t_8.__pyx_n = 1;
     __pyx_t_8.wrap_none = (__pyx_v_lua_type == LUA_TTABLE);
-    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_py_to_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_7), __pyx_v_L, __pyx_v_name, &__pyx_t_8); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 632, __pyx_L7_error)
+    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_py_to_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_7), __pyx_v_L, __pyx_v_name, &__pyx_t_8); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 665, __pyx_L7_error)
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-    /* "lutorpy/_lupa.pyx":633
+    /* "lutorpy/_lupa.pyx":666
  *             # table[nil] fails, so map None -> python.none for Lua tables
  *             py_to_lua(self._runtime, L, name, wrap_none=lua_type == lua.LUA_TTABLE)
  *             lua.lua_gettable(L, -2)             # <<<<<<<<<<<<<<
@@ -11321,7 +11425,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
  */
     lua_gettable(__pyx_v_L, -2);
 
-    /* "lutorpy/_lupa.pyx":634
+    /* "lutorpy/_lupa.pyx":667
  *             py_to_lua(self._runtime, L, name, wrap_none=lua_type == lua.LUA_TTABLE)
  *             lua.lua_gettable(L, -2)
  *             return py_from_lua(self._runtime, L, -1)             # <<<<<<<<<<<<<<
@@ -11331,7 +11435,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
     __Pyx_XDECREF(__pyx_r);
     __pyx_t_7 = ((PyObject *)__pyx_v_self->_runtime);
     __Pyx_INCREF(__pyx_t_7);
-    __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_py_from_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_7), __pyx_v_L, -1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 634, __pyx_L7_error)
+    __pyx_t_4 = __pyx_f_7lutorpy_5_lupa_py_from_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_7), __pyx_v_L, -1); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 667, __pyx_L7_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
     __pyx_r = __pyx_t_4;
@@ -11339,7 +11443,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
     goto __pyx_L6_return;
   }
 
-  /* "lutorpy/_lupa.pyx":636
+  /* "lutorpy/_lupa.pyx":669
  *             return py_from_lua(self._runtime, L, -1)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -11366,7 +11470,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
       {
         lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-        /* "lutorpy/_lupa.pyx":637
+        /* "lutorpy/_lupa.pyx":670
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -11397,7 +11501,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
       __pyx_t_16 = __pyx_r;
       __pyx_r = 0;
 
-      /* "lutorpy/_lupa.pyx":636
+      /* "lutorpy/_lupa.pyx":669
  *             return py_from_lua(self._runtime, L, -1)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -11406,7 +11510,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
  */
       lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-      /* "lutorpy/_lupa.pyx":637
+      /* "lutorpy/_lupa.pyx":670
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -11423,7 +11527,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
     }
   }
 
-  /* "lutorpy/_lupa.pyx":618
+  /* "lutorpy/_lupa.pyx":651
  * 
  *     @cython.final
  *     cdef _getitem(self, name, bint is_attr_access):             # <<<<<<<<<<<<<<
@@ -11444,7 +11548,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":639
+/* "lutorpy/_lupa.pyx":672
  *             unlock_runtime(self._runtime)
  * 
  *     def __setattr__(self, name, value):             # <<<<<<<<<<<<<<
@@ -11481,7 +11585,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
   __Pyx_RefNannySetupContext("__setattr__", 0);
   __Pyx_INCREF(__pyx_v_name);
 
-  /* "lutorpy/_lupa.pyx":640
+  /* "lutorpy/_lupa.pyx":673
  * 
  *     def __setattr__(self, name, value):
  *         assert self._runtime is not None             # <<<<<<<<<<<<<<
@@ -11493,12 +11597,12 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
     __pyx_t_1 = (((PyObject *)__pyx_v_self->_runtime) != Py_None);
     if (unlikely(!(__pyx_t_1 != 0))) {
       PyErr_SetNone(PyExc_AssertionError);
-      __PYX_ERR(0, 640, __pyx_L1_error)
+      __PYX_ERR(0, 673, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "lutorpy/_lupa.pyx":641
+  /* "lutorpy/_lupa.pyx":674
  *     def __setattr__(self, name, value):
  *         assert self._runtime is not None
  *         if isinstance(name, unicode):             # <<<<<<<<<<<<<<
@@ -11509,7 +11613,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
   __pyx_t_2 = (__pyx_t_1 != 0);
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":642
+    /* "lutorpy/_lupa.pyx":675
  *         assert self._runtime is not None
  *         if isinstance(name, unicode):
  *             if (<unicode>name).startswith(u'__') and (<unicode>name).endswith(u'__'):             # <<<<<<<<<<<<<<
@@ -11518,9 +11622,9 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
  */
     if (unlikely(__pyx_v_name == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "startswith");
-      __PYX_ERR(0, 642, __pyx_L1_error)
+      __PYX_ERR(0, 675, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyUnicode_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_u__20, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 642, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_u__20, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 675, __pyx_L1_error)
     if ((__pyx_t_1 != 0)) {
     } else {
       __pyx_t_2 = (__pyx_t_1 != 0);
@@ -11528,21 +11632,21 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
     }
     if (unlikely(__pyx_v_name == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "endswith");
-      __PYX_ERR(0, 642, __pyx_L1_error)
+      __PYX_ERR(0, 675, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyUnicode_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_u__20, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 642, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyUnicode_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_u__20, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 675, __pyx_L1_error)
     __pyx_t_2 = (__pyx_t_1 != 0);
     __pyx_L5_bool_binop_done:;
     if (__pyx_t_2) {
 
-      /* "lutorpy/_lupa.pyx":643
+      /* "lutorpy/_lupa.pyx":676
  *         if isinstance(name, unicode):
  *             if (<unicode>name).startswith(u'__') and (<unicode>name).endswith(u'__'):
  *                 object.__setattr__(self, name, value)             # <<<<<<<<<<<<<<
  *                 return
  *             name = (<unicode>name).encode(self._runtime._source_encoding)
  */
-      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_setattr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 643, __pyx_L1_error)
+      __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_setattr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 676, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
       __pyx_t_5 = NULL;
       __pyx_t_6 = 0;
@@ -11556,7 +11660,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
           __pyx_t_6 = 1;
         }
       }
-      __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 643, __pyx_L1_error)
+      __pyx_t_7 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 676, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_7);
       if (__pyx_t_5) {
         __Pyx_GIVEREF(__pyx_t_5); PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_t_5); __pyx_t_5 = NULL;
@@ -11570,13 +11674,13 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
       __Pyx_INCREF(__pyx_v_value);
       __Pyx_GIVEREF(__pyx_v_value);
       PyTuple_SET_ITEM(__pyx_t_7, 2+__pyx_t_6, __pyx_v_value);
-      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 643, __pyx_L1_error)
+      __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_7, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 676, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
       __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-      /* "lutorpy/_lupa.pyx":644
+      /* "lutorpy/_lupa.pyx":677
  *             if (<unicode>name).startswith(u'__') and (<unicode>name).endswith(u'__'):
  *                 object.__setattr__(self, name, value)
  *                 return             # <<<<<<<<<<<<<<
@@ -11586,7 +11690,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
       __pyx_r = 0;
       goto __pyx_L0;
 
-      /* "lutorpy/_lupa.pyx":642
+      /* "lutorpy/_lupa.pyx":675
  *         assert self._runtime is not None
  *         if isinstance(name, unicode):
  *             if (<unicode>name).startswith(u'__') and (<unicode>name).endswith(u'__'):             # <<<<<<<<<<<<<<
@@ -11595,7 +11699,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
  */
     }
 
-    /* "lutorpy/_lupa.pyx":645
+    /* "lutorpy/_lupa.pyx":678
  *                 object.__setattr__(self, name, value)
  *                 return
  *             name = (<unicode>name).encode(self._runtime._source_encoding)             # <<<<<<<<<<<<<<
@@ -11604,15 +11708,15 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
  */
     if (unlikely(__pyx_v_name == Py_None)) {
       PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "encode");
-      __PYX_ERR(0, 645, __pyx_L1_error)
+      __PYX_ERR(0, 678, __pyx_L1_error)
     }
-    __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_self->_runtime->_source_encoding); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(0, 645, __pyx_L1_error)
-    __pyx_t_3 = PyUnicode_AsEncodedString(((PyObject*)__pyx_v_name), __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 645, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyObject_AsString(__pyx_v_self->_runtime->_source_encoding); if (unlikely((!__pyx_t_8) && PyErr_Occurred())) __PYX_ERR(0, 678, __pyx_L1_error)
+    __pyx_t_3 = PyUnicode_AsEncodedString(((PyObject*)__pyx_v_name), __pyx_t_8, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 678, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF_SET(__pyx_v_name, __pyx_t_3);
     __pyx_t_3 = 0;
 
-    /* "lutorpy/_lupa.pyx":641
+    /* "lutorpy/_lupa.pyx":674
  *     def __setattr__(self, name, value):
  *         assert self._runtime is not None
  *         if isinstance(name, unicode):             # <<<<<<<<<<<<<<
@@ -11622,7 +11726,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
     goto __pyx_L3;
   }
 
-  /* "lutorpy/_lupa.pyx":646
+  /* "lutorpy/_lupa.pyx":679
  *                 return
  *             name = (<unicode>name).encode(self._runtime._source_encoding)
  *         elif isinstance(name, bytes) and (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):             # <<<<<<<<<<<<<<
@@ -11638,9 +11742,9 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
   }
   if (unlikely(__pyx_v_name == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "startswith");
-    __PYX_ERR(0, 646, __pyx_L1_error)
+    __PYX_ERR(0, 679, __pyx_L1_error)
   }
-  __pyx_t_9 = __Pyx_PyBytes_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_b__20, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_9 == -1)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyBytes_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_b__20, 0, PY_SSIZE_T_MAX, -1); if (unlikely(__pyx_t_9 == -1)) __PYX_ERR(0, 679, __pyx_L1_error)
   if ((__pyx_t_9 != 0)) {
   } else {
     __pyx_t_2 = (__pyx_t_9 != 0);
@@ -11648,21 +11752,21 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
   }
   if (unlikely(__pyx_v_name == Py_None)) {
     PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "endswith");
-    __PYX_ERR(0, 646, __pyx_L1_error)
+    __PYX_ERR(0, 679, __pyx_L1_error)
   }
-  __pyx_t_9 = __Pyx_PyBytes_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_b__20, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_9 == -1)) __PYX_ERR(0, 646, __pyx_L1_error)
+  __pyx_t_9 = __Pyx_PyBytes_Tailmatch(((PyObject*)__pyx_v_name), __pyx_n_b__20, 0, PY_SSIZE_T_MAX, 1); if (unlikely(__pyx_t_9 == -1)) __PYX_ERR(0, 679, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_9 != 0);
   __pyx_L7_bool_binop_done:;
   if (__pyx_t_2) {
 
-    /* "lutorpy/_lupa.pyx":647
+    /* "lutorpy/_lupa.pyx":680
  *             name = (<unicode>name).encode(self._runtime._source_encoding)
  *         elif isinstance(name, bytes) and (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):
  *             object.__setattr__(self, name, value)             # <<<<<<<<<<<<<<
  *             return
  *         self._setitem(name, value)
  */
-    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_setattr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 647, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyObject_GetAttrStr(__pyx_builtin_object, __pyx_n_s_setattr); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 680, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_7 = NULL;
     __pyx_t_6 = 0;
@@ -11676,7 +11780,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
         __pyx_t_6 = 1;
       }
     }
-    __pyx_t_5 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 647, __pyx_L1_error)
+    __pyx_t_5 = PyTuple_New(3+__pyx_t_6); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 680, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     if (__pyx_t_7) {
       __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_5, 0, __pyx_t_7); __pyx_t_7 = NULL;
@@ -11690,13 +11794,13 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
     __Pyx_INCREF(__pyx_v_value);
     __Pyx_GIVEREF(__pyx_v_value);
     PyTuple_SET_ITEM(__pyx_t_5, 2+__pyx_t_6, __pyx_v_value);
-    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 647, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyObject_Call(__pyx_t_4, __pyx_t_5, NULL); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 680, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
 
-    /* "lutorpy/_lupa.pyx":648
+    /* "lutorpy/_lupa.pyx":681
  *         elif isinstance(name, bytes) and (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):
  *             object.__setattr__(self, name, value)
  *             return             # <<<<<<<<<<<<<<
@@ -11706,7 +11810,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
     __pyx_r = 0;
     goto __pyx_L0;
 
-    /* "lutorpy/_lupa.pyx":646
+    /* "lutorpy/_lupa.pyx":679
  *                 return
  *             name = (<unicode>name).encode(self._runtime._source_encoding)
  *         elif isinstance(name, bytes) and (<bytes>name).startswith(b'__') and (<bytes>name).endswith(b'__'):             # <<<<<<<<<<<<<<
@@ -11716,16 +11820,16 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
   }
   __pyx_L3:;
 
-  /* "lutorpy/_lupa.pyx":649
+  /* "lutorpy/_lupa.pyx":682
  *             object.__setattr__(self, name, value)
  *             return
  *         self._setitem(name, value)             # <<<<<<<<<<<<<<
  * 
  *     def __setitem__(self, index_or_name, value):
  */
-  __pyx_t_10 = ((struct __pyx_vtabstruct_7lutorpy_5_lupa__LuaObject *)__pyx_v_self->__pyx_vtab)->_setitem(__pyx_v_self, __pyx_v_name, __pyx_v_value); if (unlikely(__pyx_t_10 == -1)) __PYX_ERR(0, 649, __pyx_L1_error)
+  __pyx_t_10 = ((struct __pyx_vtabstruct_7lutorpy_5_lupa__LuaObject *)__pyx_v_self->__pyx_vtab)->_setitem(__pyx_v_self, __pyx_v_name, __pyx_v_value); if (unlikely(__pyx_t_10 == -1)) __PYX_ERR(0, 682, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":639
+  /* "lutorpy/_lupa.pyx":672
  *             unlock_runtime(self._runtime)
  * 
  *     def __setattr__(self, name, value):             # <<<<<<<<<<<<<<
@@ -11749,7 +11853,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_20__setattr__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":651
+/* "lutorpy/_lupa.pyx":684
  *         self._setitem(name, value)
  * 
  *     def __setitem__(self, index_or_name, value):             # <<<<<<<<<<<<<<
@@ -11776,16 +11880,16 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_22__setitem__(struct __pyx_obj_
   int __pyx_t_1;
   __Pyx_RefNannySetupContext("__setitem__", 0);
 
-  /* "lutorpy/_lupa.pyx":652
+  /* "lutorpy/_lupa.pyx":685
  * 
  *     def __setitem__(self, index_or_name, value):
  *         self._setitem(index_or_name, value)             # <<<<<<<<<<<<<<
  * 
  *     cdef int _setitem(self, name, value) except -1:
  */
-  __pyx_t_1 = ((struct __pyx_vtabstruct_7lutorpy_5_lupa__LuaObject *)__pyx_v_self->__pyx_vtab)->_setitem(__pyx_v_self, __pyx_v_index_or_name, __pyx_v_value); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 652, __pyx_L1_error)
+  __pyx_t_1 = ((struct __pyx_vtabstruct_7lutorpy_5_lupa__LuaObject *)__pyx_v_self->__pyx_vtab)->_setitem(__pyx_v_self, __pyx_v_index_or_name, __pyx_v_value); if (unlikely(__pyx_t_1 == -1)) __PYX_ERR(0, 685, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":651
+  /* "lutorpy/_lupa.pyx":684
  *         self._setitem(name, value)
  * 
  *     def __setitem__(self, index_or_name, value):             # <<<<<<<<<<<<<<
@@ -11804,7 +11908,7 @@ static int __pyx_pf_7lutorpy_5_lupa_10_LuaObject_22__setitem__(struct __pyx_obj_
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":654
+/* "lutorpy/_lupa.pyx":687
  *         self._setitem(index_or_name, value)
  * 
  *     cdef int _setitem(self, name, value) except -1:             # <<<<<<<<<<<<<<
@@ -11835,7 +11939,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
   __Pyx_RefNannySetupContext("_setitem", 0);
   __Pyx_INCREF(__pyx_v_name);
 
-  /* "lutorpy/_lupa.pyx":655
+  /* "lutorpy/_lupa.pyx":688
  * 
  *     cdef int _setitem(self, name, value) except -1:
  *         if isinstance(name, int) and self._runtime._zero_based_index:             # <<<<<<<<<<<<<<
@@ -11854,19 +11958,19 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":656
+    /* "lutorpy/_lupa.pyx":689
  *     cdef int _setitem(self, name, value) except -1:
  *         if isinstance(name, int) and self._runtime._zero_based_index:
  *             name = name + 1             # <<<<<<<<<<<<<<
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)
  */
-    __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_name, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 656, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_AddObjC(__pyx_v_name, __pyx_int_1, 1, 0); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 689, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __Pyx_DECREF_SET(__pyx_v_name, __pyx_t_4);
     __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":655
+    /* "lutorpy/_lupa.pyx":688
  * 
  *     cdef int _setitem(self, name, value) except -1:
  *         if isinstance(name, int) and self._runtime._zero_based_index:             # <<<<<<<<<<<<<<
@@ -11875,7 +11979,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
  */
   }
 
-  /* "lutorpy/_lupa.pyx":657
+  /* "lutorpy/_lupa.pyx":690
  *         if isinstance(name, int) and self._runtime._zero_based_index:
  *             name = name + 1
  *         cdef lua_State* L = self._state             # <<<<<<<<<<<<<<
@@ -11885,7 +11989,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
   __pyx_t_5 = __pyx_v_self->_state;
   __pyx_v_L = __pyx_t_5;
 
-  /* "lutorpy/_lupa.pyx":658
+  /* "lutorpy/_lupa.pyx":691
  *             name = name + 1
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -11894,10 +11998,10 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
  */
   __pyx_t_4 = ((PyObject *)__pyx_v_self->_runtime);
   __Pyx_INCREF(__pyx_t_4);
-  __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_4)); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 658, __pyx_L1_error)
+  __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_lock_runtime(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_4)); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 691, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "lutorpy/_lupa.pyx":659
+  /* "lutorpy/_lupa.pyx":692
  *         cdef lua_State* L = self._state
  *         lock_runtime(self._runtime)
  *         old_top = lua.lua_gettop(L)             # <<<<<<<<<<<<<<
@@ -11906,7 +12010,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
  */
   __pyx_v_old_top = lua_gettop(__pyx_v_L);
 
-  /* "lutorpy/_lupa.pyx":660
+  /* "lutorpy/_lupa.pyx":693
  *         lock_runtime(self._runtime)
  *         old_top = lua.lua_gettop(L)
  *         try:             # <<<<<<<<<<<<<<
@@ -11915,16 +12019,16 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
  */
   /*try:*/ {
 
-    /* "lutorpy/_lupa.pyx":661
+    /* "lutorpy/_lupa.pyx":694
  *         old_top = lua.lua_gettop(L)
  *         try:
  *             self.push_lua_object()             # <<<<<<<<<<<<<<
  *             # table[nil] fails, so map None -> python.none for Lua tables
  *             py_to_lua(self._runtime, L, name, wrap_none=True)
  */
-    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 661, __pyx_L7_error)
+    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object(__pyx_v_self); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 694, __pyx_L7_error)
 
-    /* "lutorpy/_lupa.pyx":663
+    /* "lutorpy/_lupa.pyx":696
  *             self.push_lua_object()
  *             # table[nil] fails, so map None -> python.none for Lua tables
  *             py_to_lua(self._runtime, L, name, wrap_none=True)             # <<<<<<<<<<<<<<
@@ -11935,10 +12039,10 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
     __Pyx_INCREF(__pyx_t_4);
     __pyx_t_7.__pyx_n = 1;
     __pyx_t_7.wrap_none = 1;
-    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_py_to_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_4), __pyx_v_L, __pyx_v_name, &__pyx_t_7); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 663, __pyx_L7_error)
+    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_py_to_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_4), __pyx_v_L, __pyx_v_name, &__pyx_t_7); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 696, __pyx_L7_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":664
+    /* "lutorpy/_lupa.pyx":697
  *             # table[nil] fails, so map None -> python.none for Lua tables
  *             py_to_lua(self._runtime, L, name, wrap_none=True)
  *             py_to_lua(self._runtime, L, value)             # <<<<<<<<<<<<<<
@@ -11947,10 +12051,10 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
  */
     __pyx_t_4 = ((PyObject *)__pyx_v_self->_runtime);
     __Pyx_INCREF(__pyx_t_4);
-    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_py_to_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_4), __pyx_v_L, __pyx_v_value, NULL); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 664, __pyx_L7_error)
+    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_py_to_lua(((struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *)__pyx_t_4), __pyx_v_L, __pyx_v_value, NULL); if (unlikely(__pyx_t_6 == -1)) __PYX_ERR(0, 697, __pyx_L7_error)
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-    /* "lutorpy/_lupa.pyx":665
+    /* "lutorpy/_lupa.pyx":698
  *             py_to_lua(self._runtime, L, name, wrap_none=True)
  *             py_to_lua(self._runtime, L, value)
  *             lua.lua_settable(L, -3)             # <<<<<<<<<<<<<<
@@ -11960,7 +12064,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
     lua_settable(__pyx_v_L, -3);
   }
 
-  /* "lutorpy/_lupa.pyx":667
+  /* "lutorpy/_lupa.pyx":700
  *             lua.lua_settable(L, -3)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -11971,7 +12075,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
     /*normal exit:*/{
       lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-      /* "lutorpy/_lupa.pyx":668
+      /* "lutorpy/_lupa.pyx":701
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -12001,7 +12105,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
       __pyx_t_6 = __pyx_lineno; __pyx_t_8 = __pyx_clineno; __pyx_t_9 = __pyx_filename;
       {
 
-        /* "lutorpy/_lupa.pyx":667
+        /* "lutorpy/_lupa.pyx":700
  *             lua.lua_settable(L, -3)
  *         finally:
  *             lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
@@ -12010,7 +12114,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
  */
         lua_settop(__pyx_v_L, __pyx_v_old_top);
 
-        /* "lutorpy/_lupa.pyx":668
+        /* "lutorpy/_lupa.pyx":701
  *         finally:
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
@@ -12040,7 +12144,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
     __pyx_L8:;
   }
 
-  /* "lutorpy/_lupa.pyx":669
+  /* "lutorpy/_lupa.pyx":702
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)
  *         return 0             # <<<<<<<<<<<<<<
@@ -12050,7 +12154,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
   __pyx_r = 0;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":654
+  /* "lutorpy/_lupa.pyx":687
  *         self._setitem(index_or_name, value)
  * 
  *     cdef int _setitem(self, name, value) except -1:             # <<<<<<<<<<<<<<
@@ -12069,7 +12173,7 @@ static int __pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem(struct __pyx_obj_7lutor
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":671
+/* "lutorpy/_lupa.pyx":704
  *         return 0
  * 
  * cdef _LuaObject new_lua_object(LuaRuntime runtime, lua_State* L, int n):             # <<<<<<<<<<<<<<
@@ -12084,20 +12188,20 @@ static struct __pyx_obj_7lutorpy_5_lupa__LuaObject *__pyx_f_7lutorpy_5_lupa_new_
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("new_lua_object", 0);
 
-  /* "lutorpy/_lupa.pyx":672
+  /* "lutorpy/_lupa.pyx":705
  * 
  * cdef _LuaObject new_lua_object(LuaRuntime runtime, lua_State* L, int n):
  *     cdef _LuaObject obj = _LuaObject.__new__(_LuaObject)             # <<<<<<<<<<<<<<
  *     init_lua_object(obj, runtime, L, n)
  *     return obj
  */
-  __pyx_t_1 = __pyx_tp_new_7lutorpy_5_lupa__LuaObject(((PyTypeObject *)__pyx_ptype_7lutorpy_5_lupa__LuaObject), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 672, __pyx_L1_error)
+  __pyx_t_1 = __pyx_tp_new_7lutorpy_5_lupa__LuaObject(((PyTypeObject *)__pyx_ptype_7lutorpy_5_lupa__LuaObject), __pyx_empty_tuple, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 705, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (!(likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_7lutorpy_5_lupa__LuaObject)))) __PYX_ERR(0, 672, __pyx_L1_error)
+  if (!(likely(__Pyx_TypeTest(__pyx_t_1, __pyx_ptype_7lutorpy_5_lupa__LuaObject)))) __PYX_ERR(0, 705, __pyx_L1_error)
   __pyx_v_obj = ((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "lutorpy/_lupa.pyx":673
+  /* "lutorpy/_lupa.pyx":706
  * cdef _LuaObject new_lua_object(LuaRuntime runtime, lua_State* L, int n):
  *     cdef _LuaObject obj = _LuaObject.__new__(_LuaObject)
  *     init_lua_object(obj, runtime, L, n)             # <<<<<<<<<<<<<<
@@ -12106,7 +12210,7 @@ static struct __pyx_obj_7lutorpy_5_lupa__LuaObject *__pyx_f_7lutorpy_5_lupa_new_
  */
   __pyx_f_7lutorpy_5_lupa_init_lua_object(__pyx_v_obj, __pyx_v_runtime, __pyx_v_L, __pyx_v_n);
 
-  /* "lutorpy/_lupa.pyx":674
+  /* "lutorpy/_lupa.pyx":707
  *     cdef _LuaObject obj = _LuaObject.__new__(_LuaObject)
  *     init_lua_object(obj, runtime, L, n)
  *     return obj             # <<<<<<<<<<<<<<
@@ -12118,7 +12222,7 @@ static struct __pyx_obj_7lutorpy_5_lupa__LuaObject *__pyx_f_7lutorpy_5_lupa_new_
   __pyx_r = __pyx_v_obj;
   goto __pyx_L0;
 
-  /* "lutorpy/_lupa.pyx":671
+  /* "lutorpy/_lupa.pyx":704
  *         return 0
  * 
  * cdef _LuaObject new_lua_object(LuaRuntime runtime, lua_State* L, int n):             # <<<<<<<<<<<<<<
@@ -12138,7 +12242,7 @@ static struct __pyx_obj_7lutorpy_5_lupa__LuaObject *__pyx_f_7lutorpy_5_lupa_new_
   return __pyx_r;
 }
 
-/* "lutorpy/_lupa.pyx":676
+/* "lutorpy/_lupa.pyx":709
  *     return obj
  * 
  * cdef void init_lua_object(_LuaObject obj, LuaRuntime runtime, lua_State* L, int n):             # <<<<<<<<<<<<<<
@@ -12150,7 +12254,7 @@ static void __pyx_f_7lutorpy_5_lupa_init_lua_object(struct __pyx_obj_7lutorpy_5_
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("init_lua_object", 0);
 
-  /* "lutorpy/_lupa.pyx":677
+  /* "lutorpy/_lupa.pyx":710
  * 
  * cdef void init_lua_object(_LuaObject obj, LuaRuntime runtime, lua_State* L, int n):
  *     obj._runtime = runtime             # <<<<<<<<<<<<<<
@@ -12163,7 +12267,7 @@ static void __pyx_f_7lutorpy_5_lupa_init_lua_object(struct __pyx_obj_7lutorpy_5_
   __Pyx_DECREF(((PyObject *)__pyx_v_obj->_runtime));
   __pyx_v_obj->_runtime = __pyx_v_runtime;
 
-  /* "lutorpy/_lupa.pyx":678
+  /* "lutorpy/_lupa.pyx":711
  * cdef void init_lua_object(_LuaObject obj, LuaRuntime runtime, lua_State* L, int n):
  *     obj._runtime = runtime
  *     obj._state = L             # <<<<<<<<<<<<<<
@@ -12172,7 +12276,7 @@ static void __pyx_f_7lutorpy_5_lupa_init_lua_object(struct __pyx_obj_7lutorpy_5_
  */
   __pyx_v_obj->_state = __pyx_v_L;
 
-  /* "lutorpy/_lupa.pyx":679
+  /* "lutorpy/_lupa.pyx":712
  *     obj._runtime = runtime
  *     obj._state = L
  *     lua.lua_pushvalue(L, n)             # <<<<<<<<<<<<<<
@@ -12181,7 +12285,7 @@ static void __pyx_f_7lutorpy_5_lupa_init_lua_object(struct __pyx_obj_7lutorpy_5_
  */
   lua_pushvalue(__pyx_v_L, __pyx_v_n);
 
-  /* "lutorpy/_lupa.pyx":680
+  /* "lutorpy/_lupa.pyx":713
  *     obj._state = L
  *     lua.lua_pushvalue(L, n)
  *     obj._ref = lua.luaL_ref(L, lua.LUA_REGISTRYINDEX)             # <<<<<<<<<<<<<<
@@ -12190,7 +12294,7 @@ static void __pyx_f_7lutorpy_5_lupa_init_lua_object(struct __pyx_obj_7lutorpy_5_
  */
   __pyx_v_obj->_ref = luaL_ref(__pyx_v_L, LUA_REGISTRYINDEX);
 
-  /* "lutorpy/_lupa.pyx":676
+  /* "lutorpy/_lupa.pyx":709
  *     return obj
  * 
  * cdef void init_lua_object(_LuaObject obj, LuaRuntime runtime, lua_State* L, int n):             # <<<<<<<<<<<<<<
@@ -12202,7 +12306,7 @@ static void __pyx_f_7lutorpy_5_lupa_init_lua_object(struct __pyx_obj_7lutorpy_5_
   __Pyx_RefNannyFinishContext();
 }
 
-/* "lutorpy/_lupa.pyx":682
+/* "lutorpy/_lupa.pyx":715
  *     obj._ref = lua.luaL_ref(L, lua.LUA_REGISTRYINDEX)
  * 
  * cdef object lua_object_repr(lua_State* L, encoding):             # <<<<<<<<<<<<<<
@@ -12227,7 +12331,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
   int __pyx_t_9;
   __Pyx_RefNannySetupContext("lua_object_repr", 0);
 
-  /* "lutorpy/_lupa.pyx":684
+  /* "lutorpy/_lupa.pyx":717
  * cdef object lua_object_repr(lua_State* L, encoding):
  *     cdef bytes py_bytes
  *     lua_type = lua.lua_type(L, -1)             # <<<<<<<<<<<<<<
@@ -12236,7 +12340,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  */
   __pyx_v_lua_type = lua_type(__pyx_v_L, -1);
 
-  /* "lutorpy/_lupa.pyx":685
+  /* "lutorpy/_lupa.pyx":718
  *     cdef bytes py_bytes
  *     lua_type = lua.lua_type(L, -1)
  *     if lua_type in (lua.LUA_TTABLE, lua.LUA_TFUNCTION):             # <<<<<<<<<<<<<<
@@ -12247,7 +12351,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     case LUA_TTABLE:
     case LUA_TFUNCTION:
 
-    /* "lutorpy/_lupa.pyx":686
+    /* "lutorpy/_lupa.pyx":719
  *     lua_type = lua.lua_type(L, -1)
  *     if lua_type in (lua.LUA_TTABLE, lua.LUA_TFUNCTION):
  *         ptr = <void*>lua.lua_topointer(L, -1)             # <<<<<<<<<<<<<<
@@ -12256,7 +12360,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  */
     __pyx_v_ptr = ((void *)lua_topointer(__pyx_v_L, -1));
 
-    /* "lutorpy/_lupa.pyx":685
+    /* "lutorpy/_lupa.pyx":718
  *     cdef bytes py_bytes
  *     lua_type = lua.lua_type(L, -1)
  *     if lua_type in (lua.LUA_TTABLE, lua.LUA_TFUNCTION):             # <<<<<<<<<<<<<<
@@ -12265,7 +12369,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  */
     break;
 
-    /* "lutorpy/_lupa.pyx":687
+    /* "lutorpy/_lupa.pyx":720
  *     if lua_type in (lua.LUA_TTABLE, lua.LUA_TFUNCTION):
  *         ptr = <void*>lua.lua_topointer(L, -1)
  *     elif lua_type in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):             # <<<<<<<<<<<<<<
@@ -12275,7 +12379,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     case LUA_TUSERDATA:
     case LUA_TLIGHTUSERDATA:
 
-    /* "lutorpy/_lupa.pyx":688
+    /* "lutorpy/_lupa.pyx":721
  *         ptr = <void*>lua.lua_topointer(L, -1)
  *     elif lua_type in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):
  *         ptr = <void*>lua.lua_touserdata(L, -1)             # <<<<<<<<<<<<<<
@@ -12284,7 +12388,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  */
     __pyx_v_ptr = ((void *)lua_touserdata(__pyx_v_L, -1));
 
-    /* "lutorpy/_lupa.pyx":687
+    /* "lutorpy/_lupa.pyx":720
  *     if lua_type in (lua.LUA_TTABLE, lua.LUA_TFUNCTION):
  *         ptr = <void*>lua.lua_topointer(L, -1)
  *     elif lua_type in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):             # <<<<<<<<<<<<<<
@@ -12293,7 +12397,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  */
     break;
 
-    /* "lutorpy/_lupa.pyx":689
+    /* "lutorpy/_lupa.pyx":722
  *     elif lua_type in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):
  *         ptr = <void*>lua.lua_touserdata(L, -1)
  *     elif lua_type == lua.LUA_TTHREAD:             # <<<<<<<<<<<<<<
@@ -12302,7 +12406,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  */
     case LUA_TTHREAD:
 
-    /* "lutorpy/_lupa.pyx":690
+    /* "lutorpy/_lupa.pyx":723
  *         ptr = <void*>lua.lua_touserdata(L, -1)
  *     elif lua_type == lua.LUA_TTHREAD:
  *         ptr = <void*>lua.lua_tothread(L, -1)             # <<<<<<<<<<<<<<
@@ -12311,7 +12415,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  */
     __pyx_v_ptr = ((void *)lua_tothread(__pyx_v_L, -1));
 
-    /* "lutorpy/_lupa.pyx":689
+    /* "lutorpy/_lupa.pyx":722
  *     elif lua_type in (lua.LUA_TUSERDATA, lua.LUA_TLIGHTUSERDATA):
  *         ptr = <void*>lua.lua_touserdata(L, -1)
  *     elif lua_type == lua.LUA_TTHREAD:             # <<<<<<<<<<<<<<
@@ -12321,7 +12425,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     break;
     default:
 
-    /* "lutorpy/_lupa.pyx":692
+    /* "lutorpy/_lupa.pyx":725
  *         ptr = <void*>lua.lua_tothread(L, -1)
  *     else:
  *         ptr = NULL             # <<<<<<<<<<<<<<
@@ -12332,7 +12436,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     break;
   }
 
-  /* "lutorpy/_lupa.pyx":693
+  /* "lutorpy/_lupa.pyx":726
  *     else:
  *         ptr = NULL
  *     if ptr:             # <<<<<<<<<<<<<<
@@ -12342,19 +12446,19 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
   __pyx_t_1 = (__pyx_v_ptr != 0);
   if (__pyx_t_1) {
 
-    /* "lutorpy/_lupa.pyx":694
+    /* "lutorpy/_lupa.pyx":727
  *         ptr = NULL
  *     if ptr:
  *         py_bytes = PyBytes_FromFormat(             # <<<<<<<<<<<<<<
  *             "<Lua %s at %p>", lua.lua_typename(L, lua_type), ptr)
  *     else:
  */
-    __pyx_t_2 = PyBytes_FromFormat(((char *)"<Lua %s at %p>"), lua_typename(__pyx_v_L, __pyx_v_lua_type), __pyx_v_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 694, __pyx_L1_error)
+    __pyx_t_2 = PyBytes_FromFormat(((char *)"<Lua %s at %p>"), lua_typename(__pyx_v_L, __pyx_v_lua_type), __pyx_v_ptr); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 727, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_py_bytes = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
 
-    /* "lutorpy/_lupa.pyx":693
+    /* "lutorpy/_lupa.pyx":726
  *     else:
  *         ptr = NULL
  *     if ptr:             # <<<<<<<<<<<<<<
@@ -12364,7 +12468,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     goto __pyx_L3;
   }
 
-  /* "lutorpy/_lupa.pyx":697
+  /* "lutorpy/_lupa.pyx":730
  *             "<Lua %s at %p>", lua.lua_typename(L, lua_type), ptr)
  *     else:
  *         py_bytes = PyBytes_FromFormat(             # <<<<<<<<<<<<<<
@@ -12373,21 +12477,21 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  */
   /*else*/ {
 
-    /* "lutorpy/_lupa.pyx":698
+    /* "lutorpy/_lupa.pyx":731
  *     else:
  *         py_bytes = PyBytes_FromFormat(
  *             "<Lua %s>", lua.lua_typename(L, lua_type))             # <<<<<<<<<<<<<<
  *     try:
  *         return py_bytes.decode(encoding)
  */
-    __pyx_t_2 = PyBytes_FromFormat(((char *)"<Lua %s>"), lua_typename(__pyx_v_L, __pyx_v_lua_type)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 697, __pyx_L1_error)
+    __pyx_t_2 = PyBytes_FromFormat(((char *)"<Lua %s>"), lua_typename(__pyx_v_L, __pyx_v_lua_type)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 730, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_py_bytes = ((PyObject*)__pyx_t_2);
     __pyx_t_2 = 0;
   }
   __pyx_L3:;
 
-  /* "lutorpy/_lupa.pyx":699
+  /* "lutorpy/_lupa.pyx":732
  *         py_bytes = PyBytes_FromFormat(
  *             "<Lua %s>", lua.lua_typename(L, lua_type))
  *     try:             # <<<<<<<<<<<<<<
@@ -12403,7 +12507,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     __Pyx_XGOTREF(__pyx_t_5);
     /*try:*/ {
 
-      /* "lutorpy/_lupa.pyx":700
+      /* "lutorpy/_lupa.pyx":733
  *             "<Lua %s>", lua.lua_typename(L, lua_type))
  *     try:
  *         return py_bytes.decode(encoding)             # <<<<<<<<<<<<<<
@@ -12411,7 +12515,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
  *         # safe 'decode'
  */
       __Pyx_XDECREF(__pyx_r);
-      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_py_bytes, __pyx_n_s_decode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 700, __pyx_L4_error)
+      __pyx_t_6 = __Pyx_PyObject_GetAttrStr(__pyx_v_py_bytes, __pyx_n_s_decode); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 733, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_6);
       __pyx_t_7 = NULL;
       if (CYTHON_COMPILING_IN_CPYTHON && likely(PyMethod_Check(__pyx_t_6))) {
@@ -12424,16 +12528,16 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
         }
       }
       if (!__pyx_t_7) {
-        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_encoding); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 700, __pyx_L4_error)
+        __pyx_t_2 = __Pyx_PyObject_CallOneArg(__pyx_t_6, __pyx_v_encoding); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 733, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_2);
       } else {
-        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 700, __pyx_L4_error)
+        __pyx_t_8 = PyTuple_New(1+1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 733, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_8);
         __Pyx_GIVEREF(__pyx_t_7); PyTuple_SET_ITEM(__pyx_t_8, 0, __pyx_t_7); __pyx_t_7 = NULL;
         __Pyx_INCREF(__pyx_v_encoding);
         __Pyx_GIVEREF(__pyx_v_encoding);
         PyTuple_SET_ITEM(__pyx_t_8, 0+1, __pyx_v_encoding);
-        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 700, __pyx_L4_error)
+        __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_6, __pyx_t_8, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 733, __pyx_L4_error)
         __Pyx_GOTREF(__pyx_t_2);
         __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
       }
@@ -12442,7 +12546,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
       __pyx_t_2 = 0;
       goto __pyx_L8_try_return;
 
-      /* "lutorpy/_lupa.pyx":699
+      /* "lutorpy/_lupa.pyx":732
  *         py_bytes = PyBytes_FromFormat(
  *             "<Lua %s>", lua.lua_typename(L, lua_type))
  *     try:             # <<<<<<<<<<<<<<
@@ -12457,7 +12561,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_XDECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-    /* "lutorpy/_lupa.pyx":701
+    /* "lutorpy/_lupa.pyx":734
  *     try:
  *         return py_bytes.decode(encoding)
  *     except UnicodeDecodeError:             # <<<<<<<<<<<<<<
@@ -12467,24 +12571,24 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     __pyx_t_9 = __Pyx_PyErr_ExceptionMatches(__pyx_builtin_UnicodeDecodeError);
     if (__pyx_t_9) {
       __Pyx_AddTraceback("lutorpy._lupa.lua_object_repr", __pyx_clineno, __pyx_lineno, __pyx_filename);
-      if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_6, &__pyx_t_8) < 0) __PYX_ERR(0, 701, __pyx_L6_except_error)
+      if (__Pyx_GetException(&__pyx_t_2, &__pyx_t_6, &__pyx_t_8) < 0) __PYX_ERR(0, 734, __pyx_L6_except_error)
       __Pyx_GOTREF(__pyx_t_2);
       __Pyx_GOTREF(__pyx_t_6);
       __Pyx_GOTREF(__pyx_t_8);
 
-      /* "lutorpy/_lupa.pyx":703
+      /* "lutorpy/_lupa.pyx":736
  *     except UnicodeDecodeError:
  *         # safe 'decode'
  *         return py_bytes.decode('ISO-8859-1')             # <<<<<<<<<<<<<<
  * 
- * cdef extern from "THTensor.h":
+ * cdef class ArrayWrapper:
  */
       __Pyx_XDECREF(__pyx_r);
       if (unlikely(__pyx_v_py_bytes == Py_None)) {
         PyErr_Format(PyExc_AttributeError, "'NoneType' object has no attribute '%s'", "decode");
-        __PYX_ERR(0, 703, __pyx_L6_except_error)
+        __PYX_ERR(0, 736, __pyx_L6_except_error)
       }
-      __pyx_t_7 = __Pyx_decode_bytes(__pyx_v_py_bytes, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeLatin1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 703, __pyx_L6_except_error)
+      __pyx_t_7 = __Pyx_decode_bytes(__pyx_v_py_bytes, 0, PY_SSIZE_T_MAX, NULL, NULL, PyUnicode_DecodeLatin1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 736, __pyx_L6_except_error)
       __Pyx_GOTREF(__pyx_t_7);
       __pyx_r = __pyx_t_7;
       __pyx_t_7 = 0;
@@ -12496,7 +12600,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     goto __pyx_L6_except_error;
     __pyx_L6_except_error:;
 
-    /* "lutorpy/_lupa.pyx":699
+    /* "lutorpy/_lupa.pyx":732
  *         py_bytes = PyBytes_FromFormat(
  *             "<Lua %s>", lua.lua_typename(L, lua_type))
  *     try:             # <<<<<<<<<<<<<<
@@ -12525,7 +12629,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_lua_object_repr(lua_State *__pyx_v_L, P
     goto __pyx_L0;
   }
 
-  /* "lutorpy/_lupa.pyx":682
+  /* "lutorpy/_lupa.pyx":715
  *     obj._ref = lua.luaL_ref(L, lua.LUA_REGISTRYINDEX)
  * 
  * cdef object lua_object_repr(lua_State* L, encoding):             # <<<<<<<<<<<<<<
@@ -12691,7 +12795,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12ArrayWrapper___array__(struct __pyx_
  * 
  * def fromNumpyArray(_LuaObject obj, npArray):             # <<<<<<<<<<<<<<
  *      # Byte , Char , Short , Int , Long , Float , and Double
- *     npType2tensorType = {'int8':'torch.ByteTensor',
+ *     npType2tensorType = {'uint8':'torch.ByteTensor',
  */
 
 /* Python wrapper */
@@ -12781,13 +12885,13 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_6fromNumpyArray(CYTHON_UNUSED PyObject
   /* "lutorpy/_lupa.pyx":775
  * def fromNumpyArray(_LuaObject obj, npArray):
  *      # Byte , Char , Short , Int , Long , Float , and Double
- *     npType2tensorType = {'int8':'torch.ByteTensor',             # <<<<<<<<<<<<<<
+ *     npType2tensorType = {'uint8':'torch.ByteTensor',             # <<<<<<<<<<<<<<
  *                          'int8':'torch.CharTensor',
  *                          'int16':'torch.ShortTensor',
  */
   __pyx_t_1 = PyDict_New(); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 775, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_int8, __pyx_kp_s_torch_ByteTensor) < 0) __PYX_ERR(0, 775, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_uint8, __pyx_kp_s_torch_ByteTensor) < 0) __PYX_ERR(0, 775, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_int8, __pyx_kp_s_torch_CharTensor) < 0) __PYX_ERR(0, 775, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_int16, __pyx_kp_s_torch_ShortTensor) < 0) __PYX_ERR(0, 775, __pyx_L1_error)
   if (PyDict_SetItem(__pyx_t_1, __pyx_n_s_int32, __pyx_kp_s_torch_IntTensor) < 0) __PYX_ERR(0, 775, __pyx_L1_error)
@@ -13024,7 +13128,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_6fromNumpyArray(CYTHON_UNUSED PyObject
  *         np.copyto(npArrayNew, npArray)
  *         return tensor             # <<<<<<<<<<<<<<
  *     else:
- *         print('Unsupported numpy data type:'+str(npArray.dtype))
+ *         raise Exception('Unsupported numpy data type: {type}'.format(type=str(npArray.dtype)))
  */
     __Pyx_XDECREF(__pyx_r);
     __Pyx_INCREF(__pyx_v_tensor);
@@ -13043,26 +13147,42 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_6fromNumpyArray(CYTHON_UNUSED PyObject
   /* "lutorpy/_lupa.pyx":793
  *         return tensor
  *     else:
- *         print('Unsupported numpy data type:'+str(npArray.dtype))             # <<<<<<<<<<<<<<
+ *         raise Exception('Unsupported numpy data type: {type}'.format(type=str(npArray.dtype)))             # <<<<<<<<<<<<<<
  * 
  * @cython.final
  */
   /*else*/ {
-    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_v_npArray, __pyx_n_s_dtype); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 793, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_GetAttrStr(__pyx_kp_s_Unsupported_numpy_data_type_type, __pyx_n_s_format); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 793, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
+    __pyx_t_6 = PyDict_New(); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 793, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_6);
+    __pyx_t_7 = __Pyx_PyObject_GetAttrStr(__pyx_v_npArray, __pyx_n_s_dtype); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 793, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 793, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_1);
+    __Pyx_GIVEREF(__pyx_t_7);
+    PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_7);
+    __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_1, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 793, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+    if (PyDict_SetItem(__pyx_t_6, __pyx_n_s_type, __pyx_t_7) < 0) __PYX_ERR(0, 793, __pyx_L1_error)
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_t_2, __pyx_empty_tuple, __pyx_t_6); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 793, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
+    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
     __pyx_t_6 = PyTuple_New(1); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 793, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_GIVEREF(__pyx_t_2);
-    PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_2);
-    __pyx_t_2 = 0;
-    __pyx_t_2 = __Pyx_PyObject_Call(((PyObject *)(&PyString_Type)), __pyx_t_6, NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 793, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_2);
+    __Pyx_GIVEREF(__pyx_t_7);
+    PyTuple_SET_ITEM(__pyx_t_6, 0, __pyx_t_7);
+    __pyx_t_7 = 0;
+    __pyx_t_7 = __Pyx_PyObject_Call(__pyx_builtin_Exception, __pyx_t_6, NULL); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 793, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_7);
     __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-    __pyx_t_6 = PyNumber_Add(__pyx_kp_s_Unsupported_numpy_data_type, __pyx_t_2); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 793, __pyx_L1_error)
-    __Pyx_GOTREF(__pyx_t_6);
-    __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-    if (__Pyx_PrintOne(0, __pyx_t_6) < 0) __PYX_ERR(0, 793, __pyx_L1_error)
-    __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_Raise(__pyx_t_7, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+    __PYX_ERR(0, 793, __pyx_L1_error)
   }
 
   /* "lutorpy/_lupa.pyx":773
@@ -13070,12 +13190,10 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_6fromNumpyArray(CYTHON_UNUSED PyObject
  * 
  * def fromNumpyArray(_LuaObject obj, npArray):             # <<<<<<<<<<<<<<
  *      # Byte , Char , Short , Int , Long , Float , and Double
- *     npType2tensorType = {'int8':'torch.ByteTensor',
+ *     npType2tensorType = {'uint8':'torch.ByteTensor',
  */
 
   /* function exit code */
-  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
-  goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
   __Pyx_XDECREF(__pyx_t_2);
@@ -17404,7 +17522,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20_getByteNumpyArray(st
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
  * 
- * cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
+ * cdef _TorchTensor new_torch_tensor(LuaRuntime runtime, lua_State* L, int n):
  */
         __pyx_t_4 = ((PyObject *)__pyx_v_self->__pyx_base._runtime);
         __Pyx_INCREF(__pyx_t_4);
@@ -17444,7 +17562,7 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20_getByteNumpyArray(st
  *             lua.lua_settop(L, old_top)
  *             unlock_runtime(self._runtime)             # <<<<<<<<<<<<<<
  * 
- * cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
+ * cdef _TorchTensor new_torch_tensor(LuaRuntime runtime, lua_State* L, int n):
  */
       __pyx_t_4 = ((PyObject *)__pyx_v_self->__pyx_base._runtime);
       __Pyx_INCREF(__pyx_t_4);
@@ -17483,21 +17601,21 @@ static PyObject *__pyx_pf_7lutorpy_5_lupa_12_TorchTensor_20_getByteNumpyArray(st
 /* "lutorpy/_lupa.pyx":1030
  *             unlock_runtime(self._runtime)
  * 
- * cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):             # <<<<<<<<<<<<<<
+ * cdef _TorchTensor new_torch_tensor(LuaRuntime runtime, lua_State* L, int n):             # <<<<<<<<<<<<<<
  *     cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)
  *     init_lua_object(obj, runtime, L, n)
  */
 
-static struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_f_7lutorpy_5_lupa_new_lua_tensor(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_runtime, lua_State *__pyx_v_L, int __pyx_v_n) {
+static struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_f_7lutorpy_5_lupa_new_torch_tensor(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_runtime, lua_State *__pyx_v_L, int __pyx_v_n) {
   struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_v_obj = 0;
   struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("new_lua_tensor", 0);
+  __Pyx_RefNannySetupContext("new_torch_tensor", 0);
 
   /* "lutorpy/_lupa.pyx":1031
  * 
- * cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
+ * cdef _TorchTensor new_torch_tensor(LuaRuntime runtime, lua_State* L, int n):
  *     cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)             # <<<<<<<<<<<<<<
  *     init_lua_object(obj, runtime, L, n)
  *     return obj
@@ -17509,7 +17627,7 @@ static struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_f_7lutorpy_5_lupa_ne
   __pyx_t_1 = 0;
 
   /* "lutorpy/_lupa.pyx":1032
- * cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):
+ * cdef _TorchTensor new_torch_tensor(LuaRuntime runtime, lua_State* L, int n):
  *     cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)
  *     init_lua_object(obj, runtime, L, n)             # <<<<<<<<<<<<<<
  *     return obj
@@ -17532,7 +17650,7 @@ static struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_f_7lutorpy_5_lupa_ne
   /* "lutorpy/_lupa.pyx":1030
  *             unlock_runtime(self._runtime)
  * 
- * cdef _TorchTensor new_lua_tensor(LuaRuntime runtime, lua_State* L, int n):             # <<<<<<<<<<<<<<
+ * cdef _TorchTensor new_torch_tensor(LuaRuntime runtime, lua_State* L, int n):             # <<<<<<<<<<<<<<
  *     cdef _TorchTensor obj = _TorchTensor.__new__(_TorchTensor)
  *     init_lua_object(obj, runtime, L, n)
  */
@@ -17540,7 +17658,7 @@ static struct __pyx_obj_7lutorpy_5_lupa__TorchTensor *__pyx_f_7lutorpy_5_lupa_ne
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("lutorpy._lupa.new_lua_tensor", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("lutorpy._lupa.new_torch_tensor", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XDECREF((PyObject *)__pyx_v_obj);
@@ -23207,7 +23325,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
  *     ret = new_lua_object(runtime, L, n)
  *     if not ret.size is None and not ret.storage is None:             # <<<<<<<<<<<<<<
  *         del ret
- *         ret = new_lua_tensor(runtime, ol, n)
+ *         ret = new_torch_tensor(runtime, ol, n)
  */
   __pyx_t_2 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_ret), __pyx_n_s_size); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1472, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -23232,7 +23350,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
  *     ret = new_lua_object(runtime, L, n)
  *     if not ret.size is None and not ret.storage is None:
  *         del ret             # <<<<<<<<<<<<<<
- *         ret = new_lua_tensor(runtime, ol, n)
+ *         ret = new_torch_tensor(runtime, ol, n)
  *     return ret
  */
     __Pyx_DECREF(((PyObject *)__pyx_v_ret));
@@ -23241,11 +23359,11 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
     /* "lutorpy/_lupa.pyx":1474
  *     if not ret.size is None and not ret.storage is None:
  *         del ret
- *         ret = new_lua_tensor(runtime, ol, n)             # <<<<<<<<<<<<<<
+ *         ret = new_torch_tensor(runtime, ol, n)             # <<<<<<<<<<<<<<
  *     return ret
  * 
  */
-    __pyx_t_2 = ((PyObject *)__pyx_f_7lutorpy_5_lupa_new_lua_tensor(__pyx_v_runtime, __pyx_v_ol, __pyx_v_n)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1474, __pyx_L1_error)
+    __pyx_t_2 = ((PyObject *)__pyx_f_7lutorpy_5_lupa_new_torch_tensor(__pyx_v_runtime, __pyx_v_ol, __pyx_v_n)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 1474, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __pyx_v_ret = ((struct __pyx_obj_7lutorpy_5_lupa__LuaObject *)__pyx_t_2);
     __pyx_t_2 = 0;
@@ -23255,13 +23373,13 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_py_from_lua(struct __pyx_obj_7lutorpy_5
  *     ret = new_lua_object(runtime, L, n)
  *     if not ret.size is None and not ret.storage is None:             # <<<<<<<<<<<<<<
  *         del ret
- *         ret = new_lua_tensor(runtime, ol, n)
+ *         ret = new_torch_tensor(runtime, ol, n)
  */
   }
 
   /* "lutorpy/_lupa.pyx":1475
  *         del ret
- *         ret = new_lua_tensor(runtime, ol, n)
+ *         ret = new_torch_tensor(runtime, ol, n)
  *     return ret             # <<<<<<<<<<<<<<
  * 
  * cdef py_object* unpack_userdata(lua_State *L, int n) nogil:
@@ -23799,7 +23917,7 @@ static int __pyx_f_7lutorpy_5_lupa_py_to_lua(struct __pyx_obj_7lutorpy_5_lupa_Lu
  *     elif isinstance(o, long):
  *         lua.lua_pushnumber(L, <lua.lua_Number>cpython.long.PyLong_AsDouble(o))             # <<<<<<<<<<<<<<
  *         pushed_values_count = 1
- *     elif PY2 and isinstance(o, int):
+ *     elif IS_PY2 and isinstance(o, int):
  */
     __pyx_t_4 = PyLong_AsDouble(__pyx_v_o); if (unlikely(__pyx_t_4 == (-1.0) && PyErr_Occurred())) __PYX_ERR(0, 1522, __pyx_L1_error)
     lua_pushnumber(__pyx_v_L, ((lua_Number)__pyx_t_4));
@@ -23808,7 +23926,7 @@ static int __pyx_f_7lutorpy_5_lupa_py_to_lua(struct __pyx_obj_7lutorpy_5_lupa_Lu
  *     elif isinstance(o, long):
  *         lua.lua_pushnumber(L, <lua.lua_Number>cpython.long.PyLong_AsDouble(o))
  *         pushed_values_count = 1             # <<<<<<<<<<<<<<
- *     elif PY2 and isinstance(o, int):
+ *     elif IS_PY2 and isinstance(o, int):
  *         lua.lua_pushnumber(L, <lua.lua_Number><long>o)
  */
     __pyx_v_pushed_values_count = 1;
@@ -23826,11 +23944,11 @@ static int __pyx_f_7lutorpy_5_lupa_py_to_lua(struct __pyx_obj_7lutorpy_5_lupa_Lu
   /* "lutorpy/_lupa.pyx":1524
  *         lua.lua_pushnumber(L, <lua.lua_Number>cpython.long.PyLong_AsDouble(o))
  *         pushed_values_count = 1
- *     elif PY2 and isinstance(o, int):             # <<<<<<<<<<<<<<
+ *     elif IS_PY2 and isinstance(o, int):             # <<<<<<<<<<<<<<
  *         lua.lua_pushnumber(L, <lua.lua_Number><long>o)
  *         pushed_values_count = 1
  */
-  __pyx_t_1 = (__pyx_v_7lutorpy_5_lupa_PY2 != 0);
+  __pyx_t_1 = (__pyx_v_7lutorpy_5_lupa_IS_PY2 != 0);
   if (__pyx_t_1) {
   } else {
     __pyx_t_2 = __pyx_t_1;
@@ -23844,7 +23962,7 @@ static int __pyx_f_7lutorpy_5_lupa_py_to_lua(struct __pyx_obj_7lutorpy_5_lupa_Lu
 
     /* "lutorpy/_lupa.pyx":1525
  *         pushed_values_count = 1
- *     elif PY2 and isinstance(o, int):
+ *     elif IS_PY2 and isinstance(o, int):
  *         lua.lua_pushnumber(L, <lua.lua_Number><long>o)             # <<<<<<<<<<<<<<
  *         pushed_values_count = 1
  *     elif isinstance(o, bytes):
@@ -23853,7 +23971,7 @@ static int __pyx_f_7lutorpy_5_lupa_py_to_lua(struct __pyx_obj_7lutorpy_5_lupa_Lu
     lua_pushnumber(__pyx_v_L, ((lua_Number)((long)__pyx_t_5)));
 
     /* "lutorpy/_lupa.pyx":1526
- *     elif PY2 and isinstance(o, int):
+ *     elif IS_PY2 and isinstance(o, int):
  *         lua.lua_pushnumber(L, <lua.lua_Number><long>o)
  *         pushed_values_count = 1             # <<<<<<<<<<<<<<
  *     elif isinstance(o, bytes):
@@ -23864,7 +23982,7 @@ static int __pyx_f_7lutorpy_5_lupa_py_to_lua(struct __pyx_obj_7lutorpy_5_lupa_Lu
     /* "lutorpy/_lupa.pyx":1524
  *         lua.lua_pushnumber(L, <lua.lua_Number>cpython.long.PyLong_AsDouble(o))
  *         pushed_values_count = 1
- *     elif PY2 and isinstance(o, int):             # <<<<<<<<<<<<<<
+ *     elif IS_PY2 and isinstance(o, int):             # <<<<<<<<<<<<<<
  *         lua.lua_pushnumber(L, <lua.lua_Number><long>o)
  *         pushed_values_count = 1
  */
@@ -25177,12 +25295,12 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_build_lua_error_message(struct __pyx_ob
 /* "lutorpy/_lupa.pyx":1627
  * # calling into Lua
  * 
- * cdef run_lua(LuaRuntime runtime, bytes lua_code):             # <<<<<<<<<<<<<<
+ * cdef run_lua(LuaRuntime runtime, bytes lua_code, tuple args):             # <<<<<<<<<<<<<<
  *     # locks the runtime
  *     cdef lua_State* L = runtime._state
  */
 
-static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_runtime, PyObject *__pyx_v_lua_code) {
+static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *__pyx_v_runtime, PyObject *__pyx_v_lua_code, PyObject *__pyx_v_args) {
   lua_State *__pyx_v_L;
   int __pyx_v_old_top;
   PyObject *__pyx_r = NULL;
@@ -25208,7 +25326,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lup
   __Pyx_RefNannySetupContext("run_lua", 0);
 
   /* "lutorpy/_lupa.pyx":1629
- * cdef run_lua(LuaRuntime runtime, bytes lua_code):
+ * cdef run_lua(LuaRuntime runtime, bytes lua_code, tuple args):
  *     # locks the runtime
  *     cdef lua_State* L = runtime._state             # <<<<<<<<<<<<<<
  *     cdef bint result
@@ -25265,7 +25383,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lup
  *         if lua.luaL_loadbuffer(L, lua_code, len(lua_code), '<python>'):
  *             raise LuaSyntaxError(build_lua_error_message(             # <<<<<<<<<<<<<<
  *                 runtime, L, u"error loading code: %s", -1))
- *         return execute_lua_call(runtime, L, 0)
+ *         return call_lua(runtime, L, args)
  */
       __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaSyntaxError); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 1635, __pyx_L4_error)
       __Pyx_GOTREF(__pyx_t_7);
@@ -25274,7 +25392,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lup
  *         if lua.luaL_loadbuffer(L, lua_code, len(lua_code), '<python>'):
  *             raise LuaSyntaxError(build_lua_error_message(
  *                 runtime, L, u"error loading code: %s", -1))             # <<<<<<<<<<<<<<
- *         return execute_lua_call(runtime, L, 0)
+ *         return call_lua(runtime, L, args)
  *     finally:
  */
       __pyx_t_8 = __pyx_f_7lutorpy_5_lupa_build_lua_error_message(__pyx_v_runtime, __pyx_v_L, __pyx_kp_u_error_loading_code_s, -1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 1635, __pyx_L4_error)
@@ -25321,12 +25439,12 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lup
     /* "lutorpy/_lupa.pyx":1637
  *             raise LuaSyntaxError(build_lua_error_message(
  *                 runtime, L, u"error loading code: %s", -1))
- *         return execute_lua_call(runtime, L, 0)             # <<<<<<<<<<<<<<
+ *         return call_lua(runtime, L, args)             # <<<<<<<<<<<<<<
  *     finally:
  *         lua.lua_settop(L, old_top)
  */
     __Pyx_XDECREF(__pyx_r);
-    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_execute_lua_call(__pyx_v_runtime, __pyx_v_L, 0); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1637, __pyx_L4_error)
+    __pyx_t_6 = __pyx_f_7lutorpy_5_lupa_call_lua(__pyx_v_runtime, __pyx_v_L, __pyx_v_args); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 1637, __pyx_L4_error)
     __Pyx_GOTREF(__pyx_t_6);
     __pyx_r = __pyx_t_6;
     __pyx_t_6 = 0;
@@ -25334,7 +25452,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lup
   }
 
   /* "lutorpy/_lupa.pyx":1639
- *         return execute_lua_call(runtime, L, 0)
+ *         return call_lua(runtime, L, args)
  *     finally:
  *         lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
  *         unlock_runtime(runtime)
@@ -25392,7 +25510,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lup
       __pyx_r = 0;
 
       /* "lutorpy/_lupa.pyx":1639
- *         return execute_lua_call(runtime, L, 0)
+ *         return call_lua(runtime, L, args)
  *     finally:
  *         lua.lua_settop(L, old_top)             # <<<<<<<<<<<<<<
  *         unlock_runtime(runtime)
@@ -25417,7 +25535,7 @@ static PyObject *__pyx_f_7lutorpy_5_lupa_run_lua(struct __pyx_obj_7lutorpy_5_lup
   /* "lutorpy/_lupa.pyx":1627
  * # calling into Lua
  * 
- * cdef run_lua(LuaRuntime runtime, bytes lua_code):             # <<<<<<<<<<<<<<
+ * cdef run_lua(LuaRuntime runtime, bytes lua_code, tuple args):             # <<<<<<<<<<<<<<
  *     # locks the runtime
  *     cdef lua_State* L = runtime._state
  */
@@ -33419,8 +33537,8 @@ static int __pyx_tp_traverse_7lutorpy_5_lupa_LuaRuntime(PyObject *o, visitproc v
 }
 
 static PyMethodDef __pyx_methods_7lutorpy_5_lupa_LuaRuntime[] = {
-  {"eval", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_5eval, METH_O, __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_4eval},
-  {"execute", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_7execute, METH_O, __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_6execute},
+  {"eval", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_5eval, METH_VARARGS|METH_KEYWORDS, __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_4eval},
+  {"execute", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_7execute, METH_VARARGS|METH_KEYWORDS, __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_6execute},
   {"require", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_9require, METH_O, __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_8require},
   {"globals", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_11globals, METH_NOARGS, __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_10globals},
   {"table", (PyCFunction)__pyx_pw_7lutorpy_5_lupa_10LuaRuntime_13table, METH_VARARGS|METH_KEYWORDS, __pyx_doc_7lutorpy_5_lupa_10LuaRuntime_12table},
@@ -35120,7 +35238,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_b_UTF_8, __pyx_k_UTF_8, sizeof(__pyx_k_UTF_8), 0, 0, 0, 0},
   {&__pyx_kp_s_UTF_8, __pyx_k_UTF_8, sizeof(__pyx_k_UTF_8), 0, 0, 1, 0},
   {&__pyx_n_s_UnicodeDecodeError, __pyx_k_UnicodeDecodeError, sizeof(__pyx_k_UnicodeDecodeError), 0, 0, 1, 1},
-  {&__pyx_kp_s_Unsupported_numpy_data_type, __pyx_k_Unsupported_numpy_data_type, sizeof(__pyx_k_Unsupported_numpy_data_type), 0, 0, 1, 0},
+  {&__pyx_kp_s_Unsupported_numpy_data_type_type, __pyx_k_Unsupported_numpy_data_type_type, sizeof(__pyx_k_Unsupported_numpy_data_type_type), 0, 0, 1, 0},
   {&__pyx_n_s_ValueError, __pyx_k_ValueError, sizeof(__pyx_k_ValueError), 0, 0, 1, 1},
   {&__pyx_kp_s_Warning_failed_to_inject_fromNum, __pyx_k_Warning_failed_to_inject_fromNum, sizeof(__pyx_k_Warning_failed_to_inject_fromNum), 0, 0, 1, 0},
   {&__pyx_n_b__20, __pyx_k__20, sizeof(__pyx_k__20), 0, 0, 0, 1},
@@ -35204,6 +35322,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_kwargs, __pyx_k_kwargs, sizeof(__pyx_k_kwargs), 0, 0, 1, 1},
   {&__pyx_kp_s_lost_reference, __pyx_k_lost_reference, sizeof(__pyx_k_lost_reference), 0, 0, 1, 0},
   {&__pyx_n_s_ltype, __pyx_k_ltype, sizeof(__pyx_k_ltype), 0, 0, 1, 1},
+  {&__pyx_n_s_lua_code, __pyx_k_lua_code, sizeof(__pyx_k_lua_code), 0, 0, 1, 1},
   {&__pyx_n_s_lua_object, __pyx_k_lua_object, sizeof(__pyx_k_lua_object), 0, 0, 1, 1},
   {&__pyx_n_s_lua_type, __pyx_k_lua_type, sizeof(__pyx_k_lua_type), 0, 0, 1, 1},
   {&__pyx_n_s_lua_type_name, __pyx_k_lua_type_name, sizeof(__pyx_k_lua_type_name), 0, 0, 1, 1},
@@ -35266,6 +35385,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_torch_LongTensor, __pyx_k_torch_LongTensor, sizeof(__pyx_k_torch_LongTensor), 0, 0, 1, 0},
   {&__pyx_kp_s_torch_ShortTensor, __pyx_k_torch_ShortTensor, sizeof(__pyx_k_torch_ShortTensor), 0, 0, 1, 0},
   {&__pyx_n_s_type, __pyx_k_type, sizeof(__pyx_k_type), 0, 0, 1, 1},
+  {&__pyx_n_s_uint8, __pyx_k_uint8, sizeof(__pyx_k_uint8), 0, 0, 1, 1},
   {&__pyx_kp_u_unknown_dtype_code_in_numpy_pxd, __pyx_k_unknown_dtype_code_in_numpy_pxd, sizeof(__pyx_k_unknown_dtype_code_in_numpy_pxd), 0, 1, 0, 0},
   {&__pyx_n_s_unpack_returned_tuples, __pyx_k_unpack_returned_tuples, sizeof(__pyx_k_unpack_returned_tuples), 0, 0, 1, 1},
   {&__pyx_n_s_unpacks_lua_table, __pyx_k_unpacks_lua_table, sizeof(__pyx_k_unpacks_lua_table), 0, 0, 1, 1},
@@ -35283,15 +35403,15 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
 };
 static int __Pyx_InitCachedBuiltins(void) {
   __pyx_builtin_ImportError = __Pyx_GetBuiltinName(__pyx_n_s_ImportError); if (!__pyx_builtin_ImportError) __PYX_ERR(0, 46, __pyx_L1_error)
-  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) __PYX_ERR(0, 67, __pyx_L1_error)
+  __pyx_builtin_Exception = __Pyx_GetBuiltinName(__pyx_n_s_Exception); if (!__pyx_builtin_Exception) __PYX_ERR(0, 99, __pyx_L1_error)
   __pyx_builtin_RuntimeError = __Pyx_GetBuiltinName(__pyx_n_s_RuntimeError); if (!__pyx_builtin_RuntimeError) __PYX_ERR(1, 39, __pyx_L1_error)
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 206, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 215, __pyx_L1_error)
-  __pyx_builtin_eval = __Pyx_GetBuiltinName(__pyx_n_s_eval); if (!__pyx_builtin_eval) __PYX_ERR(0, 391, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 459, __pyx_L1_error)
-  __pyx_builtin_UnicodeDecodeError = __Pyx_GetBuiltinName(__pyx_n_s_UnicodeDecodeError); if (!__pyx_builtin_UnicodeDecodeError) __PYX_ERR(0, 584, __pyx_L1_error)
-  __pyx_builtin_object = __Pyx_GetBuiltinName(__pyx_n_s_object); if (!__pyx_builtin_object) __PYX_ERR(0, 599, __pyx_L1_error)
-  __pyx_builtin_AttributeError = __Pyx_GetBuiltinName(__pyx_n_s_AttributeError); if (!__pyx_builtin_AttributeError) __PYX_ERR(0, 629, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 238, __pyx_L1_error)
+  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(0, 247, __pyx_L1_error)
+  __pyx_builtin_eval = __Pyx_GetBuiltinName(__pyx_n_s_eval); if (!__pyx_builtin_eval) __PYX_ERR(0, 424, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 492, __pyx_L1_error)
+  __pyx_builtin_UnicodeDecodeError = __Pyx_GetBuiltinName(__pyx_n_s_UnicodeDecodeError); if (!__pyx_builtin_UnicodeDecodeError) __PYX_ERR(0, 617, __pyx_L1_error)
+  __pyx_builtin_object = __Pyx_GetBuiltinName(__pyx_n_s_object); if (!__pyx_builtin_object) __PYX_ERR(0, 632, __pyx_L1_error)
+  __pyx_builtin_AttributeError = __Pyx_GetBuiltinName(__pyx_n_s_AttributeError); if (!__pyx_builtin_AttributeError) __PYX_ERR(0, 662, __pyx_L1_error)
   __pyx_builtin_IndexError = __Pyx_GetBuiltinName(__pyx_n_s_IndexError); if (!__pyx_builtin_IndexError) __PYX_ERR(0, 807, __pyx_L1_error)
   __pyx_builtin_StopIteration = __Pyx_GetBuiltinName(__pyx_n_s_StopIteration); if (!__pyx_builtin_StopIteration) __PYX_ERR(0, 1261, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 1606, __pyx_L1_error)
@@ -35328,215 +35448,215 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "lutorpy/_lupa.pyx":199
+  /* "lutorpy/_lupa.pyx":231
  *         cdef lua_State* L = lua.luaL_newstate()
  *         if L is NULL:
  *             raise LuaError("Failed to initialise Lua runtime")             # <<<<<<<<<<<<<<
  *         self._state = L
  *         self._lock = FastRLock()
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Failed_to_initialise_Lua_runtime); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 199, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_kp_s_Failed_to_initialise_Lua_runtime); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
 
-  /* "lutorpy/_lupa.pyx":206
+  /* "lutorpy/_lupa.pyx":238
  *         self._source_encoding = _asciiOrNone(source_encoding) or self._encoding or b'UTF-8'
  *         if attribute_filter is not None and not callable(attribute_filter):
  *             raise ValueError("attribute_filter must be callable")             # <<<<<<<<<<<<<<
  *         self._attribute_filter = attribute_filter
  *         self._unpack_returned_tuples = unpack_returned_tuples
  */
-  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_attribute_filter_must_be_callabl); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 206, __pyx_L1_error)
+  __pyx_tuple__4 = PyTuple_Pack(1, __pyx_kp_s_attribute_filter_must_be_callabl); if (unlikely(!__pyx_tuple__4)) __PYX_ERR(0, 238, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__4);
   __Pyx_GIVEREF(__pyx_tuple__4);
 
-  /* "lutorpy/_lupa.pyx":222
+  /* "lutorpy/_lupa.pyx":254
  *                     raise_error = True
  *             if raise_error:
  *                 raise ValueError("attribute_handlers must be a sequence of two callables")             # <<<<<<<<<<<<<<
  *             if attribute_filter and (getter is not None or setter is not None):
  *                 raise ValueError("attribute_filter and attribute_handlers are mutually exclusive")
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_attribute_handlers_must_be_a_seq); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_kp_s_attribute_handlers_must_be_a_seq); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 254, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
 
-  /* "lutorpy/_lupa.pyx":224
+  /* "lutorpy/_lupa.pyx":256
  *                 raise ValueError("attribute_handlers must be a sequence of two callables")
  *             if attribute_filter and (getter is not None or setter is not None):
  *                 raise ValueError("attribute_filter and attribute_handlers are mutually exclusive")             # <<<<<<<<<<<<<<
  *             self._attribute_getter, self._attribute_setter = getter, setter
  * 
  */
-  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_attribute_filter_and_attribute_h); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_tuple__6 = PyTuple_Pack(1, __pyx_kp_s_attribute_filter_and_attribute_h); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(0, 256, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__6);
   __Pyx_GIVEREF(__pyx_tuple__6);
 
-  /* "lutorpy/_lupa.pyx":232
- *         lua.lua_atpanic(L, <lua.lua_CFunction>1)
+  /* "lutorpy/_lupa.pyx":265
+ * 
  *         try:
  *             self.require("torch")             # <<<<<<<<<<<<<<
  *             torch = self.eval("torch")
  *             torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)
  */
-  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_n_s_torch); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 232, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(1, __pyx_n_s_torch); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
 
-  /* "lutorpy/_lupa.pyx":233
+  /* "lutorpy/_lupa.pyx":266
  *         try:
  *             self.require("torch")
  *             torch = self.eval("torch")             # <<<<<<<<<<<<<<
  *             torch.fromNumpyArray = lambda x: fromNumpyArray(torch, x)
  *         except:
  */
-  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_n_s_torch); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 233, __pyx_L1_error)
+  __pyx_tuple__8 = PyTuple_Pack(1, __pyx_n_s_torch); if (unlikely(!__pyx_tuple__8)) __PYX_ERR(0, 266, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__8);
   __Pyx_GIVEREF(__pyx_tuple__8);
 
-  /* "lutorpy/_lupa.pyx":278
+  /* "lutorpy/_lupa.pyx":311
  *         cdef lua_State *L = self._state
  *         if not isinstance(modulename, (bytes, unicode)):
  *             raise TypeError("modulename must be a string")             # <<<<<<<<<<<<<<
  *         lock_runtime(self)
  *         old_top = lua.lua_gettop(L)
  */
-  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_modulename_must_be_a_string); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 278, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(1, __pyx_kp_s_modulename_must_be_a_string); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 311, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
 
-  /* "lutorpy/_lupa.pyx":284
+  /* "lutorpy/_lupa.pyx":317
  *             lua.lua_getglobal(L, 'require')
  *             if lua.lua_isnil(L, -1):
  *                 raise LuaError("require is not defined")             # <<<<<<<<<<<<<<
  *             return call_lua(self, L, (modulename,))
  *         finally:
  */
-  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_require_is_not_defined); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 284, __pyx_L1_error)
+  __pyx_tuple__10 = PyTuple_Pack(1, __pyx_kp_s_require_is_not_defined); if (unlikely(!__pyx_tuple__10)) __PYX_ERR(0, 317, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__10);
   __Pyx_GIVEREF(__pyx_tuple__10);
 
-  /* "lutorpy/_lupa.pyx":301
+  /* "lutorpy/_lupa.pyx":334
  *             lua.lua_getglobal(L, '_G')
  *             if lua.lua_isnil(L, -1):
  *                 raise LuaError("globals not defined")             # <<<<<<<<<<<<<<
  *             return py_from_lua(self, L, -1)
  *         finally:
  */
-  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_globals_not_defined); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 301, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(1, __pyx_kp_s_globals_not_defined); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 334, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
 
-  /* "lutorpy/_lupa.pyx":422
+  /* "lutorpy/_lupa.pyx":455
  *     """
  *     @wraps(func)
  *     def wrapper(*args):             # <<<<<<<<<<<<<<
  *         args, kwargs = _fix_args_kwargs(args)
  *         return func(*args, **kwargs)
  */
-  __pyx_tuple__12 = PyTuple_Pack(2, __pyx_n_s_args, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 422, __pyx_L1_error)
+  __pyx_tuple__12 = PyTuple_Pack(2, __pyx_n_s_args, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__12)) __PYX_ERR(0, 455, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__12);
   __Pyx_GIVEREF(__pyx_tuple__12);
-  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_VARARGS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_wrapper, 422, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 422, __pyx_L1_error)
+  __pyx_codeobj__13 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_VARARGS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__12, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_wrapper, 455, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__13)) __PYX_ERR(0, 455, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":434
+  /* "lutorpy/_lupa.pyx":467
  *     """
  *     @wraps(meth)
  *     def wrapper(self, *args):             # <<<<<<<<<<<<<<
  *         args, kwargs = _fix_args_kwargs(args)
  *         return meth(self, *args, **kwargs)
  */
-  __pyx_tuple__14 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_args, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 434, __pyx_L1_error)
+  __pyx_tuple__14 = PyTuple_Pack(3, __pyx_n_s_self, __pyx_n_s_args, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__14)) __PYX_ERR(0, 467, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__14);
   __Pyx_GIVEREF(__pyx_tuple__14);
-  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_VARARGS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_wrapper, 434, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 434, __pyx_L1_error)
+  __pyx_codeobj__15 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, CO_VARARGS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__14, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_wrapper, 467, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__15)) __PYX_ERR(0, 467, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":476
+  /* "lutorpy/_lupa.pyx":509
  * cdef inline int lock_runtime(LuaRuntime runtime) except -1:
  *     if not lock_lock(runtime._lock, pythread.PyThread_get_thread_ident(), True):
  *         raise LuaError("Failed to acquire thread lock")             # <<<<<<<<<<<<<<
  *     return 0
  * 
  */
-  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_Failed_to_acquire_thread_lock); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 476, __pyx_L1_error)
+  __pyx_tuple__16 = PyTuple_Pack(1, __pyx_kp_s_Failed_to_acquire_thread_lock); if (unlikely(!__pyx_tuple__16)) __PYX_ERR(0, 509, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__16);
   __Pyx_GIVEREF(__pyx_tuple__16);
 
-  /* "lutorpy/_lupa.pyx":497
+  /* "lutorpy/_lupa.pyx":530
  * 
  *     def __init__(self):
  *         raise TypeError("Type cannot be instantiated manually")             # <<<<<<<<<<<<<<
  * 
  *     def __dealloc__(self):
  */
-  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_Type_cannot_be_instantiated_manu); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 497, __pyx_L1_error)
+  __pyx_tuple__17 = PyTuple_Pack(1, __pyx_kp_s_Type_cannot_be_instantiated_manu); if (unlikely(!__pyx_tuple__17)) __PYX_ERR(0, 530, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__17);
   __Pyx_GIVEREF(__pyx_tuple__17);
 
-  /* "lutorpy/_lupa.pyx":518
+  /* "lutorpy/_lupa.pyx":551
  *         if lua.lua_isnil(L, -1):
  *             lua.lua_pop(L, 1)
  *             raise LuaError("lost reference")             # <<<<<<<<<<<<<<
  * 
  *     def __call__(self, *args):
  */
-  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_lost_reference); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 518, __pyx_L1_error)
+  __pyx_tuple__18 = PyTuple_Pack(1, __pyx_kp_s_lost_reference); if (unlikely(!__pyx_tuple__18)) __PYX_ERR(0, 551, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__18);
   __Pyx_GIVEREF(__pyx_tuple__18);
 
-  /* "lutorpy/_lupa.pyx":554
+  /* "lutorpy/_lupa.pyx":587
  *     def __iter__(self):
  *         # if not provided, iteration will try item access and call into Lua
  *         raise TypeError("iteration is only supported for tables")             # <<<<<<<<<<<<<<
  * 
  *     def __repr__(self):
  */
-  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_iteration_is_only_supported_for); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 554, __pyx_L1_error)
+  __pyx_tuple__19 = PyTuple_Pack(1, __pyx_kp_s_iteration_is_only_supported_for); if (unlikely(!__pyx_tuple__19)) __PYX_ERR(0, 587, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__19);
   __Pyx_GIVEREF(__pyx_tuple__19);
 
-  /* "lutorpy/_lupa.pyx":605
+  /* "lutorpy/_lupa.pyx":638
  *                 return object.__getattr__(self, name)
  *         ret = self._getitem(name, is_attr_access=True)
  *         if ret == None and name.startswith('_'):             # <<<<<<<<<<<<<<
  *             newname = name[1:]
  *             ret = self._getitem(newname, is_attr_access=True)
  */
-  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_n_s__21); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 605, __pyx_L1_error)
+  __pyx_tuple__22 = PyTuple_Pack(1, __pyx_n_s__21); if (unlikely(!__pyx_tuple__22)) __PYX_ERR(0, 638, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__22);
   __Pyx_GIVEREF(__pyx_tuple__22);
 
-  /* "lutorpy/_lupa.pyx":606
+  /* "lutorpy/_lupa.pyx":639
  *         ret = self._getitem(name, is_attr_access=True)
  *         if ret == None and name.startswith('_'):
  *             newname = name[1:]             # <<<<<<<<<<<<<<
  *             ret = self._getitem(newname, is_attr_access=True)
  *             if not ret is None and isinstance(ret, _LuaFunction):
  */
-  __pyx_slice__23 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__23)) __PYX_ERR(0, 606, __pyx_L1_error)
+  __pyx_slice__23 = PySlice_New(__pyx_int_1, Py_None, Py_None); if (unlikely(!__pyx_slice__23)) __PYX_ERR(0, 639, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_slice__23);
   __Pyx_GIVEREF(__pyx_slice__23);
 
-  /* "lutorpy/_lupa.pyx":609
+  /* "lutorpy/_lupa.pyx":642
  *             ret = self._getitem(newname, is_attr_access=True)
  *             if not ret is None and isinstance(ret, _LuaFunction):
  *                 def self_prepending_function(*args, **kwargs):             # <<<<<<<<<<<<<<
  *                     return ret(self,*args, **kwargs)
  *                 return self_prepending_function
  */
-  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_args, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_tuple__24 = PyTuple_Pack(2, __pyx_n_s_args, __pyx_n_s_kwargs); if (unlikely(!__pyx_tuple__24)) __PYX_ERR(0, 642, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__24);
   __Pyx_GIVEREF(__pyx_tuple__24);
-  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_self_prepending_function, 609, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 609, __pyx_L1_error)
+  __pyx_codeobj__25 = (PyObject*)__Pyx_PyCode_New(0, 0, 2, 0, CO_VARARGS|CO_VARKEYWORDS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__24, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_self_prepending_function, 642, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__25)) __PYX_ERR(0, 642, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":629
+  /* "lutorpy/_lupa.pyx":662
  *             if lua_type == lua.LUA_TFUNCTION or lua_type == lua.LUA_TTHREAD:
  *                 lua.lua_pop(L, 1)
  *                 raise (AttributeError if is_attr_access else TypeError)(             # <<<<<<<<<<<<<<
  *                     "item/attribute access not supported on functions")
  *             # table[nil] fails, so map None -> python.none for Lua tables
  */
-  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_kp_s_item_attribute_access_not_suppor); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 629, __pyx_L1_error)
+  __pyx_tuple__26 = PyTuple_Pack(1, __pyx_kp_s_item_attribute_access_not_suppor); if (unlikely(!__pyx_tuple__26)) __PYX_ERR(0, 662, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__26);
   __Pyx_GIVEREF(__pyx_tuple__26);
 
@@ -35815,48 +35935,48 @@ static int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__53);
   __Pyx_GIVEREF(__pyx_tuple__53);
 
-  /* "lutorpy/_lupa.pyx":77
+  /* "lutorpy/_lupa.pyx":109
  * 
  * 
  * def lua_type(obj):             # <<<<<<<<<<<<<<
  *     """
  *     Return the Lua type name of a wrapped object as string, as provided
  */
-  __pyx_tuple__54 = PyTuple_Pack(6, __pyx_n_s_obj, __pyx_n_s_lua_object, __pyx_n_s_L, __pyx_n_s_old_top, __pyx_n_s_lua_type_name, __pyx_n_s_ltype); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_tuple__54 = PyTuple_Pack(6, __pyx_n_s_obj, __pyx_n_s_lua_object, __pyx_n_s_L, __pyx_n_s_old_top, __pyx_n_s_lua_type_name, __pyx_n_s_ltype); if (unlikely(!__pyx_tuple__54)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__54);
   __Pyx_GIVEREF(__pyx_tuple__54);
-  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(1, 0, 6, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_lua_type, 77, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 77, __pyx_L1_error)
+  __pyx_codeobj__55 = (PyObject*)__Pyx_PyCode_New(1, 0, 6, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__54, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_lua_type, 109, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__55)) __PYX_ERR(0, 109, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":402
+  /* "lutorpy/_lupa.pyx":435
  * # from Lua scripts
  * 
  * def unpacks_lua_table(func):             # <<<<<<<<<<<<<<
  *     """
  *     A decorator to make the decorated function receive kwargs
  */
-  __pyx_tuple__56 = PyTuple_Pack(3, __pyx_n_s_func, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __pyx_tuple__56 = PyTuple_Pack(3, __pyx_n_s_func, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__56)) __PYX_ERR(0, 435, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__56);
   __Pyx_GIVEREF(__pyx_tuple__56);
-  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_unpacks_lua_table, 402, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 402, __pyx_L1_error)
+  __pyx_codeobj__57 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__56, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_unpacks_lua_table, 435, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__57)) __PYX_ERR(0, 435, __pyx_L1_error)
 
-  /* "lutorpy/_lupa.pyx":428
+  /* "lutorpy/_lupa.pyx":461
  * 
  * 
  * def unpacks_lua_table_method(meth):             # <<<<<<<<<<<<<<
  *     """
  *     This is :func:`unpacks_lua_table` for methods
  */
-  __pyx_tuple__58 = PyTuple_Pack(3, __pyx_n_s_meth, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_tuple__58 = PyTuple_Pack(3, __pyx_n_s_meth, __pyx_n_s_wrapper, __pyx_n_s_wrapper); if (unlikely(!__pyx_tuple__58)) __PYX_ERR(0, 461, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__58);
   __Pyx_GIVEREF(__pyx_tuple__58);
-  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_unpacks_lua_table_method, 428, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 428, __pyx_L1_error)
+  __pyx_codeobj__59 = (PyObject*)__Pyx_PyCode_New(1, 0, 3, 0, 0, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__58, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_home_wei_lutorpy_lutorpy__lupa, __pyx_n_s_unpacks_lua_table_method, 461, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__59)) __PYX_ERR(0, 461, __pyx_L1_error)
 
   /* "lutorpy/_lupa.pyx":773
  *         #free(<void*>self.data_ptr)
  * 
  * def fromNumpyArray(_LuaObject obj, npArray):             # <<<<<<<<<<<<<<
  *      # Byte , Char , Short , Int , Long , Float , and Double
- *     npType2tensorType = {'int8':'torch.ByteTensor',
+ *     npType2tensorType = {'uint8':'torch.ByteTensor',
  */
   __pyx_tuple__60 = PyTuple_Pack(8, __pyx_n_s_obj, __pyx_n_s_npArray, __pyx_n_s_npType2tensorType, __pyx_n_s_dtype, __pyx_n_s_tensorType, __pyx_n_s_t, __pyx_n_s_tensor, __pyx_n_s_npArrayNew); if (unlikely(!__pyx_tuple__60)) __PYX_ERR(0, 773, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__60);
@@ -36008,19 +36128,19 @@ PyMODINIT_FUNC PyInit__lupa(void)
   __pyx_vtable_7lutorpy_5_lupa_LuaRuntime.store_raised_exception = (int (*)(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *))__pyx_f_7lutorpy_5_lupa_10LuaRuntime_store_raised_exception;
   __pyx_vtable_7lutorpy_5_lupa_LuaRuntime.register_py_object = (int (*)(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, PyObject *, PyObject *, PyObject *))__pyx_f_7lutorpy_5_lupa_10LuaRuntime_register_py_object;
   __pyx_vtable_7lutorpy_5_lupa_LuaRuntime.init_python_lib = (int (*)(struct __pyx_obj_7lutorpy_5_lupa_LuaRuntime *, int, int))__pyx_f_7lutorpy_5_lupa_10LuaRuntime_init_python_lib;
-  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa_LuaRuntime) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa_LuaRuntime) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
   __pyx_type_7lutorpy_5_lupa_LuaRuntime.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_7lutorpy_5_lupa_LuaRuntime.tp_dict, __pyx_vtabptr_7lutorpy_5_lupa_LuaRuntime) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
-  if (PyObject_SetAttrString(__pyx_m, "LuaRuntime", (PyObject *)&__pyx_type_7lutorpy_5_lupa_LuaRuntime) < 0) __PYX_ERR(0, 114, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_7lutorpy_5_lupa_LuaRuntime.tp_dict, __pyx_vtabptr_7lutorpy_5_lupa_LuaRuntime) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
+  if (PyObject_SetAttrString(__pyx_m, "LuaRuntime", (PyObject *)&__pyx_type_7lutorpy_5_lupa_LuaRuntime) < 0) __PYX_ERR(0, 146, __pyx_L1_error)
   __pyx_ptype_7lutorpy_5_lupa_LuaRuntime = &__pyx_type_7lutorpy_5_lupa_LuaRuntime;
   __pyx_vtabptr_7lutorpy_5_lupa__LuaObject = &__pyx_vtable_7lutorpy_5_lupa__LuaObject;
   __pyx_vtable_7lutorpy_5_lupa__LuaObject.push_lua_object = (int (*)(struct __pyx_obj_7lutorpy_5_lupa__LuaObject *))__pyx_f_7lutorpy_5_lupa_10_LuaObject_push_lua_object;
   __pyx_vtable_7lutorpy_5_lupa__LuaObject._len = (size_t (*)(struct __pyx_obj_7lutorpy_5_lupa__LuaObject *))__pyx_f_7lutorpy_5_lupa_10_LuaObject__len;
   __pyx_vtable_7lutorpy_5_lupa__LuaObject._getitem = (PyObject *(*)(struct __pyx_obj_7lutorpy_5_lupa__LuaObject *, PyObject *, int))__pyx_f_7lutorpy_5_lupa_10_LuaObject__getitem;
   __pyx_vtable_7lutorpy_5_lupa__LuaObject._setitem = (int (*)(struct __pyx_obj_7lutorpy_5_lupa__LuaObject *, PyObject *, PyObject *))__pyx_f_7lutorpy_5_lupa_10_LuaObject__setitem;
-  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa__LuaObject) < 0) __PYX_ERR(0, 489, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa__LuaObject) < 0) __PYX_ERR(0, 522, __pyx_L1_error)
   __pyx_type_7lutorpy_5_lupa__LuaObject.tp_print = 0;
-  if (__Pyx_SetVtable(__pyx_type_7lutorpy_5_lupa__LuaObject.tp_dict, __pyx_vtabptr_7lutorpy_5_lupa__LuaObject) < 0) __PYX_ERR(0, 489, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_type_7lutorpy_5_lupa__LuaObject.tp_dict, __pyx_vtabptr_7lutorpy_5_lupa__LuaObject) < 0) __PYX_ERR(0, 522, __pyx_L1_error)
   __pyx_ptype_7lutorpy_5_lupa__LuaObject = &__pyx_type_7lutorpy_5_lupa__LuaObject;
   __pyx_vtabptr_7lutorpy_5_lupa_ArrayWrapper = &__pyx_vtable_7lutorpy_5_lupa_ArrayWrapper;
   __pyx_vtable_7lutorpy_5_lupa_ArrayWrapper.set_data = (PyObject *(*)(struct __pyx_obj_7lutorpy_5_lupa_ArrayWrapper *, int, void *, int))__pyx_f_7lutorpy_5_lupa_12ArrayWrapper_set_data;
@@ -36072,16 +36192,16 @@ PyMODINIT_FUNC PyInit__lupa(void)
   if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa__PyProtocolWrapper) < 0) __PYX_ERR(0, 1408, __pyx_L1_error)
   __pyx_type_7lutorpy_5_lupa__PyProtocolWrapper.tp_print = 0;
   __pyx_ptype_7lutorpy_5_lupa__PyProtocolWrapper = &__pyx_type_7lutorpy_5_lupa__PyProtocolWrapper;
-  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa___pyx_scope_struct____cinit__) < 0) __PYX_ERR(0, 192, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa___pyx_scope_struct____cinit__) < 0) __PYX_ERR(0, 224, __pyx_L1_error)
   __pyx_type_7lutorpy_5_lupa___pyx_scope_struct____cinit__.tp_print = 0;
   __pyx_ptype_7lutorpy_5_lupa___pyx_scope_struct____cinit__ = &__pyx_type_7lutorpy_5_lupa___pyx_scope_struct____cinit__;
-  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_1_unpacks_lua_table) < 0) __PYX_ERR(0, 402, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_1_unpacks_lua_table) < 0) __PYX_ERR(0, 435, __pyx_L1_error)
   __pyx_type_7lutorpy_5_lupa___pyx_scope_struct_1_unpacks_lua_table.tp_print = 0;
   __pyx_ptype_7lutorpy_5_lupa___pyx_scope_struct_1_unpacks_lua_table = &__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_1_unpacks_lua_table;
-  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_2_unpacks_lua_table_method) < 0) __PYX_ERR(0, 428, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_2_unpacks_lua_table_method) < 0) __PYX_ERR(0, 461, __pyx_L1_error)
   __pyx_type_7lutorpy_5_lupa___pyx_scope_struct_2_unpacks_lua_table_method.tp_print = 0;
   __pyx_ptype_7lutorpy_5_lupa___pyx_scope_struct_2_unpacks_lua_table_method = &__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_2_unpacks_lua_table_method;
-  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_3___getattr__) < 0) __PYX_ERR(0, 595, __pyx_L1_error)
+  if (PyType_Ready(&__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_3___getattr__) < 0) __PYX_ERR(0, 628, __pyx_L1_error)
   __pyx_type_7lutorpy_5_lupa___pyx_scope_struct_3___getattr__.tp_print = 0;
   __pyx_ptype_7lutorpy_5_lupa___pyx_scope_struct_3___getattr__ = &__pyx_type_7lutorpy_5_lupa___pyx_scope_struct_3___getattr__;
   /*--- Type import code ---*/
@@ -36322,125 +36442,125 @@ PyMODINIT_FUNC PyInit__lupa(void)
   /* "lutorpy/_lupa.pyx":50
  * 
  * DEF POBJECT = b"POBJECT" # as used by LunaticPython
- * cdef int PY2 = PY_MAJOR_VERSION == 2             # <<<<<<<<<<<<<<
+ * cdef int IS_PY2 = PY_MAJOR_VERSION == 2             # <<<<<<<<<<<<<<
  * 
  * cdef enum WrappedObjectFlags:
  */
-  __pyx_v_7lutorpy_5_lupa_PY2 = (PY_MAJOR_VERSION == 2);
+  __pyx_v_7lutorpy_5_lupa_IS_PY2 = (PY_MAJOR_VERSION == 2);
 
-  /* "lutorpy/_lupa.pyx":67
- * 
- * 
- * class LuaError(Exception):             # <<<<<<<<<<<<<<
- *     """Base class for errors in the Lua runtime.
- *     """
- */
-  __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __Pyx_INCREF(__pyx_builtin_Exception);
-  __Pyx_GIVEREF(__pyx_builtin_Exception);
-  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_builtin_Exception);
-  __pyx_t_1 = __Pyx_CalculateMetaclass(NULL, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare(__pyx_t_1, __pyx_t_7, __pyx_n_s_LuaError, __pyx_n_s_LuaError, (PyObject *) NULL, __pyx_n_s_lutorpy__lupa, __pyx_kp_s_Base_class_for_errors_in_the_Lua); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_LuaError, __pyx_t_7, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LuaError, __pyx_t_8) < 0) __PYX_ERR(0, 67, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-
-  /* "lutorpy/_lupa.pyx":72
- * 
- * 
- * class LuaSyntaxError(LuaError):             # <<<<<<<<<<<<<<
- *     """Syntax error in Lua code.
- *     """
- */
-  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_GIVEREF(__pyx_t_7);
-  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_7);
-  __pyx_t_7 = 0;
-  __pyx_t_7 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_2 = __Pyx_Py3MetaclassPrepare(__pyx_t_7, __pyx_t_1, __pyx_n_s_LuaSyntaxError, __pyx_n_s_LuaSyntaxError, (PyObject *) NULL, __pyx_n_s_lutorpy__lupa, __pyx_kp_s_Syntax_error_in_Lua_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_8 = __Pyx_Py3ClassCreate(__pyx_t_7, __pyx_n_s_LuaSyntaxError, __pyx_t_1, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_8);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LuaSyntaxError, __pyx_t_8) < 0) __PYX_ERR(0, 72, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
-  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
-  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "lutorpy/_lupa.pyx":77
- * 
- * 
- * def lua_type(obj):             # <<<<<<<<<<<<<<
- *     """
- *     Return the Lua type name of a wrapped object as string, as provided
- */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_1lua_type, 0, __pyx_n_s_lua_type, NULL, __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 77, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_lua_type, __pyx_t_1) < 0) __PYX_ERR(0, 77, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "lutorpy/_lupa.pyx":402
- * # from Lua scripts
- * 
- * def unpacks_lua_table(func):             # <<<<<<<<<<<<<<
- *     """
- *     A decorator to make the decorated function receive kwargs
- */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_3unpacks_lua_table, 0, __pyx_n_s_unpacks_lua_table, NULL, __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 402, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unpacks_lua_table, __pyx_t_1) < 0) __PYX_ERR(0, 402, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "lutorpy/_lupa.pyx":428
- * 
- * 
- * def unpacks_lua_table_method(meth):             # <<<<<<<<<<<<<<
- *     """
- *     This is :func:`unpacks_lua_table` for methods
- */
-  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_5unpacks_lua_table_method, 0, __pyx_n_s_unpacks_lua_table_method, NULL, __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 428, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unpacks_lua_table_method, __pyx_t_1) < 0) __PYX_ERR(0, 428, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-
-  /* "lutorpy/_lupa.pyx":726
+  /* "lutorpy/_lupa.pyx":87
  * 
  * # Import the Python-level symbols of numpy
  * import numpy as np             # <<<<<<<<<<<<<<
  * 
  * # Import the C-level symbols of numpy
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 726, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_1) < 0) __PYX_ERR(0, 726, __pyx_L1_error)
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __pyx_t_7 = __Pyx_Import(__pyx_n_s_numpy, 0, 0); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_np, __pyx_t_7) < 0) __PYX_ERR(0, 87, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
 
-  /* "lutorpy/_lupa.pyx":733
+  /* "lutorpy/_lupa.pyx":94
  * # Numpy must be initialized. When using numpy from C or Cython you must
  * # _always_ do that, or you will have segfaults
  * np.import_array()             # <<<<<<<<<<<<<<
  * 
- * from libc.stdlib cimport free
+ * #from libc.stdlib cimport free
  */
   import_array();
+
+  /* "lutorpy/_lupa.pyx":99
+ * from cpython cimport PyObject, Py_INCREF
+ * 
+ * class LuaError(Exception):             # <<<<<<<<<<<<<<
+ *     """Base class for errors in the Lua runtime.
+ *     """
+ */
+  __pyx_t_7 = PyTuple_New(1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __Pyx_INCREF(__pyx_builtin_Exception);
+  __Pyx_GIVEREF(__pyx_builtin_Exception);
+  PyTuple_SET_ITEM(__pyx_t_7, 0, __pyx_builtin_Exception);
+  __pyx_t_1 = __Pyx_CalculateMetaclass(NULL, __pyx_t_7); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare(__pyx_t_1, __pyx_t_7, __pyx_n_s_LuaError, __pyx_n_s_LuaError, (PyObject *) NULL, __pyx_n_s_lutorpy__lupa, __pyx_kp_s_Base_class_for_errors_in_the_Lua); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_8 = __Pyx_Py3ClassCreate(__pyx_t_1, __pyx_n_s_LuaError, __pyx_t_7, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 99, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LuaError, __pyx_t_8) < 0) __PYX_ERR(0, 99, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+
+  /* "lutorpy/_lupa.pyx":104
+ * 
+ * 
+ * class LuaSyntaxError(LuaError):             # <<<<<<<<<<<<<<
+ *     """Syntax error in Lua code.
+ *     """
+ */
+  __pyx_t_7 = __Pyx_GetModuleGlobalName(__pyx_n_s_LuaError); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_1 = PyTuple_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  __Pyx_GIVEREF(__pyx_t_7);
+  PyTuple_SET_ITEM(__pyx_t_1, 0, __pyx_t_7);
+  __pyx_t_7 = 0;
+  __pyx_t_7 = __Pyx_CalculateMetaclass(NULL, __pyx_t_1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_7);
+  __pyx_t_2 = __Pyx_Py3MetaclassPrepare(__pyx_t_7, __pyx_t_1, __pyx_n_s_LuaSyntaxError, __pyx_n_s_LuaSyntaxError, (PyObject *) NULL, __pyx_n_s_lutorpy__lupa, __pyx_kp_s_Syntax_error_in_Lua_code); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_t_8 = __Pyx_Py3ClassCreate(__pyx_t_7, __pyx_n_s_LuaSyntaxError, __pyx_t_1, __pyx_t_2, NULL, 0, 1); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_8);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_LuaSyntaxError, __pyx_t_8) < 0) __PYX_ERR(0, 104, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_8); __pyx_t_8 = 0;
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+  __Pyx_DECREF(__pyx_t_7); __pyx_t_7 = 0;
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lutorpy/_lupa.pyx":109
+ * 
+ * 
+ * def lua_type(obj):             # <<<<<<<<<<<<<<
+ *     """
+ *     Return the Lua type name of a wrapped object as string, as provided
+ */
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_1lua_type, 0, __pyx_n_s_lua_type, NULL, __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__55)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_lua_type, __pyx_t_1) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lutorpy/_lupa.pyx":435
+ * # from Lua scripts
+ * 
+ * def unpacks_lua_table(func):             # <<<<<<<<<<<<<<
+ *     """
+ *     A decorator to make the decorated function receive kwargs
+ */
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_3unpacks_lua_table, 0, __pyx_n_s_unpacks_lua_table, NULL, __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__57)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 435, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unpacks_lua_table, __pyx_t_1) < 0) __PYX_ERR(0, 435, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "lutorpy/_lupa.pyx":461
+ * 
+ * 
+ * def unpacks_lua_table_method(meth):             # <<<<<<<<<<<<<<
+ *     """
+ *     This is :func:`unpacks_lua_table` for methods
+ */
+  __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_5unpacks_lua_table_method, 0, __pyx_n_s_unpacks_lua_table_method, NULL, __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__59)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 461, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_unpacks_lua_table_method, __pyx_t_1) < 0) __PYX_ERR(0, 461, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "lutorpy/_lupa.pyx":773
  *         #free(<void*>self.data_ptr)
  * 
  * def fromNumpyArray(_LuaObject obj, npArray):             # <<<<<<<<<<<<<<
  *      # Byte , Char , Short , Int , Long , Float , and Double
- *     npType2tensorType = {'int8':'torch.ByteTensor',
+ *     npType2tensorType = {'uint8':'torch.ByteTensor',
  */
   __pyx_t_1 = __Pyx_CyFunction_NewEx(&__pyx_mdef_7lutorpy_5_lupa_7fromNumpyArray, 0, __pyx_n_s_fromNumpyArray, NULL, __pyx_n_s_lutorpy__lupa, __pyx_d, ((PyObject *)__pyx_codeobj__61)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 773, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
