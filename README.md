@@ -17,30 +17,84 @@ Lutorpy is a libray built for deep learning with torch in python,  by a two-way 
 --                                      import lutorpy as lua
 require "nn"                    ===>    require("nn")
 model = nn.Sequential()         ===>    model = nn.Sequential()
-
 -- use ":" to access add        ===>    # use "._" to access add
 model:add(nn.Linear(10, 3))     ===>    model._add(nn.Linear(10, 3))
-
 --                                      import numpy as np
 x = torch.Tensor(10):zero()     ===>    arr = np.zeros(10)
-
 -- torch style(painful?)        ===>    # numpy style(elegent?) 
 x:narrow(1, 2, 6):fill(1)       ===>    arr[1:7] = 1
-
 --                                      # convert numpy array to a torch tensor
 --                                      x = torch.fromNumpyArray(arr)
-                                        
 --                                      # or you can still use torch style
 x:narrow(1, 7, 2):fill(2)       ===>    x._narrow(1, 7, 2)._fill(2)
-
 -- 1-based index                ===>    # 0-based index
 x[10] = 3                       ===>    x[9] = 3
-                                        
 y = model:forward(x)            ===>    y = model._forward(x)
-
 --                                      # you can convert y to a numpy array
 --                                      yArr = y.asNumpyArray()
 ```
+# Quick Start
+
+## basic usage
+``` python
+import lutorpy as lua
+import numpy as np
+
+## use require("MODULE") to import lua modules
+require("nn")
+
+## run lua code in python with minimal modification:  replace ":" to "._"
+t = torch.DoubleTensor(10,3)
+print(t._size()) # the corresponding lua version is t:size()
+
+## or, you can use numpy array
+xn = np.random.randn(100)
+## convert the numpy array into torch tensor
+xt = torch.fromNumpyArray(xn)
+
+## convert torch tensor to numpy array
+### Note: the underlying object are sharing the same memory, so the conversion is instant
+arr = xt.asNumpyArray()
+print(arr.shape)
+```
+## example 1: multi-layer perception
+``` python
+## minimal example of multi-layer perception(without training code)
+mlp = nn.Sequential()
+mlp._add(nn.Linear(100, 30))
+mlp._add(nn.Tanh())
+mlp._add(nn.Linear(30, 10))
+
+## generate a numpy array and convert it to torch tensor
+xn = np.random.randn(100)
+xt = torch.fromNumpyArray(xn)
+## process with the neural network
+yt = mlp._forward(xt)
+print(yt)
+
+## or for example, you can plot your result with matplotlib
+yn = yt.asNumpyArray()
+import matplotlib.pyplot as plt
+plt.plot(yn)
+```
+## example 2: load pre-trained model with torch and apply it
+```python
+import numpy as np
+import lutorpy as lua
+
+model = torch.load('PATH TO YOUR MODEL FILE')
+
+# generate your input data with numpy
+arr = np.random.randn(100)
+
+# convert your numpy array into torch tensor
+x = torch.fromNumpyArray(arr)
+
+# apply model forward method with "._" syntax(which is equivalent to ":" in lua)
+y = model._forward(x)
+```
+
+You can also have a look at the step-by-step tutorial and more complete example.
 
 # Installation
 You need to install torch before you start
@@ -65,55 +119,6 @@ cd lutorpy
 sudo python setup.py install
 ```
 #### note that it has been tested on ubuntu, please report issue if you encountered error.
-# Quick Start
-
-## basic usage
-``` python
-## import lutorpy
-import lutorpy as lua
-
-## use require("MODULE") to import lua modules
-require("nn")
-
-## run lua code in python with minimal modification:  replace ":" to "._"
-t = torch.DoubleTensor(10,3)
-print(t._size()) # corresponding lua version is t:size()
-# or you can pass 'self' manually
-print(t.size(t))
-
-## use zero-based index
-t[0][1] = 24
-print(t[0][1])
-
-## convert torch tensor to numpy array
-### Note: the underlying object are sharing the same memory, so the conversion is instant
-arr = t.asNumpyArray()
-print(arr.shape)
-```
-## example: multi-layer perception
-``` python
-## minimal example of multi-layer perception(without training code)
-mlp = nn.Sequential()
-mlp._add(nn.Linear(100, 30))
-mlp._add(nn.Tanh())
-mlp._add(nn.Linear(30, 10))
-
-## generate a numpy array and convert it to torch tensor
-import numpy as np
-xn = np.random.randn(100)
-xt = torch.fromNumpyArray(xn)
-## process with the neural network
-yt = mlp._forward(xt)
-print(yt)
-
-## or for example, you can plot your result with matplotlib
-yn = yt.asNumpyArray()
-import matplotlib.pyplot as plt
-plt.plot(yn)
-
-## cheers! you get the hang of lutorpy.
-## you can have a look at the step-by-step tutorial and more complete example.
-```
 
 
 # Step-by-step tutorial
