@@ -315,6 +315,15 @@ x[0] = -0.5; x[1] = -0.5; print(mlp._forward(x))
 # More details about using lua in python
 Lutorpy is built upon [lupa](https://github.com/scoder/lupa), there are more features provided by lupa could be also useful, please check it out.
 
+# Bug tracker
+
+Have a bug? Please create an issue here on GitHub at https://github.com/imodpasteur/lutorpy/issues.
+
+# Support lutorpy project
+Like lutorpy project? It solved your problem? Let us know by giving lutorpy project a star.
+
+<iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+
 # Acknowledge
 
 This is a project inspired by [lunatic-python](https://github.com/bastibe/lunatic-python) and [lupa](https://github.com/scoder/lupa), and it's based on lupa.
