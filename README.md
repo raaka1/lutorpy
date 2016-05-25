@@ -33,6 +33,9 @@ y = model:forward(x)            ===>    y = model._forward(x)
 --                                      # you can convert y to a numpy array
 --                                      yArr = y.asNumpyArray()
 ```
+
+** Interested in Lutorpy project? please let us know by giving a star.
+
 # Quick Start
 
 ## basic usage
@@ -160,7 +163,6 @@ print(a[0])
 require("torch")
 z = torch.Tensor(4,5,6,2)
 print(torch.isTensor(z))
-
 s = torch.LongStorage(6)
 print(torch.type(s))
 ```
@@ -170,7 +172,6 @@ print(torch.type(s))
 
 ``` python
 require('torch')
-
 t = torch.randn(10,10)
 print(t)
 arr = t.asNumpyArray()
@@ -225,22 +226,16 @@ print(res.size(res))
 
 ``` python
 mlp = nn.Sequential()
-
 module = nn.Linear(10, 5)
 mlp.add(mlp, module)
-
 print(module.weight)
 print(module.bias)
-
 print(module.gradWeight)
 print(module.gradBias)
-
 x = torch.Tensor(10) #10 inputs
-
 # pass self to the function
 y = mlp.forward(mlp, x)
 print(y)
-
 ```
 
 ## prepending 'self' as the first argument automatically
@@ -268,9 +263,7 @@ mlp = nn.Sequential()
 mlp._add(nn.Linear(2, 20)) # 2 input nodes, 20 hidden nodes
 mlp._add(nn.Tanh())
 mlp._add(nn.Linear(20, 1)) # 1 output nodes
-
 criterion = nn.MSECriterion() 
-
 for i in range(2500):
     # random sample
     input= torch.randn(2)    # normally distributed example in 2d
@@ -279,10 +272,8 @@ for i in range(2500):
         output[0] = -1 # output[0] = -1
     else:
         output[0] = 1 # output[0] = 1
-    
     # feed it to the neural network and the criterion
     criterion._forward(mlp._forward(input), output)
-
     # train over this example in 3 steps
     # (1) zero the accumulation of the gradients
     mlp._zeroGradParameters()
@@ -304,7 +295,6 @@ x[0] = -0.5; x[1] = -0.5; print(mlp._forward(x))
 
 ```
 
-
 # Details of implementation
 
  * For applying tensor.asNumpyArray() method to a torch tensor, if the tensor is contiguous, the memory will be shared between numpy array and torch tensor, if the tensor is not contiguous, a contiguous clone of the tensor will be used, so the created numpy array won't share memory with the old tensor.
@@ -320,9 +310,7 @@ Lutorpy is built upon [lupa](https://github.com/scoder/lupa), there are more fea
 Have a bug? Please create an issue here on GitHub at https://github.com/imodpasteur/lutorpy/issues.
 
 # Support lutorpy project
-Like lutorpy project? It solved your problem? Let us know by giving lutorpy project a star.
-
-<iframe src="https://ghbtns.com/github-btn.html?user=twbs&repo=bootstrap&type=star&count=true&size=large" frameborder="0" scrolling="0" width="160px" height="30px"></iframe>
+Like lutorpy project? It solved your problem? Let us know by giving lutorpy project a star, so we know how many people are intereted, thank you.
 
 # Acknowledge
 
