@@ -11,6 +11,9 @@ Lutorpy is a libray built for deep learning with torch in python,  by a two-way 
 * support zero-base indexing (lua uses 1-based indexing)
 * automatic prepending self to function by `"._"` syntax, easily convert `":"` operator in lua to python
 
+
+### * Interested in Lutorpy project? Please let us know by giving a star.
+
 # Convert from Lua to Python/Lutorpy
 ```lua
 -- lua code                             # python code (with lutorpy)
@@ -33,8 +36,6 @@ y = model:forward(x)            ===>    y = model._forward(x)
 --                                      # you can convert y to a numpy array
 --                                      yArr = y.asNumpyArray()
 ```
-
-** Interested in Lutorpy project? please let us know by giving a star.
 
 # Quick Start
 
