@@ -12,7 +12,7 @@ Lutorpy is a libray built for deep learning with torch in python,  by a two-way 
 * automatic prepending self to function by `"._"` syntax, easily convert `":"` operator in lua to python
 
 
-### * Interested in Lutorpy project? Please let us know by giving a star.
+#### * Interested in Lutorpy project? Please let us know by giving a star.
 
 # Convert from Lua to Python/Lutorpy
 ```lua
