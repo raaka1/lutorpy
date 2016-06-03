@@ -550,9 +550,11 @@ cdef class _LuaObject:
             lua.lua_pop(L, 1)
             raise LuaError("lost reference")
 
-    def __call__(self, *args):
+    def __call__(self, *args, **kwargs):
         assert self._runtime is not None
         cdef lua_State* L = self._state
+        if len(kwargs) != 0:
+            args += (self._runtime.table(**kwargs),)
         lock_runtime(self._runtime)
         try:
             lua.lua_settop(L, 0)
