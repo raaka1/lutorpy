@@ -1074,6 +1074,8 @@ cdef class _LuaTable(_LuaObject):
 
     @cython.final
     cdef int _setitem(self, name, value) except -1:
+        if isinstance(name, int) and self._runtime._zero_based_index:
+            name = name + 1
         cdef lua_State* L = self._state
         lock_runtime(self._runtime)
         old_top = lua.lua_gettop(L)
@@ -1105,6 +1107,8 @@ cdef class _LuaTable(_LuaObject):
 
     @cython.final
     cdef _delitem(self, name):
+        if isinstance(name, int) and self._runtime._zero_based_index:
+            name = name + 1
         cdef lua_State* L = self._state
         lock_runtime(self._runtime)
         old_top = lua.lua_gettop(L)
@@ -1357,10 +1361,15 @@ cdef class _LuaIter:
                 try:
                     if self._what == KEYS:
                         retval = py_from_lua(self._runtime, L, -2)
+                        if isinstance(retval, int) and self._runtime._zero_based_index:
+                            retval = retval - 1
                     elif self._what == VALUES:
                         retval = py_from_lua(self._runtime, L, -1)
                     else: # ITEMS
-                        retval = (py_from_lua(self._runtime, L, -2), py_from_lua(self._runtime, L, -1))
+                        k = py_from_lua(self._runtime, L, -2)
+                        if isinstance(k, int) and self._runtime._zero_based_index:
+                            k = k - 1
+                        retval = (k, py_from_lua(self._runtime, L, -1))
                 finally:
                     # pop value
                     lua.lua_pop(L, 1)
