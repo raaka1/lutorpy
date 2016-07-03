@@ -5,7 +5,7 @@ relver=0
 version=${majver}.${minver}.${relver}
 abiver=5.1
 
-prefix=/home/ubuntu/torch
+prefix=/home/ubuntu/torch/install
 multilib=lib
 exec_prefix=${prefix}
 libdir=${exec_prefix}/${multilib}
